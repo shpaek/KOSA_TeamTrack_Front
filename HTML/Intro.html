@@ -4,8 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/Intro.css">
+
     <title>Document</title>
 </head>
 <body>
+    <video src="../video/Intro_video.mp4" muted autoplay loop></video>
+
+    <!-- 회원가입 -->
+    <div><a href="#" id="signup_box1">아이디가 없으세요?</a></div>
+    <!-- 로그인 -->
+    <div id="login_box1">
+        <form action="">
+            <!-- 아이디 비밀번호 입력칸 -->
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <tr></tr>
+                    <td><input type="text" placeholder="아이디 입력" id="id" name="id"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <tr></tr>
+                    <td><input type="text" placeholder="비밀번호 입력" name="pwd"></td>
+                </tr>
+            </table>
+    
+            <!-- 아이디 저장 버튼 -->
+            <div id="login_save">
+                <input type="checkbox">
+                <div>아이디저장</div>
+            </div>
+            
+            <!-- 로그인 버튼 -->
+            <div id="button"><input type="submit" value="로그인"></div>
+            
+        </form>
+    </div>
+
 </body>
 </html>

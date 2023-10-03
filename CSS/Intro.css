@@ -1,0 +1,47 @@
+video {
+    position: absolute;
+    width : 100%;
+    height : 100vh;
+    object-fit : cover;
+    z-index: -1000;
+}
+form {
+    z-index: 1;
+}
+table input {
+    width: 250px;
+    height: 22px;
+    border-radius: 5px;
+}
+
+#signup_box1 {
+    position : absolute;
+    top: 22%;
+    left: 55%;
+    
+    font-weight: bold;
+    font-size: small;
+    color: royalblue;
+}
+
+#login_box1 {
+    position: absolute;
+    width: 350px;
+    height: 250px;
+    top: 25%;
+    left: 40%;
+
+    background-color: whitesmoke;
+    border-radius: 2%;
+    display: flex;
+    justify-content: center;
+
+    font-weight: bold;
+    color: royalblue;
+}
+
+#login_box1 form {
+    display: inline-block; /* form을 인라인 블록 요소로 설정 */
+    text-align: left; /* form 내부 텍스트 왼쪽 정렬 */
+    margin: auto; /* 수평 가운데 정렬 */
+}
