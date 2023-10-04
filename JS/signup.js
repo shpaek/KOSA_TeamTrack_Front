@@ -1,20 +1,16 @@
 $(() => {
-    alert('in signup start')
-
     // 가입하기 버튼, id입력란 객체 찾기
     const $btSignup = $('form.signup>button[type=submit]')
     const $id = $('form.signup>input[name=id]')
-    // const $btDupchk = $('form.signup>button[type=button]')
-    const $btDupchk = $('form.signup>button[type=button]');
-    // const $btDupchk = $('#btDupchk');
+    const $btDupchk = $('form.signup>button[type=button]')
 
     // ----- 중복확인 버튼 클릭했을대 할 일 START -----
 
-    $btDupchk.click(() => {
+    $btDupchk.click((e) => {
 
         e.preventDefault();
 
-        alert('버튼클릭 확인')
+        // alert('버튼클릭 확인')
 
         // 입력 아이디 확인
         const idValue = $("#id").val();
@@ -27,7 +23,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url : 'http://192.168.1.105:8888/KOSA/iddupcheck',
+            url : 'http://127.0.0.1:8888/KOSA/iddupcheck',
             method : 'get',
             // data : `id=${$id.val()}`,
             data: `id=${idValue}`,
@@ -51,34 +47,37 @@ $(() => {
 
     // ----- submit 이벤트 발생했을 때 할 일 START -----
     $form.submit((e) => {
-
         // form태그 내부의 객체 찾기
-        const $pwdArr = $('div>form.signup>input[type=password]')
-        const $name = $('div>form.signup>input[name=name]')
-        const $birth = $('div>form.signup>input[name=birth]')
-        const $nickname = $('div>form.signup>input[name=nickname]')
-        const $phone = $('div>form.signup>input[name=phone]')
-        const $email = $('div>form.signup>input[name=email]')
-        const $introduction = $('div>form.signup>input[name=introduction]')
+        const $pwdArr = $('form.signup>input[type=password]')
+        const $nickname = $('form.signup>input[name=nickname]')
+        const $name = $('form.signup>input[name=name]')
+        const $birthday = $('form.signup>input[name=birth]')
+        const $phone = $('form.signup>input[name=phone]')
+        const $email = $('form.signup>input[name=email]')
+
+        // alert($nickname.val())
 
         if ($pwdArr.eq(0).val() != $pwdArr.eq(1).val()) {
             alert('비밀번호를 다시 입력하세요')
             $pwdArr.eq(0).focus()
             $pwdArr.eq(0).select()
         } else {
-            const formData = new FormData(e.target)
+            // const formData = new FormData(e.target)
 
             $.ajax({
-                xhrFields: {
-                    withCredentials: true
-                },
-                url : 'http://192.168.1.105:8888/KOSA/signup',
-                method : 'post',
-                success : (responseJSONObj) => {
+                // xhrFields: {
+                //     withCredentials: true
+                // },
+                url: 'http://127.0.0.1:8888/KOSA/signup',
+                method: 'post',
+                // data: formData,
+                data: $form.serialize(),
+                success: (responseJSONObj) => {
+                    console.log(responseJSONObj)
                     alert(responseJSONObj.msg);
 
                     if(responseJSONObj.status == 1) {
-                        location.href = '.Intro.html'
+                        location.href = './Intro.html'
                     }
                 },
                 error: (jqxhr) => {
@@ -86,8 +85,10 @@ $(() => {
                 }
 
             }) // ajax
+
         } // if-esle
-        // return false // 기본 이벤트 핸들러를 막는 것과 같은 효과 발생
+
+        return false // 기본 이벤트 핸들러를 막는 것과 같은 효과 발생
      
     }) //
     // ----- submit 이벤트 발생했을 때 할 일 END -----
