@@ -18,19 +18,19 @@
 
         <div id="signup_box1">      
 
-            <form class="signup" action="http://192.168.1.105:8888/KOSA/signup" method="post">
+            <form class="signup" action="http://127.0.0.1:8888/KOSA/signup" method="post">
         
                 <label for="">아이디</label>
                 <input type="text" name="id" id="id" required>
-                <button>중복확인</button>
+                <button type="button">중복확인</button>
                 <br>
         
                 <label for="">비밀번호</label>
                 <input type="password" name="pwd" id="pwd1" required>
                 <br>
                 <label for="">비밀번호 확인</label>
-                <input type="password" name="pwd" id="pwd2" required>
-                <button>비밀번호 확인</button>
+                <input type="password" id="pwd2" required>
+                <button >비밀번호 확인</button>
                 <br>
         
                 <label for="">이름</label>
@@ -38,7 +38,7 @@
                 <br>
 
                 <label for="">생년월일</label>
-                <input type="text" name="birth" id="birth" required>
+                <input type="text" name="birthday" id="birthday" required>
                 <br>
 
                 <label for="">닉네임</label>
@@ -52,16 +52,12 @@
                 <label for="">이메일</label>
                 <input type="text" name="email" id="email" required>
                 <br>
-
-                <label for="">자기소개</label>
-                <textarea name="introduction" id="introduction" cols="50" rows="5"></textarea>
-                <br>
                 
-                <label for="">프로필</label>
+                <!-- <label for="">프로필</label>
                 <input type="file" name="profile" id="profile">
                 <div>
                     <img class="profile">
-                </div>
+                </div> -->
         
                 <button type="submit">가입하기</button>
             </form>
