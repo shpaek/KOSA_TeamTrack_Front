@@ -36,7 +36,7 @@ $(() => {
                 withCredentials: true
             },
             // url 맞는지 모르겠어서 수정 필요 *********
-            url : 'http://192.168.1.105:8888/KOSA/login',
+            url : 'http://127.0.0.1:8888/KOSA/login',
             method : 'post',
             data : idpwddata,
             success : (responseJSONObj) => {
