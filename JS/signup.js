@@ -62,7 +62,7 @@ $(() => {
             $pwdArr.eq(0).focus()
             $pwdArr.eq(0).select()
         } else {
-            // const formData = new FormData(e.target)
+            const formData = new FormData(e.target)
 
             $.ajax({
                 // xhrFields: {
@@ -70,8 +70,10 @@ $(() => {
                 // },
                 url: 'http://127.0.0.1:8888/KOSA/signup',
                 method: 'post',
-                // data: formData,
-                data: $form.serialize(),
+                contentType: false,
+                processData: false,
+                data: formData, // 프로필 파일 업로드 같이하려고 FormData클래스 사용 
+                // data: $form.serialize(), -> 프로필 파일 업로드 전 사용
                 success: (responseJSONObj) => {
                     console.log(responseJSONObj)
                     alert(responseJSONObj.msg);
@@ -92,6 +94,5 @@ $(() => {
      
     }) //
     // ----- submit 이벤트 발생했을 때 할 일 END -----
-
 
 })
