@@ -1,0 +1,67 @@
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>signup</title>
+
+        <link rel="stylesheet" href="../CSS/signup.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../JS/signup.js"></script>
+
+    </head>
+    <body>
+
+        <video src="../video/Intro_video2.mp4" muted autoplay loop></video>
+
+        <div id="signup_box1">      
+
+            <form class="signup" action="http://127.0.0.1:8888/KOSA/signup" method="post">
+        
+                <label for="">아이디</label>
+                <input type="text" name="id" id="id" required>
+                <button type="button">중복확인</button>
+                <br>
+        
+                <label for="">비밀번호</label>
+                <input type="password" name="pwd" id="pwd1" required>
+                <br>
+                <label for="">비밀번호 확인</label>
+                <input type="password" id="pwd2" required>
+                <button >비밀번호 확인</button>
+                <br>
+        
+                <label for="">이름</label>
+                <input type="text" name="name" id="name" required>
+                <br>
+
+                <label for="">생년월일</label>
+                <input type="text" name="birthday" id="birthday" required>
+                <br>
+
+                <label for="">닉네임</label>
+                <input type="text" name="nickname" id="nickname" required>
+                <br>
+
+                <label for="">휴대폰</label>
+                <input type="text" name="phone" id="phone" required>
+                <br>
+
+                <label for="">이메일</label>
+                <input type="text" name="email" id="email" required>
+                <br>
+                
+                <label for="file1">프로필</label>
+                <input type="file" name="file1" id="file1">
+                <div>
+                    <img class="profile">
+                </div>
+        
+                <button type="submit">가입하기</button>
+            </form>
+            
+        </div>
+    </body>
+    </html>

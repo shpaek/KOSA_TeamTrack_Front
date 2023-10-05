@@ -1,0 +1,33 @@
+html, body {
+    font-family: 'Noto Sans KR', sans-serif;
+
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* section nav바 너비만큼 이동 */
+section {
+    margin-left: 270px;
+    padding: 30px;
+    flex: 1;
+}
+
+/* ---------------------------------- */
+
+.test1 {
+    border: 1px solid black;
+
+    height: 300px;
+}
+.test2 {
+    border: 1px solid black;
+
+    height: 500px;
+}

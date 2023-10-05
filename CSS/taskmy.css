@@ -1,0 +1,25 @@
+div.mycontent>table{
+    width:90%;    
+    border-collapse: collapse;
+}
+div.mycontent>table, div.mycontent>table th{
+    /* border: 1px solid; */
+    background-color: rgb(231, 231, 231);
+    height: 50px;
+}
+/*
+div.mycontent>table td{
+    border-left: 1px dotted;
+    border-bottom: 1px dotted
+} */
+div.mycontent>table td.title{
+    width: 20%;
+}
+div.mycontent>table td.avg_reviewscore{
+    width:20%;
+    text-align: right;
+}
+div.mycontent>table td.regdate{
+    width:20%;
+    text-align: right;
+}

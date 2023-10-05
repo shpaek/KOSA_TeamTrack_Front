@@ -1,0 +1,29 @@
+div.completecontent>table{
+    width:90%;    
+    border-collapse: collapse;
+}
+div.completecontent>table, div.completecontent>table th{
+    /* border: 1px solid; */
+    background-color: rgb(231, 231, 231);
+    height: 50px;
+}
+/*
+div.completecontent>table td{
+    border-left: 1px dotted;
+    border-bottom: 1px dotted
+} */
+div.completecontent>table td.title{
+    width: 20%;
+}
+div.completecontent>table td.id{
+    width:20%;
+    text-align: right;
+}
+div.maincontent>table td.hwscore{
+    width:20%;
+    text-align: right;
+}
+div.completecontent>table td.regdate{
+    width:20%;
+    text-align: right;
+}
