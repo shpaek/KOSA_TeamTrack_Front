@@ -11,19 +11,19 @@ div.mycontent>table, div.mycontent>table th{
     background-color: rgb(231, 231, 231);
     height: 50px;
 }
-/*
-div.maincontent>table td{
-    border-left: 1px dotted;
-    border-bottom: 1px dotted
-} */
+
+div.mycontent>table>tbody{
+    background-color: white;
+}
 div.mycontent>table td.title{
     width: 20%;
+    text-align: center;
 }
 div.mycontent>table td.avg_reviewscore{
     width:20%;
-    text-align: right;
+    text-align: center;
 }
 div.mycontent>table td.regdate{
     width:20%;
-    text-align: right;
+    text-align: center;
 }
