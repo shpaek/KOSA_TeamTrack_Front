@@ -1,5 +1,9 @@
+div.completeboard>h2{
+    margin-top:0px;
+}
+
 div.completecontent>table{
-    width:90%;    
+    width:100%;    
     border-collapse: collapse;
 }
 div.completecontent>table, div.completecontent>table th{
@@ -8,7 +12,7 @@ div.completecontent>table, div.completecontent>table th{
     height: 50px;
 }
 /*
-div.completecontent>table td{
+div.maincontent>table td{
     border-left: 1px dotted;
     border-bottom: 1px dotted
 } */
@@ -19,11 +23,11 @@ div.completecontent>table td.id{
     width:20%;
     text-align: right;
 }
-div.maincontent>table td.hwscore{
+div.completecontent>table td.regdate{
     width:20%;
     text-align: right;
 }
-div.completecontent>table td.regdate{
+div.completecontent>table td.enddate{
     width:20%;
     text-align: right;
 }

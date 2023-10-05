@@ -1,5 +1,9 @@
+div.allboard>h2{
+    margin-top:0px;
+}
+
 div.allcontent>table{
-    width:90%;    
+    width:100%;    
     border-collapse: collapse;
 }
 div.allcontent>table, div.allcontent>table th{
@@ -7,10 +11,11 @@ div.allcontent>table, div.allcontent>table th{
     background-color: rgb(231, 231, 231);
     height: 50px;
 }
-
-div.allcontent>table td{
-    background-color: rgb(231, 231, 231);
-}
+/*
+div.maincontent>table td{
+    border-left: 1px dotted;
+    border-bottom: 1px dotted
+} */
 div.allcontent>table td.title{
     width: 20%;
 }
@@ -19,6 +24,10 @@ div.allcontent>table td.id{
     text-align: right;
 }
 div.allcontent>table td.regdate{
+    width:20%;
+    text-align: right;
+}
+div.allcontent>table td.enddate{
     width:20%;
     text-align: right;
 }

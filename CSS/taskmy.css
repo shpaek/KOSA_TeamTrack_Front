@@ -1,5 +1,9 @@
+div.myboard>h2{
+    margin-top:0px;
+}
+
 div.mycontent>table{
-    width:90%;    
+    width:100%;    
     border-collapse: collapse;
 }
 div.mycontent>table, div.mycontent>table th{
@@ -8,18 +12,22 @@ div.mycontent>table, div.mycontent>table th{
     height: 50px;
 }
 /*
-div.mycontent>table td{
+div.maincontent>table td{
     border-left: 1px dotted;
     border-bottom: 1px dotted
 } */
 div.mycontent>table td.title{
     width: 20%;
 }
-div.mycontent>table td.avg_reviewscore{
+div.mycontent>table td.id{
     width:20%;
     text-align: right;
 }
 div.mycontent>table td.regdate{
+    width:20%;
+    text-align: right;
+}
+div.mycontent>table td.enddate{
     width:20%;
     text-align: right;
 }
