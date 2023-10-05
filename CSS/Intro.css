@@ -1,7 +1,9 @@
 video {
     position: absolute;
+    top: 0;
+    left: 0;
     width : 100%;
-    height : 100vh;
+    height : 100%;
     object-fit : cover;
     z-index: -1000;
 }
@@ -11,6 +13,13 @@ form {
 table input {
     width: 250px;
     height: 22px;
+    border-radius: 5px;
+}
+img {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    left: 31%;
     border-radius: 5px;
 }
 
@@ -27,11 +36,11 @@ table input {
 #login_box1 {
     position: absolute;
     width: 350px;
-    height: 250px;
+    height: 400px;
     top: 25%;
     left: 40%;
 
-    background-color: whitesmoke;
+    background-color:gainsboro;
     border-radius: 2%;
     display: flex;
     justify-content: center;
@@ -44,4 +53,27 @@ table input {
     display: inline-block; /* form을 인라인 블록 요소로 설정 */
     text-align: left; /* form 내부 텍스트 왼쪽 정렬 */
     margin: auto; /* 수평 가운데 정렬 */
+}
+
+#login_save {
+    display: flex; /* 내부 요소를 가로 정렬 */
+    align-items: center; /* 내부 요소를 세로 중앙 정렬 */
+}
+#login_save div {
+    font-size: 4px;
+}
+
+#login_button {
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    left: 20%;
+
+    margin-top: 10px;
+
+    background-color: #011837;
+
+    font-weight: bold;
+    color: white;
 }

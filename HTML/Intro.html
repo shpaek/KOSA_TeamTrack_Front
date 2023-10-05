@@ -10,16 +10,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="../JS/Intro.js"></script>
 
-    <title>Document</title>
+    <title>Intro</title>
 </head>
 <body>
-    <video src="../video/Intro_video.mp4" muted autoplay loop></video>
+    <video src="../video/Intro_video2.mp4" muted autoplay loop></video>
 
     <!-- 회원가입 -->
     <div><a href="#" id="signup_box1">아이디가 없으세요?</a></div>
     <!-- 로그인 -->
     <div id="login_box1">
         <form action="">
+            <img src="../images/logo.png" alt="로고">
             <!-- 아이디 비밀번호 입력칸 -->
             <table>
                 <tr>
@@ -30,7 +31,7 @@
                 <tr>
                     <td>비밀번호</td>
                     <tr></tr>
-                    <td><input type="text" placeholder="비밀번호 입력" name="pwd"></td>
+                    <td><input type="password" placeholder="비밀번호 입력" name="pwd"></td>
                 </tr>
             </table>
     
@@ -41,7 +42,7 @@
             </div>
             
             <!-- 로그인 버튼 -->
-            <div id="button"><input type="submit" value="로그인"></div>
+            <div id="button"><input type="submit" value="로그인" id="login_button"></div>
             
         </form>
     </div>
