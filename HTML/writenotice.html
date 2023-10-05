@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/writenotice.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../js/writenotice.js"></script> 
+    </head>
+    <body>
+        <form class="notice" method="get" action="http://localhost:8888/KOSA_Project2/writenotice" enctype="multipart/form-data"> 
+            <div class="mainnotice">
+                <button>메인공지 등록</button>
+            </div>
+            <div class="titleline">
+                <input type="text"
+                        required placeholder="제목을 입력하세요"
+                        name="title">
+                <button type="submit">파일첨부</button>
+            </div>
+            <div class="content">
+                <input type="text" 
+                       name="content">
+            </div>
+            <div class="write">
+                <button type="submit">완료</button>
+            </div>
+        </form>
+    </body>
+</html>
