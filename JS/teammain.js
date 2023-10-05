@@ -40,7 +40,7 @@ window.addEventListener('load', () => {
                     break;
 
                 case 'taskBoard':
-                    ajaxHandler('GET', '#', sectionObj)
+                    ajaxHandler('GET', './taskmain.html', sectionObj)
                     break;
                     
                 case 'QnABoard':
@@ -65,3 +65,4 @@ window.addEventListener('load', () => {
         // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓
 
     }) // menus.forEach()
+})
