@@ -15,10 +15,6 @@ $(()=>{
             const noticeContent = responseJSONObj.noticeContent
             const regDate = responseJSONObj.regDate
 
-            console.log(noticeTitle)
-            console.log(noticeContent)
-            console.log(regDate)
-
             $('div.titleline>h4').html(noticeTitle)
             $('div.titleline>span').text(regDate)
             $('div.content>p').html(noticeContent)
