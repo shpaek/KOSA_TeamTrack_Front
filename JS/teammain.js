@@ -40,7 +40,7 @@ window.addEventListener('load', () => {
                     break;
 
                 case 'taskBoard':
-                    ajaxHandler('GET', '#', sectionObj)
+                    ajaxHandler('GET', './taskmain.html', sectionObj)
                     break;
                     
                 case 'QnABoard':
