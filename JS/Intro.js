@@ -21,6 +21,7 @@ $(() => {
         // 체크박스 체크되어있으면 savedId 불러오기
         if($('input[type=checkbox]').prop('checked')) {
             localStorage.setItem('savedId', $('input[name=id]').val())
+
         } else {
             localStorage.removeItem('savedId')
         }
@@ -36,17 +37,16 @@ $(() => {
                 withCredentials: true
             },
             // url 맞는지 모르겠어서 수정 필요 *********
-            url : 'http://127.0.0.1:8888/KOSA/login',
-            method : 'post',
-            data : idpwddata,
-            success : (responseJSONObj) => {
+            url: 'http://127.0.0.1:8888/KOSA/login',
+            method: 'post',
+            data: idpwddata,
+            success: (responseJSONObj) => {
                 // controller에서 받아온 응답에 대한 결과
                 if(responseJSONObj.status == 0) {
                     alert(responseJSONObj.msg)
-                } else if(responseJSONObj == 1) {
+                } else if(responseJSONObj.status == 1) {
                     localStorage.setItem("loginedId", idValue)
-                    // 아직 main.html 없어서 수정 필요 ***********
-                    location.href = "./main.html"
+                    location.href = './main.html'
                 }
             },
             error : (jqXHR, textStatus) => {
