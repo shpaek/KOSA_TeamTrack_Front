@@ -1,4 +1,4 @@
-nav {
+div.taskboardmenu {
     display: inline-block;
     /* width: 80%; */
     /* height: 85px; */
@@ -13,7 +13,7 @@ nav {
     /* vertical-align: middle; */
 }
 
-nav>ul {
+div.taskboardmenu>ul {
     width:100%;
     height:100%;
     list-style-type: none;
@@ -21,7 +21,7 @@ nav>ul {
     margin:0px;
 }
 
-nav>ul>li {
+div.taskboardmenu>ul>li {
     display: inline-block;
     /* width:10%; */
     /* height:100%; */
@@ -32,13 +32,13 @@ nav>ul>li {
     /* vertical-align: middle; */
 }
 
-nav>ul>li>a {
+div.taskboardmenu>ul>li>a {
     /* vertical-align: baseline; */
     text-decoration: none;
     color: black;
 }
 
-nav>ul>li>a:hover {
+div.taskboardmenu>ul>li>a:hover {
     background-color: #000000;
     color: #fff;
     text-decoration: underline;
