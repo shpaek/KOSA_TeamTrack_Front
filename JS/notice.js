@@ -1,5 +1,5 @@
 const backURL = 'http://localhost:8888/KOSA_Project2'
-const frontURL = 'http://localhost:5500/html'
+const frontURL = 'http://localhost:5500/HTML'
 
 $(()=>{
     function ajaxHandler(cp){
@@ -12,30 +12,27 @@ $(()=>{
             data : `currentPage=${cp}&teamNo=9999`,
             success: (responseJSONObj)=>{
                 const noticeList = responseJSONObj.list
-                //원본 product객체 찾기
+
                 const $originTrObj = $('div.notice>div.noticelist>table>thead>tr')
                 const $tbodyObj = $('div.notice>div.noticelist>table>tbody')
+                
                 $tbodyObj.empty()
 
                 $(noticeList).each((index, p)=>{
                     const $copyTrObj = $originTrObj.clone()
                     $copyTrObj.empty()
                     
-                    const $noticeNoTdObj = $('<td>')
-                    $noticeNoTdObj.addClass('noticeNo')
-                    $noticeNoTdObj.append(p.noticeNo)
-                    $copyTrObj.append($noticeNoTdObj)
+                    const $noticeNoObj = `<td>${p.noticeNo}</td>`
+                    $copyTrObj.append($noticeNoObj)
 
-                    const $noticeTitleTdObj = $('<td>')
-                    $noticeTitleTdObj.addClass('noticeTitle')
-                    $noticeTitleTdObj.append(p.noticeTitle)
-                    $copyTrObj.append($noticeTitleTdObj)
-    
-                    const $regDateTdObj = $('<td>')
-                    $regDateTdObj.addClass('regDate')
-                    $regDateTdObj.append(p.regDate)
-                    $copyTrObj.append($regDateTdObj)
-    
+                    const $noticeTitleObj = `<td class="notice_title"><a href="#" 
+                                                onclick="location.href='${frontURL}/noticedetail.html?teamNo=9999&noticeNo=${p.noticeNo}'">
+                                                ${p.noticeTitle}</a></td>`
+                    $copyTrObj.append($noticeTitleObj)
+
+                    const $regDateObj = `<td>${p.regDate}</td>`
+                    $copyTrObj.append($regDateObj)
+                    
                     $tbodyObj.append($copyTrObj)
                 })
 
@@ -67,7 +64,7 @@ $(()=>{
     }
     ajaxHandler(1)
 
-    $('div.notice>div.pagegroup').on('click','span',(e)=>{ // ajax호출하지 않고도 존재하는 객체를 가지고 해야 한다. 그럴 때 사용하는 것이 on이다. 나중에 추가될 span태그를 써주면 된다. (미리 할 일 등록)
+    $('div.notice>div.pagegroup').on('click','span',(e)=>{ 
         const pg = $(e.target).attr('class')
         const currentPage = pg.substr(2)
         ajaxHandler(currentPage)
