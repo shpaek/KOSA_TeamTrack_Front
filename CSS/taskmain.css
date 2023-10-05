@@ -11,23 +11,23 @@ div.maincontent>table, div.maincontent>table th{
     background-color: rgb(231, 231, 231);
     height: 50px;
 }
-/*
-div.maincontent>table td{
-    border-left: 1px dotted;
-    border-bottom: 1px dotted
-} */
+
+div.maincontent>table>tbody{
+    background-color: white;
+}
 div.maincontent>table td.title{
     width: 20%;
+    text-align: center;
 }
 div.maincontent>table td.id{
     width:20%;
-    text-align: right;
+    text-align: center;
 }
 div.maincontent>table td.regdate{
     width:20%;
-    text-align: right;
+    text-align: center;
 }
 div.maincontent>table td.enddate{
     width:20%;
-    text-align: right;
+    text-align: center;
 }
