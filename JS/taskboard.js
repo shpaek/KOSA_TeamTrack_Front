@@ -1,4 +1,4 @@
-const backURL = 'http://localhost:8888/KOSA_Project2/task'
+const backURL = 'http://localhost:8888/KOSA_Project2'
 const frontURL = 'http://localhost:5500/KOSA_Project2_Front/HTML'
 
 function ajaxHandler(method, u, target) {
