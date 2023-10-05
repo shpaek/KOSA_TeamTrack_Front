@@ -11,7 +11,17 @@ $(()=>{
         method : 'get',
         data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
         success: (responseJSONObj)=>{
-            
+            const noticeTitle = responseJSONObj.noticeTitle
+            const noticeContent = responseJSONObj.noticeContent
+            const regDate = responseJSONObj.regDate
+
+            console.log(noticeTitle)
+            console.log(noticeContent)
+            console.log(regDate)
+
+            $('div.titleline>h4').html(noticeTitle)
+            $('div.titleline>span').text(regDate)
+            $('div.content>p').html(noticeContent)
         },
         error:(jqXHR, textStatus)=>{
             alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
