@@ -15,12 +15,9 @@ function ajaxHandler(method, u, target) {
 
 $(()=> {
     const $sectionObj = $('section')
-    const $menus = $('nav>ul>li>a')
+    const $menus = $('div.taskboardmenu>ul>li>a')
 
     $menus.click((e) => {
-        alert('메뉴클릭됨')
-        console.log(e.target.className)
-        
         switch (e.target.className) {
             case 'maintask':
                 location.href='./taskmain.html'
