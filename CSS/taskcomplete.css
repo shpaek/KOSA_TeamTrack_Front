@@ -23,11 +23,11 @@ div.completecontent>table td.id{
     width:20%;
     text-align: right;
 }
-div.completecontent>table td.regdate{
+div.completecontent>table td.reviewscore{
     width:20%;
     text-align: right;
 }
-div.completecontent>table td.enddate{
+div.completecontent>table td.regdate{
     width:20%;
     text-align: right;
 }

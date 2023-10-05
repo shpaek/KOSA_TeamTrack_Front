@@ -19,15 +19,11 @@ div.maincontent>table td{
 div.mycontent>table td.title{
     width: 20%;
 }
-div.mycontent>table td.id{
+div.mycontent>table td.avg_reviewscore{
     width:20%;
     text-align: right;
 }
 div.mycontent>table td.regdate{
-    width:20%;
-    text-align: right;
-}
-div.mycontent>table td.enddate{
     width:20%;
     text-align: right;
 }
