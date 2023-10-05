@@ -1,5 +1,9 @@
+div.mainboard>h2{
+    margin-top:0px;
+}
+
 div.maincontent>table{
-    width:90%;    
+    width:100%;    
     border-collapse: collapse;
 }
 div.maincontent>table, div.maincontent>table th{
