@@ -47,6 +47,8 @@ header>div>img {
 
 /* 검색창 인풋 영역 */
 header .searchBar input {
+    outline: none;
+    
     width: 80%;
     height: 100%;
 
@@ -55,5 +57,4 @@ header .searchBar input {
     border: 0px;
 
     font-size: 16px;
-    outline: none;
 }

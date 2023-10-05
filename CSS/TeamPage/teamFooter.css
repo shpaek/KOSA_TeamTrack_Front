@@ -1,14 +1,7 @@
-body {
-    font-family: 'Noto Sans KR', sans-serif;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
 footer {
     background-color: #929292;
     color: white;
+    
     text-align: center;
     display: flex;
     justify-content: center;
@@ -18,13 +11,14 @@ footer {
     height: 100px;
     
     flex-shrink: 0;
-    z-index: 1; /* nav보다 아래에 놓기 */
+    z-index: 1;
 
-    position: absolute;  
-    bottom: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
 }
 
-/* footer 내용 */
+/* footer content */
 footer p {
     margin: 0;
     padding: 0;
