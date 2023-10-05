@@ -36,7 +36,7 @@ window.addEventListener('load', () => {
             // menu
             switch(e.target.className) { // 화살표 함수 내부에서의 this는 윈도우 객체이기 때문에 e.target 사용!
                 case 'noticeBoard':
-                    ajaxHandler('GET', '#', sectionObj) // sectionObj = 결과를 보여줄 영역
+                    ajaxHandler('GET', './notice.html', sectionObj) // sectionObj = 결과를 보여줄 영역
                     break;
 
                 case 'taskBoard':
@@ -58,6 +58,7 @@ window.addEventListener('load', () => {
                 case 'manageTeamPage': 
                     ajaxHandler('GET', '#', sectionObj)
                     break;
+
             } // switch(e.target.class)()
             e.preventDefault()
 
@@ -65,3 +66,5 @@ window.addEventListener('load', () => {
         // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓
 
     }) // menus.forEach()
+
+});
