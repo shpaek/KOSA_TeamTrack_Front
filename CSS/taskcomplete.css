@@ -1,33 +1,33 @@
-div.mainboard>h2{
+div.completeboard>h2{
     margin-top:0px;
 }
 
-div.maincontent>table{
+div.completecontent>table{
     width:100%;    
     border-collapse: collapse;
 }
-div.maincontent>table, div.maincontent>table th{
+div.completecontent>table, div.completecontent>table th{
     /* border: 1px solid; */
     background-color: rgb(231, 231, 231);
     height: 50px;
 }
 
-div.maincontent>table>tbody{
+div.completecontent>table>tbody{
     background-color: white;
 }
-div.maincontent>table td.title{
+div.completecontent>table td.title{
     width: 20%;
     text-align: center;
 }
-div.maincontent>table td.id{
+div.completecontent>table td.id{
     width:20%;
     text-align: center;
 }
-div.maincontent>table td.regdate{
+div.completecontent>table td.hwscore{
     width:20%;
     text-align: center;
 }
-div.maincontent>table td.enddate{
+div.completecontent>table td.regdate{
     width:20%;
     text-align: center;
 }

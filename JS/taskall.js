@@ -3,7 +3,7 @@ $(() => {
         xhrFields: {
             withCredentials: true
         },
-        url: `${backURL}/maintasklist`,
+        url: `${backURL}/alltasklist`,
         method: 'get',
         success: (responseJSONObj) => {
             if(responseJSONObj.msg != undefined){
@@ -11,17 +11,17 @@ $(() => {
                 return
             }
 
-            const $originTrObj = $('div.mainboard>div.maincontent>table>thead>tr')
-            const $tbodyObj = $('div.mainboard>div.maincontent>table>tbody')
+            const $originTrObj = $('div.allboard>div.allcontent>table>thead>tr')
+            const $tbodyObj = $('div.allboard>div.allcontent>table>tbody')
+            const $alltasklist = responseJSONObj.list
             
-            responseJSONObj.forEach(element => {
+            $alltasklist.forEach(element => {
                 const $copyTrObj = $originTrObj.clone()
                 $copyTrObj.empty()
                 const p = element.title
                 const q = element.id
                 const r = element.regDate
-                const s = element.endDate
-                // console.log(q)
+                console.log(q)
                 
                 const $titleTdObj = $('<td>')
                 $titleTdObj.addClass('title')
@@ -37,11 +37,6 @@ $(() => {
                 $regdateTdObj.addClass('regdate')
                 $regdateTdObj.append(r)
                 $copyTrObj.append($regdateTdObj)
-
-                const $enddateTdObj = $('<td>')
-                $enddateTdObj.addClass('enddate')
-                $enddateTdObj.append(r)
-                $copyTrObj.append($enddateTdObj)
 
                 $tbodyObj.append($copyTrObj)
             });

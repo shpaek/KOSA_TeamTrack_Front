@@ -3,7 +3,7 @@ $(() => {
         xhrFields: {
             withCredentials: true
         },
-        url: `${backURL}/maintasklist`,
+        url: `${backURL}/completetasklist`,
         method: 'get',
         success: (responseJSONObj) => {
             if(responseJSONObj.msg != undefined){
@@ -11,17 +11,17 @@ $(() => {
                 return
             }
 
-            const $originTrObj = $('div.mainboard>div.maincontent>table>thead>tr')
-            const $tbodyObj = $('div.mainboard>div.maincontent>table>tbody')
+            const $originTrObj = $('div.completeboard>div.completecontent>table>thead>tr')
+            const $tbodyObj = $('div.completeboard>div.completecontent>table>tbody')
+            const $completetasklist = responseJSONObj.list
             
-            responseJSONObj.forEach(element => {
+            $completetasklist.forEach(element => {
                 const $copyTrObj = $originTrObj.clone()
                 $copyTrObj.empty()
                 const p = element.title
                 const q = element.id
-                const r = element.regDate
-                const s = element.endDate
-                // console.log(q)
+                const r = element.hwScore
+                const s = element.submitDate
                 
                 const $titleTdObj = $('<td>')
                 $titleTdObj.addClass('title')
@@ -33,15 +33,15 @@ $(() => {
                 $idTdObj.append(q)                
                 $copyTrObj.append($idTdObj)  
 
+                const $hwscoreTdObj = $('<td>')
+                $hwscoreTdObj.addClass('hwscore')
+                $hwscoreTdObj.append(r)                
+                $copyTrObj.append($hwscoreTdObj) 
+
                 const $regdateTdObj = $('<td>')
                 $regdateTdObj.addClass('regdate')
-                $regdateTdObj.append(r)
+                $regdateTdObj.append(s)
                 $copyTrObj.append($regdateTdObj)
-
-                const $enddateTdObj = $('<td>')
-                $enddateTdObj.addClass('enddate')
-                $enddateTdObj.append(r)
-                $copyTrObj.append($enddateTdObj)
 
                 $tbodyObj.append($copyTrObj)
             });
