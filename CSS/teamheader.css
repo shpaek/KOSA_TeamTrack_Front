@@ -1,0 +1,35 @@
+header {
+    /* 영역 */
+    border: solid 1px black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 0;
+    
+    margin-left: 270px; /* nav의 너비만큼 마진 추가 */
+    margin-top: 20px;;
+}
+
+/* 검색창 */
+header .searchBar {
+    display: flex;
+    justify-content: center;
+}
+
+/* 검색창 인풋 영역 */
+header .searchBar input {
+    padding: 10px;
+
+    width: 350px;
+    height: 20px;
+
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+header .searchBar button {
+    padding: 10px 15px;
+    margin-left: 10px;
+}

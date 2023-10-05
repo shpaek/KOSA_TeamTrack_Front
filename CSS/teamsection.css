@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+*/
+
+/* ---------------------------------- */
+
+/* 사이드 메뉴바 */
+nav {
+    width: 250px;
+    height: 100vh;
+    background-color: #011837;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    color: white;
+    z-index: 2; /* footer 위에 놓기 */
+}
+
+/* 메뉴 */
+nav p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 메뉴 영역 */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* 메뉴 탭들 */
+nav ul li {
+    padding: 8px;
+}
+
+/* 메뉴 탭 글씨색 */
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* ---------------------------------- */
+
+/* section 컨텐츠 내용 */
+.content {
+    margin-left: 270px;
+    padding: 20px;
+    flex: 1;
+}
