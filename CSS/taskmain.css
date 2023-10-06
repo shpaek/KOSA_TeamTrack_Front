@@ -1,7 +1,3 @@
-div.mainboard>h2{
-    margin-top:0px;
-}
-
 div.maincontent>table{
     width:100%;    
     border-collapse: collapse;
@@ -15,6 +11,18 @@ div.maincontent>table, div.maincontent>table th{
 div.maincontent>table>tbody{
     background-color: white;
 }
+
+div.maincontent>table td>div.createbox {
+    height: 120px;
+    padding-top: 60px;
+}
+div.maincontent>table td>div.createbox>div.create{
+    text-align: center;
+    border: 1px dashed;
+    height: 60px;
+    line-height: 60px;
+}
+
 div.maincontent>table td.title{
     width: 20%;
     text-align: center;
@@ -30,4 +38,11 @@ div.maincontent>table td.regdate{
 div.maincontent>table td.enddate{
     width:20%;
     text-align: center;
+}
+div.mainboard {
+    /* width: 1300px; */
+    /* height: 620px; */
+    clear: both;
+    margin-left:100px;
+    padding-top:0px;
 }

@@ -1,6 +1,3 @@
-div.completeboard>h2{
-    margin-top:0px;
-}
 
 div.completecontent>table{
     width:100%;    
@@ -30,4 +27,11 @@ div.completecontent>table td.hwscore{
 div.completecontent>table td.regdate{
     width:20%;
     text-align: center;
+}
+div.completeboard {
+    /* width: 1300px; */
+    /* height: 620px; */
+    clear: both;
+    margin-left:100px;
+    padding-top:0px;
 }

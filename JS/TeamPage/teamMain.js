@@ -39,7 +39,7 @@ function ajaxHandler(method, u, target) {
 $(() => {
 
     // DOM Tree에서 section 객체 찾기
-    const $sectionObj = $(`section`)
+    const $sectionObj = $(`section.section`)
     // DOM Tree에서 nav>ul>li>a 객체들 찾기
     const $menus = $(`nav>ul>li>a, nav>ul>li>ul>li>a`)
 
@@ -53,7 +53,7 @@ $(() => {
                     break;
 
                 case 'taskBoard':
-                    ajaxHandler('GET', './taskmain.html', $sectionObj)
+                    ajaxHandler('GET', './taskboard.html', $sectionObj)
                     break;
 
                 case 'QnABoard':
