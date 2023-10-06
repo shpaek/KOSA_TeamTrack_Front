@@ -52,7 +52,7 @@ window.addEventListener('load', () => {
                     break;
 
                 case 'rankPage': 
-                    ajaxHandler('GET', '#', sectionObj)
+                    ajaxHandler('GET', '/rank.html?teamNo=9999', sectionObj)
                     break;
 
                 case 'manageTeamPage': 
