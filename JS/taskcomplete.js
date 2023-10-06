@@ -38,10 +38,10 @@ $(() => {
                 $hwscoreTdObj.append(r)                
                 $copyTrObj.append($hwscoreTdObj) 
 
-                const $regdateTdObj = $('<td>')
-                $regdateTdObj.addClass('regdate')
-                $regdateTdObj.append(s)
-                $copyTrObj.append($regdateTdObj)
+                const $submitdateTdObj = $('<td>')
+                $submitdateTdObj.addClass('submitdate')
+                $submitdateTdObj.append(s)
+                $copyTrObj.append($submitdateTdObj)
 
                 $tbodyObj.append($copyTrObj)
             });
