@@ -20,7 +20,7 @@ $(() => {
                 $copyTrObj.empty()
                 const p = element.title
                 const q = element.id
-                const r = element.regDate
+                const r = element.regdate
                 console.log(q)
                 
                 const $titleTdObj = $('<td>')

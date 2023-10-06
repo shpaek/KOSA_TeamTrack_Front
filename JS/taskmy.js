@@ -20,7 +20,7 @@ $(() => {
                 $copyTrObj.empty()
                 const p = element.title
                 const q = element.avgReviewscore
-                const r = element.regDate
+                const r = element.regdate
                 
                 const $titleTdObj = $('<td>')
                 $titleTdObj.addClass('title')
