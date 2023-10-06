@@ -1,6 +1,3 @@
-div.allboard>h2{
-    margin-top:0px;
-}
 
 div.allcontent>table{
     width:100%;    
@@ -26,4 +23,11 @@ div.allcontent>table td.id{
 div.allcontent>table td.regdate{
     width:20%;
     text-align: center;
+}
+div.allboard {
+    /* width: 1300px; */
+    /* height: 620px; */
+    clear: both;
+    /* margin-left:100px; */
+    padding-top:0px;
 }

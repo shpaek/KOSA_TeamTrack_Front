@@ -1,6 +1,3 @@
-div.myboard>h2{
-    margin-top:0px;
-}
 
 div.mycontent>table{
     width:100%;    
@@ -26,4 +23,11 @@ div.mycontent>table td.avg_reviewscore{
 div.mycontent>table td.regdate{
     width:20%;
     text-align: center;
+}
+div.myboard {
+    /* width: 1300px; */
+    /* height: 620px; */
+    clear: both;
+    /* margin-left:100px; */
+    padding-top:0px;
 }
