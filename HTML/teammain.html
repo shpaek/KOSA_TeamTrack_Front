@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>TeamTrack!!</title>
+
+        <link href="../images/favicon.ico" rel="icon">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
+        <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+        <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+        <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
+
+        <!-- ajax -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <!-- JavaScript -->
+        <script src="../JS/TeamPage/teamMain.js"></script>
+
+        <!-- font -->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+        </style>
+    </head>
+
+    <body>
+        <div id="mainContainer">
+            <header>
+                <!-- 검색창 -->
+                <div class="searchBar">
+                    <input type="text" placeholder="검색을 하삼">
+                    <img class="searchIcon" src="../images/search.png" alt="searchIcon">
+                </div>
+            </header>
+
+            <!-- 사이드 메뉴바 -->
+            <nav>
+                <!-- 사이트 로고 -->
+                <a href="../HTML/main.html">
+                    <img class="logo" src="../images/logoCut.png" alt="logo">
+                </a>
+
+                <!-- 팀 이름 -->
+                <p class="teamName">팀명: 셍나</p>
+
+                <!-- 팀 프로필 -->
+                <div class="teamProfile">
+                    <img class="teamProfileImg" src='#' alt="teamProfile">
+                    <p class="teamProfileEdit">편집</p>
+                </div>
+
+                <!-- 메뉴 탭 -->
+                <ul>
+                    <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
+                    <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
+                    <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
+                    <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
+                    <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
+                    <li>
+                        <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
+                        <ul class="hiddenTab">
+                            <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
+                            <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
+                            <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
+                            <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- 컨텐츠 영역 -->
+            <section class="section">
+                <p>섹션 영역입니다~ 후후</p>
+                <div class="test1"></div>
+                <div class="test2"></div>
+            </section>
+        </div>
+
+        <!-- 푸터 -->
+        <footer>
+            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+        </footer>
+
+    </body>
+
+</html>

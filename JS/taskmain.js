@@ -1,41 +1,56 @@
-const backURL = 'http://localhost:8888/KOSA_Project2/task'
-const frontURL = 'http://localhost:5500/KOSA_Project2_Front/HTML'
-
-function ajaxHandler(method, u, target) {
-    console.log(u)
-    
-    if(method == 'GET'){
-        target.load(u,  function( response, status, xhr ) {
-            if ( status == "error" ) {
-                alert(xhr.status + xhr.statusText)
+$(() => {
+    $.ajax({
+        xhrFields: {
+            withCredentials: true
+        },
+        url: `${backURL}/maintasklist`,
+        method: 'get',
+        success: (responseJSONObj) => {
+            if(responseJSONObj.msg != undefined){
+                alert('과제가 존재하지 않습니다.')
+                return
             }
-        })
-    }
-}
 
-$(()=> {
-    const $sectionObj = $('section')
-    const $menus = $('nav>ul>li>a')
-
-    $menus.click((e) => {
-        alert('메뉴클릭됨')
-        console.log(e.target.className)
-        
-        switch (e.target.className) {
-            case 'maintask':
-                location.href='./taskmain.html'
-                break
-            case 'alltask':
-                ajaxHandler('GET', "./taskall.html", $sectionObj)
-                break
-            case 'completetask': 
-                ajaxHandler('GET', "./taskcomplete.html", $sectionObj)
-                break
-            case 'mytask':
-                ajaxHandler('GET', "./taskmy.html", $sectionObj)
-                break;
+            const $originTrObj = $('div.mainboard>div.maincontent>table>thead>tr')
+            const $tbodyObj = $('div.mainboard>div.maincontent>table>tbody')
             
+            responseJSONObj.forEach(element => {
+                const $copyTrObj = $originTrObj.clone()
+                $copyTrObj.empty()
+                const p = element.title
+                const q = element.id
+                const r = element.regDate
+                const s = element.endDate
+                // console.log(q)
+                
+                const $titleTdObj = $('<td>')
+                $titleTdObj.addClass('title')
+                $titleTdObj.append(p)
+                $copyTrObj.append($titleTdObj)
+
+                const $idTdObj = $('<td>')
+                $idTdObj.addClass('id')
+                $idTdObj.append(q)                
+                $copyTrObj.append($idTdObj)  
+
+                const $regdateTdObj = $('<td>')
+                $regdateTdObj.addClass('regdate')
+                $regdateTdObj.append(r)
+                $copyTrObj.append($regdateTdObj)
+
+                const $enddateTdObj = $('<td>')
+                $enddateTdObj.addClass('enddate')
+                $enddateTdObj.append(r)
+                $copyTrObj.append($enddateTdObj)
+
+                $tbodyObj.append($copyTrObj)
+            });
+
+            const $copyTrObj = $originTrObj.clone()
+            $copyTrObj.empty()
+            
+            $tbodyObj.append($copyTrObj)
+
         }
-        e.preventDefault()
     })
 })
