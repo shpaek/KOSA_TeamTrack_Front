@@ -6,19 +6,20 @@
         <script src="../js/writenotice.js"></script> 
     </head>
     <body>
-        <form class="notice" method="get" action="http://localhost:8888/KOSA_Project2/writenotice" enctype="multipart/form-data"> 
+        <form class="notice" method="post"> 
             <div class="mainnotice">
-                <input type="checkbox" id="m">
+                <input type="checkbox" id="status" name="status" value="0">
                 <label for="m">메인공지 등록</label>
             </div>
             <div class="titleline">
                 <input type="text"
                         required placeholder="제목을 입력하세요"
                         name="title">
-                <button type="submit">파일첨부</button>
+                <input type="file" name="f1" id="f1"></input>
             </div>
             <div class="content">
                 <input type="text" 
+                        required placeholder="본문"
                        name="content">
             </div>
             <div class="write">

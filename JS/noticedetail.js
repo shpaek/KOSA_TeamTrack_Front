@@ -24,4 +24,30 @@ $(()=>{
             console.log(jqXHR)
         }
     })
+
+    $('div.buttons>button.remove').on('click',(e)=>{
+        var result = confirm("삭제하시겠습니까?")
+        if(result == true){
+            $.ajax({
+                url: backURL+'/deletenotice',
+                method : 'get',
+                data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
+                success: (responseJSONObj)=>{
+                    if(responseJSONObj.status==1){
+                        alert(responseJSONObj.msg)
+                        location.href = `${frontURL}/notice.html?teamNo=${teamNo}`
+                    }else{
+                        alert(responseJSONObj.msg)
+                    }
+                },
+                error:(jqXHR)=>{
+                    alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+                    console.log(jqXHR)
+                }
+            })
+        }else{
+            return false
+        }
+        return false
+    })
 })
