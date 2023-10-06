@@ -19,24 +19,18 @@ $(() => {
                 const $copyTrObj = $originTrObj.clone()
                 $copyTrObj.empty()
                 const p = element.title
-                const q = element.id
-                const r = element.regdate
+                const q = element.nickname
                 console.log(q)
+
+                const $nicknameTdObj = $('<td>')
+                $nicknameTdObj.addClass('nickname')
+                $nicknameTdObj.append(q)                
+                $copyTrObj.append($nicknameTdObj)
                 
                 const $titleTdObj = $('<td>')
                 $titleTdObj.addClass('title')
                 $titleTdObj.append(p)
                 $copyTrObj.append($titleTdObj)
-
-                const $idTdObj = $('<td>')
-                $idTdObj.addClass('id')
-                $idTdObj.append(q)                
-                $copyTrObj.append($idTdObj)  
-
-                const $regdateTdObj = $('<td>')
-                $regdateTdObj.addClass('regdate')
-                $regdateTdObj.append(r)
-                $copyTrObj.append($regdateTdObj)
 
                 $tbodyObj.append($copyTrObj)
             });

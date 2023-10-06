@@ -29,7 +29,7 @@ $(() => {
 
                 const $avgreviewscoreTdObj = $('<td>')
                 $avgreviewscoreTdObj.addClass('avg_reviewscore')
-                $avgreviewscoreTdObj.append(q)                
+                $avgreviewscoreTdObj.append(q+"점")                
                 $copyTrObj.append($avgreviewscoreTdObj)
 
                 const $regdateTdObj = $('<td>')
