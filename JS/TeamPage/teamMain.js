@@ -48,8 +48,12 @@ $(() => {
             console.log(e.target.className)
             // menu
             switch (e.target.className) { // 화살표 함수 내부에서의 this는 윈도우 객체이기 때문에 e.target 사용!
+                case 'teamMainPage':
+                    location.href='./teamMain.html'
+                    break;
+
                 case 'noticeBoard':
-                    ajaxHandler('GET', './notice.html', $sectionObj) // sectionObj = 결과를 보여줄 영역
+                    ajaxHandler('GET', './notice.html', $sectionObj)
                     break;
 
                 case 'taskBoard':
@@ -61,7 +65,7 @@ $(() => {
                     break;
 
                 case 'attendencePage':
-                    ajaxHandler('GET', '#', $sectionObj)
+                    ajaxHandler('GET', './teamAttendence.html', $sectionObj)
                     break;
 
                 case 'rankPage':
@@ -88,13 +92,18 @@ $(() => {
     
         }) // menu.addEventListener()
         // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
-    
-        // 〓〓 로고 img 객체에서 클릭이벤트가 발생했을 때 할 일 START 〓〓)
-        // const $logo = $(`header>img`)
-    
-        //$logo.click((e) => {
-        //    location.href = `./main.html`
-        //})
-        // 〓〓 로고 img 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
 
+});
+
+$(document).ready(function() {
+    // 팀 가입하기 버튼 클릭 이벤트
+    $('#JoinTeamBtn').click(function() {
+        $('#teamJoin').show();  // 팝업창 표시
+    });
+
+    // 가입요청 버튼 클릭 이벤트
+    $('#closeJoinTeamBtn').click(function() {
+        $('#poteamJoinpUp').hide();  // 팝업창 숨김
+        // 추가적인 로직 작성하기. (서버로 데이터 전송할거)
+    });
 });

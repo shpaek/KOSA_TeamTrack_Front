@@ -1,20 +1,29 @@
 /* section nav바 너비만큼 이동 */
 section {
     margin-left: 270px;
+    margin-bottom: 50px;
     padding: 30px;
-    
-    flex: 1;
 }
 
-/* ---------------------------------- */
-
-.test1 {
-    border: 1px solid black;
-
-    height: 300px;
+p.intro1, p.intro2 {
+    font-weight: bold;
+    font-size: 18px;
 }
-.test2 {
+
+/* 팀 소개글 영역 */
+.teamMainIntroduction {
     border: 1px solid black;
 
-    height: 500px;
+    width: 1550px;
+    height: 400px;
+
+    margin-bottom: 50px;
+}
+
+/* 공지사항 영역 */
+.teamMainNotice {
+    border: 1px solid black;
+
+    width: 1550px;
+    height: 400px;
 }
