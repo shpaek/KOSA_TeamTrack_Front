@@ -14,22 +14,22 @@ function ajaxHandler(method, u, target) {
 }
 
 $(()=> {
-    const $sectionObj = $('section')
+    const $tasksectionObj=$('section.taskboard')
     const $menus = $('div.taskboardmenu>ul>li>a')
 
     $menus.click((e) => {
         switch (e.target.className) {
             case 'maintask':
-                location.href='./taskmain.html'
+                ajaxHandler('GET', './taskmain.html', $tasksectionObj)
                 break
             case 'alltask':
-                ajaxHandler('GET', "./taskall.html", $sectionObj)
+                ajaxHandler('GET', './taskall.html', $tasksectionObj)
                 break
             case 'completetask': 
-                ajaxHandler('GET', "./taskcomplete.html", $sectionObj)
+                ajaxHandler('GET', './taskcomplete.html', $tasksectionObj)
                 break
             case 'mytask':
-                ajaxHandler('GET', "./taskmy.html", $sectionObj)
+                ajaxHandler('GET', './taskmy.html', $tasksectionObj)
                 break;
         }
         e.preventDefault()
