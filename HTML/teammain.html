@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
         <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
         <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+        <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
         <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
 
         <!-- ajax -->
@@ -55,6 +56,7 @@
 
                 <!-- 메뉴 탭 -->
                 <ul>
+                    <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
                     <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
                     <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
                     <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
@@ -69,21 +71,46 @@
                             <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
                         </ul>
                     </li>
+                    <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
                 </ul>
             </nav>
             
             <!-- 컨텐츠 영역 -->
             <section class="section">
-                <p>섹션 영역입니다~ 후후</p>
-                <div class="test1"></div>
-                <div class="test2"></div>
-            </section>
-        </div>
+                
+                <!-- 팀 소개글 -->
+                <p class="intro1"> &#128587; 팀에 대한 간단한 정보를 확인하세요. </p>
+                <div class="teamMainIntroduction">
+                    팀 소개글 끌어오기
+                </div>
 
-        <!-- 푸터 -->
-        <footer>
-            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
-        </footer>
+                <!-- 공지사항 게시판 -->
+                <p class="intro2"> &#128204; 팀의 규칙, 스터디 관련 공지 등 팀에 대한 주요 정보를 확인하세요. </p>
+                <div class="teamMainNotice">
+                    공지사항 게시판 끌어오기
+                </div>
+
+            </section>
+
+            <aside>
+                <!-- 팀 가입하기 버튼 -->
+                <button id="JoinTeamBtn">팀 가입</button>
+            
+                <!-- 팝업 -->
+                <form id="teamJoin" action="/#" method="POST" style="display: none;">
+                    <p>&#127881; 팀 가입 &#127881;</p>
+                    <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!" required rows="5" cols="50" maxlength="2000"></textarea>
+                    <button type="submit" id="requestJoinTeamBtn">가입요청</button>
+                </form>
+
+            </aside>
+            
+            <!-- 푸터 -->
+            <footer>
+                <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+            </footer>
+
+        </div>
 
     </body>
 
