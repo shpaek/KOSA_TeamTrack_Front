@@ -24,8 +24,7 @@ nav>a>img.logo {
     width: 200px;
     height: 40px;
 
-    padding: 20px; 
-    margin-bottom: 30px;
+    padding: 10px 20px 0px 20px; 
 }
 
 /* 팀 이름 */
@@ -35,22 +34,24 @@ nav>a>img.logo {
 
     font-size: 20px;
 
-    padding: 20px; 
+    padding: 0px 0px 10px 20px; 
+
     margin-left: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 /* 프로필 전체 영역 */
 .teamProfile {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
 
     border: 2px solid white; /* 영역 표시 */
     border-radius: 50%;
     
     overflow: hidden;   /* 영역 벗어나는 이미지 숨김 처리 */
     
-    margin: auto;  /* 중앙 정렬 */
+    margin: auto;
+    margin-top: 30px;
     margin-bottom: 30px;
 }
 
@@ -90,7 +91,7 @@ nav ul li {
     cursor: pointer;
     text-align: left;
 
-    font-size: 18px;
+    font-size: 15px;
 
     margin: 10px 0px 10px 0px;
     padding: 10px;
@@ -129,7 +130,7 @@ nav ul li > ul {
 
     background-color: #022d65;
     
-    font-size: 18px;
+    font-size: 16px;
 
     top: 0;
     left: 100%; /* 상위 메뉴 항목의 오른쪽 끝에서 시작 */
@@ -145,6 +146,27 @@ nav ul li > ul > li:hover {
 
     background-color: #022d65;
     
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold; /* 글씨체를 굵게 */
+}
+
+/* 팀 나가기 호버 안했을 때 */
+nav>ul>li#exitTeam {
+    display: flex;  /* 요소를 화면에 보이게 함 */
+    position: absolute;
+
+    margin-top: 90px;
+    
+    bottom: 10px;
+    right: 10px;
+    
+    opacity: 0.2;
+    transition: opacity 0.3s;
+}
+
+/* 팀 나가기 호버했을 때 */
+nav>ul>li#exitTeam:hover {
+    font-weight: bold;
+    
+    opacity: 0.8; 
 }
