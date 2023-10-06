@@ -31,7 +31,6 @@ $(()=> {
             case 'mytask':
                 ajaxHandler('GET', "./taskmy.html", $sectionObj)
                 break;
-            
         }
         e.preventDefault()
     })
