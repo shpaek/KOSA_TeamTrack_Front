@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Attendence</title>
+
+        <link rel="stylesheet" href="../CSS/TeamPage/teamAttendence.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../JS/TeamPage/teamAttendence.js"></script> 
+    </head>
+
+    <body>
+        <div class="teamAttendence">
+            <table class="teamCalendar">
+                <thead>
+                    <tr>
+                        <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                        <td colspan="5">
+                            <span id="calYear"></span>년
+                            <span id="calMonth"></span>월
+                        </td>
+                        <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+                    </tr>
+                    <tr>
+                        <td>일</td>
+                        <td>월</td>
+                        <td>화</td>
+                        <td>수</td>
+                        <td>목</td>
+                        <td>금</td>
+                        <td>토</td>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </body>
+
+</html>

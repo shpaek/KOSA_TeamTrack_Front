@@ -14,24 +14,72 @@ function ajaxHandler(method, u, target) {
 }
 
 $(()=> {
-    const $sectionObj = $('section')
+    $.ajax({
+        xhrFields: {
+            withCredentials: true
+        },
+        url: `${backURL}/maintasklist`,
+        method: 'get',
+        success: (responseJSONObj) => {
+            if(responseJSONObj.msg != undefined){
+                alert('과제가 존재하지 않습니다.')
+                return
+            }
+
+            const $originTrObj = $('div.board>div.content>table>thead>tr')
+            const $tbodyObj = $('div.board>div.content>table>tbody')
+            
+            responseJSONObj.forEach(element => {
+                const $copyTrObj = $originTrObj.clone()
+                $copyTrObj.empty()
+                const p = element.title
+                const q = element.nickname
+                const r = element.enddate
+                // console.log(q)
+
+                const $nicknameTdObj = $('<td>')
+                $nicknameTdObj.addClass('nickname')
+                $nicknameTdObj.append(q)                
+                $copyTrObj.append($nicknameTdObj)  
+
+                const $titleTdObj = $('<td>')
+                $titleTdObj.addClass('title')
+                $titleTdObj.append(p)
+                $copyTrObj.append($titleTdObj)
+
+                const $enddateTdObj = $('<td>')
+                $enddateTdObj.addClass('enddate')
+                $enddateTdObj.append(r)
+                $copyTrObj.append($enddateTdObj)
+
+                $tbodyObj.append($copyTrObj)
+            });
+
+            const $copyTrObj = $originTrObj.clone()
+            $copyTrObj.empty()
+            
+            $tbodyObj.append($copyTrObj)
+
+        }
+    })
+
+    const $tasksectionObj=$('section.taskboard')
     const $menus = $('div.taskboardmenu>ul>li>a')
 
     $menus.click((e) => {
         switch (e.target.className) {
             case 'maintask':
-                location.href='./taskmain.html'
+                ajaxHandler('GET', './taskmain.html', $tasksectionObj)
                 break
             case 'alltask':
-                ajaxHandler('GET', "./taskall.html", $sectionObj)
+                ajaxHandler('GET', './taskall.html', $tasksectionObj)
                 break
             case 'completetask': 
-                ajaxHandler('GET', "./taskcomplete.html", $sectionObj)
+                ajaxHandler('GET', './taskcomplete.html', $tasksectionObj)
                 break
             case 'mytask':
-                ajaxHandler('GET', "./taskmy.html", $sectionObj)
+                ajaxHandler('GET', './taskmy.html', $tasksectionObj)
                 break;
-            
         }
         e.preventDefault()
     })

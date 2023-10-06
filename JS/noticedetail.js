@@ -15,10 +15,6 @@ $(()=>{
             const noticeContent = responseJSONObj.noticeContent
             const regDate = responseJSONObj.regDate
 
-            console.log(noticeTitle)
-            console.log(noticeContent)
-            console.log(regDate)
-
             $('div.titleline>h4').html(noticeTitle)
             $('div.titleline>span').text(regDate)
             $('div.content>p').html(noticeContent)
@@ -27,5 +23,31 @@ $(()=>{
             alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
             console.log(jqXHR)
         }
+    })
+
+    $('div.buttons>button.remove').on('click',(e)=>{
+        var result = confirm("삭제하시겠습니까?")
+        if(result == true){
+            $.ajax({
+                url: backURL+'/deletenotice',
+                method : 'get',
+                data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
+                success: (responseJSONObj)=>{
+                    if(responseJSONObj.status==1){
+                        alert(responseJSONObj.msg)
+                        location.href = `${frontURL}/notice.html?teamNo=${teamNo}`
+                    }else{
+                        alert(responseJSONObj.msg)
+                    }
+                },
+                error:(jqXHR)=>{
+                    alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+                    console.log(jqXHR)
+                }
+            })
+        }else{
+            return false
+        }
+        return false
     })
 })

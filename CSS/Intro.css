@@ -21,6 +21,7 @@ img {
     height: 100px;
     left: 31%;
     border-radius: 5px;
+    box-shadow: 1px 1px 3px 1px #dadce0;
 }
 
 #signup_box1 {
@@ -30,7 +31,8 @@ img {
     
     font-weight: bold;
     font-size: small;
-    color: royalblue;
+    /* color: royalblue; */
+    color: whitesmoke;
 }
 
 #login_box1 {
@@ -40,13 +42,14 @@ img {
     top: 25%;
     left: 40%;
 
-    background-color:gainsboro;
+    /* background-color:gainsboro; */
     border-radius: 2%;
     display: flex;
     justify-content: center;
 
     font-weight: bold;
-    color: royalblue;
+    /* color: royalblue; */
+    color: white;
 }
 
 #login_box1 form {

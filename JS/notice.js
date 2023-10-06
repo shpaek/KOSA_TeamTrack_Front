@@ -15,7 +15,7 @@ $(()=>{
 
                 const $originTrObj = $('div.notice>div.noticelist>table>thead>tr')
                 const $tbodyObj = $('div.notice>div.noticelist>table>tbody')
-                
+
                 $tbodyObj.empty()
 
                 $(noticeList).each((index, p)=>{
@@ -69,4 +69,8 @@ $(()=>{
         const currentPage = pg.substr(2)
         ajaxHandler(currentPage)
     }) 
+
+    $('div.notice>div.write>button').on('click',(e)=>{
+        location.href = `${frontURL}/writenotice.html?teamNo=9999`
+    })
 })

@@ -1,45 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>과제게시판</title>
-        <style>
-            aside {
-                width: 140px;
-                margin-left: 485px;
-                position: fixed;
-                top: 100px;
-                z-index: 999;
-            }
-        </style>
-        <link rel="stylesheet" href="../CSS/taskboard.css">
         <link rel="stylesheet" href="../CSS/taskmain.css">
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="../JS/taskboard.js"></script>
         <script src="../JS/taskmain.js"></script>
     </head>
     <body>
-        <!--과제 리스트 메뉴바-->
-        <div class="taskboardmenu">
-            <ul>
-                <li><a href="#" class="maintask">HOME</a></li>|
-                <li><a href="#" class="alltask">TASK LIST</a></li>|
-                <li><a href="#" class="completetask">COMPLETE</a></li>|
-                <li><a href="#" class="mytask">MY TASK</a></li>
-            </ul>
-        </div>
-
-        <!--과제 리스트 섹션-->
-        <section>
+        <!--과제 리스트-->
+        <section class="taskboard">
             <div class="mainboard">
-                <h2>메인 과제</h2>
                 <div class="maincontent">
                     <table>
                         <thead>
-                            <tr><th>과제 제목</th><th>출제자</th><th>생성일</th><th>마감일</th></tr>
+                            <tr><th>출제자</th><th>타이틀</th><th>마감일</th></tr>
                         </thead>
                         <tbody>
-
+                            <!-- <td colspan="4">
+                                <div class="createbox">
+                                    <div class="create">➕ 과제 생성하기</div>
+                                </div>
+                            </td> -->
                         </tbody>
                     </table>
                 </div>
