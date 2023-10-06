@@ -1,4 +1,4 @@
-const backURL = 'http://localhost:8888/KOSA_Project2/task'
+const backURL = 'http://localhost:8888/KOSA_Project2'
 const frontURL = 'http://localhost:5500/KOSA_Project2_Front/HTML'
 
 function ajaxHandler(method, u, target) {
@@ -15,12 +15,9 @@ function ajaxHandler(method, u, target) {
 
 $(()=> {
     const $sectionObj = $('section')
-    const $menus = $('nav>ul>li>a')
+    const $menus = $('div.taskboardmenu>ul>li>a')
 
     $menus.click((e) => {
-        alert('메뉴클릭됨')
-        console.log(e.target.className)
-        
         switch (e.target.className) {
             case 'maintask':
                 location.href='./taskmain.html'
