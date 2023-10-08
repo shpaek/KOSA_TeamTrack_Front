@@ -20,7 +20,7 @@ $(() => {
                 $copyTrObj.empty()
                 const p = element.title
                 const q = element.avgReviewscore
-                const r = element.regDate
+                const r = element.regdate
                 
                 const $titleTdObj = $('<td>')
                 $titleTdObj.addClass('title')
@@ -29,7 +29,7 @@ $(() => {
 
                 const $avgreviewscoreTdObj = $('<td>')
                 $avgreviewscoreTdObj.addClass('avg_reviewscore')
-                $avgreviewscoreTdObj.append(q)                
+                $avgreviewscoreTdObj.append(q+"점")                
                 $copyTrObj.append($avgreviewscoreTdObj)
 
                 const $regdateTdObj = $('<td>')

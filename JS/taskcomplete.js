@@ -19,23 +19,23 @@ $(() => {
                 const $copyTrObj = $originTrObj.clone()
                 $copyTrObj.empty()
                 const p = element.title
-                const q = element.id
+                const q = element.nickname
                 const r = element.hwScore
                 const s = element.submitDate
+                
+                const $nicknameTdObj = $('<td>')
+                $nicknameTdObj.addClass('nickname')
+                $nicknameTdObj.append(q)                
+                $copyTrObj.append($nicknameTdObj) 
                 
                 const $titleTdObj = $('<td>')
                 $titleTdObj.addClass('title')
                 $titleTdObj.append(p)
-                $copyTrObj.append($titleTdObj)
-
-                const $idTdObj = $('<td>')
-                $idTdObj.addClass('id')
-                $idTdObj.append(q)                
-                $copyTrObj.append($idTdObj)  
+                $copyTrObj.append($titleTdObj) 
 
                 const $hwscoreTdObj = $('<td>')
                 $hwscoreTdObj.addClass('hwscore')
-                $hwscoreTdObj.append(r)                
+                $hwscoreTdObj.append(r+"점")                
                 $copyTrObj.append($hwscoreTdObj) 
 
                 const $submitdateTdObj = $('<td>')

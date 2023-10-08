@@ -3,11 +3,9 @@
     <head>
         <title>과제게시판</title>
         <link rel="stylesheet" href="../CSS/taskboard.css">
-        <link rel="stylesheet" href="../CSS/taskmain.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="../JS/taskboard.js"></script>
-        <script src="../JS/taskmain.js"></script>
     </head>
     <body>
         <!--과제 리스트 메뉴바-->
@@ -21,12 +19,13 @@
         </div>
 
         <!--과제 리스트-->
+        <hr>
         <section class="taskboard">
-            <div class="mainboard">
-                <div class="maincontent">
+            <div class="board">
+                <div class="content">
                     <table>
                         <thead>
-                            <tr><th>과제 제목</th><th>출제자</th><th>생성일</th><th>마감일</th></tr>
+                            <tr><th>출제자</th><th>타이틀</th><th>마감일</th></tr>
                         </thead>
                         <tbody>
                             <!-- <td colspan="4">
