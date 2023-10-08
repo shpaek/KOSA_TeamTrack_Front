@@ -1,5 +1,10 @@
-$(() => {
+const backURL = 'http://192.168.1.13:8888/KOSA_Project2'
+const frontURL = 'http://192.168.1.13:5500/KOSA_Project2_Front/HTML/'
 
+$(() => {
+    const urlParams = new URL(location.href).searchParams
+    const teamNo = urlParams.get('teamNo')
+    
     //팀내 개인랭킹 클릭했을 때 랭킹 목록 실행
     $.ajax({
         xhrFields: {
@@ -7,6 +12,7 @@ $(() => {
         },
         url: backURL + '/rank',
         method: 'get',
+        data: teamNo,
         success: (responseJSONObj) => { //응답데이터 전달
 
             const list = responseJSONObj.list
