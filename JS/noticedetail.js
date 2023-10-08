@@ -6,6 +6,25 @@ $(()=>{
     const teamNo = urlParams.get('teamNo')
     const noticeNo = urlParams.get('noticeNo')
 
+    $('div.noticedetail>div.setmainbutton>button').on('click',(e)=>{
+        $.ajax({
+            url: backURL+'/setmainnotice',
+            method : 'get',
+            data : `teamNo=${teamNo}&noticeNo=${noticeNo}&mainStatus=1`,
+            success: (responseJSONObj)=>{
+                if(responseJSONObj.status==1){
+                    location.href = `${frontURL}/notice.html?teamNo=${teamNo}`
+                }else{
+                    alert(responseJSONObj.msg)
+                }
+            },
+            error:(jqXHR, textStatus)=>{
+                alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+                console.log(jqXHR)
+            }
+        })
+    })
+
     $.ajax({
         url: backURL+'/noticedetail',
         method : 'get',
@@ -14,7 +33,7 @@ $(()=>{
             const noticeTitle = responseJSONObj.noticeTitle
             const noticeContent = responseJSONObj.noticeContent
             const regDate = responseJSONObj.regDate
-
+    
             $('div.detailtitleline>h4').html(noticeTitle)
             $('div.detailtitleline>span').text(regDate)
             $('div.detailcontent>p').html(noticeContent)

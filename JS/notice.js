@@ -2,6 +2,55 @@ const backURL = 'http://localhost:8888/KOSA_Project2'
 const frontURL = 'http://localhost:5500/HTML'
 
 $(()=>{
+    const urlParams = new URL(location.href).searchParams
+
+    $.ajax({
+        url: backURL+'/mainnotice',
+        method : 'get',
+        data : `teamNo=9999`,
+        success: (responseJSONObj)=>{
+            if(responseJSONObj == null){
+                $('div.mainnotice').hide()
+            }else{
+                const noticeNo = responseJSONObj.noticeNo
+                const noticeTitle = responseJSONObj.noticeTitle
+                const regDate = responseJSONObj.regDate
+                const noticeContent = responseJSONObj.noticeContent
+
+                $('div.mainnotice>span[name=noticeNo]').text(noticeNo)
+                $('div.mainnotice>a').html(noticeTitle)
+                $('div.mainnotice>span[name=date]').text(regDate)
+                $('div.mainnotice>p').html(noticeContent)
+
+            }
+        },
+        error:(jqXHR, textStatus)=>{
+            alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+            console.log(jqXHR)
+        }
+    })
+
+    $('div.mainnotice>button[name=cancel]').on('click',(e)=>{ 
+        const noticeNo = $('div.mainnotice>span[name=noticeNo]').text()
+
+        $.ajax({
+            url: backURL+'/setmainnotice',
+            method : 'get',
+            data : `teamNo=9999&noticeNo=${noticeNo}&mainStatus=0`,
+            success: (responseJSONObj)=>{
+                if(responseJSONObj.status==1){
+                    location.href = `${frontURL}/notice.html?teamNo=9999`
+                }else{
+                    alert(responseJSONObj.msg)
+                }
+            },
+            error:(jqXHR, textStatus)=>{
+                alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+                console.log(jqXHR)
+            }
+        })
+    }) 
+
     function ajaxHandler(cp){
         $.ajax({
             xhrFields:{
