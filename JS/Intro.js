@@ -32,6 +32,8 @@ $(() => {
 
         const idpwddata = `id=${idValue}&pwd=${pwdValue}`
 
+        // alert(idpwddata)
+
         $.ajax({
             xhrFields: {
                 withCredentials: true
