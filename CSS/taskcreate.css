@@ -32,14 +32,15 @@ div.taskcreatebox>div.taskanswer{
 }
 
 div.taskcreatebox>div.taskanswer>div.addanswer{
-    border: 1px solid rgb(164, 162, 162);
+    /* border: 1px solid rgb(231, 231, 231); */
+    background-color: rgb(231, 231, 231);
     width: 20%;
     height:30px;
     line-height: 30px;
+    color:rgb(103, 101, 101);
 }
 div.taskcreatebox>div.taskanswer>div.addanswer:hover{
-    background-color: rgb(231, 231, 231);
-    border: 1px solid rgb(231, 231, 231);
+    background-color: rgb(209, 209, 209);
 }
 button{
     width: 100px;
