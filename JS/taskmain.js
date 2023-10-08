@@ -47,4 +47,10 @@ $(() => {
 
         }
     })
+
+    const $createtaskmenu = $('section.taskboard>div.mainboard>div.maincontent>table>tbody td.createtd>div.createbox')
+    const $tasksectionObj=$('section.taskboard')
+    $createtaskmenu.click((e) =>{
+        ajaxHandler('GET', './taskcreate.html', $tasksectionObj)
+    })
 })

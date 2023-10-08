@@ -1,0 +1,48 @@
+div.taskcreatewarning{
+    font-size: small;
+    color: rgb(52, 52, 52);
+}
+div.taskcreatebox{
+    /* background-color: rgb(231, 231, 231); */
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 8px;
+}
+div.taskcreatebox>div.tasktitle {
+    padding-left: 30px;
+}
+div.taskcreatebox>div.tasktitle>input{
+    width: 70%;
+    height: 30px;
+    border: none;
+    font-size: large;
+}
+div.taskcreatebox>hr{
+    width:95%;
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+div.taskcreatebox>div.taskinfo{
+    padding-left: 30px;
+}
+
+div.taskcreatebox>div.taskanswer{
+    padding-left: 30px;
+}
+
+div.taskcreatebox>div.taskanswer>div.addanswer{
+    border: 1px solid rgb(164, 162, 162);
+    width: 20%;
+    height:30px;
+    line-height: 30px;
+}
+div.taskcreatebox>div.taskanswer>div.addanswer:hover{
+    background-color: rgb(231, 231, 231);
+    border: 1px solid rgb(231, 231, 231);
+}
+button{
+    width: 100px;
+    height: 30px;
+    margin-left:950px;
+}

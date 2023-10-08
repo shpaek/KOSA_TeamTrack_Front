@@ -83,4 +83,9 @@ $(()=> {
         }
         e.preventDefault()
     })
+
+    const $createtaskmenu = $('section.taskboard>div.board>div.content>table>tbody td.createtd>div.createbox')
+    $createtaskmenu.click((e) =>{
+        ajaxHandler('GET', './taskcreate.html', $tasksectionObj)
+    })
 })
