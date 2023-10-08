@@ -12,6 +12,7 @@ $(() => {
             }
 
             const $originTrObj = $('div.allboard>div.allcontent>table>thead>tr')
+            $originTrObj.addClass('alltask')
             const $tbodyObj = $('div.allboard>div.allcontent>table>tbody')
             const $alltasklist = responseJSONObj.list
             
@@ -42,4 +43,9 @@ $(() => {
 
         }
     })
+
+    const $tasksectionObj=$('section.taskboard')
+    $('section.taskboard>div.allboard>div.allcontent>table').on('click', 'tbody tr.alltask', function() {
+        ajaxHandler('GET', './taskview.html', $tasksectionObj);
+    });
 })
