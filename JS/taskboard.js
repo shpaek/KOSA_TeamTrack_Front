@@ -27,6 +27,7 @@ $(()=> {
             }
 
             const $originTrObj = $('div.board>div.content>table>thead>tr')
+            $originTrObj.addClass('maintask')
             const $tbodyObj = $('div.board>div.content>table>tbody')
             
             responseJSONObj.forEach(element => {
@@ -83,4 +84,13 @@ $(()=> {
         }
         e.preventDefault()
     })
+
+    const $createtaskmenu = $('section.taskboard>div.board>div.content>table>tbody td.createtd>div.createbox')
+    $createtaskmenu.click(() =>{
+        ajaxHandler('GET', './taskcreate.html', $tasksectionObj)
+    })
+
+    $('section.taskboard>div.board>div.content>table').on('click', 'tbody tr.maintask', function() {
+        ajaxHandler('GET', './taskexam.html', $tasksectionObj);
+    });
 })
