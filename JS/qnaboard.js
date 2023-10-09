@@ -27,13 +27,15 @@ $(() => {
                     $copyTrObj.empty()
                 
                     // const $boardNoObj = `<td>${p.boardNo}</td>`
-                    const $boardNoObj = `<td>${p.qna_no}</td>` 
+                    const $boardNoObj = `<td>${p.qnaNo}</td>` 
                     $copyTrObj.append($boardNoObj)
 
                     // boardTitle부분 클릭시 
                     // const $boardTitleObj = `<td class="board_title"><a href="${frontURL}/boarddetail.html?teamNo=9999&boardNo=${p.boardNo}">
                     //                         ${p.boardTitle}</a></td>`
-                    const $boardTitleObj = `<td class="board_title"><a href="${frontURL}/boarddetail.html?teamNo=9999&boardNo=${p.qna_no}">
+                    // const $boardTitleObj = `<td class="board_title"><a href="http://127.0.0.1:5500/HTML/qnaboarddetail.html?teamNo=9999&qnaNo=${p.qnaNo}">
+                    //                         ${p.title}</a></td>`
+                    const $boardTitleObj = `<td class="board_title"><a href="http://127.0.0.1:5500/HTML/qnaboarddetail.html?teamNo=9999&qnaNo=${p.qnaNo}">
                                             ${p.title}</a></td>`
                     $copyTrObj.append($boardTitleObj)
 
@@ -82,7 +84,7 @@ $(() => {
 
     // 글 작성 버튼 클릭 시 새 글 작성 페이지로 이동
     $('div.board>div.write>button').on('click', (e) => {
-        location.href = `${frontURL}/qnaboardwrite.html?teamNo=9999`
+        location.href = `http://127.0.0.1:5500/KOSA/qnaboardwrite.html?teamNo=9999`
     })
 
     /* 'div.pagegroup' = 현재 돔 트리에 존재하는 객체 */
