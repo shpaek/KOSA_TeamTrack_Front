@@ -13,23 +13,29 @@ div.maincontent>table, div.maincontent>table th{
     background-color: white;
 } */
 
-/* div.maincontent>table td>div.createbox {
-    height: 120px;
-    padding-top: 60px;
+div.maincontent>table td>div.createbox {
+    height: 150px;
+    border: 3px dashed ;
+    background-color: white;
+}
+div.maincontent>table td>div.createbox:hover{
+    background-color: rgb(231, 231, 231);
 }
 div.maincontent>table td>div.createbox>div.create{
     text-align: center;
-    border: 1px dashed;
-    height: 60px;
-    line-height: 60px;
-} */
+    height:112.56px;
+    line-height: 112.56px;
+}
+div.maincontent>table>tbody td.createtd{
+    background-color: white;
+}
 
 div.maincontent>table>tbody tr{
     border: 15px solid white;
     background-color: rgb(231, 231, 231);
 }
 div.maincontent>table>tbody tr:hover{
-    border: 0px ;
+    border: none ;
     background-color: rgb(197, 197, 197);
     color:black;
 }
@@ -43,7 +49,7 @@ div.maincontent>table td.title{
     text-align: center;
 }
 div.maincontent>table td.nickname{
-    width:10%;
+    width:20%;
     text-align: center;
 }
 div.maincontent>table td.enddate{
