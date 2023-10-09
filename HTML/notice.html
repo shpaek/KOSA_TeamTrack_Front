@@ -7,26 +7,37 @@
     </head>
     <body>
         <div class="notice">
-            <h3>공지사항</h3>
+            <div class="boardtitle">
+                <h2>공지사항</h3>
+            </div>
+            <hr>
             <div class="mainnotice">
-                <span name="noticeNo">글번호</span>
-                <a href="#">제목</a>
-                <span name="date">등록일자</span>
-                <button name="cancel">-</button>
-                <p>본문</p>
+                <div class="main_topline">
+                    <span name="noticeNo">글번호</span>
+                    <a href="#">제목</a>
+                    <span name="date">등록일자</span>
+                    <button name="cancel">―</button>
+                </div>
+                <div class="main_contentline">
+                    <p>본문</p>
+                </div>
             </div>
+
             <div class="write">
-                <button>작성</button>
+                <div class="writebutton">
+                    <button>작성</button>
+                </div>
+                <div class="noticelist">
+                    <table>
+                        <thead>
+                            <tr><th>글번호</th><th>제목</th><th>작성일</th></tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="noticelist">
-                <table>
-                    <thead>
-                        <tr><th>글번호</th><th>제목</th><th>작성일</th></tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+
             <div class="pagegroup">
                 
             </div>
