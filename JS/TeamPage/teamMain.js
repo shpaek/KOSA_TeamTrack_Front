@@ -1,28 +1,3 @@
-/*
-function ajaxHandler(method, url, target) {
-    console.log(url)
-
-    const xhttp = new XMLHttpRequest()
-    xhttp.addEventListener('readystatechange', function () {
-        // alert(this.readyState + ":" + this.status)
-
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                target.innerHTML = this.responseText
-            } else if (this.status == 404) {
-                alert('자원이 없습니다.')
-            } else if (this.status == 500) {
-                alert('서버 실행시 오류가 발생했습니다.')
-            } else {
-                alert(this.responseText)
-            } // if-else
-        } // if
-    }) // xhttp.addEventListener()
-    xhttp.open(method, url)
-    xhttp.send()
-} // ajaxHandler
-*/
-
 function ajaxHandler(method, u, target) {
     console.log(u)
 
