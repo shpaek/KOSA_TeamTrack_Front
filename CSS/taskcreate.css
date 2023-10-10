@@ -50,13 +50,14 @@ button{
 
 div.taskanswer>div.answer>div>input{
     display: inline;
-    width: 30px;
-    height: 30px;
-    text-align: center;
 }
+/* div.taskanswer>div.answer>div>input[type=text]{
+    display: inline;
+    width:50px
+} */
 div.taskanswer>div.answer>div>button{
     display: inline;
-    width: 30px;
+    width: 40px;
     height: 30px;
     margin-left:10px;
     background-color: white;

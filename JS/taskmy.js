@@ -22,6 +22,8 @@ $(() => {
                 const p = element.title
                 const q = element.avgReviewscore
                 const r = element.regdate
+                const no=element.taskNo
+                $copyTrObj.data('taskNo', no);
                 
                 const $titleTdObj = $('<td>')
                 $titleTdObj.addClass('title')
@@ -50,6 +52,8 @@ $(() => {
     })
 
     $('section.taskboard>div.myboard>div.mycontent>table').on('click', 'tbody tr.mytask', function() {
-        location.href='./taskview.html'
+        const taskNo = $(this).data('taskNo')
+        localStorage.setItem("taskNo", taskNo)
+        location.href='./taskview.html?taskNo='+taskNo
     });
 })

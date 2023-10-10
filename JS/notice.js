@@ -5,8 +5,6 @@ $(()=>{
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
 
-    $sectionObj = $('section.section')
-
     function ajaxHandler(method, u, target) {
         if (method == 'GET') {
             target.load(u, function (response, status, xhr) {
@@ -49,13 +47,11 @@ $(()=>{
         }
     })
 
+    //---- 메인공지 제목 클릭했을 때 발생할 이벤트 ----
+
     $('div.main_topline>a').on('click',(e)=>{ 
-        $('div.main_topline>span[name=noticeNo]').show()
         const noticeNo = $('div.main_topline>span[name=noticeNo]').text()
-        $('div.main_topline>span[name=noticeNo]').hide()
-        var state = {'teamNo':teamNo, 'noticeNo':noticeNo}
-        history.pushState(state ,null,`${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`)
-        ajaxHandler('GET', `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`, $sectionObj)
+        location.href = `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
     })
 
 
@@ -71,8 +67,7 @@ $(()=>{
             data : `teamNo=${teamNo}&noticeNo=${noticeNo}&mainStatus=0`,
             success: (responseJSONObj)=>{
                 if(responseJSONObj.status==1){
-                    history.pushState(teamNo ,null,`${frontURL}/notice.html?teamNo=${teamNo}`)
-                    ajaxHandler('GET', `${frontURL}/notice.html?teamNo=${teamNo}`, $sectionObj )
+                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                 }else{
                     alert(responseJSONObj.msg)
                 }
@@ -108,9 +103,7 @@ $(()=>{
                     $copyTrObj.append($noticeNoObj)
 
                     const $noticeTitleObj = `<td class="notice_title"><a href='#' 
-                    onclick="const state = {'teamNo':${teamNo}, 'noticeNo':${p.noticeNo}}
-                    history.pushState(state ,null,\`${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${p.noticeNo}\`)
-                    ajaxHandler('GET', \`${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${p.noticeNo}\`, $sectionObj )">
+                    onclick="location.href = \`${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${p.noticeNo}\`">
                     ${p.noticeTitle}</a></td>`
                     
                     $copyTrObj.append($noticeTitleObj)
@@ -157,7 +150,6 @@ $(()=>{
 
     //---- 작성 버튼 클릭했을 때 발생할 이벤트 ----
     $('div.notice>div.write>div.writebutton>button').on('click',(e)=>{
-        history.pushState(teamNo ,null,`${frontURL}/writenotice.html?teamNo=${teamNo}`)
-        ajaxHandler('GET', `${frontURL}/writenotice.html?teamNo=${teamNo}`, $sectionObj )
+        location.href=`${frontURL}/writenotice.html?teamNo=${teamNo}`
     })
 })
