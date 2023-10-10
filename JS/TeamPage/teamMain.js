@@ -46,7 +46,7 @@ $(() => {
                     break;
 
                 case 'rankPage':
-                    const teamNo = 9999;
+                    teamNo = 9999;
                     ajaxHandler('GET', `./rank.html?teamNo=${teamNo}`, $sectionObj)
                     break;
 
