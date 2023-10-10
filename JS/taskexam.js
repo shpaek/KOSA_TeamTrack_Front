@@ -13,6 +13,8 @@ function ajaxHandler(method, u, target) {
 
 $(() => {
 
+    // DOM Tree에서 section 객체 찾기
+    const $sectionObj = $(`section.section`)
     $(`nav>a.logo`).click((e)=>{
         Swal.fire({
             title: '페이지를 전환하시겠습니까?',
@@ -27,7 +29,6 @@ $(() => {
             } else e.preventDefault()
           })
     })
-
     // DOM Tree에서 nav>ul>li>a 객체들 찾기
     const $menus = $(`nav>ul>li>a, nav>ul>li>ul>li>a`)
 
@@ -57,7 +58,6 @@ $(() => {
         }) 
 
     const $taskmenu = $('div.taskboardmenu>ul>li>a')
-    const $tasksectionObj=$('section.taskboard')
 
     $taskmenu.click((e) => {
         switch (e.target.className) {
@@ -124,35 +124,5 @@ $(() => {
         }
         e.preventDefault()
     })
-
-    var cnt=1;
-    $(`div.addanswer`).click((e)=>{
-        const $originObj=$('div.taskanswer>div.answer');
-        const $divObj=$("<div>")
-        $divObj.addClass('a'+cnt)
-        const $inputElement = $("<input>");
-        const $buttonElement1 = $("<button>");
-        const $buttonElement2 = $("<button>");
-        $buttonElement1.append("➖")
-        $buttonElement2.append("✔️")
-        // $buttonElement.click(function() {
-        //     $inputElement.remove();
-        //     $buttonElement.remove();
-        // });
-        $inputElement.attr("type", "text");
-        $inputElement.attr("placeholder", "답");
-
-        $divObj.append("<br>")
-        //$divObj.append(cnt+" : ")
-        $divObj.append($inputElement)
-        $divObj.append($buttonElement1)
-        $divObj.append($buttonElement2)
-        $divObj.append("<br>")
-
-        $originObj.append($divObj)
-        
-        cnt=cnt+1;
-    })
-
 
 });

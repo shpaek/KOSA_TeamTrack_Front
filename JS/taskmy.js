@@ -49,8 +49,7 @@ $(() => {
         }
     })
 
-    const $tasksectionObj=$('section.taskboard')
     $('section.taskboard>div.myboard>div.mycontent>table').on('click', 'tbody tr.mytask', function() {
-        ajaxHandler('GET', './taskview.html', $tasksectionObj);
+        location.href='./taskview.html'
     });
 })
