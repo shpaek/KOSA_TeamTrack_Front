@@ -26,9 +26,10 @@ div.taskviewbox>div.taskanswer>div.taskanswercontent{
     line-height: 100px;
 }
 
-div.taskviewbox>div.taskid{
+div.taskviewbox>div.tasknickname{
     font-size: small;
-    margin-left:950px;
+    margin-right: 50px;
+    text-align: right;
 }
 div.taskviewbox>div.myanswer{
     margin-left: 30px;

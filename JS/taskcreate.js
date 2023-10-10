@@ -13,6 +13,8 @@ function ajaxHandler(method, u, target) {
 
 $(() => {
 
+  const loginedId = localStorage.getItem("loginedId");
+
     $(`nav>a.logo`).click((e)=>{
         Swal.fire({
             title: '페이지를 전환하시겠습니까?',
@@ -152,6 +154,7 @@ $(() => {
         $originObj.append($divObj)
         
         cnt=cnt+1;
+        console.log(loginedId)
     })
 
 
