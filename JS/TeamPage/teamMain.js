@@ -1,28 +1,3 @@
-/*
-function ajaxHandler(method, url, target) {
-    console.log(url)
-
-    const xhttp = new XMLHttpRequest()
-    xhttp.addEventListener('readystatechange', function () {
-        // alert(this.readyState + ":" + this.status)
-
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                target.innerHTML = this.responseText
-            } else if (this.status == 404) {
-                alert('자원이 없습니다.')
-            } else if (this.status == 500) {
-                alert('서버 실행시 오류가 발생했습니다.')
-            } else {
-                alert(this.responseText)
-            } // if-else
-        } // if
-    }) // xhttp.addEventListener()
-    xhttp.open(method, url)
-    xhttp.send()
-} // ajaxHandler
-*/
-
 function ajaxHandler(method, u, target) {
     console.log(u)
 
@@ -58,7 +33,8 @@ $(() => {
                     break;
 
                 case 'taskBoard':
-                    ajaxHandler('GET', './taskboard.html', $sectionObj)
+                    // ajaxHandler('GET', './taskboard.html', $sectionObj)
+                    location.href='./taskboard.html'
                     break;
 
                 case 'QnABoard':
@@ -66,7 +42,7 @@ $(() => {
                     break;
 
                 case 'attendencePage':
-                    ajaxHandler('GET', './teamAttendence.html', $sectionObj)
+                    location.href='./teamAttendance.html'
                     break;
 
                 case 'rankPage':
@@ -78,15 +54,15 @@ $(() => {
                     break;
 
                 case 'manageTeamCurrentMember':
-                    ajaxHandler('GET', './teamManageCurrentMember.html', $sectionObj)
+                    location.href='./teamManageCurrentMember.html'
                     break;
 
                 case 'manageTeamApproval':
-                    ajaxHandler('GET', './teamManageApproval.html', $sectionObj)
+                    location.href='./teamManageApproval.html'
                     break;
 
                 case 'manageTeamExaminer':
-                    ajaxHandler('GET', './teamManageExaminer.html', $sectionObj)
+                    location.href='./teamManageExaminer.html'
                     break;
             } // switch(e.target.class)()
             e.preventDefault()

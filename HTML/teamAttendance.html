@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    
+
+    <title>TeamAttendance</title>
+
+    <link href="../images/favicon.ico" rel="icon">
+
     <!-- CSS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
     <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
     <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
     <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
     <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
-    <link rel="stylesheet" href="../CSS/rank.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamAttendance.css">
 
-    <!-- JS -->
-    <script src="../js/rank.js"></script>
-    <title>MemberRank</title>
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="../JS/TeamPage/teamMain.js"></script>
+    <script src="../JS/TeamPage/teamAttendance.js"></script>
+    
+    <!-- Font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+
 </head>
-<body>
 
+<body>
     <div id="mainContainer">
         <header>
             <!-- 검색창 -->
@@ -37,7 +45,7 @@
         <nav>
             <!-- 사이트 로고 -->
             <a href="../HTML/main.html">
-                <img class="logo" src="../images/logo_nobackground2.png" alt="logo">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
             </a>
 
             <!-- 팀 이름 -->
@@ -50,7 +58,7 @@
             </div>
 
             <!-- 메뉴 탭 -->
-            <ul>
+            <ul class="nonHiddenTab">
                 <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
                 <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
                 <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
@@ -69,41 +77,39 @@
                 <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
             </ul>
         </nav>
-    
+        
         <!-- 컨텐츠 영역 -->
         <section class="section">
 
-            <div class="memberRank">
-                <h3>Member Rank</h3>
-                <!--월별보기 토글 필요-->
-
-                <!--랭킹 출력-->
-                <table>
+            <!-- 출석부 캘린더 -->
+            <div class="teamAttendence">
+                <table class="teamCalendar">
                     <thead>
-                        <tr><th>PROFILE</th><th>NICKNAME</th><th>TOTAL SCORE</th><th>RANK</th></tr>
+                        <tr>
+                            <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                            <td colspan="5">
+                                <span id="calYear"></span>년
+                                <span id="calMonth"></span>월
+                            </td>
+                            <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+                        </tr>
+                        <tr>
+                            <td>일</td>
+                            <td>월</td>
+                            <td>화</td>
+                            <td>수</td>
+                            <td>목</td>
+                            <td>금</td>
+                            <td>토</td>
+                        </tr>
                     </thead>
+        
                     <tbody>
-                        <tr><td><div class="profile"><img class="memberProfileImg" src='#' alt="memberProfile"></div></td><td>nwh</td><td>1074</td><td>1</td></tr>
-                        <tr><td>PROFILE</td><td>bsh</td><td>998</td><td>2</td></tr>
-                        <tr><td>PROFILE</td><td>khb</td><td>887</td><td>3</td></tr>
                     </tbody>
                 </table>
             </div>
 
         </section>
-
-        <aside>
-            <!-- 팀 가입하기 버튼 -->
-            <button id="JoinTeamBtn">팀 가입</button>
-        
-            <!-- 팝업 -->
-            <form id="teamJoin" action="/#" method="POST" style="display: none;">
-                <p>&#127881; 팀 가입 &#127881;</p>
-                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!" required rows="5" cols="50" maxlength="2000"></textarea>
-                <button type="submit" id="requestJoinTeamBtn">가입요청</button>
-            </form>
-
-        </aside>
         
         <!-- 푸터 -->
         <footer>
@@ -111,5 +117,7 @@
         </footer>
 
     </div>
+
 </body>
+
 </html>

@@ -1,36 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="../JS/qnaboardwrite.js"></script>
-    
-    <title>boarddetail</title>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/writenotice.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../js/qnaboardwrite.js"></script> 
+    </head>
+    <body>
+        <form class="qnaboard" method="post"> 
 
-</head>
-<body>
+            <div class="titleline">
+                <input type="text" required placeholder="제목을 입력하세요" name="title">
+                <input type="file" name="file" id="file"></input>
+            </div>
 
-    <form action="">
-        <div class="boarddetail">
-            <table>
-                <tr>
-                    <th>제목</th>
-                    <td id="title"></td>
-                </tr>
-                <tr>
-                    <th>작성자</th>
-                    <td id="id"></td>
-                </tr>
-                <tr>
-                    <th>내용</th>
-                    <td id="content"></td>
-                </tr>
-            </table>
-        </div>
-    </form>
+            <div class="contentline">
+                <input type="text" required placeholder="내용을 입력하세요" name="content">
+            </div>
 
-</body>
+            <div class="write">
+                <button type="submit">완료</button>
+            </div>
+        </form>
+    </body>
 </html>

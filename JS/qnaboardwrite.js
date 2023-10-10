@@ -1,29 +1,45 @@
-$(() => {
-    const teamNo = new URLSearchParams(window.location.search).get('teamNo');
-    const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
+const frontURL = 'http://127.0.0.1:5500/HTML'
 
-    const url = `http://127.0.0.1:8888/KOSA/qnaboarddetail?teamNo=${teamNo}&qnaNo=${qnaNo}`;
+$(()=>{
 
-    $.ajax({
-        xhrFields: {
-            withCredentials: true
-        },
-        // url: 'http://127.0.0.1:8888/KOSA/qnaboarddetail',
-        url: url,
-        method: 'get',
-        success: (responseJSONObj) => {
-            const data = responseJSONObj; // 반환된 JSON 데이터
+    const $formObj = $('form.qnaboard')
+    const urlParams = new URL(location.href).searchParams
+    const teamNo = urlParams.get('teamNo')
 
-            console.log(data);
+    $formObj.submit((e) => {
+        e.preventDefault(); // 기본 제출 동작을 중지합니다.
 
-            // HTML 테이블의 각 td 엘리먼트에 데이터를 추가
-            $('#title').text(data.title);
-            $('#regdate').text(data.regdate);
-            $('#id').text(data.id);
-            $('#content').text(data.content);
-        },
-        error: (error) => {
-            console.error("Error:", error);
+        alert("in submit")
+        const formData = new FormData(e.target);
+        formData.append("teamNo", teamNo);
+
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
         }
-    });
-});
+
+        $.ajax({
+            xhrFields:{
+                withCredentials : true
+            },
+            url: `http://127.0.0.1:8888/KOSA/qnaboardcreate`,
+            method : 'post',
+            contentType: false,
+            processData : false,
+            data : formData, 
+            success : (responseJSONObj)=>{
+                console.log(responseJSONObj)
+                if(responseJSONObj.status == 1){
+                    alert(responseJSONObj.msg)
+                    location.href = `${frontURL}/qnaboard.html?teamNo=${teamNo}`
+                }else{
+                    alert(responseJSONObj.msg)
+                }
+            },
+            error: (jqxhr)=>{
+                alert(jqxhr.status)
+            }
+        })
+        // return false
+    })
+})
+

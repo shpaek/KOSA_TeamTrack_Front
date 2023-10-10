@@ -21,7 +21,8 @@ $(() => {
                 $copyTrObj.empty()
                 const p = element.title
                 const q = element.nickname
-                console.log(q)
+                const r=element.regdate
+                console.log(r)
 
                 const $nicknameTdObj = $('<td>')
                 $nicknameTdObj.addClass('nickname')
@@ -32,6 +33,11 @@ $(() => {
                 $titleTdObj.addClass('title')
                 $titleTdObj.append(p)
                 $copyTrObj.append($titleTdObj)
+
+                const $regdateTdObj = $('<td>')
+                $regdateTdObj.addClass('regdate')
+                $regdateTdObj.append(r)
+                $copyTrObj.append($regdateTdObj)
 
                 $tbodyObj.append($copyTrObj)
             });
@@ -44,8 +50,7 @@ $(() => {
         }
     })
 
-    const $tasksectionObj=$('section.taskboard')
     $('section.taskboard>div.allboard>div.allcontent>table').on('click', 'tbody tr.alltask', function() {
-        ajaxHandler('GET', './taskview.html', $tasksectionObj);
+        location.href='./taskview.html'
     });
 })

@@ -9,7 +9,7 @@ nav {
     position: fixed;
 
     width: 240px;
-    height: 100vh;
+    height: 100%;
 
     top: 0;
     left: 0;
@@ -78,9 +78,11 @@ nav>a>img.logo {
 }
 
 /* 메뉴 탭 영역 */
-nav ul {
+nav ul.nonHiddenTab {
     list-style-type: none;
     padding: 0;
+
+    height: 250px;
 }
 
 /* 메뉴 탭들 */
@@ -135,7 +137,8 @@ nav ul li > ul {
     top: 0;
     left: 100%; /* 상위 메뉴 항목의 오른쪽 끝에서 시작 */
     
-    width: 200px; /* 2차 메뉴 너비 */
+    height: 220px;
+    width: 130px; /* 2차 메뉴 너비 */
 
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
