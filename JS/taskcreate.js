@@ -131,24 +131,40 @@ $(() => {
     $(`div.addanswer`).click((e)=>{
         const $originObj=$('div.taskanswer>div.answer');
         const $divObj=$("<div>")
-        $divObj.addClass('a'+cnt)
-        const $inputElement = $("<input>");
-        const $buttonElement1 = $("<button>");
-        const $buttonElement2 = $("<button>");
-        $buttonElement1.append("➖")
-        $buttonElement2.append("✔️")
+        const $inputElement1 = $("<input>");
+        const $inputElement2 = $("<input>");
+        const $inputElement3 = $("<input>");
+        const $inputElement4 = $("<input>");
+        const $buttonaddElement = $("<button>");
+        $buttonaddElement.append("추가")
         // $buttonElement.click(function() {
         //     $inputElement.remove();
         //     $buttonElement.remove();
         // });
-        $inputElement.attr("type", "text");
-        $inputElement.attr("placeholder", "답");
+        $inputElement1.attr("type", "radio");
+        $inputElement1.attr("name", "a"+cnt);
+        $inputElement1.attr("value", "1")
+        $inputElement2.attr("type", "radio");
+        $inputElement2.attr("name", "a"+cnt);
+        $inputElement2.attr("value", "2")
+        $inputElement3.attr("type", "radio");
+        $inputElement3.attr("name", "a"+cnt);
+        $inputElement3.attr("value", "3")
+        $inputElement4.attr("type", "radio");
+        $inputElement4.attr("name", "a"+cnt);
+        $inputElement4.attr("value", "4")
 
         $divObj.append("<br>")
         //$divObj.append(cnt+" : ")
-        $divObj.append($inputElement)
-        $divObj.append($buttonElement1)
-        $divObj.append($buttonElement2)
+        $divObj.append("1.")
+        $divObj.append($inputElement1)
+        $divObj.append(" 2.")
+        $divObj.append($inputElement2)
+        $divObj.append(" 3.")
+        $divObj.append($inputElement3)
+        $divObj.append(" 4.")
+        $divObj.append($inputElement4)
+        $divObj.append($buttonaddElement)
         $divObj.append("<br>")
 
         $originObj.append($divObj)
