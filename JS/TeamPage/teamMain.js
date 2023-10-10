@@ -42,7 +42,7 @@ $(() => {
                     break;
 
                 case 'attendencePage':
-                    ajaxHandler('GET', './teamAttendence.html', $sectionObj)
+                    location.href='./teamAttendance.html'
                     break;
 
                 case 'rankPage':
@@ -54,15 +54,15 @@ $(() => {
                     break;
 
                 case 'manageTeamCurrentMember':
-                    ajaxHandler('GET', './teamManageCurrentMember.html', $sectionObj)
+                    location.href='./teamManageCurrentMember.html'
                     break;
 
                 case 'manageTeamApproval':
-                    ajaxHandler('GET', './teamManageApproval.html', $sectionObj)
+                    location.href='./teamManageApproval.html'
                     break;
 
                 case 'manageTeamExaminer':
-                    ajaxHandler('GET', './teamManageExaminer.html', $sectionObj)
+                    location.href='./teamManageExaminer.html'
                     break;
             } // switch(e.target.class)()
             e.preventDefault()
