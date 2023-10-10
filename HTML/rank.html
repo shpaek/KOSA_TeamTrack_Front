@@ -5,23 +5,111 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+    <!-- CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
     <link rel="stylesheet" href="../CSS/rank.css" />
+
+    <!-- JS -->
     <script src="../js/rank.js"></script>
     <title>MemberRank</title>
 </head>
 <body>
-    <div class="memberRank">
-        <h3>Member Rank</h3>
-        <!--월별보기 토글 필요-->
 
-        <!--랭킹 출력-->
-        <table>
-            <thead>
-                <tr><th>PROFILE</th><th>NICKNAME</th><th>TOTAL SCORE</th><th>RANK</th></tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+    <div id="mainContainer">
+        <header>
+            <!-- 검색창 -->
+            <div class="searchBar">
+                <input type="text" placeholder="검색을 하삼">
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon">
+            </div>
+        </header>
+
+        <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logo_nobackground2.png" alt="logo">
+            </a>
+
+            <!-- 팀 이름 -->
+            <p class="teamName">팀명: 셍나</p>
+
+            <!-- 팀 프로필 -->
+            <div class="teamProfile">
+                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <p class="teamProfileEdit">편집</p>
+            </div>
+
+            <!-- 메뉴 탭 -->
+            <ul>
+                <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
+                <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
+                <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
+                <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
+                <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
+                <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
+                <li>
+                    <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
+                    <ul class="hiddenTab">
+                        <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
+                        <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
+                        <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
+                        <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
+                    </ul>
+                </li>
+                <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
+            </ul>
+        </nav>
+    
+        <!-- 컨텐츠 영역 -->
+        <section class="section">
+
+            <div class="memberRank">
+                <h3>Member Rank</h3>
+                <!--월별보기 토글 필요-->
+
+                <!--랭킹 출력-->
+                <table>
+                    <thead>
+                        <tr><th>PROFILE</th><th>NICKNAME</th><th>TOTAL SCORE</th><th>RANK</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><div class="profile"><img class="memberProfileImg" src='#' alt="memberProfile"></div></td><td>nwh</td><td>1074</td><td>1</td></tr>
+                        <tr><td>PROFILE</td><td>bsh</td><td>998</td><td>2</td></tr>
+                        <tr><td>PROFILE</td><td>khb</td><td>887</td><td>3</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <aside>
+            <!-- 팀 가입하기 버튼 -->
+            <button id="JoinTeamBtn">팀 가입</button>
+        
+            <!-- 팝업 -->
+            <form id="teamJoin" action="/#" method="POST" style="display: none;">
+                <p>&#127881; 팀 가입 &#127881;</p>
+                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!" required rows="5" cols="50" maxlength="2000"></textarea>
+                <button type="submit" id="requestJoinTeamBtn">가입요청</button>
+            </form>
+
+        </aside>
+        
+        <!-- 푸터 -->
+        <footer>
+            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+        </footer>
+
     </div>
 </body>
 </html>
