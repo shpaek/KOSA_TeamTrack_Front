@@ -128,15 +128,21 @@ $(() => {
     })
 
     var cnt=1;
+    var answer=1;
     $(`div.addanswer`).click((e)=>{
         const $originObj=$('div.taskanswer>div.answer');
         const $divObj=$("<div>")
+        // const $inputElement=$("<input>");
         const $inputElement1 = $("<input>");
         const $inputElement2 = $("<input>");
         const $inputElement3 = $("<input>");
         const $inputElement4 = $("<input>");
-        const $buttonaddElement = $("<button>");
-        $buttonaddElement.append("삭제")
+        // const $buttonaddElement = $("<button>");
+        const $buttondelElement = $("<button>");
+        // $buttonaddElement.append("저장")
+        $buttondelElement.append("삭제")
+        // $inputElement.attr("type", "text");
+        // $inputElement.attr("placeholder", "문제 번호")
         
         $inputElement1.attr("type", "radio");
         $inputElement1.attr("name", "a"+cnt);
@@ -152,6 +158,8 @@ $(() => {
         $inputElement4.attr("value", "4")
 
         $divObj.append("<br>")
+        // $divObj.append($inputElement)
+        $divObj.append("✏️ ")
         //$divObj.append(cnt+" : ")
         $divObj.append("1.")
         $divObj.append($inputElement1)
@@ -161,11 +169,13 @@ $(() => {
         $divObj.append($inputElement3)
         $divObj.append(" 4.")
         $divObj.append($inputElement4)
-        $divObj.append($buttonaddElement)
+        // $divObj.append($buttonaddElement)
+        $divObj.append($buttondelElement)
         $divObj.append("<br>")
 
-        $buttonaddElement.click(function() {
+        $buttondelElement.click(function() {
           $divObj.remove();
+          cnt=cnt-1
         });
 
         $originObj.append($divObj)
@@ -174,6 +184,58 @@ $(() => {
         console.log(loginedId)
 
         
+    })
+
+    $('button.createbutton').click((e)=>{
+      $.ajax({
+        xhrFields: {
+            withCredentials: true
+        },
+        url: `${backURL}/set`,
+        method: 'get',
+        success: (responseJSONObj) => {
+            if(responseJSONObj.msg != undefined){
+                alert('과제가 존재하지 않습니다.')
+                return
+            }
+
+            const $originTrObj = $('div.board>div.content>table>thead>tr')
+            $originTrObj.addClass('maintask')
+            const $tbodyObj = $('div.board>div.content>table>tbody')
+            
+            responseJSONObj.forEach(element => {
+                const $copyTrObj = $originTrObj.clone()
+                $copyTrObj.empty()
+                const p = element.title
+                const q = element.nickname
+                const r = element.enddate
+                // console.log(q)
+
+                const $nicknameTdObj = $('<td>')
+                $nicknameTdObj.addClass('nickname')
+                $nicknameTdObj.append(q)                
+                $copyTrObj.append($nicknameTdObj)  
+
+                const $titleTdObj = $('<td>')
+                $titleTdObj.addClass('title')
+                $titleTdObj.append(p)
+                $copyTrObj.append($titleTdObj)
+
+                const $enddateTdObj = $('<td>')
+                $enddateTdObj.addClass('enddate')
+                $enddateTdObj.append(r)
+                $copyTrObj.append($enddateTdObj)
+
+                $tbodyObj.append($copyTrObj)
+            });
+
+            const $copyTrObj = $originTrObj.clone()
+            $copyTrObj.empty()
+            
+            $tbodyObj.append($copyTrObj)
+
+        }
+    })
     })
 
 
