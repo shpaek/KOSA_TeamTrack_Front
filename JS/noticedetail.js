@@ -5,7 +5,6 @@ $(()=>{
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
     const noticeNo = urlParams.get('noticeNo')
-    console.log(noticeNo)
 
 
     $.ajax({
@@ -32,6 +31,7 @@ $(()=>{
         }
     })
 
+
     // ---- 메인공지 등록 클릭 시 발생 이벤트 ----
     $('div.noticedetail>div.setmainbutton>button').on('click',(e)=>{
         $.ajax({
@@ -40,8 +40,7 @@ $(()=>{
             data : `teamNo=${teamNo}&noticeNo=${noticeNo}&mainStatus=1`,
             success: (responseJSONObj)=>{
                 if(responseJSONObj.status==1){
-                    history.pushState(teamNo ,null,`${frontURL}/notice.html?teamNo=${teamNo}`)
-                    ajaxHandler('GET', `${frontURL}/notice.html?teamNo=${teamNo}`, $sectionObj )
+                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                 }else{
                     alert(responseJSONObj.msg)
                 }
@@ -99,8 +98,7 @@ $(()=>{
                 success : (responseJSONObj)=>{
                     if(responseJSONObj.status==1){
                         alert(responseJSONObj.msg)
-                        history.pushState(teamNo ,null,`${frontURL}/notice.html?teamNo=${teamNo}`)
-                        ajaxHandler('GET', `${frontURL}/notice.html?teamNo=${teamNo}`, $sectionObj )
+                        location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                     }else{
                         alert(responseJSONObj.msg)
                     }
@@ -116,8 +114,7 @@ $(()=>{
     //---- 취소버튼 클릭 시 발생 이벤트 ----
     $('div.editnotice>div.backbutton>button[name=back]').on('click',(e)=>{
         const state = {'teamNo':teamNo, 'noticeNo':noticeNo}
-        history.pushState(state ,null,`${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`)
-        ajaxHandler('GET', `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`, $sectionObj )
+        location.href=`${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
     })
 
     //---- 삭제버튼 클릭 시 발생 이벤트 ----
@@ -131,8 +128,7 @@ $(()=>{
                 success: (responseJSONObj)=>{
                     if(responseJSONObj.status==1){
                         alert(responseJSONObj.msg)
-                        history.pushState(teamNo ,null,`${frontURL}/notice.html?teamNo=${teamNo}`)
-                        ajaxHandler('GET', `${frontURL}/notice.html?teamNo=${teamNo}`, $sectionObj )
+                        location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                     }else{
                         alert(responseJSONObj.msg)
                     }
@@ -147,4 +143,6 @@ $(()=>{
         }
         return false
     })
+
+
 })

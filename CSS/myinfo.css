@@ -1,0 +1,15 @@
+.imgbox>img{
+    width : 100px;
+}
+
+form.nicknamebox>button[type=submit]{
+    display:none;
+}
+
+form.nicknamebox>span[name=requiremsg]{
+    display:none;
+}
+
+form.nicknamebox>span[name=okmsg]{
+    display:none;
+}

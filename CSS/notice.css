@@ -2,6 +2,12 @@
     margin:0 auto; 
 }
 
+section {
+    margin-left: 270px;
+    margin-bottom: 50px;
+    padding: 30px;
+}
+
 .notice>.boardtitle{
     margin-top: 30px;
     margin-bottom: 30px;
