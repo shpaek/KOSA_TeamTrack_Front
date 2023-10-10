@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/teamform.css" />
+    <link rel="stylesheet" href="../CSS/section.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="../JS/teamform.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
+<body>
+
+  <section class="section">
+<div class="popup-form">
+  <div class="popup-form__wrapper">
+    <div class="popup-form__close"></div>
+    <div class="popup-form__content">
+      <h3 class="form__title">팀 생성하기</h3>
+      <img class="teamProfileImg2" src='#' alt="teamProfile2">
+      <form class="form" action="http://127.0.0.1:8888/KOSA_TeamTrack_Back/teammanage" method="post" enctype="multipart/form-data">
+
+        <div class="formgroup">
+          <label for="teamName" class="formgroup__text">팀명:</label>
+          <input class="form__field" type="text" name="teamName" id="teamName" placeholder="10자이내" maxlength="10"/>
+          <button type="button">중복확인</button>
+        </div>
+
+        <div class="formgroup">
+        <div class="formgroup__text">온/오프라인:</div>
+        <label class="radio-design">
+          <input type="radio" name="onOffLine" value="온라인">
+          <span class="radio-circle"></span>온라인
+        </label>
+        <label class="radio-design">
+          <input type="radio" name="onOffLine" value="오프라인">
+          <span class="radio-circle"></span>오프라인
+        </label>
+        </div>
+
+        <div class="formgroup">
+          <p class="formgroup__text">최대 인원:</p>
+          <input type="number" name="maxMember" value="1" max="20" min="1"/>명(최대 20명)
+        </div>
+
+        <div class="formgroup">
+            <p class="formgroup__text">스터디 타입:</p>
+            <input class="form__field" type="text" name="studyType" placeholder="예) 자바, 자격증"/>
+        </div>
+            
+        <div class="formgroup__text">온/오프라인:</div>
+            <div>
+              <label class="start">시작 날짜:
+                <input type="date" name="startDate" min="2023-10-01" max="2030-12-31" />
+              </label>
+              <label class="end">종료 날짜:
+                <input type="date" name="endDate" min="2023-10-01" max="2030-12-31" />
+              </label>
+        </div>
+
+        <div class="formgroup">
+            <p class="formgroup__text">해시태그:</p>
+            <input class="form__field_hashtag" type="text" name="hashtag1" placeholder="10자 이내"/>
+            <input class="form__field_hashtag" type="text" name="hashtag2" placeholder="10자 이내"/>
+            <input class="form__field_hashtag" type="text" name="hashtag3" placeholder="10자 이내"/>
+            <input class="form__field_hashtag" type="text" name="hashtag4" placeholder="10자 이내"/>
+            <input class="form__field_hashtag" type="text" name="hashtag5" placeholder="10자 이내"/>
+        </div>
+
+        <div class="formgroup">
+            <p class="formgroup__text">한줄 소개:</p>
+            <input class="form__field" type="text" name="briefInfo" placeholder="20자 이내"/>
+        </div>
+
+        <div class="formgroup">
+            <p class="formgroup__text">팀 소개:</p>
+            <textarea class="form__field2" name="teamInfo" cols="60" rows="4"></textarea>
+        </div>
+
+        <button class="create" type="submit">생성하기</button>
+      </form>
+      
+    </div>
+  </div>
+</div>
+  </section>
+
+</body>

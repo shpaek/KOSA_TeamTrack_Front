@@ -6,13 +6,13 @@
     <link href="../images/favicon.ico" rel="icon">
     <link rel="stylesheet" href="../CSS/MainPage/header.css" />
     <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
-    <link rel="stylesheet" href="../CSS/MainPage/section.css" />
+    <link rel="stylesheet" href="../CSS/MainPage/teamlist.css" />
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+    <script src="../JS/MainPage/topteamlist.js"></script>
     <script src="../JS/MainPage/main.js"></script>
-    <script src="../JS/MainPage/mainteamlist.js"></script>
 
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -60,8 +60,13 @@
         </nav>
         <!-- 컨텐츠 영역 -->
         <section class="section">
-        <button class="more">더보기</button>
-
+            <span class="top">인기순</span>
+            <span class="new">최신순</span>
+            <div>
+                <span>스터디시작일:</span><input type="date" id="date1">
+                <span>스터디종료일:</span><input type="date" id="date2">
+                <button class="search">검색</button>
+                </div>
         <div class="mainteam">
             <h3>TOP9</h3>
 
@@ -97,6 +102,9 @@
                 </ul>
             </div>
 
+
+        </div>
+        <div class="pagegroup">
 
         </div>
 
