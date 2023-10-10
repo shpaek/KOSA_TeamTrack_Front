@@ -97,7 +97,7 @@ $(()=> {
             if(responseJSONObj.status==0) {
               alert(responseJSONObj.msg)
             } else if(responseJSONObj.status==1) {
-              alert('성공')
+              //alert('성공')
               localStorage.setItem("loginedId", responseJSONObj.msg)
               location.href='./taskcreate.html'
             }

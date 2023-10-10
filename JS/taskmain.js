@@ -51,7 +51,22 @@ $(() => {
 
     const $createtaskmenu = $('section.taskboard>div.mainboard>div.maincontent>table>tbody td.createtd>div.createbox')
     $createtaskmenu.click((e) =>{
-        location.href='./taskcreate.html'
+        $.ajax({
+            xhrFields: {
+              withCredentials: true
+          },
+          url: `${backURL}/chktaskid`,
+          method: 'get',
+          success: (responseJSONObj) => {
+            if(responseJSONObj.status==0) {
+              alert(responseJSONObj.msg)
+            } else if(responseJSONObj.status==1) {
+              //alert('성공')
+              localStorage.setItem("loginedId", responseJSONObj.msg)
+              location.href='./taskcreate.html'
+            }
+          }
+          })
     })
 
     $('section.taskboard>div.mainboard>div.maincontent>table').on('click', 'tbody tr.maintask', function() {
