@@ -58,7 +58,8 @@ $(() => {
                     break;
 
                 case 'taskBoard':
-                    ajaxHandler('GET', './taskboard.html', $sectionObj)
+                    // ajaxHandler('GET', './taskboard.html', $sectionObj)
+                    location.href='./taskboard.html'
                     break;
 
                 case 'QnABoard':
