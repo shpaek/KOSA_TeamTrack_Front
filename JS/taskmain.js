@@ -59,7 +59,12 @@ $(() => {
           method: 'get',
           success: (responseJSONObj) => {
             if(responseJSONObj.status==0) {
-              alert(responseJSONObj.msg)
+                Swal.fire({
+                    icon: 'question',
+                    title: '과제 생성 불가',
+                    text: responseJSONObj.msg
+                  })
+              //alert(responseJSONObj.msg)
             } else if(responseJSONObj.status==1) {
               //alert('성공')
               localStorage.setItem("loginedId", responseJSONObj.msg)
