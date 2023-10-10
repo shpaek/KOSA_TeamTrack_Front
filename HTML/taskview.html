@@ -10,19 +10,18 @@
         <link href="../images/favicon.ico" rel="icon">
 
         <!-- CSS -->
-        <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
         <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
         <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
-        <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
         <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
         <link rel="stylesheet" href="../CSS/taskboard.css">
+        <link rel="stylesheet" href="../CSS/taskview.css">
 
         <!-- ajax -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
         <!-- JavaScript -->
         <script src="../JS/TeamPage/teamMain.js"></script>
-        <script src="../JS/taskboard.js"></script>
+        <script src="../JS/taskeview.js"></script>
 
         <!-- font -->
         <style>
@@ -32,6 +31,7 @@
 
     <body>
         <div id="mainContainer">
+            
 
             <!-- 사이드 메뉴바 -->
             <nav>
@@ -72,7 +72,7 @@
             
             <!-- 컨텐츠 영역 -->
             <section class="section">
-                
+
                 <!--과제 리스트 메뉴바-->
                 <div class="taskboardmenu">
                     <ul>
@@ -82,42 +82,40 @@
                         <li><a href="#" class="mytask">내 과제</a></li>
                     </ul>
                 </div>
-
-                <!--과제 리스트-->
-                <hr>
-                <section class="taskboard">
-                    <div class="board">
-                        <div class="content">
-                            <table>
-                                <thead>
-                                    <tr><th>출제자</th><th>타이틀</th><th>마감일</th></tr>
-                                </thead>
-                                <tbody>
-                                    <td colspan="4" class="createtd">
-                                        <div class="createbox">
-                                            <div class="create"><h3>➕ 과제 생성하기</h3></div>
-                                        </div>
-                                    </td>
-                                </tbody>
-                            </table>
+                
+                <div class="taskviewbox">
+                    <br><br>
+                    <div class="tasktitle">
+                        
+                    </div>
+                    <br><br>
+                    <hr>
+                    <br>
+                    <div class="tasknickname">출제자 : </div>
+                    <br>
+                    <div class="taskinfo">
+                        📁 과제 파일 다운로드<br><br>
+                    </div>
+                    <br>
+                    <div class="taskanswer">
+                        ☑️ 과제 답안<br><br>
+                        <div class="taskanswercontent">
+                            &nbsp;&nbsp;과제 답 솰라솰라
                         </div>
                     </div>
-                </section>
+                    <br><br>
+                    <div class="myanswer">
+                        🔍 내 답안<br><br>
+                        <div class="myanswercontent">
+                            &nbsp;&nbsp;내 답 솰라솰라 : 없으면 안 나옴
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
 
             </section>
 
-            <aside>
-                <!-- 팀 가입하기 버튼 -->
-                <button id="JoinTeamBtn">팀 가입</button>
             
-                <!-- 팝업 -->
-                <form id="teamJoin" action="/#" method="POST" style="display: none;">
-                    <p>&#127881; 팀 가입 &#127881;</p>
-                    <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!" required rows="5" cols="50" maxlength="2000"></textarea>
-                    <button type="submit" id="requestJoinTeamBtn">가입요청</button>
-                </form>
-
-            </aside>
             
             <!-- 푸터 -->
             <footer>

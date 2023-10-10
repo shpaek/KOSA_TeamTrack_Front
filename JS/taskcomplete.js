@@ -12,6 +12,7 @@ $(() => {
             }
 
             const $originTrObj = $('div.completeboard>div.completecontent>table>thead>tr')
+            $originTrObj.addClass('completetask')
             const $tbodyObj = $('div.completeboard>div.completecontent>table>tbody')
             const $completetasklist = responseJSONObj.list
             
@@ -22,6 +23,8 @@ $(() => {
                 const q = element.nickname
                 const r = element.hwScore
                 const s = element.submitDate
+                const no=element.taskNo
+                $copyTrObj.data('taskNo', no);
                 
                 const $nicknameTdObj = $('<td>')
                 $nicknameTdObj.addClass('nickname')
@@ -44,6 +47,7 @@ $(() => {
                 $copyTrObj.append($submitdateTdObj)
 
                 $tbodyObj.append($copyTrObj)
+
             });
 
             const $copyTrObj = $originTrObj.clone()
@@ -53,4 +57,10 @@ $(() => {
 
         }
     })
+
+    $('section.taskboard>div.completeboard>div.completecontent>table').on('click', 'tbody tr.completetask', function() {
+        const taskNo = $(this).data('taskNo')
+        localStorage.setItem("taskNo", taskNo)
+        location.href='./taskview.html?taskNo='+taskNo
+    });
 })

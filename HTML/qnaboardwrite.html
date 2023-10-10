@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/writenotice.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../js/qnaboardwrite.js"></script> 
+    </head>
+    <body>
+        <form class="qnaboard" method="post"> 
+
+            <div class="titleline">
+                <input type="text" required placeholder="제목을 입력하세요" name="title">
+                <input type="file" name="file" id="file"></input>
+            </div>
+
+            <div class="contentline">
+                <input type="text" required placeholder="내용을 입력하세요" name="content">
+            </div>
+
+            <div class="write">
+                <button type="submit">완료</button>
+            </div>
+        </form>
+    </body>
+</html>

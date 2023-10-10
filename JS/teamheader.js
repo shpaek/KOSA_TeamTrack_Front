@@ -28,13 +28,11 @@ $(() => {
                     break;
 
                 case 'noticeBoard':
-                    const teamNo = 9999
-                    location.href='./notice.html?teamNo=${teamNo}'
+                    location.href='./notice.html?teamNo=9999'
                     break;
 
                 case 'taskBoard':
-                    // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                    location.href='./taskboard.html'
+                    ajaxHandler('GET', './taskboard.html', $sectionObj)
                     break;
 
                 case 'QnABoard':
@@ -42,12 +40,11 @@ $(() => {
                     break;
 
                 case 'attendencePage':
-                    location.href='./teamAttendance.html'
+                    ajaxHandler('GET', './teamAttendence.html', $sectionObj)
                     break;
 
                 case 'rankPage':
-                    const teamNo = 9999;
-                    ajaxHandler('GET', `./rank.html?teamNo=${teamNo}`, $sectionObj)
+                    ajaxHandler('GET', '#', $sectionObj)
                     break;
 
                 case 'manageTeamProperties':
@@ -55,15 +52,15 @@ $(() => {
                     break;
 
                 case 'manageTeamCurrentMember':
-                    location.href='./teamManageCurrentMember.html'
+                    ajaxHandler('GET', './teamManageCurrentMember.html', $sectionObj)
                     break;
 
                 case 'manageTeamApproval':
-                    location.href='./teamManageApproval.html'
+                    ajaxHandler('GET', './teamManageApproval.html', $sectionObj)
                     break;
 
                 case 'manageTeamExaminer':
-                    location.href='./teamManageExaminer.html'
+                    ajaxHandler('GET', './teamManageExaminer.html', $sectionObj)
                     break;
             } // switch(e.target.class)()
             e.preventDefault()
@@ -71,17 +68,4 @@ $(() => {
         }) // menu.addEventListener()
         // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
 
-});
-
-$(document).ready(function() {
-    // 팀 가입하기 버튼 클릭 이벤트
-    $('#JoinTeamBtn').click(function() {
-        $('#teamJoin').show();  // 팝업창 표시
-    });
-
-    // 가입요청 버튼 클릭 이벤트
-    $('#closeJoinTeamBtn').click(function() {
-        $('#poteamJoinpUp').hide();  // 팝업창 숨김
-        // 추가적인 로직 작성하기. (서버로 데이터 전송할거)
-    });
 });

@@ -12,6 +12,7 @@ $(() => {
             }
 
             const $originTrObj = $('div.allboard>div.allcontent>table>thead>tr')
+            $originTrObj.addClass('alltask')
             const $tbodyObj = $('div.allboard>div.allcontent>table>tbody')
             const $alltasklist = responseJSONObj.list
             
@@ -20,7 +21,10 @@ $(() => {
                 $copyTrObj.empty()
                 const p = element.title
                 const q = element.nickname
-                console.log(q)
+                const r=element.regdate
+                const no=element.taskNo
+                $copyTrObj.data('taskNo', no);
+                
 
                 const $nicknameTdObj = $('<td>')
                 $nicknameTdObj.addClass('nickname')
@@ -32,6 +36,11 @@ $(() => {
                 $titleTdObj.append(p)
                 $copyTrObj.append($titleTdObj)
 
+                const $regdateTdObj = $('<td>')
+                $regdateTdObj.addClass('regdate')
+                $regdateTdObj.append(r)
+                $copyTrObj.append($regdateTdObj)
+
                 $tbodyObj.append($copyTrObj)
             });
 
@@ -42,4 +51,10 @@ $(() => {
 
         }
     })
+
+    $('section.taskboard>div.allboard>div.allcontent>table').on('click', 'tbody tr.alltask', function() {
+        const taskNo = $(this).data('taskNo')
+        localStorage.setItem("taskNo", taskNo)
+        location.href='./taskview.html?taskNo='+taskNo
+    });
 })

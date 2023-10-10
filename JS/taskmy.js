@@ -12,6 +12,7 @@ $(() => {
             }
 
             const $originTrObj = $('div.myboard>div.mycontent>table>thead>tr')
+            $originTrObj.addClass('mytask')
             const $tbodyObj = $('div.myboard>div.mycontent>table>tbody')
             const $mytasklist = responseJSONObj.list
             
@@ -21,6 +22,8 @@ $(() => {
                 const p = element.title
                 const q = element.avgReviewscore
                 const r = element.regdate
+                const no=element.taskNo
+                $copyTrObj.data('taskNo', no);
                 
                 const $titleTdObj = $('<td>')
                 $titleTdObj.addClass('title')
@@ -47,4 +50,10 @@ $(() => {
 
         }
     })
+
+    $('section.taskboard>div.myboard>div.mycontent>table').on('click', 'tbody tr.mytask', function() {
+        const taskNo = $(this).data('taskNo')
+        localStorage.setItem("taskNo", taskNo)
+        location.href='./taskview.html?taskNo='+taskNo
+    });
 })
