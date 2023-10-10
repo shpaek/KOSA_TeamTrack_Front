@@ -1,0 +1,25 @@
+div.taskexamwarning{
+    font-size: small;
+    color: rgb(52, 52, 52);
+}
+div.taskexambox{
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 8px;
+}
+div.taskexambox>div.teskquestion{
+    padding-left: 30px;
+}
+div.taskexambox>div.taskanswerbox{
+    padding-left: 30px;
+}
+div.taskexambox>hr{
+    width:95%;
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+button{
+    width: 100px;
+    height: 30px;
+    margin-left:950px;
+}

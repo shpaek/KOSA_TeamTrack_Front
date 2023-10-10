@@ -12,6 +12,7 @@ $(() => {
             }
 
             const $originTrObj = $('div.myboard>div.mycontent>table>thead>tr')
+            $originTrObj.addClass('mytask')
             const $tbodyObj = $('div.myboard>div.mycontent>table>tbody')
             const $mytasklist = responseJSONObj.list
             
@@ -47,4 +48,8 @@ $(() => {
 
         }
     })
+
+    $('section.taskboard>div.myboard>div.mycontent>table').on('click', 'tbody tr.mytask', function() {
+        location.href='./taskview.html'
+    });
 })

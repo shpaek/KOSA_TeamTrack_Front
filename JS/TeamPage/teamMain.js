@@ -28,11 +28,13 @@ $(() => {
                     break;
 
                 case 'noticeBoard':
-                    ajaxHandler('GET', './notice.html', $sectionObj)
+                    history.pushState(9999,null,`./notice.html?teamNo=9999`)
+                    ajaxHandler('GET', './notice.html?teamNo=9999', $sectionObj)
                     break;
 
                 case 'taskBoard':
-                    ajaxHandler('GET', './taskboard.html', $sectionObj)
+                    // ajaxHandler('GET', './taskboard.html', $sectionObj)
+                    location.href='./taskboard.html'
                     break;
 
                 case 'QnABoard':

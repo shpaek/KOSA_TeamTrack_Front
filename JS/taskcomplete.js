@@ -12,6 +12,7 @@ $(() => {
             }
 
             const $originTrObj = $('div.completeboard>div.completecontent>table>thead>tr')
+            $originTrObj.addClass('completetask')
             const $tbodyObj = $('div.completeboard>div.completecontent>table>tbody')
             const $completetasklist = responseJSONObj.list
             
@@ -53,4 +54,8 @@ $(() => {
 
         }
     })
+
+    $('section.taskboard>div.completeboard>div.completecontent>table').on('click', 'tbody tr.completetask', function() {
+        location.href='./taskview.html'
+    });
 })

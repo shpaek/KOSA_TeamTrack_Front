@@ -12,6 +12,7 @@ $(() => {
             }
 
             const $originTrObj = $('div.mainboard>div.maincontent>table>thead>tr')
+            $originTrObj.addClass('maintask')
             const $tbodyObj = $('div.mainboard>div.maincontent>table>tbody')
             
             responseJSONObj.forEach(element => {
@@ -47,4 +48,13 @@ $(() => {
 
         }
     })
+
+    const $createtaskmenu = $('section.taskboard>div.mainboard>div.maincontent>table>tbody td.createtd>div.createbox')
+    $createtaskmenu.click((e) =>{
+        location.href='./taskcreate.html'
+    })
+
+    $('section.taskboard>div.mainboard>div.maincontent>table').on('click', 'tbody tr.maintask', function() {
+        location.href='./taskexam.html'
+    });
 })
