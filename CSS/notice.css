@@ -1,1 +1,77 @@
+*{
+    margin:0 auto; 
+}
 
+.notice>.boardtitle{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.mainnotice{
+    width : 900px;
+    padding : 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border-style : solid;
+    border-color : #cccccc;
+    border-radius: 25px;
+}
+
+.main_topline{
+    padding-top : 10px;
+    padding-bottom: 10px;
+}
+
+.main_topline>span[name=noticeNo]{
+    display : none;
+}
+
+.main_topline>button[name=cancel]{
+    cursor: pointer;
+    float : right;
+    padding-top : 1px;
+    padding-bottom : 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 3px;
+    background-color: white;
+    font-color: #011837;
+    font-weight: 700;
+}
+
+.main_topline>span[name=date]{
+    padding-left : 540px;
+}
+
+.main_contentline{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.write{
+    width:900px; 
+}
+
+.write>.writebutton{
+    width:45px;
+    margin-bottom: 20px;
+    margin-left: 90%;
+}
+
+.writebutton>button{
+    cursor: pointer;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.write>.noticelist{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.pagegroup{
+    width:900px; 
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 50px;
+} 
