@@ -1,3 +1,9 @@
 div.editnotice{
     display : none;
 }
+
+section {
+    margin-left: 270px;
+    margin-bottom: 50px;
+    padding: 30px;
+}

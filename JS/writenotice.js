@@ -31,8 +31,7 @@ $(()=>{
                 console.log(responseJSONObj)
                 if(responseJSONObj.status==1){
                     alert(responseJSONObj.msg)
-                    history.pushState(teamNo ,null,`${frontURL}/notice.html?teamNo=${teamNo}`)
-                    ajaxHandler('GET', `${frontURL}/notice.html?teamNo=${teamNo}`, $sectionObj )
+                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                 }else{
                     alert(responseJSONObj.msg)
                 }

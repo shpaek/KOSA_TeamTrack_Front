@@ -2,45 +2,95 @@
 <html>
     <head>
         <link rel="stylesheet" href="../css/notice.css">
+        <link rel="stylesheet" href="../css/TeamPage/teamHeader.css">
+        <link rel="stylesheet" href="../css/TeamPage/teamNav.css">
+        <link rel="stylesheet" href="../css/TeamPage/teamFooter.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="../js/notice.js"></script> 
+        <script src="../js/teamheader.js"></script> 
     </head>
     <body>
-        <div class="notice">
-            <div class="boardtitle">
-                <h2>공지사항</h3>
+        <header>
+            <div class="searchBar">
+                <input type="text" placeholder="검색을 하삼">
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon">
             </div>
-            <hr>
-            <div class="mainnotice">
-                <div class="main_topline">
-                    <span name="noticeNo">글번호</span>
-                    <a href="#">제목</a>
-                    <span name="date">등록일자</span>
-                    <button name="cancel">―</button>
-                </div>
-                <div class="main_contentline">
-                    <p>본문</p>
-                </div>
+        </header>
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 이름 -->
+            <p class="teamName">팀명: 셍나</p>
+
+            <!-- 팀 프로필 -->
+            <div class="teamProfile">
+                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <p class="teamProfileEdit">편집</p>
             </div>
 
-            <div class="write">
-                <div class="writebutton">
-                    <button>작성</button>
+            <!-- 메뉴 탭 -->
+            <ul>
+                <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
+                <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
+                <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
+                <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
+                <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
+                <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
+                <li>
+                    <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
+                    <ul class="hiddenTab">
+                        <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
+                        <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
+                        <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
+                        <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
+                    </ul>
+                </li>
+                <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
+            </ul>
+        </nav>
+        <section>
+            <div class="notice">
+                <div class="boardtitle">
+                    <h2>공지사항</h3>
                 </div>
-                <div class="noticelist">
-                    <table>
-                        <thead>
-                            <tr><th>글번호</th><th>제목</th><th>작성일</th></tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                <hr>
+                <div class="mainnotice">
+                    <div class="main_topline">
+                        <span name="noticeNo">글번호</span>
+                        <a href="#">제목</a>
+                        <span name="date">등록일자</span>
+                        <button name="cancel">―</button>
+                    </div>
+                    <div class="main_contentline">
+                        <p>본문</p>
+                    </div>
+                </div>
+    
+                <div class="write">
+                    <div class="writebutton">
+                        <button>작성</button>
+                    </div>
+                    <div class="noticelist">
+                        <table>
+                            <thead>
+                                <tr><th>글번호</th><th>제목</th><th>작성일</th></tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    
+                <div class="pagegroup">
+                    
                 </div>
             </div>
-
-            <div class="pagegroup">
-                
-            </div>
-        </div>
+        </section>
+        <footer>
+            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+        </footer>
     </body>
 </html>
