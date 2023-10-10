@@ -22,7 +22,9 @@ $(() => {
                 const p = element.title
                 const q = element.nickname
                 const r=element.regdate
-                console.log(r)
+                const no=element.taskNo
+                $copyTrObj.data('taskNo', no);
+                
 
                 const $nicknameTdObj = $('<td>')
                 $nicknameTdObj.addClass('nickname')
@@ -51,6 +53,8 @@ $(() => {
     })
 
     $('section.taskboard>div.allboard>div.allcontent>table').on('click', 'tbody tr.alltask', function() {
-        location.href='./taskview.html'
+        const taskNo = $(this).data('taskNo')
+        localStorage.setItem("taskNo", taskNo)
+        location.href='./taskview.html?taskNo='+taskNo
     });
 })

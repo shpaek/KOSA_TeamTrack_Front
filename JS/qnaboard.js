@@ -84,7 +84,7 @@ $(() => {
 
     // 글 작성 버튼 클릭 시 새 글 작성 페이지로 이동
     $('div.board>div.write>button').on('click', (e) => {
-        location.href = `http://127.0.0.1:5500/KOSA/qnaboardwrite.html?teamNo=9999`
+        location.href = `http://127.0.0.1:5500/HTML/qnaboardwrite.html?teamNo=9999`
     })
 
     /* 'div.pagegroup' = 현재 돔 트리에 존재하는 객체 */

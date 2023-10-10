@@ -57,10 +57,17 @@ $(() => {
                 location.href = './teamMain.html'
                 break;
 
+<<<<<<< HEAD
             case 'noticeBoard':
-                const teamNo = 9999
-                location.href = './notice.html?teamNo=${teamNo}'
+                history.pushState(9999, null, `./notice.html?teamNo=9999`)
+                ajaxHandler('GET', './notice.html?teamNo=9999', $sectionObj)
                 break;
+=======
+                case 'noticeBoard':
+                    const teamNo = 9999
+                    location.href='./notice.html?teamNo=${teamNo}'
+                    break;
+>>>>>>> origin/dev
 
             case 'taskBoard':
                 // ajaxHandler('GET', './taskboard.html', $sectionObj)
