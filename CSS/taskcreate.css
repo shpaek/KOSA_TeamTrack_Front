@@ -47,3 +47,21 @@ button{
     height: 30px;
     margin-left:950px;
 }
+
+div.taskanswer>div.answer>div>input{
+    display: inline;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+div.taskanswer>div.answer>div>button{
+    display: inline;
+    width: 30px;
+    height: 30px;
+    margin-left:10px;
+    background-color: white;
+    border: 0.5px solid;
+}
+div.taskanswer>div.answer>div>button:hover{
+    background-color: rgb(236, 236, 236);
+}

@@ -55,8 +55,7 @@ $(() => {
         }
     })
 
-    const $tasksectionObj=$('section.taskboard')
     $('section.taskboard>div.completeboard>div.completecontent>table').on('click', 'tbody tr.completetask', function() {
-        ajaxHandler('GET', './taskview.html', $tasksectionObj);
+        location.href='./taskview.html'
     });
 })

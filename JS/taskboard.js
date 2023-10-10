@@ -64,33 +64,33 @@ $(()=> {
         }
     })
 
-    const $tasksectionObj=$('section.taskboard')
+    
     const $menus = $('div.taskboardmenu>ul>li>a')
 
     $menus.click((e) => {
         switch (e.target.className) {
             case 'maintask':
-                ajaxHandler('GET', './taskmain.html', $tasksectionObj)
+                location.href='./taskboard.html'
                 break
             case 'alltask':
-                ajaxHandler('GET', './taskall.html', $tasksectionObj)
+                location.href='./taskall.html'
                 break
             case 'completetask': 
-                ajaxHandler('GET', './taskcomplete.html', $tasksectionObj)
+                location.href='./taskcomplete.html'
                 break
             case 'mytask':
-                ajaxHandler('GET', './taskmy.html', $tasksectionObj)
-                break;
+                location.href='./taskmy.html'
+                break
         }
         e.preventDefault()
     })
 
     const $createtaskmenu = $('section.taskboard>div.board>div.content>table>tbody td.createtd>div.createbox')
     $createtaskmenu.click(() =>{
-        ajaxHandler('GET', './taskcreate.html', $tasksectionObj)
+        location.href='./taskcreate.html'
     })
 
     $('section.taskboard>div.board>div.content>table').on('click', 'tbody tr.maintask', function() {
-        ajaxHandler('GET', './taskexam.html', $tasksectionObj);
-    });
+        location.href='./taskexam.html'
+    })
 })
