@@ -136,11 +136,8 @@ $(() => {
         const $inputElement3 = $("<input>");
         const $inputElement4 = $("<input>");
         const $buttonaddElement = $("<button>");
-        $buttonaddElement.append("추가")
-        // $buttonElement.click(function() {
-        //     $inputElement.remove();
-        //     $buttonElement.remove();
-        // });
+        $buttonaddElement.append("삭제")
+        
         $inputElement1.attr("type", "radio");
         $inputElement1.attr("name", "a"+cnt);
         $inputElement1.attr("value", "1")
@@ -167,10 +164,16 @@ $(() => {
         $divObj.append($buttonaddElement)
         $divObj.append("<br>")
 
+        $buttonaddElement.click(function() {
+          $divObj.remove();
+        });
+
         $originObj.append($divObj)
         
         cnt=cnt+1;
         console.log(loginedId)
+
+        
     })
 
 
