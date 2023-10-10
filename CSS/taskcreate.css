@@ -51,6 +51,10 @@ button{
 div.taskanswer>div.answer>div>input{
     display: inline;
 }
+/* div.taskanswer>div.answer>div>input[type=text]{
+    display: inline;
+    width:50px
+} */
 div.taskanswer>div.answer>div>button{
     display: inline;
     width: 40px;
