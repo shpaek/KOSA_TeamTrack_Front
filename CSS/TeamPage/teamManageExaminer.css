@@ -1,18 +1,90 @@
-<div class="memberList">
-<div class="memberDiv"></div>
-<button class="" type="submit"></button>
-</div>
+/* 출제자 선정 영역 */
+.examinerDiv {
+    font-family: 'Noto Sans KR', sans-serif;
 
+    margin: 20px;
+    padding: 20px;
+
+    width: 90%;
+
+    border-radius: 5px;
+
+    background-color: #f9f9f9;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 출제자 선정 */
+.manageExaminerP {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* 멤버 리스트 영역 */
 .memberList {
-
+    margin-bottom: 30px;
 }
 
-/*  */
+/* 멤버 리스트 원본  */
 .memberDiv {
-
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-/* 선정하기 버튼 */
-.choiceBtn {
+.memberDiv:last-child {
+    margin-bottom: 0;
+}
 
+/* 라디오 버튼 */
+.memberDiv input[type="radio"] {
+    margin-right: 15px;
+}
+
+
+/* 멤버 리스트 출력 영역 */
+.memberDiv div {
+    display: flex;
+    align-items: center;
+}
+
+/* 아이디 닉네임 */
+.memberDiv .memberId,
+.memberDiv .memberNickname {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+label {
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+/* 달력 사이에 간격 */
+input[type="date"] {
+    margin-right: 20px;
+}
+
+/* 출제자 선정 버튼 */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #011837;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+/* 출제자 선정 버튼 호버 */
+button[type="submit"]:hover {
+    background-color: #011837;
+    font-weight: bold;
 }
