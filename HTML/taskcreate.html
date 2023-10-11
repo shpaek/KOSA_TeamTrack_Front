@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -15,7 +16,7 @@
         <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
         <link rel="stylesheet" href="../CSS/taskboard.css">
         <link rel="stylesheet" href="../CSS/taskcreate.css">
-        
+
         <!-- alert api -->
         <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4@4/bootstrap-4.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
@@ -27,7 +28,7 @@
 
         <!-- JavaScript -->
         <script src="../JS/taskcreate.js"></script>
-        
+
         <!-- font -->
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -37,7 +38,6 @@
     <body>
         <div id="mainContainer">
 
-
             <!-- 사이드 메뉴바 -->
             <nav>
                 <!-- 사이트 로고 -->
@@ -45,26 +45,26 @@
                     <img class="logo" src="../images/logoCut.png" alt="logo">
                 </a>
 
-                <!-- 팀 이름 -->
-                <p class="teamName">팀명: 셍나</p>
-
                 <!-- 팀 프로필 -->
                 <div class="teamProfile">
                     <img class="teamProfileImg" src='#' alt="teamProfile">
                     <p class="teamProfileEdit">편집</p>
                 </div>
 
+                <!-- 팀 이름 -->
+                <p class="teamName">팀명: 셍나</p>
+
                 <!-- 메뉴 탭 -->
-                <ul>
-                    <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;⬅️&nbsp;&nbsp;팀 메인으로</a></li>
+                <ul class="nonHiddenTab">
+                    <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;⬅️&nbsp;&nbsp;팀 메인으로</a></li>
                 </ul>
             </nav>
             
             <!-- 컨텐츠 영역 -->
             <section class="section">
 
-                <!--과제 리스트 메뉴바-->
-                <div class="taskboardmenu">
+                 <!--과제 리스트 메뉴바-->
+                 <div class="taskboardmenu">
                     <ul>
                         <li><a href="#" class="maintask">홈</a></li>|
                         <li><a href="#" class="alltask">전체 과제</a></li>|
@@ -77,17 +77,17 @@
                 <form class="taskcreatebox">
                     <br><br>
                     <div class="tasktitle">
-                        <input type="text" id="title" placeholder="과제 타이틀" required>
+                        <input type="text" id="title" name="title" placeholder="과제 타이틀" required>
                     </div>
                     <br><br>
                     <hr>
                     <br><br>
                     <div class="taskinfo">
-                        📁 과제 첨부&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="대충 첨부란">
+                        📁 과제 첨부&nbsp;&nbsp;<input type="file" name="taskfile" required>
                     </div>
                     <br><br>
                     <div class="taskanswer">
-                        <div class="answercnt">답 개수 : <input type="number" required>&nbsp;&nbsp;<button class="answerset" type="button">설정</button></div>
+                        <div class="answercnt">답 개수 : <input type="number" name="cnt" required>&nbsp;&nbsp;<button class="answerset" type="button">설정</button></div>
                         <br>
                         <div class="answer"></div>
                     </div>
@@ -99,7 +99,7 @@
 
             </section>
 
-
+            
             
             <!-- 푸터 -->
             <footer>

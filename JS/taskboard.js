@@ -101,7 +101,8 @@ $(()=> {
                   })
             } else if(responseJSONObj.status==1) {
               //alert('성공')
-              localStorage.setItem("loginedId", responseJSONObj.msg)
+              localStorage.setItem("loginedId", responseJSONObj.loginedId)
+              localStorage.setItem("taskNo", responseJSONObj.taskNo)
               location.href='./taskcreate.html'
             }
           }
