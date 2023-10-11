@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/myteamlist.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../js/myteamlist.js"></script> 
+        <script src="../js/myheader.js"></script> 
+    </head>
+
+    <body>
+        <header>
+            <div class="menu">
+                <a href="#" name="myinfo">회원 정보</a>
+                <a href="#" name="myteam">마이 팀</a>
+            </div>
+        </header>
+        <nav>
+        </nav>
+        <section>
+            <div class="myteam">
+                <ul class="myteamtab">
+                    <li><a href="#" name="active">참여중</a></li>
+                    <li><a href="#" name="end">활동종료</a></li>
+                    <li><a href="#" name="waiting">승인대기</a></li>
+                </ul>
+                <div class="tabcontent">
+                    <div class="rejectlist">
+                        <h1>승인거절 목록</h1>
+                        <ul>
+                            <li>
+                                <div class="reject">
+                                    <span name="reject_teamno">팀번호</span>
+                                    <img src="../images/logo.png" class="reject_logo">
+                                    <a href="#" name="reject_teamname">팀명</a>
+                                    <button name="ok">확인</button>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="pagegroup_reject">
+                        
+                        </div>
+                    </div>
+                    <div class="teamlist">
+                        <h1>승인대기 목록</h1>
+                        <ul>
+                            <li>
+                                <div class="team">
+                                    <span name="teamno">팀번호</span>
+                                    <img src="../images/crown.png" class="leader">
+                                    <img src="../images/logo.png" class="logo">
+                                    <a href="#" name="teamname">팀명</a>
+                                    <button name="activity">활동내역</button>
+                                    <button name="withdrawl">탈퇴</button>
+                                    <button name="cancel">대기취소</button>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="pagegroup_team">
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+
+        </footer>
+    </body>
+</html>
