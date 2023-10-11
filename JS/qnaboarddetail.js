@@ -18,7 +18,7 @@ $(() => {
 
             // HTML 테이블의 각 td 엘리먼트에 데이터를 추가
             $('#title').text(data.title);
-            $('#regadte').text(data.regdate);
+            $('#regdate').text(data.regdate);
             $('#id').text(data.id);
             $('#content').text(data.content);
         },
@@ -88,34 +88,82 @@ $(() => {
             })
         })
     
+    //---- 삭제버튼 클릭 시 발생 이벤트 ---- 
+    $('div.detailbuttons>button.remove').on('click',(e)=>{
+        var result = confirm("삭제하시겠습니까?")
 
-    // //---- 삭제버튼 클릭 시 발생 이벤트 ---- 아직 삭제 구현xxxxxxxxxxxxxxxx
-    // $('div.noticedetail>div.detailbuttons>button.remove').on('click',(e)=>{
-    //     var result = confirm("삭제하시겠습니까?")
-    //     if(result == true){
-    //         $.ajax({
-    //             url: backURL+'/deletenotice',
-    //             method : 'get',
-    //             data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
-    //             success: (responseJSONObj)=>{
-    //                 if(responseJSONObj.status==1){
-    //                     alert(responseJSONObj.msg)
-    //                     location.href = `${frontURL}/notice.html?teamNo=${teamNo}`
-    //                 }else{
-    //                     alert(responseJSONObj.msg)
-    //                 }
-    //             },
-    //             error:(jqXHR)=>{
-    //                 alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
-    //                 console.log(jqXHR)
-    //             }
-    //         })
-    //     }else{
-    //         return false
-    //     }
-    //     return false
-    // })
+        if(result == true){
+            $.ajax({
+                xhrFields:{
+                    withCredentials : true
+                    },
+                url: 'http://127.0.0.1:8888/KOSA/qnaboarddelete',
+                method : 'get',
+                data : `teamNo=${teamNo}&qnaNo=${qnaNo}`,
+                success: (responseJSONObj)=>{
+                    if(responseJSONObj.status==1){
+                        alert(responseJSONObj.msg)
+                        location.href = `http://127.0.0.1:5500/HTML/qnaboard.html?teamNo=${teamNo}`
+                    }else{
+                        alert(responseJSONObj.msg)
+                    }
+                },
+                error:(jqXHR)=>{
+                    alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+                    console.log(jqXHR)
+                }
+            })
+        }else{
+            return false
+        }
+        return false
+    })
 
+    // =================== 댓글 작성 버튼 클릭했을 때 할 일 ===================
+    const $formObj = $('form.commentwrite')
+    const urlParams = new URL(location.href).searchParams
+
+    $formObj.submit((e) => {
+        e.preventDefault(); // 기본 제출 동작을 중지합니다.
+
+        alert("in submit")
+        const teamNo = urlParams.get("teamNo");
+        const qnaNo = urlParams.get("qnaNo");
+        // const content = document.getElementById("content");
+        const content = $("#comment").val();
+        // session 아이디를 줘야함
+        // const id = '현재 사용자 정보'
+        const id = 'psh2023'
+
+        console.log(teamNo)
+        console.log(qnaNo)
+        console.log(content)
+
+        $.ajax({
+            xhrFields:{
+                withCredentials : true
+            },
+            url: `http://127.0.0.1:8888/KOSA/qnaboardcommentcreate`,
+            method : 'post',
+            data : {
+                teamNo: teamNo,
+                qnaNo: qnaNo,
+                content: content,
+                id: id
+            },
+            // data : $form.serialize(),
+            success : (responseJSONObj)=>{
+
+            },
+            error: (jqxhr)=>{
+                alert(jqxhr.status)
+            }
+        })
+        return false
+    })
+
+
+    // -------------------- 댓글 불러오기 ---------------------
     $.ajax({
         xhrFields: {
             withCredentials: true
@@ -169,13 +217,23 @@ $(() => {
                 const writerCol = $('<td>').addClass('comment-info').text(item.teammemberId);
                 const contentCol = $('<td>').addClass('comment-content').text(item.content);
                 const regdateCol = $('<td>').addClass('comment-date').text(item.regdate);
-                const selectButtonCol = $('<td>').addClass('comment-select-button').html('<button>채택</button>');
+                // const selectButtonCol = $('<td>').addClass('comment-select-button').html('<button>채택</button>');
+                const selectButtonCol = $('<td>').addClass('comment-select-button')
             
                 // commentNo를 data-commentNo 속성으로 저장
                 // row.attr('data-commentNo', item.commentNo);
 
                 // 행에 셀 추가
                 row.append(commentNoCol, writerCol, contentCol, regdateCol, selectButtonCol);
+
+                if (item.pickeddate !== null) {
+                    const selectButton = $('<button>').text('채택됨');
+                    selectButton.prop('disabled', true); // 채택됨 버튼은 클릭 안되도록
+                    selectButtonCol.append(selectButton);
+                } else {
+                    const selectButton = $('<button>').text('채택');
+                    selectButtonCol.append(selectButton);
+                } // if-else
             
                 // tbody에 행 추가
                 tableBody.append(row);

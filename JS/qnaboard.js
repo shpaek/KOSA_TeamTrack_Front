@@ -26,24 +26,23 @@ $(() => {
                     const $copyTrObj = $originTrObj.clone()
                     $copyTrObj.empty()
                 
-                    // const $boardNoObj = `<td>${p.boardNo}</td>`
-                    const $boardNoObj = `<td>${p.qnaNo}</td>` 
-                    $copyTrObj.append($boardNoObj)
-
-                    // boardTitle부분 클릭시 
-                    // const $boardTitleObj = `<td class="board_title"><a href="${frontURL}/boarddetail.html?teamNo=9999&boardNo=${p.boardNo}">
-                    //                         ${p.boardTitle}</a></td>`
-                    // const $boardTitleObj = `<td class="board_title"><a href="http://127.0.0.1:5500/HTML/qnaboarddetail.html?teamNo=9999&qnaNo=${p.qnaNo}">
-                    //                         ${p.title}</a></td>`
-                    const $boardTitleObj = `<td class="board_title"><a href="http://127.0.0.1:5500/HTML/qnaboarddetail.html?teamNo=64&qnaNo=${p.qnaNo}">
-                                            ${p.title}</a></td>`
-                    $copyTrObj.append($boardTitleObj)
-
-                    // const $regDateObj = `<td>${p.regDate}</td>`
-                    const $regDateObj = `<td>${p.regdate}</td>` 
-                    $copyTrObj.append($regDateObj)
-
-                    $tbodyObj.append($copyTrObj)
+                    // 게시판의 status가 1인상태만 출력
+                    if (p.status == 1) {
+                        const $boardNoObj = `<td>${p.qnaNo}</td>` 
+                        $copyTrObj.append($boardNoObj)
+    
+                        // boardTitle부분 클릭시 
+                        const $boardTitleObj = `<td class="board_title"><a href="http://127.0.0.1:5500/HTML/qnaboarddetail.html?teamNo=64&qnaNo=${p.qnaNo}">
+                                                ${p.title}</a></td>`
+                        $copyTrObj.append($boardTitleObj)
+    
+                        const $regDateObj = `<td>${p.regdate}</td>` 
+                        $copyTrObj.append($regDateObj)
+    
+                        $tbodyObj.append($copyTrObj)
+                    } else {
+                        // 게시판의 status가 0이라면 출력하지 않음(삭제된 게시물)
+                    }
                 })
 
                 const $divPageGroup = $('div.board>div.pagegroup')
