@@ -10,7 +10,7 @@ $(() => {
             },
             url: "http://127.0.0.1:8888/KOSA/qnaboard",
             method: 'get',
-            data: `currentPage=${cp}&teamNo=61`,  // temaNo 값 가변적이여함
+            data: `currentPage=${cp}&teamNo=64`,  // temaNo 값 가변적이여함
             success: (responseJSONObj) => {
                 const boardList = responseJSONObj.list
 
@@ -35,7 +35,7 @@ $(() => {
                     //                         ${p.boardTitle}</a></td>`
                     // const $boardTitleObj = `<td class="board_title"><a href="http://127.0.0.1:5500/HTML/qnaboarddetail.html?teamNo=9999&qnaNo=${p.qnaNo}">
                     //                         ${p.title}</a></td>`
-                    const $boardTitleObj = `<td class="board_title"><a href="http://127.0.0.1:5500/HTML/qnaboarddetail.html?teamNo=61&qnaNo=${p.qnaNo}">
+                    const $boardTitleObj = `<td class="board_title"><a href="http://127.0.0.1:5500/HTML/qnaboarddetail.html?teamNo=64&qnaNo=${p.qnaNo}">
                                             ${p.title}</a></td>`
                     $copyTrObj.append($boardTitleObj)
 
@@ -84,7 +84,7 @@ $(() => {
 
     // 글 작성 버튼 클릭 시 새 글 작성 페이지로 이동
     $('div.board>div.write>button').on('click', (e) => {
-        location.href = `http://127.0.0.1:5500/HTML/qnaboardwrite.html?teamNo=61`     // teamNo 값 가변적이여함
+        location.href = `http://127.0.0.1:5500/HTML/qnaboardwrite.html?teamNo=64`     // teamNo 값 가변적이여함
     })
 
     /* 'div.pagegroup' = 현재 돔 트리에 존재하는 객체 */
