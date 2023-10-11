@@ -102,7 +102,7 @@ $(()=>{
                             const answer=element
                             $divquizobj.addClass('quizanswer'+cnt)
                             cnt=cnt+1
-                            $divquizobj.append("("+cnt+") "+answer)
+                            $divquizobj.append("Q"+cnt+" : "+answer)
                             $divobj.append($divquizobj)
                         })
     
@@ -148,7 +148,7 @@ $(()=>{
                             const answer=element
                             $divquizobj.addClass('myanswer'+cnt)
                             cnt=cnt+1
-                            $divquizobj.append("("+cnt+") "+answer)
+                            $divquizobj.append("Q"+cnt+" : "+answer)
                             $divobj.append($divquizobj)
                         })
     
