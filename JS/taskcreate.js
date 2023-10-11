@@ -10,7 +10,7 @@ function ajaxHandler(method, u, target) {
     } // outer-if
 
 }
-
+const backURL = 'http://localhost:8888/KOSA_Project2'
 $(() => {
 
   const loginedId = localStorage.getItem("loginedId");
@@ -127,115 +127,119 @@ $(() => {
         e.preventDefault()
     })
 
-    var cnt=1;
-    var answer=1;
-    $(`div.addanswer`).click((e)=>{
+    var asclick=0
+    $('button.answerset').click((e)=>{
+        if(asclick==0) {
+          var cnt=1;
+        const lastcnt=$('div.answercnt>input[type=number]').val()
+          if(lastcnt<=0) {
+            Swal.fire({
+              icon: 'warning',
+              text: '0보다 큰 값을 설정하세요'
+            })
+            return
+          }
+
         const $originObj=$('div.taskanswer>div.answer');
-        const $divObj=$("<div>")
-        // const $inputElement=$("<input>");
-        const $inputElement1 = $("<input>");
-        const $inputElement2 = $("<input>");
-        const $inputElement3 = $("<input>");
-        const $inputElement4 = $("<input>");
-        // const $buttonaddElement = $("<button>");
-        const $buttondelElement = $("<button>");
-        // $buttonaddElement.append("저장")
-        $buttondelElement.append("삭제")
-        // $inputElement.attr("type", "text");
-        // $inputElement.attr("placeholder", "문제 번호")
-        
-        $inputElement1.attr("type", "radio");
-        $inputElement1.attr("name", "a"+cnt);
-        $inputElement1.attr("value", "1")
-        $inputElement2.attr("type", "radio");
-        $inputElement2.attr("name", "a"+cnt);
-        $inputElement2.attr("value", "2")
-        $inputElement3.attr("type", "radio");
-        $inputElement3.attr("name", "a"+cnt);
-        $inputElement3.attr("value", "3")
-        $inputElement4.attr("type", "radio");
-        $inputElement4.attr("name", "a"+cnt);
-        $inputElement4.attr("value", "4")
+        $originObj.append("<br>⌜과제 답안⌟<br><br>")
+        $originObj.css('width', '220px')
+        if(lastcnt>3) $originObj.css('height', '300px')
+        else $originObj.css('height', 'auto')
+        $originObj.css('border', '0.5px solid')
+        for(var cnt=1;cnt<=lastcnt;cnt++) {
+          const $divObj=$("<div>")
+          const $inputElement1 = $("<input>");
+          const $inputElement2 = $("<input>");
+          const $inputElement3 = $("<input>");
+          const $inputElement4 = $("<input>");
 
-        $divObj.append("<br>")
-        // $divObj.append($inputElement)
-        $divObj.append("✏️ ")
-        //$divObj.append(cnt+" : ")
-        $divObj.append("1.")
-        $divObj.append($inputElement1)
-        $divObj.append(" 2.")
-        $divObj.append($inputElement2)
-        $divObj.append(" 3.")
-        $divObj.append($inputElement3)
-        $divObj.append(" 4.")
-        $divObj.append($inputElement4)
-        // $divObj.append($buttonaddElement)
-        $divObj.append($buttondelElement)
-        $divObj.append("<br>")
+          $inputElement1.attr("type", "radio");
+          $inputElement1.attr("name", "a"+cnt);
+          $inputElement1.attr("value", "1")
+          $inputElement1.prop('required', true)
+          $inputElement2.attr("type", "radio");
+          $inputElement2.attr("name", "a"+cnt);
+          $inputElement2.attr("value", "2")
+          $inputElement2.prop('required', true)
+          $inputElement3.attr("type", "radio");
+          $inputElement3.attr("name", "a"+cnt);
+          $inputElement3.attr("value", "3")
+          $inputElement3.prop('required', true)
+          $inputElement4.attr("type", "radio");
+          $inputElement4.attr("name", "a"+cnt);
+          $inputElement4.attr("value", "4")
+          $inputElement4.prop('required', true)
 
-        $buttondelElement.click(function() {
-          $divObj.remove();
-          cnt=cnt-1
-        });
+          $divObj.append("<br>")
+          $divObj.append("Q"+cnt+" : ")
+          $divObj.append("1.")
+          $divObj.append($inputElement1)
+          $divObj.append(" 2.")
+          $divObj.append($inputElement2)
+          $divObj.append(" 3.")
+          $divObj.append($inputElement3)
+          $divObj.append(" 4.")
+          $divObj.append($inputElement4)
+          $divObj.append("<br><br>")
 
-        $originObj.append($divObj)
-        
-        cnt=cnt+1;
-        console.log(loginedId)
-
+          $originObj.append($divObj)
+          
+          asclick=1;
+        }
+        }
+        else {
+          Swal.fire({
+            icon: 'warning',
+            text: '이미 설정이 완료되었습니다'
+          })
+          return
+        }
         
     })
 
+    $('button.exitbutton').click((e)=>{
+      Swal.fire({
+        title: '생성을 취소하시겠습니까?',
+        text: "취소 시 내용이 저장되지 않습니다",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+      }).then((result) => {
+        if (result.isConfirmed) {
+            location.href='./taskboard.html'
+        }
+      })
+    })
+
+    
     $('button.createbutton').click((e)=>{
+      const title=$('div.tasktitle>input[type=text]').val()
+      const answercnt=$('div.answercnt>input[type=number]').val()
+      var answerlist=[]
+      
+      for(var cnt=1;cnt<=answercnt;cnt++) {
+        $('input[name="a'+cnt+'"]:checked').each(function() {
+          answerlist.push($(this).val());
+        });
+      }
+
       $.ajax({
         xhrFields: {
             withCredentials: true
         },
-        url: `${backURL}/set`,
+        url: `${backURL}/settask`,
         method: 'get',
-        success: (responseJSONObj) => {
-            if(responseJSONObj.msg != undefined){
-                alert('과제가 존재하지 않습니다.')
-                return
-            }
-
-            const $originTrObj = $('div.board>div.content>table>thead>tr')
-            $originTrObj.addClass('maintask')
-            const $tbodyObj = $('div.board>div.content>table>tbody')
-            
-            responseJSONObj.forEach(element => {
-                const $copyTrObj = $originTrObj.clone()
-                $copyTrObj.empty()
-                const p = element.title
-                const q = element.nickname
-                const r = element.enddate
-                // console.log(q)
-
-                const $nicknameTdObj = $('<td>')
-                $nicknameTdObj.addClass('nickname')
-                $nicknameTdObj.append(q)                
-                $copyTrObj.append($nicknameTdObj)  
-
-                const $titleTdObj = $('<td>')
-                $titleTdObj.addClass('title')
-                $titleTdObj.append(p)
-                $copyTrObj.append($titleTdObj)
-
-                const $enddateTdObj = $('<td>')
-                $enddateTdObj.addClass('enddate')
-                $enddateTdObj.append(r)
-                $copyTrObj.append($enddateTdObj)
-
-                $tbodyObj.append($copyTrObj)
-            });
-
-            const $copyTrObj = $originTrObj.clone()
-            $copyTrObj.empty()
-            
-            $tbodyObj.append($copyTrObj)
-
+        data: `title=${title}&answerList=${answerlist}`,
+        success: () => {
+          
+          } ,
+        error: ()=>{
+          
         }
     })
+
+    
     })
 
 
