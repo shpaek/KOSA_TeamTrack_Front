@@ -155,6 +155,40 @@ $(()=>{
         $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
         $('div.teamlist>ul>li>div>button[name=cancel]').show()
     })
+
+    //---- 승인대기 취소 -----
+    $(document).on('click', 'div.team>button[name=cancel]', function(e) {
+        const teamNo = $(e.target).siblings(':eq(0)').text()
+        var result = confirm("대기를 취소하시겠습니까?")
+        if(result == true){
+            $.ajax({
+                url: backURL+'/cancelwaiting',
+                method : 'get',
+                data : `teamNo=${teamNo}`,
+                success: (responseJSONObj)=>{
+                    if(responseJSONObj.status==1){
+                        alert(responseJSONObj.msg)
+                        //location.href=`${frontURL}/myteamlist.html`
+                    }else{
+                        alert(responseJSONObj.msg)
+                    }
+                    ajaxHandler_reject(1)
+                    ajaxHandler(1, 3)
+                    $('div.teamlist>h1').show()
+                    $('div.teamlist>ul>li>div>button[name=activity]').hide()
+                    $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
+                    $('div.teamlist>ul>li>div>button[name=cancel]').show()
+                },
+                error:(jqXHR)=>{
+                    alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+                    console.log(jqXHR)
+                }
+            })
+        }else{
+            return false
+        }
+        return false
+    })
     
     //---- 페이지 ----
     $('div.rejectlist>div.pagegroup_reject').on('click','span',(e)=>{ 

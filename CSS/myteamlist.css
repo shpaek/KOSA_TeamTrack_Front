@@ -20,7 +20,7 @@ div.rejectlist>ul>li:nth-child(2)>div.reject{
 
 /* 팀번호 */
 div.rejectlist>ul>li>div.reject>span[name="reject_teamno"]{
-    display : none;
+    /*display : none;*/
 }
 
 /* 이미지들 */
