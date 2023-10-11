@@ -156,6 +156,33 @@ $(()=>{
         $('div.teamlist>ul>li>div>button[name=cancel]').show()
     })
 
+    //---- 승인거절 알림 확인 -----
+    $(document).on('click', 'div.reject>button[name=ok]', function(e) {
+        const teamNo = $(e.target).siblings(':eq(0)').text()
+ 
+        $.ajax({
+            url: backURL+'/rejectcheck',
+            method : 'get',
+            data : `teamNo=${teamNo}`,
+            success: (responseJSONObj)=>{
+                if(responseJSONObj.status!=1){
+                    alert(responseJSONObj.msg)
+                }
+                ajaxHandler_reject(1)
+                ajaxHandler(1, 3)
+                $('div.teamlist>h1').show()
+                $('div.teamlist>ul>li>div>button[name=activity]').hide()
+                $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
+                $('div.teamlist>ul>li>div>button[name=cancel]').show()
+            },
+            error:(jqXHR)=>{
+                alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+                console.log(jqXHR)
+            }
+        })
+        return false
+    })
+
     //---- 승인대기 취소 -----
     $(document).on('click', 'div.team>button[name=cancel]', function(e) {
         const teamNo = $(e.target).siblings(':eq(0)').text()
@@ -168,7 +195,6 @@ $(()=>{
                 success: (responseJSONObj)=>{
                     if(responseJSONObj.status==1){
                         alert(responseJSONObj.msg)
-                        //location.href=`${frontURL}/myteamlist.html`
                     }else{
                         alert(responseJSONObj.msg)
                     }
