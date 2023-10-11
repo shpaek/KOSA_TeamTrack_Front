@@ -73,7 +73,9 @@ $(() => {
                     break;
 
                 case 'manageTeamProperties':
-                    ajaxHandler('GET', '#', $sectionObj)
+                    const urlParams = new URL(location.href).searchParams;
+                    const teamNo = urlParams.get('teamNo');
+                    location.href = './teammanageproperties.html?teamNo='+teamNo
                     break;
 
                 case 'manageTeamCurrentMember':
@@ -106,4 +108,5 @@ $(document).ready(function() {
         $('#poteamJoinpUp').hide();  // 팝업창 숨김
         // 추가적인 로직 작성하기. (서버로 데이터 전송할거)
     });
+
 });

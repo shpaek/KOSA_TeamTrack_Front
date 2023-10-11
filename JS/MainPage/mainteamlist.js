@@ -1,11 +1,11 @@
 const backURL = 'http://127.0.0.1:8888/KOSA_TeamTrack_Back'
 const frontURL = 'http://127.0.0.1:5500/HTML'
 $(() => {
-
+    function ajaxHandler(url, data){
         $.ajax({
-            url: backURL+ '/main',
+            url: backURL+ url,
             method: 'get',
-            data: 'currentPage=1&column=viewCnt',
+            data: data,
             success: (responseJSONObj) => {
     
                 const status = responseJSONObj.status
@@ -13,7 +13,7 @@ $(() => {
                 const hashlist = responseJSONObj.hashlist
                 
                 //원본 product객체찾기
-                const $originNewTeam = $('div.mainteam>div.topteam').first()
+                const $originNewTeam = $('div.mainteam>div.teamlist').first()
                 //$originProduct.parent().children().not($originProduct)
                 $originNewTeam.siblings().remove() //productlist영역 초기화
                 $originNewTeam.show()
@@ -57,11 +57,11 @@ $(() => {
                     $copyNewTeam.find("ul>li>span.createDate").html(createDate)
                     $copyNewTeam.find("ul>li>span.startDate").html(startDate)
                     $copyNewTeam.find("ul>li>span.endDate").html(endDate)
-                    $copyNewTeam.find("ul>li>span.hashtag1").html(hashtag1)
-                    $copyNewTeam.find("ul>li>span.hashtag2").html(hashtag2)
-                    $copyNewTeam.find("ul>li>span.hashtag3").html(hashtag3)
-                    $copyNewTeam.find("ul>li>span.hashtag4").html(hashtag4)
-                    $copyNewTeam.find("ul>li>span.hashtag5").html(hashtag5)
+                    $copyNewTeam.find("ul>div>li>span.hashtag1").html(hashtag1)
+                    $copyNewTeam.find("ul>div>li>span.hashtag2").html(hashtag2)
+                    $copyNewTeam.find("ul>div>li>span.hashtag3").html(hashtag3)
+                    $copyNewTeam.find("ul>div>li>span.hashtag4").html(hashtag4)
+                    $copyNewTeam.find("ul>div>li>span.hashtag5").html(hashtag5)
                     $copyNewTeam.find("ul>li>span.briefInfo").html(briefInfo)
                     $copyNewTeam.find("ul>li>span.viewcnt").html(viewCnt)
                     console.log($copyNewTeam.find("ul>li>span.viewcnt").html(viewCnt))
@@ -74,14 +74,32 @@ $(() => {
    
             }
         })
-       
+    }
+    ajaxHandler('/main', 'currentPage=1&column=viewCnt')       
+
+
         const $button = $('button.more')
 
         $button.click(() => {
             location.href = "./topteamlist.html"
         })
-    
-    })
+        
 
+    //alert(('div>div>ul>div>li>span.hashtag2').val())
+    // $('ul>div>li>span.hashtag2').click(()=>{
+    //     alert("ok")
+    //      //ajaxHandler('/teamsearch', $('div.teamlist>ul.team>li>span.hashtag1').val())
+    // })
+
+    const $button2 = $('div.mainteam>div.teamlist>ul>li>button.abc')
+
+    $button.click(() => {
+        location.href = "./topteamlist.html"
+    })  
+
+
+
+
+    })
 
 

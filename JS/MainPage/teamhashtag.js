@@ -1,14 +1,12 @@
 const backURL = 'http://127.0.0.1:8888/KOSA_TeamTrack_Back'
 const frontURL = 'http://127.0.0.1:5500/HTML'
-
-
-
 $(() => {
-    function ajaxHandler(url, data){
+
+    function ajaxSearchHandler(cp, data){
         $.ajax({
-            url: backURL+ url,
+            url: backURL+ '/teamhashtag',
             method: 'get',
-            data: data,
+            data: `currentPage=${cp}&${data}`,
             success: (responseJSONObj) => {
     
                 const status = responseJSONObj.status
@@ -105,38 +103,21 @@ $(() => {
         })
        
     }
-    ajaxHandler("/main", "currentPage=1&column=createdate")
+    data = decodeURI(location.search).substr(9)
+    ajaxSearchHandler(1, "data="+data)
     
-    const $topSpan = $('span.top')
-
-
-    $topSpan.click(() => {
-        location.href = './topteamlist.html'
-    })
-
-
+    //ajaxSearchHandler(1, data)
     $('div.pagegroup').on('click', 'span', (e) => {
         //alert($(e.target).html() + ": " + $(e.target).attr('class') + "페이지가 클릭되었습니다")
         const pg = $(e.target).attr('class')
         const currentPage = pg.substr(2)
-        const data = `currentPage=${currentPage}&column=createdate`
-        ajaxHandler("/main", data)
+        ajaxSearchHandler(currentPage, "data=#"+data)
     })
 
 
 
-    $datesearch = $('div>button.search')
-    $datesearch.click(()=>{
-        const startDate = $("#date1").val()
-        const endDate = $("#date2").val()
-        const data = `currentPage=1&column=createdate&startDate=${startDate}&endDate=${endDate}`
-        ajaxHandler("/teamfilter", data)
     })
 
 
 
 
-
-
-
-})

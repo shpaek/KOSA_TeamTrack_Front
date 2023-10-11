@@ -45,7 +45,7 @@ $(() => {
         //menu
         switch (e.target.className) {
             case 'myPage':
-                location.href = './mypage.html'
+                //location.href = './mypage.html'
                 break
             case 'myGroupList':
                 location.href = './myGroupList.html'
@@ -78,7 +78,7 @@ $(() => {
 
     const $teamCreate = $('nav>ul>button.button-hover')
     $teamCreate.click(() => {
-        location.href = './teamform.html'
+        location.href = './teamcreate.html'
     })
 
 
@@ -121,4 +121,43 @@ $(() => {
         onClickUpload()
     })
 
+    $teamsearch = $('div.searchBar>img.searchIcon')
+    $teamsearch.click(()=>{
+        const searchData = $("#mainsearch").val()
+        location.href = `./mainsearch.html?data=${searchData}`
+  
+    })
+
+    $input = $("#mainsearch");
+    $input.on('keyup', (e)=>{
+        if(e.keyCode === 13){
+            e.preventDefault();
+            $teamsearch.click()
+        }
+    })
 })
+
+$(document).on("click", 'div.hashtag',function (e) {
+    const hashtag = e.target.textContent;
+    location.href = "./teamhashtag.html?data=%23"+hashtag
+});
+
+$(document).on("click", "#teamName", function(e) {
+    
+    const teamName = e.target.textContent;
+    $.ajax({
+      url: backURL+ '/teamnamedupcheck',
+      method: 'get',
+      data: "teamName="+teamName,
+      success: (responseJSONObj) => {
+          const teamNo = responseJSONObj.teamNo
+          location.href = `./teammain.html?teamNo=${teamNo}`
+      },
+          error: () => {
+  
+          }
+      })
+
+  });
+
+

@@ -1,3 +1,5 @@
+const backURL = 'http://127.0.0.1:8888/KOSA_TeamTrack_Back'
+const frontURL = 'http://127.0.0.1:5500/HTML'
 function ajaxHandler(method, u, target) {
     console.log(u)
 
@@ -135,8 +137,11 @@ $(() => {
     const $sectionObj = $('section')
 
     $close.click((e) => {
-       location.href = './main.html'
+       //location.href = './main.html'
+       location.href = "javascript:history.go(-1)"
     })
+
+    
 
 
 })
