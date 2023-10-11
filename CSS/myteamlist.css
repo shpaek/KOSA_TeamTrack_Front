@@ -1,0 +1,74 @@
+/* --------------------- 승인거절 목록 ----------------------- */
+
+.rejectlist{
+    width : 900px;
+    display : none;
+}
+
+/* 거절목록 칸 */
+.rejectlist>ul>li>div.reject{
+    width:900px;
+    border-bottom:solid 1px;
+    border-left:solid 1px;
+    border-right:solid 1px;
+}
+
+/* 팀목록 칸 맨 위 */
+div.rejectlist>ul>li:nth-child(2)>div.reject{
+    border-top : solid 1px;
+}
+
+/* 팀번호 */
+div.rejectlist>ul>li>div.reject>span[name="reject_teamno"]{
+    display : none;
+}
+
+/* 이미지들 */
+div.rejectlist>ul>li>div.reject>img{
+    width:50px;
+}
+
+
+
+
+/* ---------------------- 팀목록 ------------------------*/
+.teamlist{
+    width : 900px;
+}
+
+/* 팀목록 칸 */
+.teamlist>ul>li>div.team{
+    width:900px;
+    border-bottom:solid 1px;
+    border-left:solid 1px;
+    border-right:solid 1px;
+}
+
+/* 팀목록 칸 맨 위 */
+div.teamlist>ul>li:nth-child(2)>div.team{
+    border-top : solid 1px;
+}
+
+/* 팀번호 */
+div.teamlist>ul>li>div.team>span[name="teamno"]{
+    display : none;
+}
+
+/* 이미지들 */
+div.teamlist>ul>li>div.team>img{
+    width:50px;
+}
+
+/* 팀장 표시 */
+div.teamlist>ul>li>div.team>img.leader{
+    visibility: hidden;
+}
+
+div.teamlist>h1{
+    display:none;
+}
+
+div.teamlist>ul>li>div>button[name=cancel]{
+    display : none;
+}
+

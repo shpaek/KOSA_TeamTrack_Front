@@ -5,16 +5,6 @@ $(()=>{
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
 
-    function ajaxHandler(method, u, target) {
-        if (method == 'GET') {
-            target.load(u, function (response, status, xhr) {
-                if (status == "error") {
-                    alert(xhr.status + xhr.statusText)
-                }
-            })
-        }
-    }
-
     $.ajax({
         url: backURL+'/mainnotice',
         method : 'get',
@@ -79,7 +69,7 @@ $(()=>{
         })
     }) 
 
-    function ajaxHandler2(cp){
+    function ajaxHandler(cp){
         $.ajax({
             xhrFields:{
                 withCredentials : true
@@ -140,12 +130,12 @@ $(()=>{
             }
         })
     }
-    ajaxHandler2(1)
+    ajaxHandler(1)
 
     $('div.notice>div.pagegroup').on('click','span',(e)=>{ 
         const pg = $(e.target).attr('class')
         const currentPage = pg.substr(2)
-        ajaxHandler2(currentPage)
+        ajaxHandler(currentPage)
     }) 
 
     //---- 작성 버튼 클릭했을 때 발생할 이벤트 ----
