@@ -235,12 +235,22 @@ $(() => {
       data: `title=${title}&answerList=${answerlist}&taskNo=${taskNo}`,
       success: (responseJSONObj) => {
         e.preventDefault()
-        Swal.fire({
-          icon: 'success',
-          text: responseJSONObj.msg
-        }).then((result)=>{
-          if(result.isConfirmed) location.href='./taskboard.html'
-        })
+
+        if(responseJSONObj.status==0) {
+          Swal.fire({
+            icon: 'warning',
+            text: responseJSONObj.msg
+          }).then((result)=>{
+            if(result.isConfirmed) history(-1)
+          })
+        } else if(responseJSONObj.status==1) {
+          Swal.fire({
+            icon: 'success',
+            text: responseJSONObj.msg
+          }).then((result)=>{
+            if(result.isConfirmed) location.href='./taskboard.html'
+          })
+        }
         
       },
       error: () => {
@@ -251,6 +261,7 @@ $(() => {
         }).then((result)=>{
           if(result.isConfirmed) location.href='./taskboard.html'
         })
+
       }
 
     })
