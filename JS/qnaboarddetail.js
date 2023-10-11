@@ -89,7 +89,7 @@ $(() => {
         })
     
 
-    //---- 삭제버튼 클릭 시 발생 이벤트 ----
+    //---- 삭제버튼 클릭 시 발생 이벤트 ---- 아직 삭제 구현xxxxxxxxxxxxxxxx
     $('div.noticedetail>div.detailbuttons>button.remove').on('click',(e)=>{
         var result = confirm("삭제하시겠습니까?")
         if(result == true){
@@ -115,5 +115,25 @@ $(() => {
         }
         return false
     })
+
+    $.ajax({
+        xhrFields: {
+            withCredentials: true
+        },
+        url: `http://127.0.0.1:8888/KOSA/qnaboardcomment?teamNo=${teamNo}&qnaNo=${qnaNo}`,
+        method: 'get',
+        success: (responseJSONObj1) => {
+            const comment = responseJSONObj1; // 반환된 JSON 데이터
+
+            console.log(comment);
+
+            // HTML 테이블의 각 td 엘리먼트에 데이터를 추가
+            $('#writer').text(comment.teammemberid);
+            $('#content').text(comment.content);
+        },
+        error: (error) => {
+            console.error("Error:", error);
+        }
+    });
 
 });

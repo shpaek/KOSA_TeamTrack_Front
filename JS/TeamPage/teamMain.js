@@ -38,7 +38,8 @@ $(() => {
                     break;
 
                 case 'QnABoard':
-                    ajaxHandler('GET', '#', $sectionObj)
+                    // ajaxHandler('GET', '#', $sectionObj)
+                    ajaxHandler('GET', './qnaboard.html', $sectionObj)
                     break;
 
                 case 'attendencePage':
