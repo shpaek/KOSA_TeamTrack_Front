@@ -19,65 +19,6 @@ function ajaxHandler(method, u, target) {
 
 $(() => {
 
-    // DOM Tree에서 section 객체 찾기
-    const $sectionObj = $(`section.section`)
-    // DOM Tree에서 nav>ul>li>a 객체들 찾기
-    const $menus = $(`nav>ul>li>a, nav>ul>li>ul>li>a`)
-
-    // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 START 〓〓
-    $menus.click((e) => {
-        console.log(e.target.className)
-        // menu
-        switch (e.target.className) { // 화살표 함수 내부에서의 this는 윈도우 객체이기 때문에 e.target 사용!
-            case 'teamMainPage':
-                location.href = './teamMain.html'
-                break;
-
-            case 'noticeBoard':
-                const teamNo = 9999
-                location.href = './notice.html?teamNo=${teamNo}'
-                break;
-
-            case 'taskBoard':
-                // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                location.href = './taskboard.html'
-                break;
-
-            case 'QnABoard':
-                ajaxHandler('GET', '#', $sectionObj)
-                break;
-
-            case 'attendencePage':
-                location.href = './teamAttendance.html'
-                break;
-
-            case 'rankPage':
-                ajaxHandler('GET', '#', $sectionObj)
-                break;
-
-            // 이 아래로는 memStatus = 1이어야 댐
-            case 'manageTeamProperties':
-                ajaxHandler('GET', '#', $sectionObj)
-                break;
-
-            case 'manageTeamCurrentMember':
-                location.href = './teamManageCurrentMember.html'
-                break;
-
-            case 'manageTeamApproval':
-                location.href = './teamManageApproval.html'
-                break;
-
-            case 'manageTeamExaminer':
-                location.href = './teamManageExaminer.html'
-                break;
-        } // switch(e.target.class)()
-        e.preventDefault()
-
-    }) // menu.addEventListener()
-    // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
-
-    // 요청 파라미터 보내기
     $.ajax({
         url: `${backURL}/teammain`,
         type: 'GET',
