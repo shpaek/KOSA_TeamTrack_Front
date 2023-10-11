@@ -4,6 +4,7 @@ const frontURL = 'http://localhost:5500/KOSA_Project2_Front/HTML/'
 $(() => {
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
+    const selectObj = $('#monthSelect')
     // const teamNo = 9999
     
     //팀내 개인랭킹 클릭했을 때 랭킹 목록 실행
@@ -58,6 +59,41 @@ $(() => {
 
         }
 
+    })
+
+    //월별 랭킹보기를 위해 select박스 실행
+    selectObj.change(() => {
+        const rankmonth = $('#monthSelect').val();
+        console.log(rankmonth);
+
+        $.ajax({
+            xhrFields: {
+                withCredentials: true 
+            },
+            url: backURL + '/rankjson',
+            method: 'get',
+            data: `teamNo=${teamNo}&month=${rankmonth}`,
+            success: (responseJSONObj) => {
+                console.log(responseJSONObj)
+                const $tbodyObj = $('div.memberRank>table>tbody')
+                $tbodyObj.empty()
+
+                responseJSONObj.forEach((element) => {
+                    console.log(element)
+
+                    const $trObj = $('<tr>')
+                    
+                    const $profileObj = $('<td>').addClass('profile').append(element.profile)
+                    const $nicknameObj = $('<td>').addClass('nickname').append(element.nickname)
+                    const $totalScoreObj = $('<td>').addClass('totalScore').append(element.totalScore)
+                    const $rankObj = $('<td>').addClass('rank').append(element.rank)
+
+                    $trObj.append($profileObj, $nicknameObj, $totalScoreObj, $rankObj)
+
+                    $tbodyObj.append($trObj)
+                })
+            }
+        })
     })
 
 })
