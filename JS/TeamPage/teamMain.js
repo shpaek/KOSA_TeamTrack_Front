@@ -46,8 +46,11 @@ $(() => {
                     break;
 
                 case 'rankPage':
-                    teamNo = 9999;
-                    ajaxHandler('GET', `./rank.html?teamNo=${teamNo}`, $sectionObj)
+                    // const teamNo = 9999;
+                    const teamNo1 = 9999;
+                    const month=10;
+                    location.href=`./rank.html?teamNo=${teamNo1}&month=${month}`
+                    // ajaxHandler('GET', `./rank.html?teamNo=${teamNo}&month=${month}`, $sectionObj)
                     break;
 
                 case 'manageTeamProperties':

@@ -35,7 +35,6 @@ $(() => {
                     console.log(key, r[key]) //각 key와 value 출력
                     const rdetail = r[key]
                     
-                    
                     rdetail.forEach((item) => { //각 value의 요소들 출력
                         console.log(item.id, item.nickname, item.totalScore, item.rank)
                         rdetail.sort((a,b) => {
