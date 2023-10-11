@@ -48,57 +48,58 @@ $(() => {
     // DOM Tree에서 nav>ul>li>a 객체들 찾기
     const $menus = $(`nav>ul>li>a, nav>ul>li>ul>li>a`)
 
-    // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 START 〓〓
-    $menus.click((e) => {
-        console.log(e.target.className)
-        // menu
-        switch (e.target.className) { // 화살표 함수 내부에서의 this는 윈도우 객체이기 때문에 e.target 사용!
-            case 'teamMainPage':
-                location.href = './teamMain.html'
-                break;
+        // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 START 〓〓
+        $menus.click((e) => {
+            console.log(e.target.className)
+            // menu
+            switch (e.target.className) { // 화살표 함수 내부에서의 this는 윈도우 객체이기 때문에 e.target 사용!
+                case 'teamMainPage':
+                    location.href='./teamMain.html'
+                    break;
 
-            case 'noticeBoard':
-                const teamNo = 9999
-                location.href = './notice.html?teamNo=${teamNo}'
-                break;
+                case 'noticeBoard':
+                    const teamNo = 9999
+                    location.href='./notice.html?teamNo=${teamNo}'
+                    break;
 
-            case 'taskBoard':
-                // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                location.href = './taskboard.html'
-                break;
+                case 'taskBoard':
+                    // ajaxHandler('GET', './taskboard.html', $sectionObj)
+                    location.href='./taskboard.html'
+                    break;
 
-            case 'QnABoard':
-                ajaxHandler('GET', '#', $sectionObj)
-                break;
+                case 'QnABoard':
+                    // ajaxHandler('GET', '#', $sectionObj)
+                    ajaxHandler('GET', './qnaboard.html', $sectionObj)
+                    break;
 
-            case 'attendencePage':
-                location.href = './teamAttendance.html'
-                break;
+                case 'attendencePage':
+                    location.href='./teamAttendance.html'
+                    break;
 
-            case 'rankPage':
-                ajaxHandler('GET', '#', $sectionObj)
-                break;
+                case 'rankPage':
+                    ajaxHandler('GET', '#', $sectionObj)
+                    break;
 
-            case 'manageTeamProperties':
-                ajaxHandler('GET', '#', $sectionObj)
-                break;
+                case 'manageTeamProperties':
+                    ajaxHandler('GET', '#', $sectionObj)
+                    break;
 
-            case 'manageTeamCurrentMember':
-                location.href = './teamManageCurrentMember.html'
-                break;
+                case 'manageTeamCurrentMember':
+                    location.href='./teamManageCurrentMember.html'
+                    break;
 
-            case 'manageTeamApproval':
-                location.href = './teamManageApproval.html'
-                break;
+                case 'manageTeamApproval':
+                    location.href='./teamManageApproval.html'
+                    break;
 
-            case 'manageTeamExaminer':
-                location.href = './teamManageExaminer.html'
-                break;
-        } // switch(e.target.class)()
-        e.preventDefault()
-
-    }) // menu.addEventListener()
-    // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
+                case 'manageTeamExaminer':
+                    location.href='./teamManageExaminer.html'
+                    break;
+            } // switch(e.target.class)()
+            e.preventDefault()
+    
+        }) // menu.addEventListener()
+        // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
 
 });
 
