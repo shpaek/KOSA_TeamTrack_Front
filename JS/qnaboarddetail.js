@@ -126,7 +126,7 @@ $(() => {
             const list = responseJSONObj1.list; // 반환된 JSON 데이터 -> responseJsonObj1은 사실 pageGroup타입의 qnaBoardCommentDTO임
 
             // 전체 값을 뽑으려면
-            // list를 하나씩 뽑아서 for문으로 반복문 돌림
+            // list를 하나씩 뽑아서 for문으로 반복문
 
             console.log(list);
 
