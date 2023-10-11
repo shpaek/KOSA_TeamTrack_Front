@@ -81,6 +81,8 @@ $(()=>{
         return false
     })
 
+    // ---- 아이디, 비밀번호, 닉네임 제외 정보 수정 ----
+
     $('form.info').submit((e)=>{
         $.ajax({
             xhrFields:{
@@ -104,5 +106,14 @@ $(()=>{
         })
         return false
     })
+    
+
+    // ---- 회원 탈퇴하기 ----
+
+    $('div.infomenu>a').click(()=>{
+        location.href=`${frontURL}/deleteaccount.html`
+    })
+
+
 
 })
