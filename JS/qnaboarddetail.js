@@ -28,7 +28,7 @@ $(() => {
     });
 
     
-    //---- 수정버튼 클릭 시 발생 이벤트 ----
+    // //---- 수정버튼 클릭 시 발생 이벤트 ----
     $('div.detailbuttons>button.edit').on('click',(e)=>{
         $('div.boarddetail').hide()
         $('div.editdetail').show()
@@ -89,32 +89,32 @@ $(() => {
         })
     
 
-    //---- 삭제버튼 클릭 시 발생 이벤트 ---- 아직 삭제 구현xxxxxxxxxxxxxxxx
-    $('div.noticedetail>div.detailbuttons>button.remove').on('click',(e)=>{
-        var result = confirm("삭제하시겠습니까?")
-        if(result == true){
-            $.ajax({
-                url: backURL+'/deletenotice',
-                method : 'get',
-                data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
-                success: (responseJSONObj)=>{
-                    if(responseJSONObj.status==1){
-                        alert(responseJSONObj.msg)
-                        location.href = `${frontURL}/notice.html?teamNo=${teamNo}`
-                    }else{
-                        alert(responseJSONObj.msg)
-                    }
-                },
-                error:(jqXHR)=>{
-                    alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
-                    console.log(jqXHR)
-                }
-            })
-        }else{
-            return false
-        }
-        return false
-    })
+    // //---- 삭제버튼 클릭 시 발생 이벤트 ---- 아직 삭제 구현xxxxxxxxxxxxxxxx
+    // $('div.noticedetail>div.detailbuttons>button.remove').on('click',(e)=>{
+    //     var result = confirm("삭제하시겠습니까?")
+    //     if(result == true){
+    //         $.ajax({
+    //             url: backURL+'/deletenotice',
+    //             method : 'get',
+    //             data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
+    //             success: (responseJSONObj)=>{
+    //                 if(responseJSONObj.status==1){
+    //                     alert(responseJSONObj.msg)
+    //                     location.href = `${frontURL}/notice.html?teamNo=${teamNo}`
+    //                 }else{
+    //                     alert(responseJSONObj.msg)
+    //                 }
+    //             },
+    //             error:(jqXHR)=>{
+    //                 alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+    //                 console.log(jqXHR)
+    //             }
+    //         })
+    //     }else{
+    //         return false
+    //     }
+    //     return false
+    // })
 
     $.ajax({
         xhrFields: {
@@ -141,21 +141,42 @@ $(() => {
             // 초기화 - 이전 데이터 삭제
             tableBody.empty();
 
-            // 반복문으로 JSON 데이터 처리
+            // // 반복문으로 JSON 데이터 처리
+            // for (const item of list) {
+            //     // 테이블 행(row) 생성
+            //     const row = $('<tr>');
+
+            //     // 작성자 열(column) 생성 및 데이터 할당
+            //     const writerCol = $('<td>').text(item.teammemberId);
+            //     // 내용 열(column) 생성 및 데이터 할당
+            //     const contentCol = $('<td>').text(item.content);
+            //     // 작성일 열(column) 생성 및 데이터 할당
+            //     const regdateCol = $('<td>').text(item.regdate);
+
+            //     // 행에 열 추가
+            //     row.append(writerCol, contentCol, regdateCol);
+
+            //     // tbody에 행 추가
+            //     tableBody.append(row);
+            // }
             for (const item of list) {
-                // 테이블 행(row) 생성
-                const row = $('<tr>');
+                // 코멘트 행(row) 생성
+                const row = $('<tr>').addClass('comment-row');
+            
+                // 작성자, 내용, 작성일 셀 생성 및 데이터 할당
+                const commentNoCol =  $('<td>').addClass('comment-No').text(item.commentNo);
+                commentNoCol.hide();
+                const writerCol = $('<td>').addClass('comment-info').text(item.teammemberId);
+                const contentCol = $('<td>').addClass('comment-content').text(item.content);
+                const regdateCol = $('<td>').addClass('comment-date').text(item.regdate);
+                const selectButtonCol = $('<td>').addClass('comment-select-button').html('<button>채택</button>');
+            
+                // commentNo를 data-commentNo 속성으로 저장
+                // row.attr('data-commentNo', item.commentNo);
 
-                // 작성자 열(column) 생성 및 데이터 할당
-                const writerCol = $('<td>').text(item.teammemberId);
-                // 내용 열(column) 생성 및 데이터 할당
-                const contentCol = $('<td>').text(item.content);
-                // 작성일 열(column) 생성 및 데이터 할당
-                const regdateCol = $('<td>').text(item.regdate);
-
-                // 행에 열 추가
-                row.append(writerCol, contentCol, regdateCol);
-
+                // 행에 셀 추가
+                row.append(commentNoCol, writerCol, contentCol, regdateCol, selectButtonCol);
+            
                 // tbody에 행 추가
                 tableBody.append(row);
             }
@@ -164,5 +185,113 @@ $(() => {
             console.error("Error:", error);
         }
     });
+
+    // // ===================   게시글 작성자가 채택버튼 클릭했을 때 =========================
+    // $('td.comment-select-button button').on('click', (e) => {
+        $('#commentList').on('click', 'button', (e) => {
+
+            const commentButton = $(e.target);
+            // 클릭 되어진 버튼의 행을 포함하는 댓글행을 찾아옴
+            const commentRow = commentButton.closest('tr.comment-row');
+
+            // 상단에 변수를 초기화하기전에 event핸들러로 button이 먼저 작동하도록 위임해서 안먹은거임
+            // 여기 핸들러 내에서 따로 변수를 초기화 해주어야함 ㅠㅠ
+            const teamNo = new URLSearchParams(window.location.search).get('teamNo');
+            const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
+            const commentNo = commentRow.find('.comment-No').text();
+
+            console.log(teamNo);
+            console.log(qnaNo);
+            console.log(commentNo);
+
+        // 현재 사용자가 게시글의 작성자인지 확인
+        // const boardAuthor = commentRow.find('.comment-info').text();
+        // const boardAuthor = data.id;
+        // const currentUser = '현재 사용자'; // 현재 사용자정보 가져와서 게시글 사용자와 비교해야함 ******
+
+        // if (author === currentUser) { ******************
+            // 현재 사용자가 댓글의 작성자인 경우, '/qnaboardcommentpick'로 POST 요청을 보냅니다.
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                url: 'http://127.0.0.1:8888/KOSA/qnaboardcommentpick',
+                method: 'post',
+                data: {
+                    teamNo: teamNo,
+                    qnaNo: qnaNo,
+                    commentNo: commentNo
+                },
+                success: (responseJSONObj2) => {
+                    console.log(responseJSONObj2)
+                    if(responseJSONObj2.status == 1){
+                        alert(responseJSONObj2.msg)
+                    }else{
+                        alert(responseJSONObj2.msg)
+                    }
+                },
+                error: (error) => {
+                    console.error("에러:", error);
+                }
+            });
+
+        // } else { //***************** 
+ 
+            // alert("작성자만 채택할 수 있습니다.");
+        // }
+        return false;
+    });
+
+
+
+    //============================== 대댓글 ================================
+    // $.ajax({
+    //     xhrFields: {
+    //         withCredentials: true
+    //     },
+    //     url: `http://127.0.0.1:8888/KOSA/qnaboardcomment?teamNo=${teamNo}&qnaNo=${qnaNo}`,
+    //     method: 'get',
+    //     success: (responseJSONObj1) => {
+    //         const list = responseJSONObj1.list;
+    
+    //         const tableBody = $('#commentList table tbody');
+    //         tableBody.empty();
+    
+    //         const commentsMap = new Map(); // 댓글을 그룹화하기 위한 맵
+    
+    //         for (const item of list) {
+    //             if (item.commentGroup === null) {
+    //                 // 대댓글이 아닌 댓글
+    //                 const row = $('<tr>').addClass('comment-row');
+    //                 const writerCol = $('<td>').addClass('comment-info').text(item.teammemberId);
+    //                 const contentCol = $('<td>').addClass('comment-content').text(item.content);
+    //                 const regdateCol = $('<td>').addClass('comment-date').text(item.regdate);
+    
+    //                 row.append(writerCol, contentCol, regdateCol);
+    //                 tableBody.append(row);
+    
+    //                 // 대댓글을 위한 댓글 그룹 생성
+    //                 commentsMap.set(item.comment_no, $('<div>'));
+    
+    //             } else {
+    //                 // 대댓글
+    //                 const replyRow = $('<tr>').addClass('comment-reply-row');
+    //                 const replyContentCol = $('<td>').attr('colspan', 3).addClass('comment-reply-content').text(item.content);
+    //                 replyRow.append(replyContentCol);
+    
+    //                 // 대댓글을 해당 댓글 아래에 추가
+    //                 commentsMap.get(item.commentGroup).append(replyRow);
+    //             }
+    //         }
+    
+    //         // 댓글과 대댓글을 화면에 표시
+    //         commentsMap.forEach(comment => {
+    //             tableBody.append(comment);
+    //         });
+    //     },
+    //     error: (error) => {
+    //         console.error("Error:", error);
+    //     }
+    // });
 
 });
