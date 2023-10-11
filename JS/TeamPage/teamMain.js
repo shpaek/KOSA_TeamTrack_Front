@@ -1,3 +1,8 @@
+// const backURL = http://localhost:8888/KOSA_TeamTrack_Back'
+// const frontURL = 'http://localhost:5500/HTML'
+// const urlParams = new URL(location.href).searchParams
+// const teamNo = urlParams.get('teamNo')
+
 function ajaxHandler(method, u, target) {
     console.log(u)
 
@@ -12,6 +17,31 @@ function ajaxHandler(method, u, target) {
 } // ajaxHandler
 
 $(() => {
+
+    // ex) teammain.html?teamNO=9999에서 9999 받아오기
+    // const teamNo = location.search.substring(1).split('=')[1]
+
+    // 요청 파라미터 보내기
+    /*
+    $.ajax({
+        url: backURL + '/teammain',
+        // url: `${backURL}/teammain?teamNo=${teamNo}`,
+        type: 'GET',
+        data: `teamNo=${teamNo}`,
+        success: (responseJSONObj) => {
+            if (responseJSONObj.status && responseJSONObj.status === 1) {
+
+                // 성공적으로 데이터를 가져왔을 때 DOM에 데이터를 적용시키는 코드
+                
+            } else {
+                alert(responseJSONObj.msg);  // 에러 메시지 출력
+            }
+        },
+        error: function () {
+            alert('팀 데이터를 불러오는데 실패했습니다.');
+        }
+    })
+    */
 
     // DOM Tree에서 section 객체 찾기
     const $sectionObj = $(`section.section`)
@@ -38,7 +68,8 @@ $(() => {
                     break;
 
                 case 'QnABoard':
-                    ajaxHandler('GET', '#', $sectionObj)
+                    // ajaxHandler('GET', '#', $sectionObj)
+                    ajaxHandler('GET', './qnaboard.html', $sectionObj)
                     break;
 
                 case 'attendencePage':
@@ -72,14 +103,14 @@ $(() => {
 
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     // 팀 가입하기 버튼 클릭 이벤트
-    $('#JoinTeamBtn').click(function() {
+    $('#JoinTeamBtn').click(function () {
         $('#teamJoin').show();  // 팝업창 표시
     });
 
     // 가입요청 버튼 클릭 이벤트
-    $('#closeJoinTeamBtn').click(function() {
+    $('#closeJoinTeamBtn').click(function () {
         $('#poteamJoinpUp').hide();  // 팝업창 숨김
         // 추가적인 로직 작성하기. (서버로 데이터 전송할거)
     });
