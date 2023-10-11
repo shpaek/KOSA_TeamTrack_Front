@@ -19,28 +19,33 @@ div.taskviewbox>div.taskinfo{
 div.taskviewbox>div.taskanswer{
     padding-left: 30px;
 }
-div.taskviewbox>div.taskanswer>div.taskanswercontent{
+div.taskanswercontent{
     border: 0.5px solid;
     width:95%;
-    height: 100px;
-    line-height: 100px;
+    height:auto;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-div.taskviewbox>div.taskid{
+div.taskviewbox>div.tasknickname{
     font-size: small;
-    margin-left:950px;
+    margin-right: 50px;
+    text-align: right;
 }
 div.taskviewbox>div.myanswer{
     margin-left: 30px;
 }
-div.taskviewbox>div.myanswer>div.myanswercontent{
+div.myanswercontent{
     border: 0.5px solid;
     width:95%;
-    height: 100px;
-    line-height: 100px;
+    height:auto;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 button{
-    width: 100px;
+    width: 50px;
     height: 30px;
-    margin-left:950px;
+    margin-left:10px;
 }

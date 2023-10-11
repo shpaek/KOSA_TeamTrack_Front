@@ -87,7 +87,26 @@ $(()=> {
 
     const $createtaskmenu = $('section.taskboard>div.board>div.content>table>tbody td.createtd>div.createbox')
     $createtaskmenu.click(() =>{
-        location.href='./taskcreate.html'
+        $.ajax({
+            xhrFields: {
+              withCredentials: true
+          },
+          url: `${backURL}/chktaskid`,
+          method: 'get',
+          success: (responseJSONObj) => {
+            if(responseJSONObj.status==0) {
+                Swal.fire({
+                    icon: 'question',
+                    text: responseJSONObj.msg
+                  })
+            } else if(responseJSONObj.status==1) {
+              //alert('성공')
+              localStorage.setItem("loginedId", responseJSONObj.loginedId)
+              localStorage.setItem("taskNo", responseJSONObj.taskNo)
+              location.href='./taskcreate.html'
+            }
+          }
+          })
     })
 
     $('section.taskboard>div.board>div.content>table').on('click', 'tbody tr.maintask', function() {

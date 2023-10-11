@@ -8,16 +8,43 @@ section {
     width: 80%;
     
     /* 나중에 지우기 */
-    border: 1px solid black; 
+    /* border: 1px solid black; */
+}
+
+/* 팀 조회수 영역 */
+.teamViewCnt {
+    border: 1px solid black;
+
+    width: 90%;
+    height: 30px;
+
+    margin-left: 30px;
+    margin-bottom: 30px;
 }
 
 /* 팀 조회수 */
-.teamCntView {
+.teamCntViewSpan1, .teamCntViewSpan2 {
     font-weight: bold;
 
     font-size: 17px;
-    
-    margin-bottom: 20px;
+}
+
+/* 팀원 영역 */
+.teamMemberList {
+    border: 1px solid black;
+
+    width: 90%;
+    height: 400px;
+
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+/* 팀원 목록 */
+.teamMemberListSpan1, .teamMemberListSpan2 {
+    font-weight: bold;
+
+    font-size: 17px;
 }
 
 /* 영역 소개글 */
@@ -37,6 +64,11 @@ p.intro1, p.intro2 {
     margin-bottom: 50px;
 }
 
+/* 팀 소개글 */
+.teamMainIntroductionP {
+
+}
+
 /* 공지사항 영역 */
 .teamMainNotice {
     border: 1px solid black;
@@ -45,4 +77,9 @@ p.intro1, p.intro2 {
     height: 400px;
 
     margin-left: 30px;
+}
+
+/* 공지사항 */
+.teamMainNoticeDiv {
+    border: 1px solid black;
 }
