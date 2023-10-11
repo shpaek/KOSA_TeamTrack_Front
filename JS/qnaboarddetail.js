@@ -123,13 +123,42 @@ $(() => {
         url: `http://127.0.0.1:8888/KOSA/qnaboardcomment?teamNo=${teamNo}&qnaNo=${qnaNo}`,
         method: 'get',
         success: (responseJSONObj1) => {
-            const comment = responseJSONObj1; // 반환된 JSON 데이터
+            const list = responseJSONObj1.list; // 반환된 JSON 데이터 -> responseJsonObj1은 사실 pageGroup타입의 qnaBoardCommentDTO임
 
-            console.log(comment);
+            // 전체 값을 뽑으려면
+            // list를 하나씩 뽑아서 for문으로 반복문
 
-            // HTML 테이블의 각 td 엘리먼트에 데이터를 추가
-            $('#writer').text(comment.teammemberid);
-            $('#content').text(comment.content);
+            console.log(list);
+
+            // // HTML 테이블의 각 td 엘리먼트에 데이터를 추가
+            // $('#writer').text(list[0].teammemberId);
+            // $('#commentContent').text(list[0].content);
+            // $('#commentRegdate').text(list[0].regdate);
+
+                   // HTML 테이블의 tbody를 선택
+            const tableBody = $('#commentList table tbody');
+
+            // 초기화 - 이전 데이터 삭제
+            tableBody.empty();
+
+            // 반복문으로 JSON 데이터 처리
+            for (const item of list) {
+                // 테이블 행(row) 생성
+                const row = $('<tr>');
+
+                // 작성자 열(column) 생성 및 데이터 할당
+                const writerCol = $('<td>').text(item.teammemberId);
+                // 내용 열(column) 생성 및 데이터 할당
+                const contentCol = $('<td>').text(item.content);
+                // 작성일 열(column) 생성 및 데이터 할당
+                const regdateCol = $('<td>').text(item.regdate);
+
+                // 행에 열 추가
+                row.append(writerCol, contentCol, regdateCol);
+
+                // tbody에 행 추가
+                tableBody.append(row);
+            }
         },
         error: (error) => {
             console.error("Error:", error);
