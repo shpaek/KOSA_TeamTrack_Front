@@ -74,7 +74,7 @@
                 </div>
                 
                 <div class="taskcreatewarning">🚨 과제 생성을 누르지 않고 페이지 이동 시 출제 및 저장이 되지 않습니다.</div>
-                <div class="taskcreatebox">
+                <form class="taskcreatebox">
                     <br><br>
                     <div class="tasktitle">
                         <input type="text" id="title" placeholder="과제 타이틀" required>
@@ -83,19 +83,19 @@
                     <hr>
                     <br><br>
                     <div class="taskinfo">
-                        🗓️ 과제 마감일&nbsp;&nbsp;&nbsp;<input type="date" id="enddate" required><br><br>
                         📁 과제 첨부&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="대충 첨부란">
                     </div>
-                    <br>
+                    <br><br>
                     <div class="taskanswer">
-                        ☑️ 과제 답안<br><br>
-                        <div class="addanswer">&nbsp;&nbsp;+ 답 생성</div>
+                        <div class="answercnt">답 개수 : <input type="number" required>&nbsp;&nbsp;<button class="answerset" type="button">설정</button></div>
+                        <br>
                         <div class="answer"></div>
                     </div>
                     <br><br>
+                    <button class="exitbutton" type="button">생성 취소</button>&nbsp;
                     <button class="createbutton">과제 생성</button><br>
                     <br><br>
-                </div>
+                </form>
 
             </section>
 
