@@ -10,7 +10,7 @@ function ajaxHandler(method, u, target) {
     } // outer-if
 
 }
-
+const backURL = 'http://localhost:8888/KOSA_Project2'
 $(() => {
 
   const loginedId = localStorage.getItem("loginedId");
@@ -212,56 +212,34 @@ $(() => {
       })
     })
 
+    
     $('button.createbutton').click((e)=>{
+      const title=$('div.tasktitle>input[type=text]').val()
+      const answercnt=$('div.answercnt>input[type=number]').val()
+      var answerlist=[]
+      
+      for(var cnt=1;cnt<=answercnt;cnt++) {
+        $('input[name="a'+cnt+'"]:checked').each(function() {
+          answerlist.push($(this).val());
+        });
+      }
+
       $.ajax({
         xhrFields: {
             withCredentials: true
         },
-        url: `${backURL}/set`,
+        url: `${backURL}/settask`,
         method: 'get',
-        success: (responseJSONObj) => {
-            if(responseJSONObj.msg != undefined){
-                alert('과제가 존재하지 않습니다.')
-                return
-            }
-
-            const $originTrObj = $('div.board>div.content>table>thead>tr')
-            $originTrObj.addClass('maintask')
-            const $tbodyObj = $('div.board>div.content>table>tbody')
-            
-            responseJSONObj.forEach(element => {
-                const $copyTrObj = $originTrObj.clone()
-                $copyTrObj.empty()
-                const p = element.title
-                const q = element.nickname
-                const r = element.enddate
-                // console.log(q)
-
-                const $nicknameTdObj = $('<td>')
-                $nicknameTdObj.addClass('nickname')
-                $nicknameTdObj.append(q)                
-                $copyTrObj.append($nicknameTdObj)  
-
-                const $titleTdObj = $('<td>')
-                $titleTdObj.addClass('title')
-                $titleTdObj.append(p)
-                $copyTrObj.append($titleTdObj)
-
-                const $enddateTdObj = $('<td>')
-                $enddateTdObj.addClass('enddate')
-                $enddateTdObj.append(r)
-                $copyTrObj.append($enddateTdObj)
-
-                $tbodyObj.append($copyTrObj)
-            });
-
-            const $copyTrObj = $originTrObj.clone()
-            $copyTrObj.empty()
-            
-            $tbodyObj.append($copyTrObj)
-
+        data: `title=${title}&answerList=${answerlist}`,
+        success: () => {
+          
+          } ,
+        error: ()=>{
+          
         }
     })
+
+    
     })
 
 
