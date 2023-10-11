@@ -33,7 +33,7 @@ $(() => {
   })
 
   // DOM Tree에서 nav>ul>li>a 객체들 찾기
-  const $menus = $(`nav>ul>li>a, nav>ul>li>ul>li>a`)
+  const $menus = $(`nav>ul.nonHiddenTab>li>a, nav>ul.nonHiddenTab>li>ul>li>a`)
 
   // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 START 〓〓
   $menus.click((e) => {
