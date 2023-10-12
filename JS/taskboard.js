@@ -36,6 +36,8 @@ $(()=> {
                 const p = element.title
                 const q = element.nickname
                 const r = element.enddate
+                const no=element.taskNo
+                $copyTrObj.data('taskNo', no);
                 // console.log(q)
 
                 const $nicknameTdObj = $('<td>')
@@ -110,6 +112,8 @@ $(()=> {
     })
 
     $('section.taskboard>div.board>div.content>table').on('click', 'tbody tr.maintask', function() {
-        location.href='./taskexam.html'
+        const taskNo = $(this).data('taskNo')
+        localStorage.setItem("taskNo", taskNo)
+        location.href='./taskexam.html?taskNo='+taskNo
     })
 })
