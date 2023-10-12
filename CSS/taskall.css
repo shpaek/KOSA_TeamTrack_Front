@@ -24,11 +24,15 @@ div.allcontent>table td{
 }
 
 div.allcontent>table td.title{
-    width: 70%;
+    width: 60%;
     text-align: center;
 }
 div.allcontent>table td.nickname{
-    width:10%;
+    width:20%;
+    text-align: center;
+}
+div.allcontent>table td.regdate{
+    width:20%;
     text-align: center;
 }
 div.allboard {
@@ -37,4 +41,12 @@ div.allboard {
     clear: both;
     /* margin-left:100px; */
     padding-top:0px;
+}
+div.taskpage{
+    text-align: center;
+    font-size: larger;
+}
+span.pagebar{
+    color: rgb(184, 184, 184);
+    font-size: medium;
 }

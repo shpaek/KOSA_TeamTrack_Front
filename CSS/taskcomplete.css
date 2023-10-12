@@ -45,3 +45,11 @@ div.completeboard {
     /* margin-left:100px; */
     padding-top:0px;
 }
+div.taskpage{
+    text-align: center;
+    font-size: larger;
+}
+span.pagebar{
+    color: rgb(184, 184, 184);
+    font-size: medium;
+}

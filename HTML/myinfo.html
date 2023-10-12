@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/myinfo.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../js/myinfo.js"></script> 
+        <script src="../js/myheader.js"></script> 
+        <script src="../js/myinfomenu.js"></script> 
+    </head>
+
+    <body>
+        <header>
+            <div class="menu">
+                <a href="#" name="myinfo">회원 정보</a>
+                <a href="#" name="myteam">마이 팀</a>
+            </div>
+        </header>
+        <nav>
+        </nav>
+        <section>
+            <div class="myinfo">
+                <div class="infomenu">
+                    <ul>
+                        <li><a href="#" name="editinfo">내정보 수정</a></li>
+                        <li><a href="#" name="editpwd">비밀번호 수정</a></li>
+                    </ul>
+                    <a href="#">탈퇴하기</a>
+                </div>
+            </div>
+            <form class="imgbox">
+                    <img src="../images/logo.png">
+                    <input type="file" name="f1" id="f1"></input>
+                    <button type="submit">저장</button>
+            </form>
+            <form class="nicknamebox">
+                <label>닉네임 : <input type="text"
+                    name="nickname" value="" required></label>
+                <button name="check">중복확인</button>
+                <button type="submit">저장</button>
+                <br>
+                <span name="requiremsg">중복확인이 필요합니다</span>
+                <span name="okmsg">사용 가능한 닉네임입니다</span>
+            </form>
+            <form class="info">
+                    <label>아이디 : <input type="text"
+                        name="id" value="" readonly></label>
+                    <label>이름 : <input type="text"
+                        name="name" value="" required></label>
+                    <label>생년월일 : <input type="text"
+                        name="birthday" value="" required></label>
+                    <label>휴대폰 : <input type="text"
+                        name="phone" value="" required></label>
+                    <label>이메일 : <input type="text"
+                        name="email" value="" required></label>
+                <button type="submit">저장</button>
+            </form>
+        </section>
+        <footer>
+
+        </footer>
+    </body>
+</html>

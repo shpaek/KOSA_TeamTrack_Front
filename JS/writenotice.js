@@ -1,14 +1,14 @@
-const backURL = 'http://localhost:8888/KOSA_Project2'
-const frontURL = 'http://localhost:5500/HTML'
 
 
 $(()=>{
+    const backURL = 'http://localhost:8888/KOSA_Project2'
+    const frontURL = 'http://localhost:5500/HTML'
     const $formObj = $('form.notice')
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
 
     $formObj.submit((e) => {
-        alert("in submit")
+        //alert("in submit")
         const fd = new FormData(e.target)
         fd.append("teamNo", teamNo)
         // fd.forEach((value, key)=>{
@@ -31,7 +31,7 @@ $(()=>{
                 console.log(responseJSONObj)
                 if(responseJSONObj.status==1){
                     alert(responseJSONObj.msg)
-                    location.href = `${frontURL}/notice.html?teamNo=${teamNo}`
+                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                 }else{
                     alert(responseJSONObj.msg)
                 }

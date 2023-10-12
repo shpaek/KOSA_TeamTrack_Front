@@ -32,11 +32,12 @@ $(() => {
 
         const idpwddata = `id=${idValue}&pwd=${pwdValue}`
 
+        // alert(idpwddata)
+
         $.ajax({
             xhrFields: {
                 withCredentials: true
             },
-            // url 맞는지 모르겠어서 수정 필요 *********
             url: 'http://127.0.0.1:8888/KOSA/login',
             method: 'post',
             data: idpwddata,
@@ -55,9 +56,7 @@ $(() => {
             } 
 
         }) // ajax
-
+        return false
     })
-
-    // ----- form 객체에서 submit 이벤트가 발생했을 때 할 일 END -----
-
+    
 })

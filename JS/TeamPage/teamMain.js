@@ -1,27 +1,8 @@
-/*
-function ajaxHandler(method, url, target) {
-    console.log(url)
-
-    const xhttp = new XMLHttpRequest()
-    xhttp.addEventListener('readystatechange', function () {
-        // alert(this.readyState + ":" + this.status)
-
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                target.innerHTML = this.responseText
-            } else if (this.status == 404) {
-                alert('자원이 없습니다.')
-            } else if (this.status == 500) {
-                alert('서버 실행시 오류가 발생했습니다.')
-            } else {
-                alert(this.responseText)
-            } // if-else
-        } // if
-    }) // xhttp.addEventListener()
-    xhttp.open(method, url)
-    xhttp.send()
-} // ajaxHandler
-*/
+const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
+const frontURL = 'http://localhost:5500/HTML'
+// const teamNo = location.search.substring(1).split('=')[1]
+const teamNo = 9999;
+// const id = 'psh2023';
 
 function ajaxHandler(method, u, target) {
     console.log(u)
@@ -29,7 +10,7 @@ function ajaxHandler(method, u, target) {
     if (method == 'GET') {
         target.load(u, function (response, status, xhr) { // jQuery용 메소드 load()
             if (status == "error") {
-                alert(xhr.status + ShadowRoot.statusText)
+                alert(xhr.status + xhr.statusText);
             } // inner-if
         })  // .load()
     } // outer-if
@@ -53,25 +34,29 @@ $(() => {
                     break;
 
                 case 'noticeBoard':
-                    ajaxHandler('GET', './notice.html', $sectionObj)
+                    const teamNo = 9999
+                    location.href='./notice.html?teamNo=${teamNo}'
                     break;
 
                 case 'taskBoard':
-                    ajaxHandler('GET', './taskboard.html', $sectionObj)
+                    // ajaxHandler('GET', './taskboard.html', $sectionObj)
+                    location.href='./taskboard.html'
                     break;
 
                 case 'QnABoard':
-                    ajaxHandler('GET', '#', $sectionObj)
+                    // ajaxHandler('GET', '#', $sectionObj)
+                    ajaxHandler('GET', './qnaboard.html', $sectionObj)
                     break;
 
                 case 'attendencePage':
-                    ajaxHandler('GET', './teamAttendence.html', $sectionObj)
+                    location.href='./teamAttendance.html'
                     break;
 
                 case 'rankPage':
                     ajaxHandler('GET', '#', $sectionObj)
                     break;
 
+                // 이 아래로는 memStatus = 1이어야 댐
                 case 'manageTeamProperties':
                     const urlParams = new URL(location.href).searchParams;
                     const teamNo = urlParams.get('teamNo');
@@ -79,15 +64,15 @@ $(() => {
                     break;
 
                 case 'manageTeamCurrentMember':
-                    ajaxHandler('GET', './teamManageCurrentMember.html', $sectionObj)
+                    location.href='./teamManageCurrentMember.html'
                     break;
 
                 case 'manageTeamApproval':
-                    ajaxHandler('GET', './teamManageApproval.html', $sectionObj)
+                    location.href='./teamManageApproval.html'
                     break;
 
                 case 'manageTeamExaminer':
-                    ajaxHandler('GET', './teamManageExaminer.html', $sectionObj)
+                    location.href='./teamManageExaminer.html'
                     break;
             } // switch(e.target.class)()
             e.preventDefault()
@@ -95,18 +80,94 @@ $(() => {
         }) // menu.addEventListener()
         // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
 
-});
+    // 요청 파라미터 보내기
+    $.ajax({
+        url: `${backURL}/teammain`,
+        type: 'GET',
+        data: `teamNo=${teamNo}`,
+        success: (responseJSONObj) => {
 
-$(document).ready(function() {
+            // 프로필
+
+            // 조회수
+            if (responseJSONObj.teamViewCnt != null) {
+
+                const viewCnt = responseJSONObj.teamViewCnt
+                const $teamViewCntDiv = $('div.teamViewCnt').first()
+
+                $teamViewCntDiv.find('span[class=teamCntViewSpan2]').text(viewCnt)
+            } // if
+
+            // 팀원 목록
+            if (responseJSONObj.nicknameList != null) {
+                const nickList = responseJSONObj.nicknameList;
+                const $nickSpan = $('span.teamMemberListSpan2');
+
+                nickList.forEach((nickName, index) => {
+                    const $nickCloneSpan = $nickSpan.clone();
+                    $nickCloneSpan.text(nickName);
+                    $nickSpan.parent().append($nickCloneSpan);
+                });
+            }
+
+            // 팀 소개글
+            if (responseJSONObj.teamInfo != null) {
+
+                const info = responseJSONObj.teamInfo
+                const $infoDiv = $('div.teamMainIntroductionDiv').first()
+
+                $infoDiv.find('p[class=teamMainIntroductionP]').text(info)
+
+            } // if
+
+            // 공지사항
+            if (responseJSONObj.noticeList != null) {
+
+                const list = responseJSONObj.noticeList
+                const $noticeDiv = $('div.teamMainNoticeDiv').first()
+
+                list.forEach((notice, index) => {
+                    const noticeNo = notice.noticeNo
+                    const noticeTitle = notice.noticeTitle // 이거 제목 누르면 공지사항 게시판에 그 게시물로 이동해야댐!!
+                    const noticeContent = notice.noticeContent
+                    const regDate = notice.regDate
+
+                    const $noticeCloneDiv = $noticeDiv.clone() // 복제본 만들기
+
+                    $noticeCloneDiv.find('span[class=noticeNo]').text(noticeNo)
+                    $noticeCloneDiv.find('a[class=noticeTitle]').text(noticeTitle)
+                    $noticeCloneDiv.find('span[class=noticeContent]').text(noticeContent)
+                    $noticeCloneDiv.find('span[class=regDate]').text(regDate)
+
+                    $noticeDiv.parent().append($noticeCloneDiv) // 복제본 추가
+
+                }) // forEach
+            } // if
+
+        },
+        error: (jqXHR, textStatus) => {
+            alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText)
+            console.log(jqXHR)
+        }
+    }) // ajax
+
+    // 공지 게시글 제목 클릭 시 해당 게시글로 이동
+    // const noticeTitle = $('div.teamMainNoticeDiv>a.noticeTitle')
+    $('div.teamMainNoticeDiv>a.noticeTitle').on('click', (e) => {
+        location.href = `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
+    })
+
+}) // $(() {})
+
+$(document).ready(function () {
     // 팀 가입하기 버튼 클릭 이벤트
-    $('#JoinTeamBtn').click(function() {
+    $('#JoinTeamBtn').click(function () {
         $('#teamJoin').show();  // 팝업창 표시
     });
 
     // 가입요청 버튼 클릭 이벤트
-    $('#closeJoinTeamBtn').click(function() {
+    $('#closeJoinTeamBtn').click(function () {
         $('#poteamJoinpUp').hide();  // 팝업창 숨김
         // 추가적인 로직 작성하기. (서버로 데이터 전송할거)
     });
-
-});
+})

@@ -8,14 +8,18 @@ td {
     margin: 0 auto; 
 }
 
-.Calendar>thead>tr:first-child>td { font-weight: bold; }
+.Calendar>thead>tr:first-child>td {
+    font-weight: bold; 
+}
 
 .Calendar>thead>tr:last-child>td {
     background-color: gray;
     color: white;
 }        
 
-.pastDay{ background-color: lightgray; }
+.pastDay{ 
+    background-color: lightgray; 
+}
 
 .today{            
     background-color: #FFCA64;            
