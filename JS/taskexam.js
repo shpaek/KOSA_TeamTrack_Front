@@ -37,6 +37,7 @@ $(() => {
       } else if (responseJSONObj.status == 1) {
         const $originObj = $('div.answercontent')
         const cnt = responseJSONObj.answerCnt
+        localStorage.setItem('answerCnt', cnt)
         for (var i = 1; i <= cnt; i++) {
           const $divObj = $("<div>")
           const $inputElement1 = $("<input>");
@@ -213,16 +214,53 @@ $(() => {
   })
 
   $('form.taskexambox>button').click((e) => {
-     
+
+    e.preventDefault();
+
+    const cnt = localStorage.getItem('answerCnt')
+    //alert(cnt)
+    var answerlist = []
+    for (var i = 1; i <= cnt; i++) {
+      $('input[name="a' + i + '"]:checked').each(function () {
+        answerlist.push($(this).val());
+      });
+    }
+
     $.ajax({
       xhrFields: {
         withCredentials: true
       },
-      url: `${backURL}/taskdownload`,
+      url: `${backURL}/submittask`,
       method: 'get',
-      data: `taskNo=${taskNo}`,
+      data: `taskNo=${taskNo}&answerlist=${answerlist}&answerCnt=${cnt}`,
       success: (responseJSONObj) => {
+        if (responseJSONObj.status == 0) {
+          Swal.fire({
+            icon: 'warning',
+            text: responseJSONObj.msg
+          }).then((result) => {
+            if (result.isConfirmed) history(-1)
+          })
 
+        } else if (responseJSONObj.status == 1) {
+          Swal.fire({
+            icon: 'success',
+            text: responseJSONObj.msg
+          }).then((result) => {
+            if (result.isConfirmed) location.href = './taskboard.html'
+          })
+
+        }
+      } ,
+      error: () => {
+        e.preventDefault()
+
+        Swal.fire({
+          icon: 'error',
+          text: '연결에 실패하였습니다'
+        }).then((result) => {
+          if (result.isConfirmed) location.href = './taskboard.html'
+        })
       }
     })
 
