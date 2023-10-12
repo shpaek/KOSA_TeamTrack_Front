@@ -106,13 +106,6 @@ $(()=>{
         })
         return false
     })
-    
-
-    // ---- 회원 탈퇴하기 ----
-
-    $('div.infomenu>a').click(()=>{
-        location.href=`${frontURL}/deleteaccount.html`
-    })
 
 
 
