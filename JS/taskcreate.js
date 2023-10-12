@@ -12,7 +12,6 @@ function ajaxHandler(method, u, target) {
 }
 const backURL = 'http://localhost:8888/KOSA_Project2'
 $(() => {
-
   const loginedId = localStorage.getItem("loginedId");
   const taskNo = localStorage.getItem("taskNo")
   // alert(loginedId+", "+taskNo)
@@ -218,7 +217,6 @@ $(() => {
   $('button.createbutton').click((e) => {
 
     e.preventDefault();
-    Swal.close();
 
     const title = $('div.tasktitle>input[type=text]').val();
     const answercnt = $('div.answercnt>input[type=number]').val();
@@ -253,7 +251,13 @@ $(() => {
       processData: false, //파일첨부용 프로퍼티
       success: (responseJSONObj) => {
         // e.preventDefault()
-        Swal.close();
+       
+        // alert(responseJSONObj.status + ":" + responseJSONObj.msg)
+        // window.open()
+        // location.replace('./taskboard.html')
+        // console.log(location)
+        
+        // location.href='./taskboard.html'
         if (responseJSONObj.status == 0) {
           Swal.fire({
             icon: 'warning',
@@ -264,13 +268,20 @@ $(() => {
 
         } else if (responseJSONObj.status == 1) {
           // alert(responseJSONObj.msg)
-          location.href = './taskboard.html'
+          //location.href = './taskboard.html'
+          
+          Swal.fire({
+            icon: 'success',
+            text: responseJSONObj.msg
+          }).then((result) => {
+            if (result.isConfirmed) location.href = './taskboard.html'
+          })
 
         }
 
       },
       error: () => {
-        //e.preventDefault()
+        e.preventDefault()
 
         Swal.fire({
           icon: 'error',
