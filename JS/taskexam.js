@@ -190,6 +190,28 @@ $(() => {
     e.preventDefault()
   })
 
+  $('button.taskfiledown').click(() => {
+    const $file = $('div.taskinfo>a')
+
+    $.ajax({
+        xhrFields: {
+            withCredentials: true
+        },
+        url: `${backURL}/taskdownload`,
+        method: 'get',
+        data: `taskNo=${taskNo}`,
+        success: (response) => {
+            location.href = 'http://localhost:8888/KOSA_Project2/taskdownload?taskNo=' + taskNo
+        }, 
+        error: () => {
+            Swal.fire({
+                icon: 'error',
+                text: '다운로드에 실패하였습니다'
+            })
+        }
+    })
+})
+
   $('form.taskexambox>button').click((e)=>{
     
   })
