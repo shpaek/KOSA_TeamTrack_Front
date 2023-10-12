@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TeamTrack!!</title>
+
+    <link href="../images/favicon.ico" rel="icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
+    <link rel="stylesheet" href="../CSS/taskboard.css">
+    <link rel="stylesheet" href="../CSS/taskreview.css">
+
+    <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 JS 스크립트 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="../JS/taskreview.js"></script>
+
+    <!-- font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="mainContainer">
+
+        <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 프로필 -->
+            <div class="teamProfile">
+                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <p class="teamProfileEdit">편집</p>
+            </div>
+
+            <!-- 팀 이름 -->
+            <p class="teamName">팀명: 셍나</p>
+
+
+
+            <!-- 메뉴 탭 -->
+            <ul class="nonHiddenTab">
+                
+            </ul>
+        </nav>
+
+        <!-- 컨텐츠 영역 -->
+        <section class="section">
+
+            <div class="taskreviewbox">
+                <div class="bigtext"><h1>과제를 평가해주세요</h1></div>
+                <div class="smalltext">미평가 시 평가가 5점으로 진행됩니다</div>
+                <div class="numtext"><span class="s1">1️⃣</span> <span class="s2">2️⃣</span> <span class="s3">3️⃣</span> <span class="s4">4️⃣</span> <span class="s5">5️⃣</span></div>
+            </div>
+
+        </section>
+
+        <!-- 푸터 -->
+        <footer>
+            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html

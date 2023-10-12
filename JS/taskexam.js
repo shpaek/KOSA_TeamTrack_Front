@@ -247,7 +247,7 @@ $(() => {
             icon: 'success',
             text: responseJSONObj.msg
           }).then((result) => {
-            if (result.isConfirmed) location.href = './taskboard.html'
+            if (result.isConfirmed) location.href = './taskreview.html'
           })
 
         }
@@ -259,7 +259,7 @@ $(() => {
           icon: 'error',
           text: '연결에 실패하였습니다'
         }).then((result) => {
-          if (result.isConfirmed) location.href = './taskboard.html'
+          if (result.isConfirmed) history(-1)
         })
       }
     })
