@@ -19,8 +19,9 @@
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <!-- JavaScript -->
-    <script src="../JS/TeamPage/teamMain.js"></script>
+        <!-- JavaScript -->
+        <script src="../JS/TeamPage/teamMain.js"></script>
+        <script src="../JS/MainPage/teamsearch.js"></script>
 
     <!-- font -->
     <style>
@@ -33,9 +34,13 @@
         <header>
             <!-- 검색창 -->
             <div class="searchBar">
-                <input type="text" placeholder="검색을 하삼">
-                <img class="searchIcon" src="../images/search.png" alt="searchIcon">
-            </div>
+                <input
+                  type="text"
+                  placeholder="검색을 하삼"
+                  id="mainsearch"
+                />
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon"/>
+              </div>
         </header>
 
         <!-- 사이드 메뉴바 -->

@@ -23,7 +23,7 @@
     <!-- JavaScript -->
     <script src="../JS/TeamPage/teamMain.js"></script>
     <script src="../JS/TeamPage/teamAttendance.js"></script>
-    
+
     <!-- Font -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -77,49 +77,33 @@
                 <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
             </ul>
         </nav>
-        
+
         <!-- 컨텐츠 영역 -->
         <section class="section">
 
-            <!-- 출석부 캘린더 -->
-            <div class="teamAttendence">
-                <table class="teamCalendar">
-                    <thead>
-                        <tr>
-                            <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
-                            <td colspan="5">
-                                <span id="calYear"></span>년
-                                <span id="calMonth"></span>월
-                            </td>
-                            <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
-                        </tr>
-                        <tr>
-                            <td>일</td>
-                            <td>월</td>
-                            <td>화</td>
-                            <td>수</td>
-                            <td>목</td>
-                            <td>금</td>
-                            <td>토</td>
-                        </tr>
-                    </thead>
-        
-                    <tbody>
-                    </tbody>
-                </table>
+            <!-- 출석부 -->
+            <div class="attendanceDiv">
+                <p class="attendanceP">출석부</p>
+
+                <div class="attendance1">
+                    <button class="attendanceBtn" type="submit">출석하기</button>
+                </div>
+
+                <p class="attendanceList">출석내역</p>
+                <p class="notice">출석내역은 최대 20개 보여집니다.</p>
+                <div class="attendance2">
+                    <div class="attendanceCheck"></div>
+                </div>
             </div>
 
         </section>
-        
+
         <!-- 푸터 -->
         <footer>
             <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
         </footer>
 
     </div>
-
-    <!-- 출석부 JS -->
-    <!-- <script src="../JS/TeamPage/teamAttendance.js"></script> -->
 
 </body>
 

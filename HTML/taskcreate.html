@@ -1,113 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>TeamTrack!!</title>
+    <title>TeamTrack!!</title>
 
-        <link href="../images/favicon.ico" rel="icon">
+    <link href="../images/favicon.ico" rel="icon">
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
-        <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
-        <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
-        <link rel="stylesheet" href="../CSS/taskboard.css">
-        <link rel="stylesheet" href="../CSS/taskcreate.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
+    <link rel="stylesheet" href="../CSS/taskboard.css">
+    <link rel="stylesheet" href="../CSS/taskcreate.css">
 
-        <!-- alert api -->
-        <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4@4/bootstrap-4.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-        <link rel="stylesheet" href="@sweetalert2/themes/bootstrap-4/bootstrap-4.css">
-        <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+    <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
-        <!-- ajax -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- SweetAlert2 JS 스크립트 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-        <!-- JavaScript -->
-        <script src="../JS/taskcreate.js"></script>
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-        <!-- font -->
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-        </style>
-    </head>
+    <!-- JavaScript -->
+    <script src="../JS/taskcreate.js"></script>
 
-    <body>
-        <div id="mainContainer">
+    <!-- font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
 
-            <!-- 사이드 메뉴바 -->
-            <nav>
-                <!-- 사이트 로고 -->
-                <a href="#" class="logo">
-                    <img class="logo" src="../images/logoCut.png" alt="logo">
-                </a>
+<body>
+    <div id="mainContainer">
 
-                <!-- 팀 프로필 -->
-                <div class="teamProfile">
-                    <img class="teamProfileImg" src='#' alt="teamProfile">
-                    <p class="teamProfileEdit">편집</p>
-                </div>
+        <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="#" class="logo">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
 
-                <!-- 팀 이름 -->
-                <p class="teamName">팀명: 셍나</p>
+            <!-- 팀 프로필 -->
+            <div class="teamProfile">
+                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <p class="teamProfileEdit">편집</p>
+            </div>
 
-                <!-- 메뉴 탭 -->
-                <ul class="nonHiddenTab">
-                    <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;⬅️&nbsp;&nbsp;팀 메인으로</a></li>
+            <!-- 팀 이름 -->
+            <p class="teamName">팀명: 셍나</p>
+
+            <!-- 메뉴 탭 -->
+            <ul class="nonHiddenTab">
+                <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;⬅️&nbsp;&nbsp;팀 메인으로</a></li>
+            </ul>
+        </nav>
+
+        <!-- 컨텐츠 영역 -->
+        <section class="section">
+
+            <!--과제 리스트 메뉴바-->
+            <div class="taskboardmenu">
+                <ul>
+                    <li><a href="#" class="maintask">홈</a></li>|
+                    <li><a href="#" class="alltask">전체 과제</a></li>|
+                    <li><a href="#" class="completetask">완료한 과제</a></li>|
+                    <li><a href="#" class="mytask">내 과제</a></li>
                 </ul>
-            </nav>
-            
-            <!-- 컨텐츠 영역 -->
-            <section class="section">
+            </div>
 
-                 <!--과제 리스트 메뉴바-->
-                 <div class="taskboardmenu">
-                    <ul>
-                        <li><a href="#" class="maintask">홈</a></li>|
-                        <li><a href="#" class="alltask">전체 과제</a></li>|
-                        <li><a href="#" class="completetask">완료한 과제</a></li>|
-                        <li><a href="#" class="mytask">내 과제</a></li>
-                    </ul>
+            <div class="taskcreatewarning">⚠️ 과제 생성을 누르지 않고 페이지 이동 시 출제 및 저장이 되지 않습니다.</div>
+            <form class="taskcreatebox" enctype="multipart/form-data">
+                <br><br>
+                <div class="tasktitle">
+                    <input type="text" id="title" name="title" placeholder="과제 타이틀" required>
                 </div>
-                
-                <div class="taskcreatewarning">🚨 과제 생성을 누르지 않고 페이지 이동 시 출제 및 저장이 되지 않습니다.</div>
-                <form class="taskcreatebox">
-                    <br><br>
-                    <div class="tasktitle">
-                        <input type="text" id="title" name="title" placeholder="과제 타이틀" required>
-                    </div>
-                    <br><br>
-                    <hr>
-                    <br><br>
-                    <div class="taskinfo">
-                        📁 과제 첨부&nbsp;&nbsp;<input type="file" name="taskfile" required>
-                    </div>
-                    <br><br>
-                    <div class="taskanswer">
-                        <div class="answercnt">답 개수 : <input type="number" name="cnt" required>&nbsp;&nbsp;<button class="answerset" type="button">설정</button></div>
-                        <br>
-                        <div class="answer"></div>
-                    </div>
-                    <br><br>
-                    <button class="exitbutton" type="button">생성 취소</button>&nbsp;
-                    <button class="createbutton">과제 생성</button><br>
-                    <br><br>
-                </form>
+                <br><br>
+                <hr>
+                <br><br>
+                <div class="taskinfo">
+                    📁 과제 첨부&nbsp;&nbsp;<input type="file" name="taskfile" multiple required>
+                </div>
+                <br><br>
+                <div class="taskanswer">
+                    <div class="answercnt">답 개수 : <input type="number" name="cnt" required>&nbsp;&nbsp;<button
+                            class="answerset" type="button">설정</button></div>
+                    <br>
+                    <div class="answer"></div>
+                </div>
+                <br><br>
+                <button class="exitbutton" type="button">생성 취소</button>&nbsp;
+                <button class="createbutton">과제 생성</button><br>
+                <br><br>
+            </form>
 
-            </section>
+        </section>
 
-            
-            
-            <!-- 푸터 -->
-            <footer>
-                <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
-            </footer>
 
-        </div>
 
-    </body>
+        <!-- 푸터 -->
+        <footer>
+            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+        </footer>
+
+    </div>
+
+</body>
 
 </html>
