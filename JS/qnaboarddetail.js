@@ -118,7 +118,7 @@ $(() => {
         }
         return false
     })
-
+  
     // =================== 댓글 작성 버튼 클릭했을 때 할 일 ===================
     const $formObj = $('form.commentwrite')
     const urlParams = new URL(location.href).searchParams
