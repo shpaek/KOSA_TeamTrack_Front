@@ -75,13 +75,16 @@ $(()=> {
                 location.href='./taskboard.html'
                 break
             case 'alltask':
-                location.href='./taskall.html'
+                localStorage.setItem("allcp", 1)
+                location.href='./taskall.html?currentPage='+1
                 break
             case 'completetask': 
-                location.href='./taskcomplete.html'
+                localStorage.setItem("completecp", 1)
+                location.href='./taskcomplete.html?currentPage='+1
                 break
             case 'mytask':
-                location.href='./taskmy.html'
+                localStorage.setItem("mycp", 1)
+                location.href='./taskmy.html?currentPage='+1
                 break
         }
         e.preventDefault()
