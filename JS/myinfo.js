@@ -4,6 +4,28 @@ $(()=>{
 
     var status = 1
 
+    function ajaxHandler(url){
+        $.ajax({
+            xhrFields: {
+                responseType: "blob",
+            },
+            url: url,
+            success: (responseData)=>{
+                console.log(responseData)
+                console.log(responseData.URL)
+                if(responseData.size > 0){
+                    const imgurl = URL.createObjectURL(responseData)
+                    $('form.imgbox>img').attr('src', imgurl)
+                }
+            },
+            error: (jqxhr)=>{
+                
+            }
+        })
+    }
+    
+    ajaxHandler(`${backURL}/userprofiledownload`)
+
     $.ajax({
         url: backURL+'/myinfo',
         method : 'get',
@@ -14,7 +36,7 @@ $(()=>{
             const birthday = responseJSONObj.birthday
             const phone = responseJSONObj.phone
             const email = responseJSONObj.email
-                
+            
             $('form.info>label>input[name=id]').attr('value',id);
             $('form.nicknamebox>label>input[name=nickname]').attr('value',nickname);
             $('form.info>label>input[name=name]').attr('value',name);
@@ -26,6 +48,34 @@ $(()=>{
             alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
             console.log(jqXHR)
         }
+    })
+
+    $('form.imgbox').submit((e)=>{
+        const fd = new FormData(e.target)
+        
+        $.ajax({
+            xhrFields:{
+                withCredentials : true
+            },
+            url: `${backURL}/uploaduserprofile`,
+            method : 'post',
+            contentType: false, //파일첨부용 프로퍼티
+            processData : false, //파일첨부용 프로퍼티
+            data : fd,
+            success : (responseJSONObj)=>{
+                console.log(responseJSONObj)
+                if(responseJSONObj.status==1){
+                    alert(responseJSONObj.msg)
+                    location.href=`${frontURL}/myinfo.html`
+                }else{
+                    alert(responseJSONObj.msg)
+                }
+            },
+            error: (jqxhr)=>{
+                alert(jqxhr.status)
+            }
+        })
+        return false
     })
 
 
