@@ -1,7 +1,7 @@
 const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
 const frontURL = 'http://localhost:5500/HTML'
 // const teamNo = location.search.substring(1).split('=')[1]
-// const teamNo = 9999;
+const teamNo = 9999;
 // const id = 'psh2023';
 
 function ajaxHandler(method, u, target) {
@@ -56,12 +56,19 @@ $(() => {
                 ajaxHandler('GET', '#', $sectionObj)
                 break;
 
+<<<<<<< HEAD
+            // 이 아래로는 memStatus = 1이어야 댐
+            case 'manageTeamProperties':
+                ajaxHandler('GET', '#', $sectionObj)
+                break;
+=======
                 // 이 아래로는 memStatus = 1이어야 댐
                 case 'manageTeamProperties':
                     const urlParams = new URL(location.href).searchParams;
-                    // const teamNo = urlParams.get('teamNo');
+                    const teamNo = urlParams.get('teamNo');
                     location.href = './teammanageproperties.html?teamNo='+teamNo
                     break;
+>>>>>>> origin/dev
 
             case 'manageTeamCurrentMember':
                 location.href = './teamManageCurrentMember.html'

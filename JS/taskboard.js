@@ -36,6 +36,8 @@ $(()=> {
                 const p = element.title
                 const q = element.nickname
                 const r = element.enddate
+                const no=element.taskNo
+                $copyTrObj.data('taskNo', no);
                 // console.log(q)
 
                 const $nicknameTdObj = $('<td>')
@@ -73,13 +75,16 @@ $(()=> {
                 location.href='./taskboard.html'
                 break
             case 'alltask':
-                location.href='./taskall.html'
+                localStorage.setItem("allcp", 1)
+                location.href='./taskall.html?currentPage='+1
                 break
             case 'completetask': 
-                location.href='./taskcomplete.html'
+                localStorage.setItem("completecp", 1)
+                location.href='./taskcomplete.html?currentPage='+1
                 break
             case 'mytask':
-                location.href='./taskmy.html'
+                localStorage.setItem("mycp", 1)
+                location.href='./taskmy.html?currentPage='+1
                 break
         }
         e.preventDefault()
@@ -110,6 +115,8 @@ $(()=> {
     })
 
     $('section.taskboard>div.board>div.content>table').on('click', 'tbody tr.maintask', function() {
-        location.href='./taskexam.html'
+        const taskNo = $(this).data('taskNo')
+        localStorage.setItem("taskNo", taskNo)
+        location.href='./taskexam.html?taskNo='+taskNo
     })
 })
