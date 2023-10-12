@@ -16,7 +16,6 @@ function ajaxHandler(method, u, target) {
     }
 }
 
-
 $(() => {
     console.log("Document is ready!"); // 페이지 로딩 확인
 
@@ -48,7 +47,7 @@ $(() => {
                     $memberDiv.parent().append($memberCloneDiv);
                 });
             } else {
-                console.log("teamInfo not found!"); // teamInfo 객체 누락 확인
+                console.log("teamInfo not found!");
             }
         },
         error: (jqXHR, textStatus) => {
