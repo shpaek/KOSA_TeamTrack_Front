@@ -1,0 +1,78 @@
+/* 승인 대기 목록 영역 */
+.approvalDiv {
+    font-family: 'Noto Sans KR', sans-serif;
+
+    margin: 20px;
+    padding: 20px;
+
+    width: 90%;
+
+    border-radius: 5px;
+
+    background-color: #f9f9f9;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 승인 대기자 */
+.approvalP {
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* 멤버 원본 */
+.waitList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+
+    border: 2px solid black;
+    border-radius: 50px;
+
+    width: 60%;
+    height: 40px;
+}
+
+/* 멤버 정보 출력 */
+.customerInfo {
+    display: flex;
+    align-items: center;
+    width: 93%;  /* 전체 너비를 사용하도록 설정 */
+
+    margin-left: 20px;
+}
+
+.customerId, .customerNickname {
+    margin-right: 20px;
+}
+
+.btnLocation {
+    margin-left: auto;  /* 버튼을 오른쪽 끝으로 이동 */
+}
+
+.approveBtn {
+    margin-right: 10px;
+}
+
+.approveBtn, .rejectBtn {
+    background-color: #011837;
+    color: white;
+
+    height: 100%;
+
+    font-size: 14px;
+
+    border: 1px solid #011837;
+    border-radius: 50px;
+}
+
+.approveBtn:hover, .rejectBtn:hover {
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

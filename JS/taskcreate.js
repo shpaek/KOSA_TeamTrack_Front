@@ -12,7 +12,6 @@ function ajaxHandler(method, u, target) {
 }
 const backURL = 'http://localhost:8888/KOSA_Project2'
 $(() => {
-
   const loginedId = localStorage.getItem("loginedId");
   const taskNo = localStorage.getItem("taskNo")
   // alert(loginedId+", "+taskNo)
@@ -216,56 +215,85 @@ $(() => {
 
 
   $('button.createbutton').click((e) => {
-    const title = $('div.tasktitle>input[type=text]').val()
-    const answercnt = $('div.answercnt>input[type=number]').val()
-    var answerlist = []
 
+    e.preventDefault();
+
+    const title = $('div.tasktitle>input[type=text]').val();
+    const answercnt = $('div.answercnt>input[type=number]').val();
+    const fd = new FormData();
+    const files = $('input[type="file"]')[0].files;
+
+    for (var i = 0; i < files.length; i++) {
+      fd.append('taskfile', files[i]);
+    }
+
+    // 나머지 데이터 추가
+    fd.append('title', title);
+    fd.append('taskNo', taskNo);
+
+    var answerlist = []
     for (var cnt = 1; cnt <= answercnt; cnt++) {
       $('input[name="a' + cnt + '"]:checked').each(function () {
         answerlist.push($(this).val());
       });
     }
 
+    fd.append('answerlist', answerlist)
+
     $.ajax({
       xhrFields: {
         withCredentials: true
       },
       url: `${backURL}/settask`,
-      method: 'get',
-      data: `title=${title}&answerList=${answerlist}&taskNo=${taskNo}`,
+      method: 'post',
+      data: fd,
+      contentType: false, //파일첨부용 프로퍼티
+      processData: false, //파일첨부용 프로퍼티
       success: (responseJSONObj) => {
-        e.preventDefault()
-
-        if(responseJSONObj.status==0) {
+        // e.preventDefault()
+       
+        // alert(responseJSONObj.status + ":" + responseJSONObj.msg)
+        // window.open()
+        // location.replace('./taskboard.html')
+        // console.log(location)
+        
+        // location.href='./taskboard.html'
+        if (responseJSONObj.status == 0) {
           Swal.fire({
             icon: 'warning',
             text: responseJSONObj.msg
-          }).then((result)=>{
-            if(result.isConfirmed) history(-1)
+          }).then((result) => {
+            if (result.isConfirmed) history(-1)
           })
-        } else if(responseJSONObj.status==1) {
+
+        } else if (responseJSONObj.status == 1) {
+          // alert(responseJSONObj.msg)
+          //location.href = './taskboard.html'
+          
           Swal.fire({
             icon: 'success',
             text: responseJSONObj.msg
-          }).then((result)=>{
-            if(result.isConfirmed) location.href='./taskboard.html'
+          }).then((result) => {
+            if (result.isConfirmed) location.href = './taskboard.html'
           })
+
         }
-        
+
       },
       error: () => {
         e.preventDefault()
+
         Swal.fire({
           icon: 'error',
-          text: responseJSONObj.msg
-        }).then((result)=>{
-          if(result.isConfirmed) location.href='./taskboard.html'
+          text: '연결에 실패하였습니다'
+        }).then((result) => {
+          if (result.isConfirmed) location.href = './taskboard.html'
         })
 
       }
 
     })
-    
+
     return false
 
 

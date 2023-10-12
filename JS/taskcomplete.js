@@ -1,10 +1,12 @@
 $(() => {
+    const cp=localStorage.getItem('completecp')
     $.ajax({
         xhrFields: {
             withCredentials: true
         },
         url: `${backURL}/completetasklist`,
         method: 'get',
+        data: `currentPage=${cp}`,
         success: (responseJSONObj) => {
             if(responseJSONObj.msg != undefined){
                 alert('과제가 존재하지 않습니다.')
@@ -15,6 +17,11 @@ $(() => {
             $originTrObj.addClass('completetask')
             const $tbodyObj = $('div.completeboard>div.completecontent>table>tbody')
             const $completetasklist = responseJSONObj.list
+
+            const $pageObj=$('div.taskpage')
+            $pageObj.empty()
+            const start=responseJSONObj.startPage
+            const end=responseJSONObj.endPage
             
             $completetasklist.forEach(element => {
                 const $copyTrObj = $originTrObj.clone()
@@ -55,6 +62,22 @@ $(() => {
             
             $tbodyObj.append($copyTrObj)
 
+            if(start>1) {
+                let page=`<span class="pg${start-1}">이전</span>&nbsp;&nbsp;`
+                $pageObj.html($pageObj.html()+page)
+            }
+            
+            $pageObj.html($pageObj.html()+'<span class="pagebar">|</span>')
+            for(let i=start;i<=end;i++) {
+                let page=`<span class="pg${i}">&nbsp;&nbsp;${i}&nbsp;&nbsp;</span><span class="pagebar">|</span>`
+                $pageObj.html($pageObj.html()+page)
+            }
+
+            if(end!=responseJSONObj.totalPage) {
+                let page=`&nbsp;&nbsp;<span class="pg${end+1}">다음</span>`
+                $pageObj.html($pageObj.html()+page)
+            }
+
         }
     })
 
@@ -63,4 +86,12 @@ $(() => {
         localStorage.setItem("taskNo", taskNo)
         location.href='./taskview.html?taskNo='+taskNo
     });
+
+    $('div.taskpage').click((e)=>{
+        const pg=$(e.target).attr('class')
+        const currentPage=pg.substr(2)
+        if(currentPage=='gebar') return false
+        localStorage.setItem('completecp', currentPage)
+        location.href='./taskcomplete.html?currentPage='+currentPage
+    })
 })
