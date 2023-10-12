@@ -103,8 +103,10 @@ $(() => {
         })
        
     }
-
-    data = location.search.substr(1)
+    const param = new URL(location.href).searchParams.get("data")
+    data = "data="+param
+    //data = location.search.substr(1)
+    //alert(data)
     ajaxSearchHandler(1, data)
     $('div.pagegroup').on('click', 'span', (e) => {
         //alert($(e.target).html() + ": " + $(e.target).attr('class') + "페이지가 클릭되었습니다")

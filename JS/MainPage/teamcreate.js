@@ -99,12 +99,13 @@ $(() => {
         const teamInfoValue = $('textarea[name=teamInfo]').val()
         //alert("ajax-3" + teamInfoValue)
         
-        const data = `gubun=create&leaderId=psh2023
+        const loginedId = $.localStorage('logiendId');
+        const data = `gubun=create&leaderId=${loginedId}
                     &teamName=${teamNameValue}&onOffLine=${onOffLineValue}
                     &maxMember=${maxMemberValue}&studyType=${studyTypeValue}&startDate=${startDateValue}
                     &endDate=${endDateValue}&hashtag1=${hashtag1Value}
-                    &hashtag2=${hashtag2Value}&hashtag3=${hashtag3Value}
-                    &hashtag4=${hashtag5Value}&briefInfo=${briefInfoValue}
+                    &hashtag2=${hashtag2Value}&hashtag3=${hashtag3Value}&hashtag4=${hashtag4Value}
+                    &hashtag5=${hashtag5Value}&briefInfo=${briefInfoValue}
                     &teamInfo=${teamInfoValue}`
         //alert("ajax-4" + data)
 
@@ -138,7 +139,7 @@ $(() => {
 
     $close.click((e) => {
        //location.href = './main.html'
-       location.href = "javascript:history.go(-1)"
+       location.href = "./main.html"
     })
 
     

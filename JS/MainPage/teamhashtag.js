@@ -103,15 +103,18 @@ $(() => {
         })
        
     }
-    data = decodeURI(location.search).substr(9)
-    ajaxSearchHandler(1, "data="+data)
+    const param = new URL(location.href).searchParams.get("data")
+    data = "data="+param.substring(1)
+    //alert(param)
+    //data = decodeURI(location.search).substr(9)
+    ajaxSearchHandler(1, data)
     
     //ajaxSearchHandler(1, data)
     $('div.pagegroup').on('click', 'span', (e) => {
         //alert($(e.target).html() + ": " + $(e.target).attr('class') + "페이지가 클릭되었습니다")
         const pg = $(e.target).attr('class')
         const currentPage = pg.substr(2)
-        ajaxSearchHandler(currentPage, "data=#"+data)
+        ajaxSearchHandler(currentPage, data)
     })
 
 
