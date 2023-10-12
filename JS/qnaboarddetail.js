@@ -18,9 +18,10 @@ $(() => {
 
             // HTML 테이블의 각 td 엘리먼트에 데이터를 추가
             $('#title').text(data.title);
-            $('#regadte').text(data.regdate);
+            $('#regdate').text(data.regdate);
             $('#id').text(data.id);
             $('#content').text(data.content);
+
         },
         error: (error) => {
             console.error("Error:", error);
@@ -28,7 +29,7 @@ $(() => {
     });
 
     
-    //---- 수정버튼 클릭 시 발생 이벤트 ----
+    // //---- 수정버튼 클릭 시 발생 이벤트 ----
     $('div.detailbuttons>button.edit').on('click',(e)=>{
         $('div.boarddetail').hide()
         $('div.editdetail').show()
@@ -88,19 +89,22 @@ $(() => {
             })
         })
     
-
-    //---- 삭제버튼 클릭 시 발생 이벤트 ----
-    $('div.noticedetail>div.detailbuttons>button.remove').on('click',(e)=>{
+    //---- 삭제버튼 클릭 시 발생 이벤트 ---- 
+    $('div.detailbuttons>button.remove').on('click',(e)=>{
         var result = confirm("삭제하시겠습니까?")
+
         if(result == true){
             $.ajax({
-                url: backURL+'/deletenotice',
+                xhrFields:{
+                    withCredentials : true
+                    },
+                url: 'http://127.0.0.1:8888/KOSA/qnaboarddelete',
                 method : 'get',
-                data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
+                data : `teamNo=${teamNo}&qnaNo=${qnaNo}`,
                 success: (responseJSONObj)=>{
                     if(responseJSONObj.status==1){
                         alert(responseJSONObj.msg)
-                        location.href = `${frontURL}/notice.html?teamNo=${teamNo}`
+                        location.href = `http://127.0.0.1:5500/HTML/qnaboard.html?teamNo=${teamNo}`
                     }else{
                         alert(responseJSONObj.msg)
                     }
@@ -115,5 +119,187 @@ $(() => {
         }
         return false
     })
+
+    // =================== 댓글 작성 버튼 클릭했을 때 할 일 ===================
+    const $formObj = $('form.commentwrite')
+    const urlParams = new URL(location.href).searchParams
+
+    $formObj.submit((e) => {
+        e.preventDefault(); // 기본 제출 동작을 중지합니다.
+
+        alert("in submit")
+        const teamNo = urlParams.get("teamNo");
+        const qnaNo = urlParams.get("qnaNo");
+        // const content = document.getElementById("content");
+        const content = $("#comment").val();
+        // session 아이디를 줘야함
+        // const id = '현재 사용자 정보'
+        const id = 'psh2023'
+
+        console.log(teamNo)
+        console.log(qnaNo)
+        console.log(content)
+
+        $.ajax({
+            xhrFields:{
+                withCredentials : true
+            },
+            url: `http://127.0.0.1:8888/KOSA/qnaboardcommentcreate`,
+            method : 'post',
+            data : {
+                teamNo: teamNo,
+                qnaNo: qnaNo,
+                content: content,
+                id: id
+            },
+            // data : $form.serialize(),
+            success : (responseJSONObj)=>{
+
+            },
+            error: (jqxhr)=>{
+                alert(jqxhr.status)
+            }
+        })
+        return false
+    })
+
+  
+// -------------------- 댓글 불러오기 ---------------------
+$.ajax({
+    xhrFields: {
+        withCredentials: true
+    },
+    url: `http://127.0.0.1:8888/KOSA/qnaboardcomment?teamNo=${teamNo}&qnaNo=${qnaNo}`,
+    method: 'get',
+    success: (responseJSONObj1) => {
+        if(responseJSONObj1.status == 0){
+            alert(responseJSONObj1.msg)
+            return;
+        } else {
+            const list = responseJSONObj1.list; // 반환된 JSON 데이터 -> responseJsonObj1은 사실 pageGroup타입의 qnaBoardCommentDTO임
+    
+            console.log(list);
+            
+                   // HTML 테이블의 tbody를 선택
+            const tableBody = $('#commentList table tbody');
+    
+            // 초기화 - 이전 데이터 삭제
+            tableBody.empty();
+    
+            for (const comments of list) {
+    
+                if(comments.commentGroup == null ) {
+                    //댓글
+                    // 코멘트 행(row) 생성
+                    const row = $('<tr>').addClass('comment-row');
+                
+                    // 작성자, 내용, 작성일 셀 생성 및 데이터 할당
+                    const commentNoCol =  $('<td>').addClass('comment-No').text(comments.commentNo);
+                    commentNoCol.hide();
+                    const writerCol = $('<td>').addClass('comment-info').text(comments.teammemberId);
+                    const contentCol = $('<td>').addClass('comment-content').text(comments.content);
+                    const regdateCol = $('<td>').addClass('comment-date').text(comments.regdate);
+                    // const selectButtonCol = $('<td>').addClass('comment-select-button').html('<button>채택</button>');
+                    const selectButtonCol = $('<td>').addClass('comment-select-button')
+        
+                    // 행에 셀 추가
+                    row.append(commentNoCol, writerCol, contentCol, regdateCol, selectButtonCol);
+        
+                    if (comments.pickeddate !== null) {
+                        const selectButton = $('<button>').text('채택됨');
+                        selectButton.prop('disabled', true); // 채택됨 버튼은 클릭 안되도록
+                        selectButtonCol.append(selectButton);
+                    } else {
+                        const selectButton = $('<button>').text('채택');
+                        selectButtonCol.append(selectButton);
+                    } // if-else
+        
+                    // tbody에 행 추가
+                    tableBody.append(row);
+                }else{
+                    //대댓글
+                    const replyRow = $('<tr>').addClass('comment-reply-row');
+                    const commentNoCol =  $('<td>').addClass('comment-No').text(comments.commentNo);
+                    commentNoCol.hide();
+                    const writerCol = $('<td>').addClass('comment-info').html( '<span style="color: #3498db;">&#9654;</span> ' + comments.teammemberId);
+                    const contentCol = $('<td>').addClass('comment-content').text(comments.content);
+                    const regdateCol = $('<td>').addClass('comment-date').text(comments.regdate);
+                    const selectButtonCol = $('<td>').addClass('comment-select-button');
+            
+                    replyRow.append(commentNoCol, writerCol, contentCol, regdateCol, selectButtonCol);
+                    tableBody.append(replyRow);
+                    // replyRow.css('background-color', 'lightgray'); // 대댓글 배경색
+            
+                    // 대댓글을 해당 댓글 아래에 추가하려면, commentNoCol를 사용하여 댓글을 찾아야 합니다.
+                    const parentCommentNo = comments.commentGroup;
+                    const parentCommentRow = tableBody.find('.comment-row .comment-No:contains(' + parentCommentNo + ')').closest('tr');
+                    parentCommentRow.after(replyRow);
+    
+                } // inner if-else
+    
+            } // for
+
+        } // if-else
+    },
+    error: (error) => {
+        console.error("Error:", error);
+    }
+});
+
+    // ===================   게시글 작성자가 채택버튼 클릭했을 때 =========================
+    // $('td.comment-select-button button').on('click', (e) => {
+        $('#commentList').on('click', 'button', (e) => {
+
+            const commentButton = $(e.target);
+            // 클릭 되어진 버튼의 행을 포함하는 댓글행을 찾아옴
+            const commentRow = commentButton.closest('tr.comment-row');
+
+            // 상단에 변수를 초기화하기전에 event핸들러로 button이 먼저 작동하도록 위임해서 안먹은거임
+            // 여기 핸들러 내에서 따로 변수를 초기화 해주어야함 ㅠㅠ
+            const teamNo = new URLSearchParams(window.location.search).get('teamNo');
+            const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
+            const commentNo = commentRow.find('.comment-No').text();
+
+            console.log(teamNo);
+            console.log(qnaNo);
+            console.log(commentNo);
+
+        // 현재 사용자가 게시글의 작성자인지 확인
+        // const boardAuthor = commentRow.find('.comment-info').text();
+        // const boardAuthor = data.id;
+        // const currentUser = '현재 사용자'; // 현재 사용자정보 가져와서 게시글 사용자와 비교해야함 ******
+
+        // if (author === currentUser) { ******************
+            // 현재 사용자가 댓글의 작성자인 경우, '/qnaboardcommentpick'로 POST 요청을 보냅니다.
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                url: 'http://127.0.0.1:8888/KOSA/qnaboardcommentpick',
+                method: 'post',
+                data: {
+                    teamNo: teamNo,
+                    qnaNo: qnaNo,
+                    commentNo: commentNo
+                },
+                success: (responseJSONObj2) => {
+                    console.log(responseJSONObj2)
+                    if(responseJSONObj2.status == 1){
+                        alert(responseJSONObj2.msg)
+                    }else{
+                        alert(responseJSONObj2.msg)
+                    }
+                },
+                error: (error) => {
+                    console.error("에러:", error);
+                }
+            });
+
+        // } else { //***************** 
+ 
+            // alert("작성자만 채택할 수 있습니다.");
+        // }
+        return false;
+    });
 
 });

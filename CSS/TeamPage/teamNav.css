@@ -95,7 +95,7 @@ nav ul li {
 
     font-size: 15px;
 
-    margin: 10px 0px 10px 0px;
+    margin: 3px 0px 3px 0px;
     padding: 10px;
 }
 
@@ -134,7 +134,7 @@ nav ul li > ul {
     
     font-size: 16px;
 
-    top: 0;
+    top: -170px;
     left: 100%; /* 상위 메뉴 항목의 오른쪽 끝에서 시작 */
     
     height: 220px;

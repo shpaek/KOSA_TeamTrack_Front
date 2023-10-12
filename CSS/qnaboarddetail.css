@@ -1,0 +1,58 @@
+.commentlist {
+    background-color: antiquewhite;
+}
+
+/* 댓글 */
+/* 코멘트 스타일 */
+.comment-row {
+    display: flex;
+    align-items: center;
+    width: 800px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-info {
+    flex: 1;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.comment-content {
+    flex: 4;
+    border-left: 1px solid #ddd;
+    padding-left: 10px;
+}
+
+.comment-date {
+    flex: 1;
+    color: #777;
+    text-align: left;
+    border-left: 1px solid #ddd;
+    padding-left: 10px;
+}
+
+.comment-select-button {
+    flex: 1;
+    text-align: center;
+}
+
+.comment-select-button button {
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    /* cursor: pointer; */
+}
+
+/* 대댓글 */
+.comment-reply-row {
+    display: flex;
+    align-items: center;
+    width: 800px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}

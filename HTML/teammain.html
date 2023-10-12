@@ -1,120 +1,141 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>TeamTrack!!</title>
+    <title>TeamTrack!!</title>
 
-        <link href="../images/favicon.ico" rel="icon">
+    <link href="../images/favicon.ico" rel="icon">
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
-        <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
-        <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
-        <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
-        <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
 
-        <!-- ajax -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
         <!-- JavaScript -->
         <script src="../JS/TeamPage/teamMain.js"></script>
+        <script src="../JS/MainPage/teamsearch.js"></script>
 
-        <!-- font -->
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-        </style>
-    </head>
+    <!-- font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
 
-    <body>
-        <div id="mainContainer">
-            <header>
-                <!-- 검색창 -->
-                <div class="searchBar">
-                    <input type="text" placeholder="검색을 하삼">
-                    <img class="searchIcon" src="../images/search.png" alt="searchIcon">
+<body>
+    <div id="mainContainer">
+        <header>
+            <!-- 검색창 -->
+            <div class="searchBar">
+                <input
+                  type="text"
+                  placeholder="검색을 하삼"
+                  id="mainsearch"
+                />
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon"/>
+              </div>
+        </header>
+
+        <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 프로필 -->
+            <div class="teamProfile">
+                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <p class="teamProfileEdit">편집</p>
+            </div>
+
+            <!-- 팀 이름 -->
+            <p class="teamName">팀명: 셍나</p>
+
+            <!-- 메뉴 탭 -->
+            <ul class="nonHiddenTab">
+                <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
+                <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
+                <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
+                <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
+                <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
+                <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
+                <li>
+                    <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
+                    <ul class="hiddenTab">
+                        <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
+                        <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
+                        <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
+                        <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
+                    </ul>
+                </li>
+                <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
+            </ul>
+        </nav>
+
+        <!-- 컨텐츠 영역 -->
+        <section class="section">
+
+            <!-- 팀 조회수 -->
+            <div class="teamViewCnt">
+                <span class="teamCntViewSpan1">팀 조회수: </span>
+                <span class="teamCntViewSpan2"></span>
+            </div>
+
+            <!-- 팀원 목록 -->
+            <div class="teamMemberList">
+                <span class="teamMemberListSpan1">현재 팀 멤버: </span>
+                <span class="teamMemberListSpan2"></span>
+            </div>
+
+            <!-- 팀 소개글 -->
+            <p class="intro1"> &#128587; 팀에 대한 간단한 정보를 확인하세요. </p>
+            <div class="teamMainIntroduction">
+                <div class="teamMainIntroductionDiv">
+                    <p class="teamMainIntroductionP">팀 소개글</p>
                 </div>
-            </header>
+            </div>
 
-            <!-- 사이드 메뉴바 -->
-            <nav>
-                <!-- 사이트 로고 -->
-                <a href="../HTML/main.html">
-                    <img class="logo" src="../images/logoCut.png" alt="logo">
-                </a>
-
-                <!-- 팀 이름 -->
-                <p class="teamName">팀명: 셍나</p>
-
-                <!-- 팀 프로필 -->
-                <div class="teamProfile">
-                    <img class="teamProfileImg" src='#' alt="teamProfile">
-                    <p class="teamProfileEdit">편집</p>
+            <!-- 공지사항 게시판 -->
+            <p class="intro2"> &#128204; 팀의 규칙, 스터디 관련 공지 등 팀에 대한 주요 정보를 확인하세요. </p>
+            <div class="teamMainNotice">
+                <div class="teamMainNoticeDiv">
+                    <span class="noticeNo">공지번호</span>
+                    <a href="#" class="noticeTitle">제목</a>
+                    <span class="noticeContent">내용</span>
+                    <span class="regDate">등록일</span>
                 </div>
+            </div>
 
-                <!-- 메뉴 탭 -->
-                <ul class="nonHiddenTab">
-                    <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
-                    <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
-                    <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
-                    <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
-                    <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
-                    <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
-                    <li>
-                        <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
-                        <ul class="hiddenTab">
-                            <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
-                            <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
-                            <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
-                            <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
-                        </ul>
-                    </li>
-                    <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
-                </ul>
-            </nav>
-            
-            <!-- 컨텐츠 영역 -->
-            <section class="section">
+        </section>
 
-                <!-- 팀 조회수 -->
-                <p class="teamCntView">팀 조회수: </p>
-                
-                <!-- 팀 소개글 -->
-                <p class="intro1"> &#128587; 팀에 대한 간단한 정보를 확인하세요. </p>
-                <div class="teamMainIntroduction">
-                    팀 소개글 끌어오기
-                </div>
+        <aside>
+            <!-- 팀 가입하기 버튼 -->
+            <button id="JoinTeamBtn">팀 가입</button>
 
-                <!-- 공지사항 게시판 -->
-                <p class="intro2"> &#128204; 팀의 규칙, 스터디 관련 공지 등 팀에 대한 주요 정보를 확인하세요. </p>
-                <div class="teamMainNotice">
-                    공지사항 게시판 끌어오기
-                </div>
+            <!-- 팝업 -->
+            <form id="teamJoin" action="/#" method="POST" style="display: none;">
+                <p>&#127881; 팀 가입 &#127881;</p>
+                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!"
+                    required rows="5" cols="50" maxlength="2000"></textarea>
+                <button type="submit" id="requestJoinTeamBtn">가입요청</button>
+            </form>
+        </aside>
 
-            </section>
+        <!-- 푸터 -->
+        <footer>
+            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+        </footer>
 
-            <aside>
-                <!-- 팀 가입하기 버튼 -->
-                <button id="JoinTeamBtn">팀 가입</button>
-            
-                <!-- 팝업 -->
-                <form id="teamJoin" action="/#" method="POST" style="display: none;">
-                    <p>&#127881; 팀 가입 &#127881;</p>
-                    <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!" required rows="5" cols="50" maxlength="2000"></textarea>
-                    <button type="submit" id="requestJoinTeamBtn">가입요청</button>
-                </form>
+    </div>
 
-            </aside>
-            
-            <!-- 푸터 -->
-            <footer>
-                <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
-            </footer>
-
-        </div>
-
-    </body>
+</body>
 
 </html>

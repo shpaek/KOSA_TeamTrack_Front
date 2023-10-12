@@ -4,13 +4,15 @@
         <link rel="stylesheet" href="../css/myinfo.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="../js/myinfo.js"></script> 
+        <script src="../js/myheader.js"></script> 
+        <script src="../js/myinfomenu.js"></script> 
     </head>
 
     <body>
         <header>
             <div class="menu">
                 <a href="#" name="myinfo">회원 정보</a>
-                <a href="#" namd="myteam">마이 팀</a>
+                <a href="#" name="myteam">마이 팀</a>
             </div>
         </header>
         <nav>
@@ -19,8 +21,8 @@
             <div class="myinfo">
                 <div class="infomenu">
                     <ul>
-                        <li>내정보 수정</li>
-                        <li>비밀번호 수정</li>
+                        <li><a href="#" name="editinfo">내정보 수정</a></li>
+                        <li><a href="#" name="editpwd">비밀번호 수정</a></li>
                     </ul>
                     <a href="#">탈퇴하기</a>
                 </div>
@@ -53,5 +55,8 @@
                 <button type="submit">저장</button>
             </form>
         </section>
+        <footer>
+
+        </footer>
     </body>
 </html>
