@@ -83,7 +83,7 @@ $(() => {
     $('div.taskpage').click((e)=>{
         const pg=$(e.target).attr('class')
         const currentPage=pg.substr(2)
-        if(currentPage=='gebar') return false
+        if(currentPage=='gebar' || currentPage=='skpage') return false
         localStorage.setItem('mycp', currentPage)
         location.href='./taskmy.html?currentPage='+currentPage
     })
