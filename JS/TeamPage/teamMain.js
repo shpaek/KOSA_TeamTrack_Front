@@ -58,7 +58,9 @@ $(() => {
 
                 // 이 아래로는 memStatus = 1이어야 댐
                 case 'manageTeamProperties':
-                    ajaxHandler('GET', '#', $sectionObj)
+                    const urlParams = new URL(location.href).searchParams;
+                    const teamNo = urlParams.get('teamNo');
+                    location.href = './teammanageproperties.html?teamNo='+teamNo
                     break;
 
                 case 'manageTeamCurrentMember':
