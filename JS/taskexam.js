@@ -14,7 +14,7 @@ function ajaxHandler(method, u, target) {
 const backURL = 'http://localhost:8888/KOSA_Project2'
 
 $(() => {
-  const taskNo=localStorage.getItem('taskNo')
+  const taskNo = localStorage.getItem('taskNo')
   console.log(taskNo)
 
   $.ajax({
@@ -25,7 +25,7 @@ $(() => {
     method: 'get',
     data: `taskNo=${taskNo}`,
     success: (responseJSONObj) => {
-      if(responseJSONObj.status==0) {
+      if (responseJSONObj.status == 0) {
         Swal.fire({
           text: responseJSONObj.msg,
           icon: 'error'
@@ -34,46 +34,46 @@ $(() => {
             location.href = './taskboard.html'
           }
         })
-      } else if(responseJSONObj.status==1) {
-        const $originObj=$('div.answercontent')
-        const cnt=responseJSONObj.answerCnt
-        for(var i=1;i<=cnt;i++) {
+      } else if (responseJSONObj.status == 1) {
+        const $originObj = $('div.answercontent')
+        const cnt = responseJSONObj.answerCnt
+        for (var i = 1; i <= cnt; i++) {
           const $divObj = $("<div>")
-        const $inputElement1 = $("<input>");
-        const $inputElement2 = $("<input>");
-        const $inputElement3 = $("<input>");
-        const $inputElement4 = $("<input>");
+          const $inputElement1 = $("<input>");
+          const $inputElement2 = $("<input>");
+          const $inputElement3 = $("<input>");
+          const $inputElement4 = $("<input>");
 
-        $inputElement1.attr("type", "radio");
-        $inputElement1.attr("name", "a" + i);
-        $inputElement1.attr("value", "1")
-        $inputElement1.prop('required', true)
-        $inputElement2.attr("type", "radio");
-        $inputElement2.attr("name", "a" + i);
-        $inputElement2.attr("value", "2")
-        $inputElement2.prop('required', true)
-        $inputElement3.attr("type", "radio");
-        $inputElement3.attr("name", "a" + i);
-        $inputElement3.attr("value", "3")
-        $inputElement3.prop('required', true)
-        $inputElement4.attr("type", "radio");
-        $inputElement4.attr("name", "a" + i);
-        $inputElement4.attr("value", "4")
-        $inputElement4.prop('required', true)
+          $inputElement1.attr("type", "radio");
+          $inputElement1.attr("name", "a" + i);
+          $inputElement1.attr("value", "1")
+          $inputElement1.prop('required', true)
+          $inputElement2.attr("type", "radio");
+          $inputElement2.attr("name", "a" + i);
+          $inputElement2.attr("value", "2")
+          $inputElement2.prop('required', true)
+          $inputElement3.attr("type", "radio");
+          $inputElement3.attr("name", "a" + i);
+          $inputElement3.attr("value", "3")
+          $inputElement3.prop('required', true)
+          $inputElement4.attr("type", "radio");
+          $inputElement4.attr("name", "a" + i);
+          $inputElement4.attr("value", "4")
+          $inputElement4.prop('required', true)
 
-        $divObj.append("<br>")
-        $divObj.append("Q" + i + " : ")
-        $divObj.append("1.")
-        $divObj.append($inputElement1)
-        $divObj.append(" 2.")
-        $divObj.append($inputElement2)
-        $divObj.append(" 3.")
-        $divObj.append($inputElement3)
-        $divObj.append(" 4.")
-        $divObj.append($inputElement4)
-        $divObj.append("<br><br>")
+          $divObj.append("<br>")
+          $divObj.append("Q" + i + " : ")
+          $divObj.append("1.")
+          $divObj.append($inputElement1)
+          $divObj.append(" 2.")
+          $divObj.append($inputElement2)
+          $divObj.append(" 3.")
+          $divObj.append($inputElement3)
+          $divObj.append(" 4.")
+          $divObj.append($inputElement4)
+          $divObj.append("<br><br>")
 
-        $originObj.append($divObj)
+          $originObj.append($divObj)
         }
       }
     }
@@ -194,26 +194,38 @@ $(() => {
     const $file = $('div.taskinfo>a')
 
     $.ajax({
-        xhrFields: {
-            withCredentials: true
-        },
-        url: `${backURL}/taskdownload`,
-        method: 'get',
-        data: `taskNo=${taskNo}`,
-        success: (response) => {
-            location.href = 'http://localhost:8888/KOSA_Project2/taskdownload?taskNo=' + taskNo
-        }, 
-        error: () => {
-            Swal.fire({
-                icon: 'error',
-                text: '다운로드에 실패하였습니다'
-            })
-        }
+      xhrFields: {
+        withCredentials: true
+      },
+      url: `${backURL}/taskdownload`,
+      method: 'get',
+      data: `taskNo=${taskNo}`,
+      success: (response) => {
+        location.href = 'http://localhost:8888/KOSA_Project2/taskdownload?taskNo=' + taskNo
+      },
+      error: () => {
+        Swal.fire({
+          icon: 'error',
+          text: '다운로드에 실패하였습니다'
+        })
+      }
     })
-})
+  })
 
-  $('form.taskexambox>button').click((e)=>{
-    
+  $('form.taskexambox>button').click((e) => {
+     
+    $.ajax({
+      xhrFields: {
+        withCredentials: true
+      },
+      url: `${backURL}/taskdownload`,
+      method: 'get',
+      data: `taskNo=${taskNo}`,
+      success: (responseJSONObj) => {
+
+      }
+    })
+
   })
 
 });
