@@ -24,10 +24,10 @@ $(() => {
 
     // 가입 요청 목록 보여주기
     function showReqList(data) {
-        if (data && data.methodMap && data.methodMap.reqList) {
+        if (data && data.reqList) {
             console.log("가입 요청자 정보를 찾았습니다!");
 
-            const list = data.methodMap.reqList
+            const list = data.reqList
             const $waitList = $('div.waitList').first()
 
             list.forEach((info, index) => {
@@ -52,7 +52,7 @@ $(() => {
     } // showReqList()
 
     // 승인하기
-    function approve() {
+    function approve(id) {
         $.ajax({
             url: `http://localhost:8888/KOSA_TeamTrack_Back/teamreqaccept`,
             type: 'GET',
@@ -61,10 +61,10 @@ $(() => {
                 id: id,
                 action: 'reqApprove'
             },
-            success: (responseJSONObj) => {
+            success: function(responseJSONObj) {
                 location.reload(); // 페이지 리로드
             },
-            error: (jqXHR, textStatus) => {
+            error: function(jqXHR, textStatus) {
                 alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText);
                 console.error(jqXHR);
             }
@@ -72,26 +72,38 @@ $(() => {
     }
 
     // 거절하기
-    function reject() {
+    function reject(id) {
         $.ajax({
-            url: `http://localhost:8888/KOSA_TeamTrack_Back/teamselectexaminer`,
+            url: `http://localhost:8888/KOSA_TeamTrack_Back/teamreqaccept`,
             type: 'GET',
             data: {
                 teamNo: teamNo,
                 id: id,
                 action: 'reqReject'
             },
-            success: (responseJSONObj) => {
+            success: function(responseJSONObj) {
                 location.reload(); // 페이지 리로드
             },
-            error: (jqXHR, textStatus) => {
+            error: function(jqXHR, textStatus) {
                 alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText);
                 console.error(jqXHR);
             }
         });
     }
 
+    // 승인 버튼 클릭 이벤트
+    $(document).on('click', '.approveBtn', function() {
+        const id = $(this).parent().siblings('.customerId').text();
+        approve(id);
+    });
+
+    // 거절 버튼 클릭 이벤트
+    $(document).on('click', '.rejectBtn', function() {
+        const id = $(this).parent().siblings('.customerId').text();
+        reject(id);
+    });
+
     // 페이지가 로드될 때 팀원 목록을 가져옵니다.
-    getMemberList();
+    getReqList();
 
 });
