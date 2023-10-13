@@ -60,7 +60,7 @@ $(() => {
             $tbodyObj.append($copyTrObj)
 
             if(start>1) {
-                let page=`<span class="pg${start-1}">이전</span>&nbsp;&nbsp;`
+                let page=`<span class="pg${start-1}" style="color: rgb(78, 78, 78); font-size:medium;">이전</span>&nbsp;&nbsp;`
                 $pageObj.html($pageObj.html()+page)
             }
             
@@ -77,7 +77,7 @@ $(() => {
             }
 
             if(end!=responseJSONObj.totalPage) {
-                let page=`&nbsp;&nbsp;<span class="pg${end+1}">다음</span>`
+                let page=`&nbsp;&nbsp;<span class="pg${end+1}" style="color: rgb(78, 78, 78); font-size:medium;">다음</span>`
                 $pageObj.html($pageObj.html()+page)
             }
 
