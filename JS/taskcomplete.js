@@ -1,12 +1,14 @@
 $(() => {
     const cp=localStorage.getItem('completecp')
+    const teamNo=localStorage.getItem('taskteamno')
+    
     $.ajax({
         xhrFields: {
             withCredentials: true
         },
-        url: `${backURL}/completetasklist`,
+        url: `${taskbackURL}/completetasklist`,
         method: 'get',
-        data: `currentPage=${cp}`,
+        data: `teamNo=${teamNo}&currentPage=${cp}`,
         success: (responseJSONObj) => {
             if(responseJSONObj.msg != undefined){
                 alert('과제가 존재하지 않습니다.')
@@ -69,8 +71,14 @@ $(() => {
             
             $pageObj.html($pageObj.html()+'<span class="pagebar">|</span>')
             for(let i=start;i<=end;i++) {
-                let page=`<span class="pg${i}">&nbsp;&nbsp;${i}&nbsp;&nbsp;</span><span class="pagebar">|</span>`
-                $pageObj.html($pageObj.html()+page)
+                if(cp==i) {
+                    let page=`<span class="pg${i}">&nbsp;&nbsp;<strong>${i}</strong>&nbsp;&nbsp;</span><span class="pagebar">|</span>`
+                    $pageObj.html($pageObj.html()+page)
+                }
+                else {
+                    let page=`<span class="pg${i}" style="color: rgb(78, 78, 78);">&nbsp;&nbsp;${i}&nbsp;&nbsp;</span><span class="pagebar">|</span>`
+                    $pageObj.html($pageObj.html()+page)
+                }
             }
 
             if(end!=responseJSONObj.totalPage) {
