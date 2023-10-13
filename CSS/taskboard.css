@@ -67,6 +67,7 @@ div.content>table td>div.createbox {
 }
 div.content>table td>div.createbox:hover{
     background-color: rgb(231, 231, 231);
+    cursor: pointer;
 }
 div.content>table td>div.createbox>div.create{
     text-align: center;
@@ -84,6 +85,7 @@ div.content>table>tbody tr:hover{
     border: 0px ;
     background-color: rgb(197, 197, 197);
     color:black;
+    cursor: pointer;
 }
 
 div.content>table td{
