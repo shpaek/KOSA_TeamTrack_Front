@@ -1,16 +1,6 @@
-const backURL = 'http://127.0.0.1:8888/KOSA_TeamTrack_Back'
+const backURL = 'http://127.0.0.1:8888/teamtrack'
 const frontURL = 'http://127.0.0.1:5500/HTML'
-function ajaxHandler(method, u, target) {
-    console.log(u)
 
-    if (method == 'GET') {
-        target.load(u, function (response, status, xhr) {
-            if (status == "error") {
-                alert(xhr.status + xhr.statusText)
-            }
-        })
-    }
-}
 
 $(() => {
     //DOM트리에서 section객체찾기
@@ -73,64 +63,71 @@ $(() => {
 
 
         const teamNameValue = $('input[name=teamName]').val()
-        //alert("ajax-2" + teamNameValue)
         const onOffLineValue = $('input[name=onOffLine]:checked').val()
-        //alert("ajax-3" + onOffLineValue)
         const studyTypeValue = $('input[name=studyType]').val()
-        //alert("ajax-3" + studyTypeValue)
         const maxMemberValue = $('input[name=maxMember]').val()
-        //alert("ajax-3" + studyTypeValue)
         const startDateValue = $('input[name=startDate]').val()
-        //alert("ajax-3" + startDateValue)
         const endDateValue = $('input[name=endDate]').val()
-        //alert("ajax-3" + endDateValue)
         const hashtag1Value = $('input[name=hashtag1]').val()
-        //alert("ajax-3" + hashtag1Value)
         const hashtag2Value = $('input[name=hashtag2]').val()
-        //alert("ajax-3" + hashtag2Value)
         const hashtag3Value = $('input[name=hashtag3]').val()
-        //alert("ajax-3" + hashtag3Value)
         const hashtag4Value = $('input[name=hashtag4]').val()
-        //alert("ajax-3" + hashtag4Value)
         const hashtag5Value = $('input[name=hashtag5]').val()
-        //alert("ajax-3" + hashtag5Value)
         const briefInfoValue = $('input[name=briefInfo]').val()
-        //alert("ajax-3" + briefInfoValue)
         const teamInfoValue = $('textarea[name=teamInfo]').val()
-        //alert("ajax-3" + teamInfoValue)
         
-        const loginedId = $.localStorage('logiendId');
-        const data = `gubun=create&leaderId=${loginedId}
-                    &teamName=${teamNameValue}&onOffLine=${onOffLineValue}
-                    &maxMember=${maxMemberValue}&studyType=${studyTypeValue}&startDate=${startDateValue}
-                    &endDate=${endDateValue}&hashtag1=${hashtag1Value}
-                    &hashtag2=${hashtag2Value}&hashtag3=${hashtag3Value}&hashtag4=${hashtag4Value}
-                    &hashtag5=${hashtag5Value}&briefInfo=${briefInfoValue}
-                    &teamInfo=${teamInfoValue}`
-        //alert("ajax-4" + data)
+        //const loginedId = localStorage.getItem('loginedId');
+        const loginedId = 'psh2023';
+        const fd = new FormData();
+        const files = $('input[type="file"]');
+        for (let i = 0; i < files.length; i++) {
+            fd.append('f1', files[i].files[0]);  // 각 파일 필드의 첫 번째 파일을 추가
+        }
+        
+        fd.append("gubun", "create")
+        fd.append('leaderId', loginedId)
+        fd.append('teamName', teamNameValue)
+        fd.append('onOffLine', onOffLineValue)
+        fd.append('maxMember', maxMemberValue)
+        fd.append('studyType', studyTypeValue)
+        fd.append('startDate', startDateValue)
+        fd.append('endDate', endDateValue)
+        fd.append('hashtag1', hashtag1Value)
+        fd.append('hashtag2', hashtag2Value)
+        fd.append('hashtag3', hashtag3Value)
+        fd.append('hashtag4', hashtag4Value)
+        fd.append('hashtag5', hashtag5Value)
+        fd.append('briefInfo', briefInfoValue)
+        fd.append('teamInfo', teamInfoValue)
+        fd.append('briefInfo', briefInfoValue)
 
+        fd.forEach((value, key)=>{
+            console.log(key)
+            console.log(value)
+            console.log("-----------")
+        })
         $.ajax({
             xhrFields:{
                 withCredentials: true
             },
             url: backURL+ "/teammanage",
             method: "POST",
-            data: data,
-            // beforeSend: function (xhr) {
-            //     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-            // },
+            contentType: false, //파일첨부
+            processData: false, //파일첨부용 프로퍼티
+            data: fd, //"t=tValue&"
             success: (responseJSONObj) => {
                 //요청이 성공하고 성공적으로 응답이 되었을 때 할 일
                 //alert(responseText)
                     alert(responseJSONObj.msg)
+                    location.href = './main.html'
             },
             error: (jqXHR, textStatus) => {
                 //응답, 요청에 오류가 있는 경우
                 alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText)
             }
         })
-        //alert("ajax-5")
-        e.preventDefault()
+        
+        return false
     })
     //----form객체에서 submit이벤트가 발생했을 때 할 일 END----
 
@@ -142,7 +139,14 @@ $(() => {
        location.href = "./main.html"
     })
 
-    
+
+
+
+    $('form.form>input[name=f1]').change((e)=>{
+        console.log(e.target.files[0])
+        const url = URL.createObjectURL(e.target.files[0])
+        $('form.form img.teamProfileImg2').attr('src', url)
+    })
 
 
 })

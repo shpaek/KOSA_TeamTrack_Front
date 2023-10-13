@@ -8,72 +8,149 @@ section {
     padding: 30px;
 }
 
+/*게시판제목*/
 .notice>.boardtitle{
+    margin : 50px;
+    border-left : solid 15px;
+    border-bottom: solid 2px #a5a5a5;
+    padding : 10px;
+    padding-left : 40px;
+    padding-bottom : 20px;
     margin-top: 30px;
     margin-bottom: 30px;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size : 30px;
 }
 
+/*메인공지 칸*/
 .mainnotice{
     width : 900px;
+    height : 170px;
     padding : 20px;
     margin-top: 60px;
     margin-bottom: 60px;
-    border-style : solid;
-    border-color : #cccccc;
+    background-color: #f7fbfc;
+    border : 1px;
+    border-style : outset;
+    border-color : #dbdbdb;
     border-radius: 25px;
 }
 
+/*제목라인*/
 .main_topline{
-    padding-top : 10px;
-    padding-bottom: 10px;
+    padding : 10px;
+    height : 30px;
 }
 
+/*공지번호*/
 .main_topline>span[name=noticeNo]{
     display : none;
 }
 
-.main_topline>button[name=cancel]{
+
+/*메인공지 제목*/
+.main_topline>a{
+    font-size : 30px;
+    font-weight: 550;
+    color : rgb(29, 34, 69);
+}
+
+.main_contentline{
+    padding : 10px;
+    margin-top : 20px;
+    margin-bottom: 15px;
+}
+
+.rightspace{
+    float:right;
+}
+
+/*날짜*/
+.rightspace>span[name=date]{
+    font-size : 20px;
+    color : rgb(104, 104, 104);
+}
+
+/*내리기버튼*/
+.rightspace>button[name=cancel]{
     cursor: pointer;
-    float : right;
+    margin-left : 10px;
     padding-top : 1px;
     padding-bottom : 1px;
     padding-left: 2px;
     padding-right: 2px;
+    border-color: #bebebe;
     border-radius: 3px;
     background-color: white;
     font-color: #011837;
     font-weight: 700;
 }
 
-.main_topline>span[name=date]{
-    padding-left : 540px;
-}
-
+/*본문영역*/
 .main_contentline{
     padding-top: 20px;
     padding-bottom: 10px;
 }
 
+
+/*작성버튼*/
+
 .write{
-    width:900px; 
+    width:1200px; 
 }
 
-.write>.writebutton{
-    width:45px;
+/* .write>.writebutton{
+    width:60px;
     margin-bottom: 20px;
     margin-left: 90%;
-}
+} */
 
 .writebutton>button{
     cursor: pointer;
+    width : 90px;
+    height : 50px;
+    margin-left: 90%;
     background-color: white;
-    border-radius: 3px;
+    border-radius: 5px;
+    border-color: #bebebe;
+    font-size: 20px;
 }
 
-.write>.noticelist{
+
+/*공지목록*/
+
+.noticelist{
     margin-top: 40px;
     margin-bottom: 40px;
 }
+
+.noticelist>table{
+    width : 1200px;
+    border-top:solid 3px #363840;
+    border-bottom:solid 3px #363840;
+}
+
+th, td{
+    padding : 30px;
+
+}
+
+th{
+    font-size: 20px;
+    border-bottom: solid 3px #363840;
+}
+
+td{
+    font-size: 20px;
+    border-top : dotted 2px;
+    border-color : #dfdfdf;
+}
+
+td:nth-child(odd){
+    text-align: center;
+    color : #7d7c7c;
+}
+
 
 .pagegroup{
     width:900px; 
@@ -82,3 +159,7 @@ section {
     margin-bottom: 50px;
 } 
 
+.pagegroup>span{
+    padding: 10px;
+    font-size: 25px;
+}

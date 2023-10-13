@@ -1,8 +1,8 @@
 //window.addEventListener('load', () => {
 // $(document).ready()
 $(() => {
-
-
+    //$('#maincontainer>nav>p').text(sessionStorage.getItem('nickname'))
+    $('.membernickname').text(sessionStorage.getItem('nickname'))
     const loginedId = localStorage.getItem("loginedId")
     const $img = $('nav>ul>li>img.profile')
     $img.parent().hide()
@@ -82,28 +82,6 @@ $(() => {
     })
 
 
-    const $uploadForm = $('form.profile')
-    $uploadForm.submit((e)=>{
-        const fd = new FormData(e.target)
-        fd.forEach((value, key)=>{
-            console.log(key)
-            console.log(value)
-            console.log("-----------")
-        })
-
-        $.ajax({
-            url: backURL+'/upload',
-            method: 'post',
-            contentType: false, //파일첨부
-            processData: false, //파일첨부용 프로퍼티
-            data: fd, //"t=tValue&"
-            success: ()=>{},
-            error: ()=>{}
-        })
-        return false
-    })
-
-
     $('form.profile>input[name=f1]').change((e)=>{
         console.log(e.target.files[0])
         const url = URL.createObjectURL(e.target.files[0])
@@ -151,13 +129,17 @@ $(document).on("click", "#teamName", function(e) {
       data: "teamName="+teamName,
       success: (responseJSONObj) => {
           const teamNo = responseJSONObj.teamNo
+          
           location.href = `./teammain.html?teamNo=${teamNo}`
       },
           error: () => {
   
           }
       })
+      
+
+
 
   });
 
-
+  
