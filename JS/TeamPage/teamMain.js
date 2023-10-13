@@ -1,6 +1,8 @@
-const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
+//const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
+const backURL = 'http://127.0.0.1:8888/teamtrack'
 const frontURL = 'http://localhost:5500/HTML'
 // const teamNo = location.search.substring(1).split('=')[1]
+
 const teamNo = 9999;
 // const id = 'psh2023';
 
@@ -59,8 +61,8 @@ $(() => {
                 // 이 아래로는 memStatus = 1이어야 댐
                 case 'manageTeamProperties':
                     const urlParams = new URL(location.href).searchParams;
-                    const teamNo = urlParams.get('teamNo');
-                    location.href = './teammanageproperties.html?teamNo='+teamNo
+                    const teamNo2 = urlParams.get('teamNo');
+                    location.href = './teammanage.html?teamNo='+teamNo2
                     break;
 
                 case 'manageTeamCurrentMember':

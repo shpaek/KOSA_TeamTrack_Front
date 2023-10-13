@@ -1,9 +1,12 @@
-const backURL = 'http://127.0.0.1:8888/KOSA_TeamTrack_Back'
+const backURL = 'http://127.0.0.1:8888/teamtrack'
 const frontURL = 'http://127.0.0.1:5500/HTML'
 
 
 
 $(() => {
+
+
+
     function ajaxHandler(url, data){
         $.ajax({
             url: backURL+ url,
@@ -52,6 +55,7 @@ $(() => {
                     const hashtag5 = hashtags[4]
         
                     //$copyTopTeam.find("ul>li>img").attr('src', '../images/' + prodNo + '.jpg').attr("alt", prodName)
+                    
                     $copyNewTeam.find("ul>li>span.teamName").html(teamName)
                     $copyNewTeam.find("ul>li>span.studyType").html(studyType)
                     $copyNewTeam.find("ul>li>span.onOffLine").html(onOffLine)
@@ -67,9 +71,27 @@ $(() => {
                     $copyNewTeam.find("ul>div>li>span.hashtag5").html(hashtag5)
                     $copyNewTeam.find("ul>li>span.briefInfo").html(briefInfo)
                     $copyNewTeam.find("ul>li>span.viewcnt").html(viewCnt)
+                    
                     console.log($copyNewTeam.find("ul>li>span.viewcnt").html(viewCnt))
                     //복제본객체를 .productlist객체의 자식으로 추가
-                    $('div.mainteam').append($copyNewTeam)
+                    
+
+                    //const $img = $("div.mainteam>div.teamlist>ul.team>div.profilebox>img");
+                    $.ajax({
+                        xhrFields: {
+                          responseType: "blob",
+                        },
+                        url: backURL + "/download",
+                        data: "teamNo=" + teamNo + "&opt=profile",
+                        success: (responseData) => {
+                          if (responseData.size > 0) {
+                            const url = URL.createObjectURL(responseData);
+                            $copyNewTeam.find("ul>div>img").attr("src", url);
+                          }
+                        },
+                        error: (jqxhr) => {},
+                      });
+                      $('div.mainteam').append($copyNewTeam)
                 })
                 $originNewTeam.hide()
 
