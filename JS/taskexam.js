@@ -14,7 +14,7 @@ function ajaxHandler(method, u, target) {
 const backURL = 'http://localhost:8888/KOSA_Project2'
 
 $(() => {
-  const teamNo=localStorage.getItem('taskteamno')
+  const teamNo = localStorage.getItem('taskteamno')
   const taskNo = localStorage.getItem('taskNo')
   console.log(teamNo)
 
@@ -32,12 +32,25 @@ $(() => {
           icon: 'error'
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskboard.html?teamNo='+teamNo
+            location.href = './taskboard.html?teamNo=' + teamNo
           }
         })
       } else if (responseJSONObj.status == 1) {
         const $originObj = $('div.answercontent')
         const cnt = responseJSONObj.answerCnt
+        const title = responseJSONObj.title
+        const nickname = responseJSONObj.nickname
+
+        const $origintitleObj = $('form.taskexambox>div.tasktitle')
+        const $titleObj = $('<h1>')
+        $titleObj.append(title)
+        $origintitleObj.append($titleObj)
+
+        const $originnicknameObj = $('div.tasknickname')
+        const $nicknameObj = $('<span>')
+        $nicknameObj.append(nickname)
+        $originnicknameObj.append($nicknameObj)
+
         localStorage.setItem('answerCnt', cnt)
         for (var i = 1; i <= cnt; i++) {
           const $divObj = $("<div>")
@@ -205,16 +218,16 @@ $(() => {
       method: 'get',
       data: `teamNo=${teamNo}&taskNo=${taskNo}`,
       success: (responseData) => {
-        if(responseData==="") {
-            Swal.fire({
-                icon: 'question',
-                text: '파일이 존재하지 않습니다'
-            })
-            return
+        if (responseData === "") {
+          Swal.fire({
+            icon: 'question',
+            text: '파일이 존재하지 않습니다'
+          })
+          return
         } else {
-            location.href = backURL+ '/taskdownload?teamNo='+teamNo+'&taskNo=' + taskNo
-        } 
-    }, 
+          location.href = backURL + '/taskdownload?teamNo=' + teamNo + '&taskNo=' + taskNo
+        }
+      },
       error: () => {
         Swal.fire({
           icon: 'error',
@@ -262,7 +275,7 @@ $(() => {
           })
 
         }
-      } ,
+      },
       error: () => {
         e.preventDefault()
 
