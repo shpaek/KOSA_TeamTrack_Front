@@ -10,10 +10,12 @@ function ajaxHandler(method, u, target) {
   } // outer-if
 
 }
-const backURL = 'http://localhost:8888/KOSA_Project2'
+const taskbackURL = 'http://localhost:8888/KOSA_Project2'
 $(() => {
   const loginedId = localStorage.getItem("loginedId");
+  const teamNo = localStorage.getItem("taskteamno")
   const taskNo = localStorage.getItem("taskNo")
+  console.log(teamNo)
   // alert(loginedId+", "+taskNo)
 
   $(`nav>a.logo`).click((e) => {
@@ -74,7 +76,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskboard.html'
+            location.href = './taskboard.html?teamNo=' + teamNo
           }
         })
 
@@ -89,7 +91,8 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskall.html'
+            localStorage.setItem("allcp", 1)
+            location.href = './taskall.html?teamNo=' + teamNo + 'currentPage=' + 1
           }
         })
 
@@ -104,7 +107,8 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskcomplete.html'
+            localStorage.setItem("completecp", 1)
+            location.href = './taskcomplete.html?teamNo=' + teamNo + 'currentPage=' + 1
           }
         })
 
@@ -119,7 +123,8 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskmy.html'
+            localStorage.setItem("mycp", 1)
+            location.href = './taskmy.html?teamNo=' + teamNo + 'currentPage=' + 1
           }
         })
 
@@ -208,7 +213,7 @@ $(() => {
       cancelButtonColor: '#d33',
     }).then((result) => {
       if (result.isConfirmed) {
-        location.href = './taskboard.html'
+        location.href = './taskboard.html?teamNo=' + teamNo
       }
     })
   })
@@ -229,7 +234,9 @@ $(() => {
 
     // 나머지 데이터 추가
     fd.append('title', title);
+    fd.append('teamNo', teamNo);
     fd.append('taskNo', taskNo);
+    fd.append('answerCnt', answercnt)
 
     var answerlist = []
     for (var cnt = 1; cnt <= answercnt; cnt++) {
@@ -244,19 +251,19 @@ $(() => {
       xhrFields: {
         withCredentials: true
       },
-      url: `${backURL}/settask`,
+      url: `${taskbackURL}/settask`,
       method: 'post',
       data: fd,
       contentType: false, //파일첨부용 프로퍼티
       processData: false, //파일첨부용 프로퍼티
       success: (responseJSONObj) => {
         // e.preventDefault()
-       
+
         // alert(responseJSONObj.status + ":" + responseJSONObj.msg)
         // window.open()
         // location.replace('./taskboard.html')
         // console.log(location)
-        
+
         // location.href='./taskboard.html'
         if (responseJSONObj.status == 0) {
           Swal.fire({
@@ -269,12 +276,12 @@ $(() => {
         } else if (responseJSONObj.status == 1) {
           // alert(responseJSONObj.msg)
           //location.href = './taskboard.html'
-          
+
           Swal.fire({
             icon: 'success',
             text: responseJSONObj.msg
           }).then((result) => {
-            if (result.isConfirmed) location.href = './taskboard.html'
+            if (result.isConfirmed) location.href = './taskboard.html?teamNo=' + teamNo
           })
 
         }
@@ -287,7 +294,7 @@ $(() => {
           icon: 'error',
           text: '연결에 실패하였습니다'
         }).then((result) => {
-          if (result.isConfirmed) location.href = './taskboard.html'
+          if (result.isConfirmed) location.href = './taskboard.html?teamNo=' + teamNo
         })
 
       }

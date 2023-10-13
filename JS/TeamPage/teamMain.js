@@ -40,8 +40,11 @@ $(() => {
                 break;
 
             case 'taskBoard':
+                const taskteamno=60
                 // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                location.href = './taskboard.html'
+                localStorage.setItem('taskteamno', taskteamno)
+                location.href = './taskboard.html?teamNo='+taskteamno
+                //location.href = './taskboard.html&teamNo='+teamNo
                 break;
 
             case 'QnABoard':
@@ -53,9 +56,13 @@ $(() => {
                 location.href = './teamAttendance.html'
                 break;
 
-            case 'rankPage':
-                ajaxHandler('GET', '#', $sectionObj)
-                break;
+                case 'rankPage':
+                    // const teamNo = 9999;
+                    const teamNo1 = 9999;
+                    const month=10;
+                    location.href=`./rank.html?teamNo=${teamNo1}&month=${month}`
+                    // ajaxHandler('GET', `./rank.html?teamNo=${teamNo}&month=${month}`, $sectionObj)
+                    break;
 
             // 이 아래로는 memStatus = 1이어야 댐
             case 'manageTeamProperties':

@@ -9,17 +9,19 @@ function ajaxHandler(method, u, target) {
         })
     }
 }
-const backURL = 'http://localhost:8888/KOSA_Project2'
-const taskNo = localStorage.getItem("taskNo")
+
 $(() => {
+    const teamNo=localStorage.getItem("taskteamno")
+    const taskNo = localStorage.getItem("taskNo")
+    console.log(teamNo)
 
     $.ajax({
         xhrFields: {
             withCredentials: true
         },
-        url: `${backURL}/viewtask`,
+        url: `${taskbackURL}/viewtask`,
         method: 'get',
-        data: `taskNo=${taskNo}`,
+        data: `teamNo=${teamNo}&taskNo=${taskNo}`,
         success: (responseJSONObj) => {
             if (responseJSONObj.status == 0) {
                 alert(responseJSONObj.msg)
@@ -45,32 +47,11 @@ $(() => {
             alert('error')
         })
     })
-    const $menus = $('div.taskboardmenu>ul>li>a')
-
-    $menus.click((e) => {
-        switch (e.target.className) {
-            case 'maintask':
-                location.href = './taskboard.html'
-                break
-            case 'alltask':
-                location.href = './taskall.html'
-                break
-            case 'completetask':
-                location.href = './taskcomplete.html'
-                break
-            case 'mytask':
-                location.href = './taskmy.html'
-                break
-        }
-        e.preventDefault()
-    })
 
     var open1 = 0;
     var open2 = 0;
 
     $('div.taskanswer>button').click((e) => {
-        const taskNo = localStorage.getItem('taskNo')
-        // console.log(taskNo)
         if (open1 == 1) {
             e.preventDefault()
         } else {
@@ -78,9 +59,9 @@ $(() => {
                 xhrFields: {
                     withCredentials: true
                 },
-                url: `${backURL}/viewquizanswer`,
+                url: `${taskbackURL}/viewquizanswer`,
                 method: 'get',
-                data: `taskNo=${taskNo}`,
+                data: `teamNo=${teamNo}&taskNo=${taskNo}`,
                 success: (responseJSONObj) => {
                     if (responseJSONObj.status == 0) {
                         Swal.fire({
@@ -116,7 +97,6 @@ $(() => {
     })
 
     $('div.myanswer>button').click((e) => {
-        const taskNo = localStorage.getItem('taskNo')
         if (open2 == 1) {
             e.preventDefault()
         } else {
@@ -124,9 +104,9 @@ $(() => {
                 xhrFields: {
                     withCredentials: true
                 },
-                url: `${backURL}/viewmemberanswer`,
+                url: `${taskbackURL}/viewmemberanswer`,
                 method: 'get',
-                data: `taskNo=${taskNo}`,
+                data: `teamNo=${teamNo}&taskNo=${taskNo}`,
                 success: (responseJSONObj) => {
                     if (responseJSONObj.status == 0) {
                         Swal.fire({
@@ -161,17 +141,23 @@ $(() => {
     })
 
     $('button.taskfiledown').click(() => {
-        const $file = $('div.taskinfo>a')
-
         $.ajax({
             xhrFields: {
                 withCredentials: true
             },
-            url: `${backURL}/taskdownload`,
+            url: `${taskbackURL}/taskdownload`,
             method: 'get',
-            data: `taskNo=${taskNo}`,
-            success: (response) => {
-                location.href = 'http://localhost:8888/KOSA_Project2/taskdownload?taskNo=' + taskNo
+            data: `teamNo=${teamNo}&taskNo=${taskNo}`,
+            success: (responseData) => {
+                if(responseData==="") {
+                    Swal.fire({
+                        icon: 'question',
+                        text: '파일이 존재하지 않습니다'
+                    })
+                    return
+                } else {
+                    location.href = taskbackURL+ '/taskdownload?teamNo='+teamNo+'&taskNo=' + taskNo
+                } 
             }, 
             error: () => {
                 Swal.fire({
