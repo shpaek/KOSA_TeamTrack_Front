@@ -75,7 +75,14 @@
 
             <div class="memberRank">
                 <h3>Member Rank</h3>
-                <!--월별보기 토글 필요-->
+
+                <!--월별보기 토글-->
+                <div class="box">
+                    <h4>월별 선택</h4>
+                    <select id="monthSelect">
+                        <option value="0">조회할 월</option>
+                    </select>
+                </div>
 
                 <!--랭킹 출력-->
                 <table>
@@ -83,9 +90,6 @@
                         <tr><th>PROFILE</th><th>NICKNAME</th><th>TOTAL SCORE</th><th>RANK</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><div class="profile"><img class="memberProfileImg" src='#' alt="memberProfile"></div></td><td>nwh</td><td>1074</td><td>1</td></tr>
-                        <tr><td>PROFILE</td><td>bsh</td><td>998</td><td>2</td></tr>
-                        <tr><td>PROFILE</td><td>khb</td><td>887</td><td>3</td></tr>
                     </tbody>
                 </table>
             </div>
