@@ -1,9 +1,8 @@
-//const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
-const backURL = 'http://127.0.0.1:8888/teamtrack'
-const frontURL = 'http://localhost:5500/HTML'
+// const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
+// const frontURL = 'http://localhost:5500/HTML'
 // const teamNo = location.search.substring(1).split('=')[1]
-
-const teamNo = 9999;
+const teamNo = 9999
+const id = 'test24'
 // const id = 'psh2023';
 
 function ajaxHandler(method, u, target) {
@@ -26,63 +25,70 @@ $(() => {
     // DOM Tree에서 nav>ul>li>a 객체들 찾기
     const $menus = $(`nav>ul>li>a, nav>ul>li>ul>li>a`)
 
-        // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 START 〓〓
-        $menus.click((e) => {
-            console.log(e.target.className)
-            // menu
-            switch (e.target.className) { // 화살표 함수 내부에서의 this는 윈도우 객체이기 때문에 e.target 사용!
-                case 'teamMainPage':
-                    location.href='./teamMain.html'
-                    break;
+    // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 START 〓〓
+    $menus.click((e) => {
+        console.log(e.target.className)
+        // menu
+        switch (e.target.className) { // 화살표 함수 내부에서의 this는 윈도우 객체이기 때문에 e.target 사용!
+            case 'teamMainPage':
+                location.href = './teamMain.html'
+                break;
 
-                case 'noticeBoard':
-                    const teamNo = 9999
-                    location.href='./notice.html?teamNo=${teamNo}'
-                    break;
+            case 'noticeBoard':
+                const teamNo = 9999
+                location.href = './notice.html?teamNo=${teamNo}'
+                break;
 
-                case 'taskBoard':
-                    // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                    location.href='./taskboard.html'
-                    break;
+            case 'taskBoard':
+                const taskteamno=60
+                // ajaxHandler('GET', './taskboard.html', $sectionObj)
+                localStorage.setItem('taskteamno', taskteamno)
+                location.href = './taskboard.html?teamNo='+taskteamno
+                //location.href = './taskboard.html&teamNo='+teamNo
+                break;
 
-                case 'QnABoard':
-                    // ajaxHandler('GET', '#', $sectionObj)
-                    ajaxHandler('GET', './qnaboard.html', $sectionObj)
-                    break;
+            case 'QnABoard':
+                // ajaxHandler('GET', '#', $sectionObj)
+                ajaxHandler('GET', './qnaboard.html', $sectionObj)
+                break;
 
-                case 'attendencePage':
-                    location.href='./teamAttendance.html'
-                    break;
+            case 'attendencePage':
+                location.href = './teamAttendance.html'
+                break;
 
                 case 'rankPage':
-                    ajaxHandler('GET', '#', $sectionObj)
+                    // const teamNo = 9999;
+                    const teamNo1 = 9999;
+                    const month=10;
+                    location.href=`./rank.html?teamNo=${teamNo1}&month=${month}`
+                    // ajaxHandler('GET', `./rank.html?teamNo=${teamNo}&month=${month}`, $sectionObj)
                     break;
 
-                // 이 아래로는 memStatus = 1이어야 댐
-                case 'manageTeamProperties':
-                    const urlParams = new URL(location.href).searchParams;
-                    const teamNo2 = urlParams.get('teamNo');
-                    location.href = './teammanage.html?teamNo='+teamNo2
-                    break;
+            // 이 아래로는 memStatus = 1이어야 댐
+            case 'manageTeamProperties':
+                const urlParams = new URL(location.href).searchParams;
+                // const teamNo = urlParams.get('teamNo');
+                location.href = './teammanageproperties.html?teamNo=' + teamNo
+                break;
 
-                case 'manageTeamCurrentMember':
-                    location.href='./teamManageCurrentMember.html'
-                    break;
+            case 'manageTeamCurrentMember':
+                location.href = './teamManageCurrentMember.html'
+                break;
 
-                case 'manageTeamApproval':
-                    location.href='./teamManageApproval.html'
-                    break;
+            case 'manageTeamApproval':
+                location.href = './teamManageApproval.html'
+                break;
 
-                case 'manageTeamExaminer':
-                    location.href='./teamManageExaminer.html'
-                    break;
-            } // switch(e.target.class)()
-            e.preventDefault()
-    
-        }) // menu.addEventListener()
-        // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
+            case 'manageTeamExaminer':
+                location.href = './teamManageExaminer.html'
+                break;
+        } // switch(e.target.class)()
+        e.preventDefault()
 
-    // 요청 파라미터 보내기
+    }) // menu.addEventListener()
+    // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
+
+    // 팀 메인에서 필요한 정보 불러오기!
     $.ajax({
         url: `${backURL}/teammain`,
         type: 'GET',
@@ -90,6 +96,14 @@ $(() => {
         success: (responseJSONObj) => {
 
             // 프로필
+
+            // 팀명
+            if (responseJSONObj.teamList != null) {
+                const teamName = responseJSONObj.teamList.teamName
+                const $teamNameDiv = $('div.teamNameDiv').first()
+
+                $teamNameDiv.find('p.teamNameShow').text(teamName)
+            } // if
 
             // 조회수
             if (responseJSONObj.teamViewCnt != null) {
@@ -102,15 +116,15 @@ $(() => {
 
             // 팀원 목록
             if (responseJSONObj.nicknameList != null) {
-                const nickList = responseJSONObj.nicknameList;
-                const $nickSpan = $('span.teamMemberListSpan2');
+                const nickList = responseJSONObj.nicknameList
+                const $nickSpan = $('span.teamMemberListSpan2')
 
                 nickList.forEach((nickName, index) => {
-                    const $nickCloneSpan = $nickSpan.clone();
-                    $nickCloneSpan.text(nickName);
-                    $nickSpan.parent().append($nickCloneSpan);
-                });
-            }
+                    const $nickCloneSpan = $nickSpan.clone()
+                    $nickCloneSpan.text(nickName)
+                    $nickSpan.parent().append($nickCloneSpan)
+                }) // forEach
+            } // if
 
             // 팀 소개글
             if (responseJSONObj.teamInfo != null) {
@@ -119,7 +133,6 @@ $(() => {
                 const $infoDiv = $('div.teamMainIntroductionDiv').first()
 
                 $infoDiv.find('p[class=teamMainIntroductionP]').text(info)
-
             } // if
 
             // 공지사항
@@ -146,6 +159,10 @@ $(() => {
                 }) // forEach
             } // if
 
+            // 다 불러오기 전까지는 버튼 안보이게 숨기기
+            $('#JoinTeamBtn').prop('disabled', false);
+            $('#LeaveTeamBtn').prop('disabled', false);
+
         },
         error: (jqXHR, textStatus) => {
             alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText)
@@ -153,23 +170,61 @@ $(() => {
         }
     }) // ajax
 
-    // 공지 게시글 제목 클릭 시 해당 게시글로 이동
-    // const noticeTitle = $('div.teamMainNoticeDiv>a.noticeTitle')
-    $('div.teamMainNoticeDiv>a.noticeTitle').on('click', (e) => {
-        location.href = `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
-    })
+    // ##### 팀 가입 #####################################################
 
-}) // $(() {})
-
-$(document).ready(function () {
     // 팀 가입하기 버튼 클릭 이벤트
     $('#JoinTeamBtn').click(function () {
-        $('#teamJoin').show();  // 팝업창 표시
+        $('#teamJoin').show();
+    })
+
+    // 가입하기 버튼
+    $('#requestJoinTeamBtn').click(function (e) {
+        const $target = $(e.target);
+
+        const introduction = $('#teamJoinIntroduction').val(); // 사용자가 입력한 자기소개
+        console.log(introduction);
+
+        $.ajax({
+            url: `${backURL}/teamjoin`,
+            type: 'GET',
+            data: {
+                teamNo: teamNo,
+                id: id,
+                introduction: introduction,
+                // action: 'joinTeam'
+            },
+            success: (responseJSONObj) => {
+                location.href = './teamMain.html'
+            },
+            error: (jqXHR, textStatus) => {
+                // 오류 처리
+                alert("팀 가입 실패: " + textStatus);
+                console.log(textStatus)
+                console.error(jqXHR);
+            }
+        });
+
+        // 팀 가입 팝업창 바깥쪽을 클릭했을 때 팝업창 숨기기
+        $(document).click(function (e) {
+            const $target = $(e.target);
+            if (!$target.closest('#teamJoin').length && !$target.closest('#JoinTeamBtn').length) {
+                $('#teamJoin').hide();
+            }
+        });
+
     });
 
-    // 가입요청 버튼 클릭 이벤트
-    $('#closeJoinTeamBtn').click(function () {
-        $('#poteamJoinpUp').hide();  // 팝업창 숨김
-        // 추가적인 로직 작성하기. (서버로 데이터 전송할거)
-    });
-})
+    // ##### 팀 나가기 #####################################################
+
+
+
+
+
+
+    // 공지 게시글 제목 클릭 시 해당 게시글로 이동
+    // const noticeTitle = $('div.teamMainNoticeDiv>a.noticeTitle')
+    // $('div.teamMainNoticeDiv>a.noticeTitle').on('click', (e) => {
+    //     location.href = `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
+    // })
+
+}) // $(() {})

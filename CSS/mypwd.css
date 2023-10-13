@@ -1,0 +1,11 @@
+form.mypwd>label[name=newpwdlabel]{
+    display:none;
+}
+
+form.mypwd>span[name=alert]{
+    display:none;
+}
+
+form.mypwd>button[type=submit]{
+    display:none;
+}

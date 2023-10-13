@@ -1,5 +1,5 @@
-const backURL = 'http://127.0.0.1:8888/teamtrack'
-const frontURL = 'http://127.0.0.1:5500/HTML'
+const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
+const frontURL = 'http://localhost:5500/HTML'
 $(() => {
 
 

@@ -7,8 +7,9 @@
 .comment-row {
     display: flex;
     align-items: center;
-    width: 800px;
+    width: 1000px;
     border: 1px solid #ddd;
+    border-radius: 5%;
     padding: 10px;
     margin-bottom: 10px;
 }
@@ -40,6 +41,7 @@
 
 .comment-select-button button {
     padding: 5px 10px;
+    border-radius: 5%;
     background-color: #3498db;
     color: #fff;
     border: none;
@@ -50,9 +52,56 @@
 .comment-reply-row {
     display: flex;
     align-items: center;
-    width: 800px;
+    width: 1000px;
     border: 1px solid #ddd;
     padding: 10px;
     margin-bottom: 10px;
     margin-left: 30px;
+}
+
+/* 답글버튼 */
+.comment-select-replyButton {
+    /* flex: 1; */
+    text-align: center;
+}
+
+.comment-select-replyButton button {
+    padding: 5px 10px;
+    border-radius: 5%;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+/* 수정버튼 */
+.comment-select-modifyButton {
+    /* flex: 1; */
+    text-align: center;
+}
+
+.comment-select-modifyButton button {
+    padding: 5px 10px;
+    border-radius: 5%;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+/* 삭제버튼 */
+.comment-select-deleteButton {
+    /* flex: 1; */
+    text-align: center;
+}
+
+.comment-select-deleteButton button {
+    padding: 5px 10px;
+    border-radius: 5%;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+/*댓글 삭제시 배경색 변경*/
+.grey-background {
+    background-color: gainsboro;
 }

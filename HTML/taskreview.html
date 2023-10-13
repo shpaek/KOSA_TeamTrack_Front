@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
     <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
     <link rel="stylesheet" href="../CSS/taskboard.css">
-    <link rel="stylesheet" href="../CSS/taskcreate.css">
+    <link rel="stylesheet" href="../CSS/taskreview.css">
 
     <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <!-- JavaScript -->
-    <script src="../JS/taskcreate.js"></script>
+    <script src="../JS/taskreview.js"></script>
 
     <!-- font -->
     <style>
@@ -40,7 +40,7 @@
         <!-- 사이드 메뉴바 -->
         <nav>
             <!-- 사이트 로고 -->
-            <a href="#" class="logo">
+            <a href="../HTML/main.html">
                 <img class="logo" src="../images/logoCut.png" alt="logo">
             </a>
 
@@ -53,53 +53,24 @@
             <!-- 팀 이름 -->
             <p class="teamName">팀명: 셍나</p>
 
+
+
             <!-- 메뉴 탭 -->
             <ul class="nonHiddenTab">
-                <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;⬅️&nbsp;&nbsp;팀 메인으로</a></li>
+                
             </ul>
         </nav>
 
         <!-- 컨텐츠 영역 -->
         <section class="section">
 
-            <!--과제 리스트 메뉴바-->
-            <div class="taskboardmenu">
-                <ul>
-                    <li><a href="#" class="maintask">홈</a></li>|
-                    <li><a href="#" class="alltask">전체 과제</a></li>|
-                    <li><a href="#" class="completetask">완료한 과제</a></li>|
-                    <li><a href="#" class="mytask">내 과제</a></li>
-                </ul>
+            <div class="taskreviewbox">
+                <div class="bigtext"><h1>과제를 평가해주세요</h1></div>
+                <div class="smalltext">미평가 시 평가가 5점으로 진행됩니다</div>
+                <div class="numtext"><span class="s1">1️⃣</span> <span class="s2">2️⃣</span> <span class="s3">3️⃣</span> <span class="s4">4️⃣</span> <span class="s5">5️⃣</span></div>
             </div>
 
-            <div class="taskcreatewarning">⚠️ 과제 생성을 누르지 않고 페이지 이동 시 출제 및 저장이 되지 않습니다.</div>
-            <form class="taskcreatebox" enctype="multipart/form-data">
-                <br><br>
-                <div class="tasktitle">
-                    <input type="text" id="title" name="title" placeholder="과제 타이틀" required>
-                </div>
-                <br><br>
-                <hr>
-                <br><br>
-                <div class="taskinfo">
-                    📁 과제 첨부&nbsp;&nbsp;<input type="file" name="taskfile" required>
-                </div>
-                <br><br>
-                <div class="taskanswer">
-                    <div class="answercnt">답 개수 : <input type="number" name="cnt" required>&nbsp;&nbsp;<button
-                            class="answerset" type="button">설정</button></div>
-                    <br>
-                    <div class="answer"></div>
-                </div>
-                <br><br>
-                <button class="exitbutton" type="button">생성 취소</button>&nbsp;
-                <button class="createbutton">과제 생성</button><br>
-                <br><br>
-            </form>
-
         </section>
-
-
 
         <!-- 푸터 -->
         <footer>
@@ -110,4 +81,4 @@
 
 </body>
 
-</html>
+</html
