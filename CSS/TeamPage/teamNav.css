@@ -28,16 +28,20 @@ nav>a>img.logo {
 }
 
 /* 팀 이름 */
-.teamName {
+.teamNameDiv {
     text-align: left;
     font-weight: bold;
 
     font-size: 20px;
 
-    padding: 0px 0px 10px 20px; 
+    padding: 0px 0px 0px 20px; 
 
     margin-left: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+}
+
+.teamNameShow {
+    margin: auto;
 }
 
 /* 프로필 전체 영역 */
