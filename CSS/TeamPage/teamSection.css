@@ -42,6 +42,8 @@ section {
 
 /* 팀원 목록 */
 .teamMemberListSpan1, .teamMemberListSpan2 {
+    padding: 10px;
+    
     font-weight: bold;
 
     font-size: 17px;

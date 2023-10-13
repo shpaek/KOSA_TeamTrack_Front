@@ -24,7 +24,7 @@ $(() => {
 
     // 현재 팀원 목록 보여주기
     function showMemberList(data) {
-        if (data && data.reqList) {
+        if (data && data.currMemberList) {
             console.log("현재 팀원 정보를 찾았습니다!");
 
             const list = data.currMemberList
@@ -38,7 +38,7 @@ $(() => {
                 $currMemberListClone.find('span[class=memberId]').text(id)
                 $currMemberListClone.find('span[class=memberNickname]').text(nickname)
 
-                $currMemberList.parent().append($waitListClone);
+                $currMemberList.parent().append($currMemberListClone);
             })
 
             $currMemberList.hide();
@@ -71,8 +71,11 @@ $(() => {
 
     // 방출 버튼 클릭 이벤트
     $(document).on('click', '.dismissBtn', function() {
-        const id = $(this).parent().siblings('.customerId').text();
+        // const id = $(this).parent().siblings('.memberId').text();
+        const id = $(this).siblings('.memberId').text();
+        alert(id)
         dismiss(id);
+        alert("성공")
     });
 
     // 페이지가 로드될 때 팀원 목록을 가져옵니다.
