@@ -1,5 +1,5 @@
-const backURL = 'http://localhost:8888/KOSA_Project2'
-const frontURL = 'http://localhost:5500/KOSA_Project2_Front/HTML'
+const taskbackURL = 'http://localhost:8888/KOSA_Project2'
+const taskfrontURL = 'http://localhost:5500/KOSA_Project2_Front/HTML'
 
 function ajaxHandler(method, u, target) {
     console.log(u)
@@ -14,15 +14,23 @@ function ajaxHandler(method, u, target) {
 }
 
 $(()=> {
+    const teamNo = localStorage.getItem('taskteamno')
+    console.log(teamNo)
+
     $.ajax({
         xhrFields: {
             withCredentials: true
         },
-        url: `${backURL}/maintasklist`,
+        url: `${taskbackURL}/maintasklist`,
         method: 'get',
+        data: `teamNo=${teamNo}`, //&id=${id}
         success: (responseJSONObj) => {
             if(responseJSONObj.msg != undefined){
-                alert('과제가 존재하지 않습니다.')
+                Swal.fire({
+                    icon: 'warning',
+                    text: '과제가 존재하지 않습니다.'
+                  })
+                //alert('과제가 존재하지 않습니다.')
                 return
             }
 
@@ -72,19 +80,19 @@ $(()=> {
     $menus.click((e) => {
         switch (e.target.className) {
             case 'maintask':
-                location.href='./taskboard.html'
+                location.href='./taskboard.html?teamNo='+teamNo
                 break
             case 'alltask':
                 localStorage.setItem("allcp", 1)
-                location.href='./taskall.html?currentPage='+1
+                location.href='./taskall.html?teamNo='+teamNo+'currentPage='+1
                 break
             case 'completetask': 
                 localStorage.setItem("completecp", 1)
-                location.href='./taskcomplete.html?currentPage='+1
+                location.href='./taskcomplete.html?teamNo='+teamNo+'currentPage='+1
                 break
             case 'mytask':
                 localStorage.setItem("mycp", 1)
-                location.href='./taskmy.html?currentPage='+1
+                location.href='./taskmy.html?teamNo='+teamNo+'currentPage='+1
                 break
         }
         e.preventDefault()
@@ -96,8 +104,9 @@ $(()=> {
             xhrFields: {
               withCredentials: true
           },
-          url: `${backURL}/chktaskid`,
+          url: `${taskbackURL}/chktaskid`,
           method: 'get',
+          data: `teamNo=${teamNo}`,
           success: (responseJSONObj) => {
             if(responseJSONObj.status==0) {
                 Swal.fire({
@@ -107,6 +116,7 @@ $(()=> {
             } else if(responseJSONObj.status==1) {
               //alert('성공')
               localStorage.setItem("loginedId", responseJSONObj.loginedId)
+              localStorage.setItem("taskteamno", teamNo)
               localStorage.setItem("taskNo", responseJSONObj.taskNo)
               location.href='./taskcreate.html'
             }
