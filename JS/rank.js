@@ -1,5 +1,5 @@
-const backURL = 'http://localhost:8888/KOSA_Project2'
-const frontURL = 'http://localhost:5500/KOSA_Project2_Front/HTML/'
+const backURL = 'http://localhost:8888/teamtrack'
+const frontURL = 'http://localhost:5500/HTML'
 
 $(() => {
     const urlParams = new URL(location.href).searchParams
