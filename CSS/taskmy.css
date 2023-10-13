@@ -18,6 +18,7 @@ div.mycontent>table>tbody tr:hover{
     border: 0px ;
     background-color: rgb(197, 197, 197);
     color:black;
+    cursor: pointer;
 }
 div.mycontent>table td{
     height: 50px;
@@ -49,4 +50,7 @@ div.taskpage{
 span.pagebar{
     color: rgb(184, 184, 184);
     font-size: medium;
+}
+span:hover{
+    cursor: pointer;
 }

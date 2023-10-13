@@ -1,6 +1,6 @@
 const frontURL = 'http://127.0.0.1:5500/HTML'
 
-$(()=>{
+$(() => {
 
     const $formObj = $('form.qnaboard')
     const urlParams = new URL(location.href).searchParams
@@ -18,24 +18,24 @@ $(()=>{
         }
 
         $.ajax({
-            xhrFields:{
-                withCredentials : true
+            xhrFields: {
+                withCredentials: true
             },
             url: `http://127.0.0.1:8888/KOSA/qnaboardcreate`,
-            method : 'post',
+            method: 'post',
             contentType: false,
-            processData : false,
-            data : formData, 
-            success : (responseJSONObj)=>{
+            processData: false,
+            data: formData,
+            success: (responseJSONObj) => {
                 console.log(responseJSONObj)
-                if(responseJSONObj.status == 1){
+                if (responseJSONObj.status == 1) {
                     alert(responseJSONObj.msg)
                     location.href = `${frontURL}/qnaboard.html?teamNo=${teamNo}`
-                }else{
+                } else {
                     alert(responseJSONObj.msg)
                 }
             },
-            error: (jqxhr)=>{
+            error: (jqxhr) => {
                 alert(jqxhr.status)
             }
         })

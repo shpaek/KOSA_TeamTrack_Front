@@ -1,7 +1,8 @@
-const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
-const frontURL = 'http://localhost:5500/HTML'
+// const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
+// const frontURL = 'http://localhost:5500/HTML'
 // const teamNo = location.search.substring(1).split('=')[1]
-// const teamNo = 9999;
+const teamNo = 9999
+const id = 'test24'
 // const id = 'psh2023';
 
 function ajaxHandler(method, u, target) {
@@ -39,8 +40,11 @@ $(() => {
                 break;
 
             case 'taskBoard':
+                const taskteamno=60
                 // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                location.href = './taskboard.html'
+                localStorage.setItem('taskteamno', taskteamno)
+                location.href = './taskboard.html?teamNo='+taskteamno
+                //location.href = './taskboard.html&teamNo='+teamNo
                 break;
 
             case 'QnABoard':
@@ -64,7 +68,7 @@ $(() => {
             case 'manageTeamProperties':
                 const urlParams = new URL(location.href).searchParams;
                 // const teamNo = urlParams.get('teamNo');
-                location.href = './teammanageproperties.html?teamNo='+teamNo
+                location.href = './teammanageproperties.html?teamNo=' + teamNo
                 break;
 
             case 'manageTeamCurrentMember':
@@ -84,7 +88,7 @@ $(() => {
     }) // menu.addEventListener()
     // 〓〓 메뉴 객체에서 클릭이벤트가 발생했을 때 할 일 END 〓〓)
 
-    // 요청 파라미터 보내기
+    // 팀 메인에서 필요한 정보 불러오기!
     $.ajax({
         url: `${backURL}/teammain`,
         type: 'GET',
@@ -92,6 +96,14 @@ $(() => {
         success: (responseJSONObj) => {
 
             // 프로필
+
+            // 팀명
+            if (responseJSONObj.teamList != null) {
+                const teamName = responseJSONObj.teamList.teamName
+                const $teamNameDiv = $('div.teamNameDiv').first()
+
+                $teamNameDiv.find('p.teamNameShow').text(teamName)
+            } // if
 
             // 조회수
             if (responseJSONObj.teamViewCnt != null) {
@@ -104,15 +116,15 @@ $(() => {
 
             // 팀원 목록
             if (responseJSONObj.nicknameList != null) {
-                const nickList = responseJSONObj.nicknameList;
-                const $nickSpan = $('span.teamMemberListSpan2');
+                const nickList = responseJSONObj.nicknameList
+                const $nickSpan = $('span.teamMemberListSpan2')
 
                 nickList.forEach((nickName, index) => {
-                    const $nickCloneSpan = $nickSpan.clone();
-                    $nickCloneSpan.text(nickName);
-                    $nickSpan.parent().append($nickCloneSpan);
-                });
-            }
+                    const $nickCloneSpan = $nickSpan.clone()
+                    $nickCloneSpan.text(nickName)
+                    $nickSpan.parent().append($nickCloneSpan)
+                }) // forEach
+            } // if
 
             // 팀 소개글
             if (responseJSONObj.teamInfo != null) {
@@ -147,6 +159,10 @@ $(() => {
                 }) // forEach
             } // if
 
+            // 다 불러오기 전까지는 버튼 안보이게 숨기기
+            $('#JoinTeamBtn').prop('disabled', false);
+            $('#LeaveTeamBtn').prop('disabled', false);
+
         },
         error: (jqXHR, textStatus) => {
             alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText)
@@ -154,21 +170,61 @@ $(() => {
         }
     }) // ajax
 
+    // ##### 팀 가입 #####################################################
+
+    // 팀 가입하기 버튼 클릭 이벤트
+    $('#JoinTeamBtn').click(function () {
+        $('#teamJoin').show();
+    })
+
+    // 가입하기 버튼
+    $('#requestJoinTeamBtn').click(function (e) {
+        const $target = $(e.target);
+
+        const introduction = $('#teamJoinIntroduction').val(); // 사용자가 입력한 자기소개
+        console.log(introduction);
+
+        $.ajax({
+            url: `${backURL}/teamjoin`,
+            type: 'GET',
+            data: {
+                teamNo: teamNo,
+                id: id,
+                introduction: introduction,
+                // action: 'joinTeam'
+            },
+            success: (responseJSONObj) => {
+                location.href = './teamMain.html'
+            },
+            error: (jqXHR, textStatus) => {
+                // 오류 처리
+                alert("팀 가입 실패: " + textStatus);
+                console.log(textStatus)
+                console.error(jqXHR);
+            }
+        });
+
+        // 팀 가입 팝업창 바깥쪽을 클릭했을 때 팝업창 숨기기
+        $(document).click(function (e) {
+            const $target = $(e.target);
+            if (!$target.closest('#teamJoin').length && !$target.closest('#JoinTeamBtn').length) {
+                $('#teamJoin').hide();
+            }
+        });
+
+    });
+
+    // ##### 팀 나가기 #####################################################
+
+
+
+
+
+
     // 공지 게시글 제목 클릭 시 해당 게시글로 이동
     // const noticeTitle = $('div.teamMainNoticeDiv>a.noticeTitle')
     // $('div.teamMainNoticeDiv>a.noticeTitle').on('click', (e) => {
     //     location.href = `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
     // })
-
-    // 팀 가입하기 버튼 클릭 이벤트
-    $('#JoinTeamBtn').click(function () {
-        $('#teamJoin').show();  // 팝업창 표시
-    });
-
-    // 가입요청 버튼 클릭 이벤트
-    $('#closeJoinTeamBtn').click(function () {
-        $('#poteamJoinpUp').hide();  // 팝업창 숨김
-        // 추가적인 로직 작성하기. (서버로 데이터 전송할거)
-    });
 
 }) // $(() {})
