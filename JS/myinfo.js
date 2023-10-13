@@ -10,6 +10,9 @@ $(()=>{
                 responseType: "blob",
             },
             url: url,
+            method: 'get',
+            contentType: false, //파일첨부용 프로퍼티
+            processData : false, //파일첨부용 프로퍼티
             success: (responseData)=>{
                 console.log(responseData)
                 console.log(responseData.URL)
@@ -114,6 +117,8 @@ $(()=>{
             },
             url: `${backURL}/editnickname`,
             method : 'post',
+            contentType: false, //파일첨부용 프로퍼티
+            processData : false, //파일첨부용 프로퍼티
             data : `nickname=${$('form.nicknamebox>label>input[name=nickname]').val()}`,
             success : (responseJSONObj)=>{
                 console.log(responseJSONObj)
@@ -140,6 +145,8 @@ $(()=>{
             },
             url: `${backURL}/editmyinfo`,
             method : 'post',
+            contentType: false, //파일첨부용 프로퍼티
+            processData : false, //파일첨부용 프로퍼티
             data : $('form.info').serialize(),
             success : (responseJSONObj)=>{
                 console.log(responseJSONObj)
