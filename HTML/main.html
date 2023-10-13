@@ -7,7 +7,7 @@
     <link href="../images/favicon.ico" rel="icon">
     <link rel="stylesheet" href="../CSS/MainPage/header.css" />
     <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
-    <link rel="stylesheet" href="../CSS/MainPage/section.css" />
+    <link rel="stylesheet" href="../CSS/MainPage/teamlist.css" />
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -48,17 +48,17 @@
             <div class="teamProfile">
                 <label for="f1"></label><input type="file" name="f1" id="f1">
                 <img class="teamProfileImg" src='#' alt="teamProfile">
-                    <p class="teamProfileEdit">편집</p>
                 </div>
             </form>
-            <p class="userId">아이디</p>
+            <p class="membernickname">아이디</p>
 
             <!-- 메뉴 탭 -->
             <ul>
+                
                 <button class="button-hover" data="popup-form">
                 <span>팀 생성하기</span>
                 </button>
-
+            
                 <li><a href="#" class="myPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 마이페이지</a></li>
                 <li><a href="#" class="myGroupList">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 마이그룹목록</a></li>
                 <li id="exitTeam"><a href="#" class="logout">로그아웃</a></li>
@@ -74,8 +74,11 @@
 
             <div class="teamlist">
                 <ul class="team">
-                    <p align="center"><img src="../images/search.png" alt="원본"></p>
-                    <li><span class="teamName" id="teamName">팀명</span></li><br>
+
+                    <div class="profilebox">
+                    <img src="../images/search.png" class="teamProfileImage"alt="원본">
+                    </div>
+                    <li class="teamname"><span class="teamName" id="teamName">팀명</span></li><br>
          
                     <li><span class="studyType">스터디종류</span></li><br>
                     <li><span class="onOffLine">온/오프라인</span></li><br>
@@ -92,7 +95,7 @@
                     <li><span class="endDate">스터디 종료일</span></li><br>
 
                     <div class="hashtag">
-                    <li><span>#</span><span class="hashtag1"></span><button class="abc"></button></li>
+                    <li><span>#</span><span class="hashtag1"></span></li>
                     <li><span>#</span><span class="hashtag2"></span></li>
                     <li><span>#</span><span class="hashtag3"></span></li>
                     <li><span>#</span><span class="hashtag4"></span></li>

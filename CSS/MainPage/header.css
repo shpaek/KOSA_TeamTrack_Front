@@ -85,8 +85,9 @@ nav>a>img.logo {
   padding: 10px 20px 0px 20px; 
 }
 
+
 /* 팀 이름 */
-.userId {
+.membernickname {
   text-align: center;
   font-weight: bold;
 
@@ -183,16 +184,16 @@ nav>ul>li#exitTeam:hover {
   opacity: 0.8; 
 }
 
+
 .button-hover{
   position: relative;
-  margin: auto;
   min-width: 150px;
   padding: 0.3em;
   background: linear-gradient(to right, #56ccf2, #2f80ed);
   border: 0;
   cursor: pointer;
   border-radius: 20px;
-  margin:auto;
+  margin-left: 33px;
   display:block;
 }
 

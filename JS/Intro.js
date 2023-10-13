@@ -38,7 +38,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: 'http://127.0.0.1:8888/KOSA/login',
+            url: 'http://127.0.0.1:8888/teamtrack/login',
             method: 'post',
             data: idpwddata,
             success: (responseJSONObj) => {
@@ -47,6 +47,7 @@ $(() => {
                     alert(responseJSONObj.msg)
                 } else if(responseJSONObj.status == 1) {
                     localStorage.setItem("loginedId", idValue)
+                    sessionStorage.setItem("nickname", responseJSONObj.nickname)
                     location.href = './main.html'
                 }
             },
