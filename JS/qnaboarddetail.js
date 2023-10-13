@@ -27,8 +27,7 @@ $(() => {
             console.error("Error:", error);
         }
     });
-
-    
+ 
     // //---- 수정버튼 클릭 시 발생 이벤트 ----
     $('div.detailbuttons>button.edit').on('click',(e)=>{
         $('div.boarddetail').hide()
@@ -119,7 +118,7 @@ $(() => {
         }
         return false
     })
-
+  
     // =================== 댓글 작성 버튼 클릭했을 때 할 일 ===================
     const $formObj = $('form.commentwrite')
     const urlParams = new URL(location.href).searchParams
@@ -201,9 +200,10 @@ $.ajax({
                     const regdateCol = $('<td>').addClass('comment-date').text(comments.regdate);
                     // const selectButtonCol = $('<td>').addClass('comment-select-button').html('<button>채택</button>');
                     const selectButtonCol = $('<td>').addClass('comment-select-button')
+                    const selectReplyButtonCol = $('<td>').addClass('comment-select-replyButton').html('<button>답글</button>');
         
                     // 행에 셀 추가
-                    row.append(commentNoCol, writerCol, contentCol, regdateCol, selectButtonCol);
+                    row.append(commentNoCol, writerCol, contentCol, regdateCol, selectButtonCol, selectReplyButtonCol);
         
                     if (comments.pickeddate !== null) {
                         const selectButton = $('<button>').text('채택됨');
@@ -248,7 +248,8 @@ $.ajax({
 
     // ===================   게시글 작성자가 채택버튼 클릭했을 때 =========================
     // $('td.comment-select-button button').on('click', (e) => {
-        $('#commentList').on('click', 'button', (e) => {
+        // $(document).ready(function () {
+        $(document).on('click', 'td.comment-select-button', (e) => {
 
             const commentButton = $(e.target);
             // 클릭 되어진 버튼의 행을 포함하는 댓글행을 찾아옴
@@ -265,11 +266,11 @@ $.ajax({
             console.log(commentNo);
 
         // 현재 사용자가 게시글의 작성자인지 확인
-        // const boardAuthor = commentRow.find('.comment-info').text();
-        // const boardAuthor = data.id;
-        // const currentUser = '현재 사용자'; // 현재 사용자정보 가져와서 게시글 사용자와 비교해야함 ******
+            // const boardAuthor = commentRow.find('.comment-info').text();
+            // const boardAuthor = data.id;
+            // const currentUser = '현재 사용자'; // 현재 사용자정보 가져와서 게시글 사용자와 비교해야함 ******
 
-        // if (author === currentUser) { ******************
+            // if (author === currentUser) { ******************
             // 현재 사용자가 댓글의 작성자인 경우, '/qnaboardcommentpick'로 POST 요청을 보냅니다.
             $.ajax({
                 xhrFields: {
@@ -301,5 +302,85 @@ $.ajax({
         // }
         return false;
     });
+
+    // =================== 답글버튼 클릭했을 때 =========================
+    $(document).on("click", ".comment-select-replyButton", function () {
+
+        const _this = $(this);
+        const cid = $(this).siblings('input').val();
+        
+        _this.siblings('.reCommentDiv').show();
+        _this.hide();
+        _this.siblings('.reCommentCloseBtn').show();
+
+        
+        // 선택한 댓글을 감싸는 상위 <tr> 엘리먼트를 찾습니다.
+        const commentRow = _this.closest('tr.comment-row');
+        
+        // 선택한 댓글에 대한 답글 폼을 동적으로 생성합니다.
+        const replyForm = $('<form class="commentwrite reply-form">');
+        const replyTable = $('<table class="commentsubmit">');
+        const replyRow = $('<tr>');
+        const replyTextArea = $('<textarea style="width: 1100px" rows="3" cols="30" name="comment" placeholder="댓글을 입력하세요"></textarea>');
+        const replySubmitButton = $('<button type="submit">작성</button>');
+    
+        replyRow.append($('<td>').append(replyTextArea));
+        replyRow.append($('<td>').append(replySubmitButton));
+        replyTable.append(replyRow);
+        replyForm.append(replyTable);   
+        
+        const teamNo = new URLSearchParams(window.location.search).get('teamNo');
+        const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
+        // const commentNo = commentRow.find('.comment-No').text();
+        const commentNo = parseInt(commentRow.find('.comment-No').text());
+        const id = 'psh2023'
+
+        console.log('teamNo ', teamNo);
+        console.log('qnaNo', qnaNo);
+        console.log('commentNo', commentNo);
+
+        // 답글 폼을 댓글 아래에 추가합니다.
+        commentRow.after(replyTextArea, replySubmitButton);
+
+        // replyForm.hide(); // 성공적으로 제출한 후 숨기거나 필요에 따라 처리합니다.
+
+    // 이제 replySubmitButton의 클릭 이벤트를 잡습니다.
+    replySubmitButton.click(function (e) {
+
+        e.preventDefault(); // 폼의 기본 동작을 중지하고 Ajax를 수행할 수 있도록 합니다.
+
+        const content = replyTextArea.val(); // 사용자가 입력한 내용을 가져오기
+        const id = 'psh2023';
+
+        console.log('reply submit teamNo ', teamNo);
+        console.log('reply submit qnaNo', qnaNo);
+        console.log('reply submit commentNo', commentNo);
+        console.log('reply submit content', content);
+
+        // 나머지 Ajax 호출 등 추가 작업
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            type: 'post',
+            url: "http://127.0.0.1:8888/KOSA/qnaboardcommentreplycreate",
+            data: {
+                teamNo: teamNo,
+                qnaNo: qnaNo,
+                commentGroup: commentNo,
+                content: content,
+                id: id
+            },
+            success: (responseJSONObj3) => {
+                
+            },
+            error: (error) => {
+                console.error("에러:", error);
+            }
+        });
+    });
+
+    // return false;
+    }); 
 
 });
