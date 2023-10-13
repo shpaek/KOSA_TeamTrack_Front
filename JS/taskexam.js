@@ -14,8 +14,9 @@ function ajaxHandler(method, u, target) {
 const backURL = 'http://localhost:8888/KOSA_Project2'
 
 $(() => {
+  const teamNo=localStorage.getItem('taskteamno')
   const taskNo = localStorage.getItem('taskNo')
-  console.log(taskNo)
+  console.log(teamNo)
 
   $.ajax({
     xhrFields: {
@@ -23,7 +24,7 @@ $(() => {
     },
     url: `${backURL}/viewtask`,
     method: 'get',
-    data: `taskNo=${taskNo}`,
+    data: `teamNo=${teamNo}&taskNo=${taskNo}`,
     success: (responseJSONObj) => {
       if (responseJSONObj.status == 0) {
         Swal.fire({
@@ -31,7 +32,7 @@ $(() => {
           icon: 'error'
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskboard.html'
+            location.href = './taskboard.html?teamNo='+teamNo
           }
         })
       } else if (responseJSONObj.status == 1) {
@@ -137,7 +138,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskboard.html'
+            location.href = './taskboard.html?teamNo=' + teamNo
           }
         })
 
@@ -152,7 +153,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskall.html'
+            location.href = './taskall.html?teamNo=' + teamNo + 'currentPage=' + 1
           }
         })
 
@@ -167,7 +168,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskcomplete.html'
+            location.href = './taskcomplete.html?teamNo=' + teamNo + 'currentPage=' + 1
           }
         })
 
@@ -182,7 +183,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './taskmy.html'
+            location.href = './taskmy.html?teamNo=' + teamNo + 'currentPage=' + 1
           }
         })
 
@@ -192,7 +193,6 @@ $(() => {
   })
 
   $('button.taskfiledown').click(() => {
-    const $file = $('div.taskinfo>a')
 
     $.ajax({
       xhrFields: {
@@ -200,10 +200,18 @@ $(() => {
       },
       url: `${backURL}/taskdownload`,
       method: 'get',
-      data: `taskNo=${taskNo}`,
-      success: (response) => {
-        location.href = 'http://localhost:8888/KOSA_Project2/taskdownload?taskNo=' + taskNo
-      },
+      data: `teamNo=${teamNo}&taskNo=${taskNo}`,
+      success: (responseData) => {
+        if(responseData==="") {
+            Swal.fire({
+                icon: 'question',
+                text: '파일이 존재하지 않습니다'
+            })
+            return
+        } else {
+            location.href = backURL+ '/taskdownload?teamNo='+teamNo+'&taskNo=' + taskNo
+        } 
+    }, 
       error: () => {
         Swal.fire({
           icon: 'error',
@@ -232,7 +240,7 @@ $(() => {
       },
       url: `${backURL}/submittask`,
       method: 'get',
-      data: `taskNo=${taskNo}&answerlist=${answerlist}&answerCnt=${cnt}`,
+      data: `teamNo=${teamNo}&taskNo=${taskNo}&answerlist=${answerlist}&answerCnt=${cnt}`,
       success: (responseJSONObj) => {
         if (responseJSONObj.status == 0) {
           Swal.fire({

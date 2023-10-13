@@ -148,9 +148,16 @@ $(() => {
             url: `${taskbackURL}/taskdownload`,
             method: 'get',
             data: `teamNo=${teamNo}&taskNo=${taskNo}`,
-            success: () => {
-                alert(teamNo+", "+taskNo)
-                location.href = taskbackURL+ '/taskdownload?teamNo='+teamNo+'&taskNo=' + taskNo
+            success: (responseData) => {
+                if(responseData==="") {
+                    Swal.fire({
+                        icon: 'question',
+                        text: '파일이 존재하지 않습니다'
+                    })
+                    return
+                } else {
+                    location.href = taskbackURL+ '/taskdownload?teamNo='+teamNo+'&taskNo=' + taskNo
+                } 
             }, 
             error: () => {
                 Swal.fire({

@@ -233,6 +233,7 @@ $(() => {
     fd.append('title', title);
     fd.append('teamNo', teamNo);
     fd.append('taskNo', taskNo);
+    fd.append('answerCnt', answercnt)
 
     var answerlist = []
     for (var cnt = 1; cnt <= answercnt; cnt++) {
