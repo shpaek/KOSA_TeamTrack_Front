@@ -1,12 +1,14 @@
 $(() => {
     const cp=localStorage.getItem('allcp')
+    const teamNo=localStorage.getItem('taskteamno')
+    console.log(teamNo)
     $.ajax({
         xhrFields: {
             withCredentials: true
         },
-        url: `${backURL}/alltasklist`,
+        url: `${taskbackURL}/alltasklist`,
         method: 'get',
-        data: `currentPage=${cp}`,
+        data: `teamNo=${teamNo}&currentPage=${cp}`,
         success: (responseJSONObj) => {
             if(responseJSONObj.msg != undefined){
                 alert('과제가 존재하지 않습니다.')
