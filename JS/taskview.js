@@ -1,25 +1,12 @@
-function ajaxHandler(method, u, target) {
-    console.log(u)
-
-    if (method == 'GET') {
-        target.load(u, function (response, status, xhr) {
-            if (status == "error") {
-                alert(xhr.status + xhr.statusText)
-            }
-        })
-    }
-}
-
 $(() => {
     const teamNo = localStorage.getItem("taskteamno")
     const taskNo = localStorage.getItem("taskNo")
-    console.log(teamNo)
 
     $.ajax({
         xhrFields: {
             withCredentials: true
         },
-        url: `${taskbackURL}/viewtask`,
+        url: `${backURL}/viewtask`,
         method: 'get',
         data: `teamNo=${teamNo}&taskNo=${taskNo}`,
         success: (responseJSONObj) => {
@@ -55,7 +42,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: `${taskbackURL}/viewquizanswer`,
+            url: `${backURL}/viewquizanswer`,
             method: 'get',
             data: `teamNo=${teamNo}&taskNo=${taskNo}`,
             success: (responseJSONObj) => {
@@ -96,7 +83,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: `${taskbackURL}/viewmemberanswer`,
+            url: `${backURL}/viewmemberanswer`,
             method: 'get',
             data: `teamNo=${teamNo}&taskNo=${taskNo}`,
             success: (responseJSONObj) => {
@@ -136,7 +123,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: `${taskbackURL}/taskdownload`,
+            url: `${backURL}/taskdownload`,
             method: 'get',
             data: `teamNo=${teamNo}&taskNo=${taskNo}`,
             success: (responseData) => {

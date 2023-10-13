@@ -1,18 +1,4 @@
-function ajaxHandler(method, u, target) {
-  console.log(u)
-
-  if (method == 'GET') {
-    target.load(u, function (response, status, xhr) { // jQuery용 메소드 load()
-      if (status == "error") {
-        alert(xhr.status + ShadowRoot.statusText)
-      } // inner-if
-    })  // .load()
-  } // outer-if
-
-}
-
-const backURL = 'http://localhost:8888/KOSA_Project2'
-
+const backURL = 'http://localhost:8888/teamtrack'
 $(() => {
   const teamNo = localStorage.getItem('taskteamno')
   const taskNo = localStorage.getItem('taskNo')

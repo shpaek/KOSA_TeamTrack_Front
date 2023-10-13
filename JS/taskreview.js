@@ -1,12 +1,9 @@
-const backURL = 'http://localhost:8888/KOSA_Project2'
+const backURL = 'http://localhost:8888/teamtrack'
 $(() => {
 
     var score = 0
     const teamNo=localStorage.getItem('taskteamno')
     const taskNo = localStorage.getItem('taskNo')
-    console.log(taskNo)
-    // const id=localStorage.getItem('id')
-    // console.log(id)
 
     $('span.s1').click(() => {
         Swal.fire({

@@ -1,27 +1,12 @@
-const taskbackURL = 'http://localhost:8888/KOSA_Project2'
-const taskfrontURL = 'http://localhost:5500/KOSA_Project2_Front/HTML'
-
-function ajaxHandler(method, u, target) {
-    console.log(u)
-    
-    if(method == 'GET'){
-        target.load(u,  function( response, status, xhr ) {
-            if ( status == "error" ) {
-                alert(xhr.status + xhr.statusText)
-            }
-        })
-    }
-}
-
+const backURL = 'http://localhost:8888/teamtrack'
 $(()=> {
     const teamNo = localStorage.getItem('taskteamno')
-    console.log(teamNo)
 
     $.ajax({
         xhrFields: {
             withCredentials: true
         },
-        url: `${taskbackURL}/maintasklist`,
+        url: `${backURL}/maintasklist`,
         method: 'get',
         data: `teamNo=${teamNo}`, //&id=${id}
         success: (responseJSONObj) => {
@@ -104,7 +89,7 @@ $(()=> {
             xhrFields: {
               withCredentials: true
           },
-          url: `${taskbackURL}/chktaskid`,
+          url: `${backURL}/chktaskid`,
           method: 'get',
           data: `teamNo=${teamNo}`,
           success: (responseJSONObj) => {

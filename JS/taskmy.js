@@ -5,7 +5,7 @@ $(() => {
         xhrFields: {
             withCredentials: true
         },
-        url: `${taskbackURL}/mytasklist`,
+        url: `${backURL}/mytasklist`,
         method: 'get',
         data: `teamNo=${teamNo}&currentPage=${cp}`,
         success: (responseJSONObj) => {
