@@ -91,6 +91,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
+            localStorage.setItem("allcp", 1)
             location.href = './taskall.html?teamNo=' + teamNo + 'currentPage=' + 1
           }
         })
@@ -106,6 +107,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
+            localStorage.setItem("completecp", 1)
             location.href = './taskcomplete.html?teamNo=' + teamNo + 'currentPage=' + 1
           }
         })
@@ -121,6 +123,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
+            localStorage.setItem("mycp", 1)
             location.href = './taskmy.html?teamNo=' + teamNo + 'currentPage=' + 1
           }
         })
@@ -210,7 +213,7 @@ $(() => {
       cancelButtonColor: '#d33',
     }).then((result) => {
       if (result.isConfirmed) {
-        location.href = './taskboard.html'
+        location.href = './taskboard.html?teamNo=' + teamNo
       }
     })
   })
@@ -278,7 +281,7 @@ $(() => {
             icon: 'success',
             text: responseJSONObj.msg
           }).then((result) => {
-            if (result.isConfirmed) location.href = './taskboard.html'
+            if (result.isConfirmed) location.href = './taskboard.html?teamNo=' + teamNo
           })
 
         }
@@ -291,7 +294,7 @@ $(() => {
           icon: 'error',
           text: '연결에 실패하였습니다'
         }).then((result) => {
-          if (result.isConfirmed) location.href = './taskboard.html'
+          if (result.isConfirmed) location.href = './taskboard.html?teamNo=' + teamNo
         })
 
       }
