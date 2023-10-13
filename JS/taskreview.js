@@ -2,6 +2,7 @@ const backURL = 'http://localhost:8888/KOSA_Project2'
 $(() => {
 
     var score = 0
+    const teamNo=localStorage.getItem('taskteamno')
     const taskNo = localStorage.getItem('taskNo')
     console.log(taskNo)
     // const id=localStorage.getItem('id')
@@ -27,7 +28,7 @@ $(() => {
                     },
                     url: `${backURL}/reviewtask`,
                     method: 'get',
-                    data: `taskNo=${taskNo}&reviewScore=${score}`,
+                    data: `teamNo=${teamNo}&taskNo=${taskNo}&reviewScore=${score}`,
                     success: (responseJSONObj) => {
                         if (responseJSONObj.status == 0) {
                             Swal.fire({
@@ -41,7 +42,7 @@ $(() => {
                                 icon: 'success',
                                 title: responseJSONObj.msg
                             }).then((result) => {
-                                if (result.isConfirmed) location.href = './taskboard.html'
+                                if (result.isConfirmed) location.href = './taskboard.html?teamNo='+teamNo
                             })
                         }
                     }, error: ()=>{alert('?')}
@@ -72,7 +73,7 @@ $(() => {
                     },
                     url: `${backURL}/reviewtask`,
                     method: 'get',
-                    data: `taskNo=${taskNo}&reviewScore=${score}`,
+                    data: `teamNo=${teamNo}&taskNo=${taskNo}&reviewScore=${score}`,
                     success: (responseJSONObj) => {
                         if (responseJSONObj.status == 0) {
                             Swal.fire({
@@ -86,7 +87,7 @@ $(() => {
                                 icon: 'success',
                                 title: responseJSONObj.msg
                             }).then((result) => {
-                                if (result.isConfirmed) location.href = './taskboard.html'
+                                if (result.isConfirmed) location.href = './taskboard.html?teamNo='+teamNo
                             })
                         }
                     }, error: ()=>{alert('?')}
@@ -115,7 +116,7 @@ $(() => {
                     },
                     url: `${backURL}/reviewtask`,
                     method: 'get',
-                    data: `taskNo=${taskNo}&reviewScore=${score}`,
+                    data: `teamNo=${teamNo}&taskNo=${taskNo}&reviewScore=${score}`,
                     success: (responseJSONObj) => {
                         if (responseJSONObj.status == 0) {
                             Swal.fire({
@@ -129,7 +130,7 @@ $(() => {
                                 icon: 'success',
                                 title: responseJSONObj.msg
                             }).then((result) => {
-                                if (result.isConfirmed) location.href = './taskboard.html'
+                                if (result.isConfirmed) location.href = './taskboard.html?teamNo='+teamNo
                             })
                         }
                     }, error: ()=>{alert('?')}
@@ -158,7 +159,7 @@ $(() => {
                     },
                     url: `${backURL}/reviewtask`,
                     method: 'get',
-                    data: `taskNo=${taskNo}&reviewScore=${score}`,
+                    data: `teamNo=${teamNo}&taskNo=${taskNo}&reviewScore=${score}`,
                     success: (responseJSONObj) => {
                         if (responseJSONObj.status == 0) {
                             Swal.fire({
@@ -172,7 +173,7 @@ $(() => {
                                 icon: 'success',
                                 title: responseJSONObj.msg
                             }).then((result) => {
-                                if (result.isConfirmed) location.href = './taskboard.html'
+                                if (result.isConfirmed) location.href = './taskboard.html?teamNo='+teamNo
                             })
                         }
                     }, error: ()=>{alert('?')}
@@ -201,7 +202,7 @@ $(() => {
                     },
                     url: `${backURL}/reviewtask`,
                     method: 'get',
-                    data: `taskNo=${taskNo}&reviewScore=${score}`,
+                    data: `teamNo=${teamNo}&taskNo=${taskNo}&reviewScore=${score}`,
                     success: (responseJSONObj) => {
                         if (responseJSONObj.status == 0) {
                             Swal.fire({
@@ -215,7 +216,7 @@ $(() => {
                                 icon: 'success',
                                 title: responseJSONObj.msg
                             }).then((result) => {
-                                if (result.isConfirmed) location.href = './taskboard.html'
+                                if (result.isConfirmed) location.href = './taskboard.html?teamNo='+teamNo
                             })
                         }
                     }, error: ()=>{alert('?')}
