@@ -34,9 +34,6 @@ $(() => {
         })
     })
 
-    var open1 = 0;
-    var open2 = 0;
-
     $('div.taskanswer>button').click((e) => {
         $.ajax({
             xhrFields: {
