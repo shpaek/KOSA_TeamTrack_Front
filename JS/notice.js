@@ -25,14 +25,17 @@ $(()=>{
 
                 $('div.main_topline>span[name=noticeNo]').text(noticeNo)
                 $('div.main_topline>a').html(noticeTitle)
-                $('div.main_topline>span[name=date]').text(regDate)
+                $('div.rightspace>span[name=date]').text(regDate)
                 $('div.main_contentline>p').html(noticeContent)
 
                 $('div.main_topline>span[name=noticeNo]').hide()
             }
         },
         error:(jqXHR, textStatus)=>{
-            alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+            Swal.fire({
+                icon: 'error',
+                text: '다시 한번 시도해주세요🙏'
+            })
             console.log(jqXHR)
         }
     })
@@ -46,7 +49,7 @@ $(()=>{
 
 
     //---- 공지 내리기 버튼 눌렀을 때 발생할 이벤트 ----
-    $('div.main_topline>button[name=cancel]').on('click',(e)=>{ 
+    $('div.rightspace>button[name=cancel]').on('click',(e)=>{ 
         $('div.main_topline>span[name=noticeNo]').show()
         const noticeNo = $('div.main_topline>span[name=noticeNo]').text()
         $('div.main_topline>span[name=noticeNo]').hide()
@@ -59,11 +62,17 @@ $(()=>{
                 if(responseJSONObj.status==1){
                     location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                 }else{
-                    alert(responseJSONObj.msg)
+                    Swal.fire({
+                        icon: 'success',
+                        text: responseJSONObj.msg
+                    })
                 }
             },
             error:(jqXHR, textStatus)=>{
-                alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+                Swal.fire({
+                    icon: 'error',
+                    text: '다시 한번 시도해주세요🙏'
+                })
                 console.log(jqXHR)
             }
         })
@@ -112,20 +121,23 @@ $(()=>{
                 const endPage = responseJSONObj.endPage //끝페이지
 
                 if(startPage>1){
-                    let page = `[<span class="pg${startPage-1}">PREV</span>]&nbsp;&nbsp;&nbsp;`
+                    let page = `ㅣ<span class="pg${startPage-1}">PREV</span>ㅣ&nbsp;&nbsp;&nbsp;`
                     $divPageGroup.html($divPageGroup.html()+page)
                 }
                 for(let i = startPage; i<=endPage; i++){
-                    let page=`[<span class="pg${i}">${i}</span>]&nbsp;&nbsp;&nbsp;`
+                    let page=`<span class="pg${i}">${i}</span>&nbsp;&nbsp;&nbsp;`
                     $divPageGroup.html($divPageGroup.html()+page)
                 }
                 if(endPage!=responseJSONObj.totalPage){
-                    let page=`[<span class="pg${endPage+1}">NEXT</span>]`
+                    let page=`ㅣ<span class="pg${endPage+1}">NEXT</span>ㅣ`
                     $divPageGroup.html($divPageGroup.html()+page)
                 }
             },
             error:(jqXHR, textStatus)=>{
-                alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
+                Swal.fire({
+                    icon: 'error',
+                    text: '다시 한번 시도해주세요🙏'
+                })
                 console.log(jqXHR)
             }
         })

@@ -5,9 +5,21 @@
         <link rel="stylesheet" href="../css/TeamPage/teamHeader.css">
         <link rel="stylesheet" href="../css/TeamPage/teamNav.css">
         <link rel="stylesheet" href="../css/TeamPage/teamFooter.css">
+
+        <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+        <!-- SweetAlert2 JS 스크립트 불러오기 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="../js/notice.js"></script> 
         <script src="../js/teamheader.js"></script> 
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+            </style>
     </head>
     <body>
         <header>
@@ -56,13 +68,15 @@
                 <div class="boardtitle">
                     <h2>공지사항</h3>
                 </div>
-                <hr>
+                
                 <div class="mainnotice">
                     <div class="main_topline">
                         <span name="noticeNo">글번호</span>
                         <a href="#">제목</a>
-                        <span name="date">등록일자</span>
-                        <button name="cancel">―</button>
+                        <div class="rightspace">
+                            <span name="date">등록일자</span>
+                            <button name="cancel">―</button>
+                        </div>
                     </div>
                     <div class="main_contentline">
                         <p>본문</p>

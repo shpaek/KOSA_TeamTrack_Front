@@ -9,6 +9,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="../js/noticedetail.js"></script>
     <script src="../js/teamheader.js"></script>
+
+    <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 JS 스크립트 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    
 </head>
 
 <body>
@@ -64,6 +71,9 @@
                 <h4>제목</h4>
                 <span>작성일자<span>
             </div>
+            <div class="filezone">
+                <span>파일명</span>
+            </div>
             <div class="detailcontent">
                 <p>본문</p>
             </div>
@@ -84,6 +94,9 @@
                 <div class="modifytitleline">
                     <input type="text" required placeholder="제목을 입력하세요" name="title" value="">
                     <input type="file" name="f1" id="f1"></input>
+                </div>
+                <div class="modifyfilezone">
+                    <span>첨부된 파일이 없습니다</span>
                 </div>
                 <div class="modifycontent">
                     <input type="text" required placeholder="본문" name="content" value="">

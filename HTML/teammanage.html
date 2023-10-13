@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TeamTrack!!</title>
 
     <link href="../images/favicon.ico" rel="icon">
-    <link rel="stylesheet" href="../CSS/MainPage/header.css" />
-    <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
-    <link rel="stylesheet" href="../CSS/MainPage/section.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
     <link rel="stylesheet" href="../CSS/MainPage/teamform.css" />
 
     <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
@@ -18,64 +22,76 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script src="../JS/TeamPage/teammanage.js"></script>
-    <script src="../JS/MainPage/main.js"></script>
 
+    <!-- font -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
   </style>
-  </head>
-  <body>
-    <div id="mainContainer">
-        <header>
-            <!-- 검색창 -->
-            <div class="searchBar">
-                <input type="text" placeholder="검색을 하삼">
-                <img class="searchIcon" src="../images/search.png" alt="searchIcon">
+</head>
+
+<body>
+  <div id="mainContainer">
+      <header>
+          <!-- 검색창 -->
+          <div class="searchBar">
+              <input
+                type="text"
+                placeholder="검색을 하삼"
+                id="mainsearch"
+              />
+              <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon"/>
             </div>
-        </header>
+      </header>
 
-        <!-- 사이드 메뉴바 -->
-        <nav>
-            <!-- 사이트 로고 -->
-            <a href="../HTML/main.html">
-                <img class="logo" src="../images/logoCut.png" alt="logo">
-            </a>
+      <!-- 사이드 메뉴바 -->
+      <nav>
+          <!-- 사이트 로고 -->
+          <a href="../HTML/main.html">
+              <img class="logo" src="../images/logoCut.png" alt="logo">
+          </a>
 
-            <!-- 팀 이름 -->
+          <!-- 팀 프로필 -->
+          <div class="teamProfile">
+              <img class="teamProfileImg" src='#' alt="teamProfile">
+              <p class="teamProfileEdit">편집</p>
+          </div>
 
-            <!-- 팀 프로필 -->
-            <form class="profile">
-            <div class="teamProfile">
-                <label for="f1"></label><input type="file" name="f1" id="f1">
-                <img class="teamProfileImg" src='#' alt="teamProfile">
-                    <p class="teamProfileEdit">편집</p>
-                </div>
-            </form>
-            <p class="userId">아이디</p>
+          <!-- 팀 이름 -->
+          <p class="teamName">팀명: 셍나</p>
 
-            <!-- 메뉴 탭 -->
-            <ul>
-                <button class="button-hover" data="popup-form">
-                <span>팀 생성하기</span>
-                </button>
-
-                <li><a href="#" class="myPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 마이페이지</a></li>
-                <li><a href="#" class="myGroupList">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 마이그룹목록</a></li>
-                <li id="exitTeam"><a href="#" class="logout">로그아웃</a></li>
-            </ul>
-        </nav>
+          <!-- 메뉴 탭 -->
+          <ul class="nonHiddenTab">
+              <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
+              <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
+              <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
+              <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
+              <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
+              <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
+              <li>
+                  <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
+                  <ul class="hiddenTab">
+                      <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
+                      <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
+                      <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
+                      <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
+                  </ul>
+              </li>
+              <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
+          </ul>
+      </nav>
   <section class="section">
 <div class="popup-form">
   <div class="popup-form__wrapper">
     <div class="popup-form__close"></div>
     <div class="popup-form__content">
-      <h3 class="form__title">팀 생성하기</h3>
-      <img class="teamProfileImg2" src='#' alt="teamProfile2">
-      <form class="form" action="http://127.0.0.1:8888/KOSA_TeamTrack_Back/teammanage" method="post" enctype="multipart/form-data">
+      <h3 class="form__title">팀 수정하기</h3>
+      <form class="form" method="post" enctype="multipart/form-data">
+        <label for="f1">프로필:</label><input type="file" name="f1" id="f1">
+        <img class="teamProfileImg2" src='#' alt="teamProfile2">
 
         <div class="formgroup">
           <label for="teamName" class="formgroup__text">팀명:</label>
-          <input class="form__field" id="teamName" type="text" name="teamName"  placeholder="10자이내" maxlength="10" defaultValue=""/>
+          <input class="form__field" id="teamName" type="text" name="teamName"  placeholder="10자이내" maxlength="10" defaultValue="" required/>
           <button type="button">중복확인</button>
         </div>
 
@@ -93,41 +109,41 @@
 
         <div class="formgroup">
           <p class="formgroup__text">최대 인원:</p>
-          <input type="number" id="maxMember" name="maxMember" value="1" max="20" min="1"  defaultValue=""/>명(최대 20명)
+          <input type="number" id="maxMember" name="maxMember" value="1" max="20" min="1"  defaultValue="" required/>명(최대 20명)
         </div>
 
         <div class="formgroup">
             <p class="formgroup__text">스터디 타입:</p>
-            <input class="form__field" id="studyType" type="text" name="studyType" placeholder="예) 자바, 자격증" defaultValue=""/>
+            <input class="form__field" id="studyType" type="text" name="studyType" placeholder="예) 자바, 자격증" defaultValue="" required/>
         </div>
             
         <div class="formgroup__text">스터디 기간:</div>
             <div>
               <label class="start">시작 날짜:
-                <input type="date" id="startDate" name="startDate" min="2023-10-01" max="2030-12-31"  defaultValue=""/>
+                <input type="date" id="startDate" name="startDate" min="2023-10-01" max="2030-12-31"  defaultValue="" required/>
               </label>
               <label class="end">종료 날짜:
-                <input type="date" id="endDate" name="endDate" min="2023-10-01" max="2030-12-31"  defaultValue=""/>
+                <input type="date" id="endDate" name="endDate" min="2023-10-01" max="2030-12-31"  defaultValue="" required/>
               </label>
         </div>
 
         <div class="formgroup">
             <p class="formgroup__text">해시태그:</p>
-            <input class="form__field_hashtag" id="hashtag1" type="text" name="hashtag1" placeholder="10자 이내" defaultValue=""/>
-            <input class="form__field_hashtag" id="hashtag2" type="text" name="hashtag2" placeholder="10자 이내" defaultValue=""/>
-            <input class="form__field_hashtag" id="hashtag3" type="text" name="hashtag3" placeholder="10자 이내" defaultValue=""/>
-            <input class="form__field_hashtag" id="hashtag4" type="text" name="hashtag4" placeholder="10자 이내" defaultValue=""/>
-            <input class="form__field_hashtag" id="hashtag5" type="text" name="hashtag5" placeholder="10자 이내" defaultValue=""/>
+            <input class="form__field_hashtag" id="hashtag1" type="text" name="hashtag1" placeholder="10자 이내" defaultValue="" required/>
+            <input class="form__field_hashtag" id="hashtag2" type="text" name="hashtag2" placeholder="10자 이내" defaultValue="" required/>
+            <input class="form__field_hashtag" id="hashtag3" type="text" name="hashtag3" placeholder="10자 이내" defaultValue="" required/>
+            <input class="form__field_hashtag" id="hashtag4" type="text" name="hashtag4" placeholder="10자 이내" defaultValue="" required/>
+            <input class="form__field_hashtag" id="hashtag5" type="text" name="hashtag5" placeholder="10자 이내" defaultValue="" required/>
         </div>
 
         <div class="formgroup">
             <p class="formgroup__text">한줄 소개:</p>
-            <input class="form__field" id="briefInfo" type="text" name="briefInfo" placeholder="20자 이내" defaultValue=""/>
+            <input class="form__field" id="briefInfo" type="text" name="briefInfo" placeholder="20자 이내" defaultValue="" required/>
         </div>
 
         <div class="formgroup">
             <p class="formgroup__text">팀 소개:</p>
-            <textarea class="form__field2" id="teamInfo" name="teamInfo" cols="60" rows="4" defaultValue=""></textarea>
+            <textarea class="form__field2" id="teamInfo" name="teamInfo" cols="60" rows="4" defaultValue="" required></textarea>
         </div>
 
         <button class="alter" type="submit">수정하기</button>

@@ -2,6 +2,7 @@ section {
     margin-left: 270px;
     margin-bottom: 50px;
     padding: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 
@@ -25,10 +26,7 @@ li{
         border-radius: 20px;
 }
 
-img{
-    width: 100px;
-    object-fit: cover;
-}
+
 
 .teamName{
     font-size: x-large; 
