@@ -92,7 +92,12 @@ $(() => {
         method: 'get',
         data: `teamNo=${teamNo}`,
         success: (responseJSONObj) => { //응답데이터 전달
-
+            if (responseJSONObj == "") {
+                Swal.fire({
+                    icon: 'question',
+                    text: '조회되는 랭킹이 없습니다'
+                })
+            }
             //원본 ranklist객체 찾기
             const $originRank = $('div.memberRank>table>thead>tr')
             const $tbodyObj = $('div.memberRank>table>tbody') //tbody객체 <-여기에 복사본 넣어줄 예정
@@ -128,6 +133,12 @@ $(() => {
                 }
             })
 
+        }, 
+        error: () => {
+            Swal.fire({
+              icon: 'question',
+              text: '조회되는 랭킹이 없습니다'
+            })
         }
 
     })
