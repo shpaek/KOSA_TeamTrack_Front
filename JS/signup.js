@@ -20,7 +20,7 @@ $(() => {
 			xhrFields: {
 				withCredentials: true
 			},
-			url: 'http://127.0.0.1:8888/teamtrack/iddupcheck',
+			url: 'http://localhost:8888/teamtrack/iddupcheck',
 			method: 'get',
 			// data : `id=${$id.val()}`,
 			data: `id=${idValue}`,
@@ -97,7 +97,7 @@ $(() => {
 				// xhrFields: {
 				//     withCredentials: true
 				// },
-				url: 'http://127.0.0.1:8888/teamtrack/signup',
+				url: 'http://localhost:8888/teamtrack/signup',
 				method: 'post',
 				contentType: false,
 				processData: false,
