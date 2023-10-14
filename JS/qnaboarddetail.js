@@ -428,7 +428,8 @@ $(() => {
         const commentNo = parseInt(commentRow.find('.comment-No').text());
 
         // seesion아이디 사용해야 함
-        const id = 'psh2023'
+        // const id = 'psh2023'
+        const loginedId = localStorage.getItem("loginedId")
 
         console.log('teamNo ', teamNo);
         console.log('qnaNo', qnaNo);

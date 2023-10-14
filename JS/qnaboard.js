@@ -8,7 +8,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: "http://127.0.0.1:8888/teamtrack/qnaboard",
+            url: "http://localhost:8888/teamtrack/qnaboard",
             method: 'get',
             // data: `currentPage=${cp}&teamNo=64`,  // temaNo 값 가변적이여함
             data: `currentPage=${cp}&teamNo=${teamNo}`,
