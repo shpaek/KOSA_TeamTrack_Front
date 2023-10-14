@@ -1,11 +1,9 @@
 $(function() {
-
-    const loginedId = localStorage.getItem("loginedId")
-
+    url: backURL + "/teamselectexaminer",
     // 팀원 목록을 가져오는 함수
     function getMemberList() {
         $.ajax({
-            url: `http://localhost:8888/KOSA_TeamTrack_Back/teamselectexaminer`,
+            url: backURL + "/teamselectexaminer",
             type: 'GET',
             data: {
                 teamNo: teamNo,
@@ -75,7 +73,7 @@ $(function() {
         }
 
         $.ajax({
-            url: `http://localhost:8888/KOSA_TeamTrack_Back/teamselectexaminer`,
+            url: backURL + "/teamselectexaminer",
             type: 'GET',
             data: {
                 teamNo: teamNo,

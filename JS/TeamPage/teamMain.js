@@ -1,4 +1,7 @@
-const teamNo = new URL(location.href).searchParams.get("teamNo");
+const backURL = "http://localhost:8888/teamtrack"
+const frontURL = "http://localhost:5500/HTML"
+const id = localStorage.getItem("loginedId")
+const teamNo = new URL(location.href).searchParams.get("teamNo")
 
 function ajaxHandler(method, u, target) {
     console.log(u)
@@ -83,9 +86,9 @@ $(() => {
 
     // 팀 메인에서 필요한 정보 불러오기!
     $.ajax({
-        url: `${backURL}/teammain`,
+        url: backURL + "/teammain",
         type: 'GET',
-        data: `teamNo=${teamNo}`,
+        data: teamNo,
         success: (responseJSONObj) => {
             alert(teamNo)
             alert(id)
@@ -179,8 +182,9 @@ $(() => {
         const introduction = $('#teamJoinIntroduction').val(); // 사용자가 입력한 자기소개
         console.log(introduction);
 
+        backURL + "/teamjoin",
         $.ajax({
-            url: `${backURL}/teamjoin`,
+            url: backURL + "/teamjoin",
             type: 'GET',
             data: {
                 teamNo: teamNo,
@@ -214,7 +218,7 @@ $(() => {
         alert('정말 팀을 나가시겠습니까?')
 
         $.ajax({
-            url: `${backURL}/teamleave`,
+            url: backURL + "/teamleave",
             type: 'GET',
             data: {
                 teamNo: teamNo,
