@@ -21,7 +21,7 @@
 
         <!-- JavaScript -->
         <script src="../JS/TeamPage/teamMain.js"></script>
-        <!-- <script src="../JS/MainPage/teamsearch.js"></script> -->
+        <script src="../JS/MainPage/teamsearch.js"></script>
 
     <!-- font -->
     <style>
@@ -57,7 +57,7 @@
             </div>
 
             <!-- 팀 이름 -->
-            <div class="teamNameDiv">팀명: 
+            <div class="teamNameDiv">
                 <p class="teamNameShow"></p>
             </div>
 
@@ -125,8 +125,8 @@
             <!-- 팝업 -->
             <form id="teamJoin" action="/#" method="POST" style="display: none;">
                 <p>&#127881; 팀 가입 &#127881;</p>
-                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!"
-                    required rows="5" cols="50" maxlength="2000"></textarea>
+                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요! (최대 200자)"
+                    required rows="5" cols="50" maxlength="200"></textarea>
                 <button type="submit" id="requestJoinTeamBtn">가입요청</button>
             </form>
         </aside>

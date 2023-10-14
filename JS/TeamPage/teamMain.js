@@ -88,10 +88,12 @@ $(() => {
     $.ajax({
         url: backURL + "/teammain",
         type: 'GET',
-        data: teamNo,
+        data: {
+            teamNo: teamNo
+        },
         success: (responseJSONObj) => {
-            alert(teamNo)
-            alert(id)
+            alert('현재 teamNo = ' + teamNo)
+            alert('현재 id = ' + id)
 
             // 프로필
 
@@ -182,7 +184,6 @@ $(() => {
         const introduction = $('#teamJoinIntroduction').val(); // 사용자가 입력한 자기소개
         console.log(introduction);
 
-        backURL + "/teamjoin",
         $.ajax({
             url: backURL + "/teamjoin",
             type: 'GET',
