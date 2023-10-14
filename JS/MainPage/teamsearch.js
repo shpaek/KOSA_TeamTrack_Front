@@ -1,5 +1,3 @@
-const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
-const frontURL = 'http://localhost:5500/HTML'
 $(() => {
 
 

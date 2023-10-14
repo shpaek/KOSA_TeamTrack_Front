@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="../CSS/MainPage/header.css" />
     <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
     <link rel="stylesheet" href="../CSS/MainPage/teamlist.css" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="../JS/MainPage/newteamlist.js"></script>
     <script src="../JS/MainPage/main.js"></script>
@@ -75,9 +76,8 @@
         <span class="top">인기순</span>
         <span class="new">최신순</span>
         <div class="studydate">
-          <span class="studystart">스터디시작일:</span><input type="date" id="date1" />
-          <span class="studyend">스터디종료일:</span><input type="date" id="date2" />
-          <script></script>
+          <span class="studystart"></span><input type="text" id="date1" placeholder="시작날짜"/>
+          <span class="studyend"></span><input type="text" id="date2" placeholder="종료날짜"/>
           <button class="search">검색</button>
         </div>
         <div class="mainteam">
@@ -87,41 +87,33 @@
             <ul class="team">
 
               <div class="profilebox">
-              <img src="../images/search.png" class="teamProfileImage"alt="원본">
-              </div>
-              <li class="teamname"><span class="teamName" id="teamName">팀명</span></li><br>
+                <img src="../images/search.png" class="teamProfileImage"alt="원본">
+                </div>
+                <li><span class="teamName" id="teamName">팀명</span></li><br>
+                <li class="createDate"><span>(</span><span class="createDate">팀생성일</span><span> 생성)</span></li><br>        
+                <li><span class="studyType">스터디종류</span></li><br>
+                <li><span class="onOffLine">온/오프라인</span></li><br>
+                
+                <li><span class="joinMember">참여인원</span></li><span>명/</span>
+                
+                <li><span class="maxMember">최대인원</span><span>명</span></li>
+                <br>
    
-              <li><span class="studyType">스터디종류</span></li>
-              <br />
-              <li><span class="onOffLine">온/오프라인</span></li>
-              <br />
+                
 
-              <li><span class="joinMember">참여인원</span></li>
-              <span>명/</span>
+                <li><span class="startDate">스터디 시작일</span></li>
+                <span>~</span>
+                <li><span class="endDate">스터디 종료일</span></li><br>
 
-              <li><span class="maxMember">최대인원</span><span>명</span></li>
-              <br />
-
-              <li><span class="createDate">팀생성일</span></li>
-              <br />
-
-              <li><span class="startDate">스터디 시작일</span></li>
-              <span>~</span>
-              <li><span class="endDate">스터디 종료일</span></li>
-              <br />
-
-              <div class="hashtag">
+                <div class="hashtag">
                 <li><span>#</span><span class="hashtag1"></span></li>
                 <li><span>#</span><span class="hashtag2"></span></li>
                 <li><span>#</span><span class="hashtag3"></span></li>
                 <li><span>#</span><span class="hashtag4"></span></li>
                 <li><span>#</span><span class="hashtag5"></span></li><br>
-            </div>
-
-              <li><span class="briefInfo">한줄설명</span></li>
-              <br />
-              <li><span class="viewcnt">조회수</span></li>
-              <span>회</span>
+                </div>
+                <li><span class="briefInfo">한줄설명</span></li><br>
+                <li><span class="viewcnt">조회수</span></li><span>회</span>
             </ul>
           </div>
         </div>
