@@ -1,4 +1,4 @@
-const frontURL = 'http://127.0.0.1:5500/HTML'
+const frontURL = 'http://localhost:5500/HTML'
 
 $(() => {
 
@@ -21,7 +21,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: `http://127.0.0.1:8888/KOSA/qnaboardcreate`,
+            url: `http://localhost:8888/KOSA/qnaboardcreate`,
             method: 'post',
             contentType: false,
             processData: false,
