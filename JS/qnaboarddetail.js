@@ -1,9 +1,9 @@
 $(() => {
-    const frontURL = 'http://127.0.0.1:5500/HTML'
+    const frontURL = 'http://localhost:5500/HTML'
     const teamNo = new URLSearchParams(window.location.search).get('teamNo');
     const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
 
-    const url = `http://127.0.0.1:8888/KOSA/qnaboarddetail?teamNo=${teamNo}&qnaNo=${qnaNo}`;
+    const url = `http://localhost:8888/teamtrack/qnaboarddetail?teamNo=${teamNo}&qnaNo=${qnaNo}`;
 
     // ======================== 상세 페이지 로드시 할 일 ==============================
     $.ajax({
@@ -67,7 +67,7 @@ $(() => {
                 xhrFields: {
                     withCredentials: true
                 },
-                url: `http://127.0.0.1:8888/KOSA/qnaboardmodify`,
+                url: `http://localhost:8888/teamtrack/qnaboardmodify`,
                 method: 'post',
                 contentType: false, //파일첨부용 프로퍼티
                 processData: false, //파일첨부용 프로퍼티
@@ -100,13 +100,13 @@ $(() => {
                 xhrFields: {
                     withCredentials: true
                 },
-                url: 'http://127.0.0.1:8888/KOSA/qnaboarddelete',
+                url: 'http://localhost:8888/teamtrack/qnaboarddelete',
                 method: 'get',
                 data: `teamNo=${teamNo}&qnaNo=${qnaNo}`,
                 success: (responseJSONObj) => {
                     if (responseJSONObj.status == 1) {
                         alert(responseJSONObj.msg)
-                        location.href = `http://127.0.0.1:5500/HTML/qnaboard.html?teamNo=${teamNo}`
+                        location.href = `http://localhost:5500/HTML/qnaboard.html?teamNo=${teamNo}`
                     } else {
                         alert(responseJSONObj.msg)
                     }
@@ -147,7 +147,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: `http://127.0.0.1:8888/KOSA/qnaboardcommentcreate`,
+            url: `http://localhost:8888/teamtrack/qnaboardcommentcreate`,
             method: 'post',
             data: {
                 teamNo: teamNo,
@@ -173,7 +173,7 @@ $(() => {
         xhrFields: {
             withCredentials: true
         },
-        url: `http://127.0.0.1:8888/KOSA/qnaboardcomment?teamNo=${teamNo}&qnaNo=${qnaNo}`,
+        url: `http://localhost:8888/teamtrack/qnaboardcomment?teamNo=${teamNo}&qnaNo=${qnaNo}`,
         method: 'get',
         success: (responseJSONObj1) => {
             if (responseJSONObj1.status == 0) {
@@ -308,7 +308,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: 'http://127.0.0.1:8888/KOSA/qnaboardcommentpick',
+            url: 'http://localhost:8888/teamtrack/qnaboardcommentpick',
             method: 'post',
             data: {
                 teamNo: teamNo,
@@ -396,7 +396,7 @@ $(() => {
                     withCredentials: true
                 },
                 type: 'post',
-                url: "http://127.0.0.1:8888/KOSA/qnaboardcommentreplycreate",
+                url: "http://localhost:8888/teamtrack/qnaboardcommentreplycreate",
                 data: {
                     teamNo: teamNo,
                     qnaNo: qnaNo,
@@ -428,7 +428,8 @@ $(() => {
         const commentNo = parseInt(commentRow.find('.comment-No').text());
 
         // seesion아이디 사용해야 함
-        const id = 'psh2023'
+        // const id = 'psh2023'
+        const loginedId = localStorage.getItem("loginedId")
 
         console.log('teamNo ', teamNo);
         console.log('qnaNo', qnaNo);
@@ -440,7 +441,7 @@ $(() => {
                 withCredentials: true
             },
             type: 'post',
-            url: "http://127.0.0.1:8888/KOSA/qnaboardcommentdelete",
+            url: "http://localhost:8888/teamtrack/qnaboardcommentdelete",
             data: {
                 teamNo: teamNo,
                 qnaNo: qnaNo,
@@ -537,7 +538,7 @@ $(() => {
                     withCredentials: true
                 },
                 type: 'post',
-                url: "http://127.0.0.1:8888/KOSA/qnaboardcommentmodify",
+                url: "http://localhost:8888/teamtrack/qnaboardcommentmodify",
                 data: {
                     teamNo: teamNo,
                     qnaNo: qnaNo,
@@ -623,7 +624,7 @@ $(() => {
                     withCredentials: true
                 },
                 type: 'post',
-                url: "http://127.0.0.1:8888/KOSA/qnaboardcommentmodify",
+                url: "http://localhost:8888/teamtrack/qnaboardcommentmodify",
                 data: {
                     teamNo: teamNo,
                     qnaNo: qnaNo,
@@ -672,7 +673,7 @@ $(() => {
                     withCredentials: true
                 },
                 type: 'post',
-                url: "http://127.0.0.1:8888/KOSA/qnaboardcommentdelete",
+                url: "http://localhost:8888/teamtrack/qnaboardcommentdelete",
                 data: {
                     teamNo: teamNo,
                     qnaNo: qnaNo,
