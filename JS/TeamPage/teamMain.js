@@ -1,8 +1,8 @@
-// const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
-// const frontURL = 'http://localhost:5500/HTML'
+const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
+const frontURL = 'http://localhost:5500/HTML'
 // const teamNo = location.search.substring(1).split('=')[1]
 const teamNo = 9999
-const id = 'test24'
+const id = 'test41'
 // const id = 'psh2023';
 
 function ajaxHandler(method, u, target) {
@@ -35,8 +35,7 @@ $(() => {
                 break;
 
             case 'noticeBoard':
-                const teamNo = 9999
-                location.href = './notice.html?teamNo=${teamNo}'
+                location.href = `./notice.html?teamNo=${teamNo}`
                 break;
 
             case 'taskBoard':
@@ -56,15 +55,14 @@ $(() => {
                 location.href = './teamAttendance.html'
                 break;
 
-                case 'rankPage':
-                    // const teamNo = 9999;
-                    const teamNo1 = 9999;
-                    const month=10;
-                    location.href=`./rank.html?teamNo=${teamNo1}&month=${month}`
-                    // ajaxHandler('GET', `./rank.html?teamNo=${teamNo}&month=${month}`, $sectionObj)
-                    break;
+            case 'rankPage':
+                // const teamNo = 9999;
+                const teamNo1 = 9999;
+                const month=10;
+                location.href=`./rank.html?teamNo=${teamNo1}&month=${month}`
+                // ajaxHandler('GET', `./rank.html?teamNo=${teamNo}&month=${month}`, $sectionObj)
+                break;
 
-            // 이 아래로는 memStatus = 1이어야 댐
             case 'manageTeamProperties':
                 const urlParams = new URL(location.href).searchParams;
                 // const teamNo = urlParams.get('teamNo');
@@ -94,6 +92,8 @@ $(() => {
         type: 'GET',
         data: `teamNo=${teamNo}`,
         success: (responseJSONObj) => {
+            alert(teamNo)
+            alert(id)
 
             // 프로필
 
@@ -191,7 +191,6 @@ $(() => {
                 teamNo: teamNo,
                 id: id,
                 introduction: introduction,
-                // action: 'joinTeam'
             },
             success: (responseJSONObj) => {
                 location.href = './teamMain.html'
@@ -215,11 +214,28 @@ $(() => {
     });
 
     // ##### 팀 나가기 #####################################################
+    // 팀 가입하기 버튼 클릭 이벤트
+    $('#exitTeam').click(function () {
+        alert('정말 팀을 나가시겠습니까?')
 
-
-
-
-
+        $.ajax({
+            url: `${backURL}/teamleave`,
+            type: 'GET',
+            data: {
+                teamNo: teamNo,
+                id: id
+            },
+            success: (responseJSONObj) => {
+                location.href = './teamMain.html'
+            },
+            error: (jqXHR, textStatus) => {
+                // 오류 처리
+                alert("팀 탈퇴 실패: " + textStatus);
+                console.log(textStatus)
+                console.error(jqXHR);
+            }
+        });
+    })
 
     // 공지 게시글 제목 클릭 시 해당 게시글로 이동
     // const noticeTitle = $('div.teamMainNoticeDiv>a.noticeTitle')

@@ -1,25 +1,12 @@
-function ajaxHandler(method, u, target) {
-    console.log(u)
-
-    if (method == 'GET') {
-        target.load(u, function (response, status, xhr) {
-            if (status == "error") {
-                alert(xhr.status + xhr.statusText)
-            }
-        })
-    }
-}
-
 $(() => {
-    const teamNo=localStorage.getItem("taskteamno")
+    const teamNo = localStorage.getItem("taskteamno")
     const taskNo = localStorage.getItem("taskNo")
-    console.log(teamNo)
 
     $.ajax({
         xhrFields: {
             withCredentials: true
         },
-        url: `${taskbackURL}/viewtask`,
+        url: `${backURL}/viewtask`,
         method: 'get',
         data: `teamNo=${teamNo}&taskNo=${taskNo}`,
         success: (responseJSONObj) => {
@@ -29,7 +16,7 @@ $(() => {
             } else if (responseJSONObj.status == 1) {
                 const title = responseJSONObj.title
                 const nickname = responseJSONObj.nickname
-                const regdate = responseJSONObj.regdate
+                //const regdate = responseJSONObj.regdate
 
                 const $origintitleObj = $('div.taskviewbox>div.tasktitle')
                 const $titleObj = $('<h1>')
@@ -40,7 +27,6 @@ $(() => {
                 const $nicknameObj = $('<span>')
                 $nicknameObj.append(nickname)
                 $originnicknameObj.append($nicknameObj)
-                console.log(taskNo)
             }
 
         }, error: (() => {
@@ -48,96 +34,85 @@ $(() => {
         })
     })
 
-    var open1 = 0;
-    var open2 = 0;
-
     $('div.taskanswer>button').click((e) => {
-        if (open1 == 1) {
-            e.preventDefault()
-        } else {
-            $.ajax({
-                xhrFields: {
-                    withCredentials: true
-                },
-                url: `${taskbackURL}/viewquizanswer`,
-                method: 'get',
-                data: `teamNo=${teamNo}&taskNo=${taskNo}`,
-                success: (responseJSONObj) => {
-                    if (responseJSONObj.status == 0) {
-                        Swal.fire({
-                            icon: 'question',
-                            text: responseJSONObj.msg
-                        })
-                        return
-                    } else if (responseJSONObj.status == 1) {
-                        const $divobj = $('<div>')
-                        $divobj.addClass('taskanswercontent')
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            url: `${backURL}/viewquizanswer`,
+            method: 'get',
+            data: `teamNo=${teamNo}&taskNo=${taskNo}`,
+            success: (responseJSONObj) => {
+                if (responseJSONObj.status == 0) {
+                    Swal.fire({
+                        icon: 'question',
+                        text: responseJSONObj.msg
+                    })
+                    return
+                } else if (responseJSONObj.status == 1) {
+                    const $divobj = $('<div>')
+                    $divobj.addClass('taskanswercontent')
 
-                        var cnt = 0
-                        const list = responseJSONObj.list
+                    var cnt = 0
+                    const list = responseJSONObj.list
 
-                        list.forEach(element => {
-                            console.log(element)
+                    list.forEach(element => {
+                        console.log(element)
 
-                            const $divquizobj = $('<div>')
-                            const answer = element
-                            $divquizobj.addClass('quizanswer' + cnt)
-                            cnt = cnt + 1
-                            $divquizobj.append("Q" + cnt + " : " + answer)
-                            $divobj.append($divquizobj)
-                        })
+                        const $divquizobj = $('<div>')
+                        const answer = element
+                        $divquizobj.addClass('quizanswer' + cnt)
+                        cnt = cnt + 1
+                        $divquizobj.append("Q" + cnt + " : " + answer)
+                        $divobj.append($divquizobj)
+                    })
 
-                        $('div.content1').append($divobj)
-                        open1 = 1;
-                    }
+                    $('div.content1').append($divobj)
+                    $('div.taskanswer>button').hide()
                 }
-            })
-        }
+            }
+        })
 
     })
 
     $('div.myanswer>button').click((e) => {
-        if (open2 == 1) {
-            e.preventDefault()
-        } else {
-            $.ajax({
-                xhrFields: {
-                    withCredentials: true
-                },
-                url: `${taskbackURL}/viewmemberanswer`,
-                method: 'get',
-                data: `teamNo=${teamNo}&taskNo=${taskNo}`,
-                success: (responseJSONObj) => {
-                    if (responseJSONObj.status == 0) {
-                        Swal.fire({
-                            icon: 'question',
-                            text: responseJSONObj.msg
-                        })
-                        return
-                    } else if (responseJSONObj.status == 1) {
-                        const $divobj = $('<div>')
-                        $divobj.addClass('myanswercontent')
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            url: `${backURL}/viewmemberanswer`,
+            method: 'get',
+            data: `teamNo=${teamNo}&taskNo=${taskNo}`,
+            success: (responseJSONObj) => {
+                if (responseJSONObj.status == 0) {
+                    Swal.fire({
+                        icon: 'question',
+                        text: responseJSONObj.msg
+                    })
+                    return
+                } else if (responseJSONObj.status == 1) {
+                    const $divobj = $('<div>')
+                    $divobj.addClass('myanswercontent')
 
-                        var cnt = 0
-                        const list = responseJSONObj.list
+                    var cnt = 0
+                    const list = responseJSONObj.list
 
-                        list.forEach(element => {
-                            console.log(element)
+                    list.forEach(element => {
+                        console.log(element)
 
-                            const $divquizobj = $('<div>')
-                            const answer = element
-                            $divquizobj.addClass('myanswer' + cnt)
-                            cnt = cnt + 1
-                            $divquizobj.append("Q" + cnt + " : " + answer)
-                            $divobj.append($divquizobj)
-                        })
+                        const $divquizobj = $('<div>')
+                        const answer = element
+                        $divquizobj.addClass('myanswer' + cnt)
+                        cnt = cnt + 1
+                        $divquizobj.append("Q" + cnt + " : " + answer)
+                        $divobj.append($divquizobj)
+                    })
 
-                        $('div.content2').append($divobj)
-                        open2 = 1;
-                    }
+                    $('div.content2').append($divobj)
+                    $('div.myanswer>button').hide() 
                 }
-            })
-        }
+            }
+        })
     })
 
     $('button.taskfiledown').click(() => {
@@ -145,20 +120,20 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: `${taskbackURL}/taskdownload`,
+            url: `${backURL}/taskdownload`,
             method: 'get',
             data: `teamNo=${teamNo}&taskNo=${taskNo}`,
             success: (responseData) => {
-                if(responseData==="") {
+                if (responseData === "") {
                     Swal.fire({
                         icon: 'question',
                         text: '파일이 존재하지 않습니다'
                     })
                     return
                 } else {
-                    location.href = taskbackURL+ '/taskdownload?teamNo='+teamNo+'&taskNo=' + taskNo
-                } 
-            }, 
+                    location.href = taskbackURL + '/taskdownload?teamNo=' + teamNo + '&taskNo=' + taskNo
+                }
+            },
             error: () => {
                 Swal.fire({
                     icon: 'error',
