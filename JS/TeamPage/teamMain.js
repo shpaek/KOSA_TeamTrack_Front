@@ -30,8 +30,7 @@ $(() => {
                 break;
 
             case 'noticeBoard':
-                const teamNo = 9999
-                location.href = './notice.html?teamNo=${teamNo}'
+                location.href = `./notice.html?teamNo=${teamNo}`
                 break;
 
             case 'taskBoard':

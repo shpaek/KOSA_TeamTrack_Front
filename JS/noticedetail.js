@@ -131,7 +131,7 @@ $(()=>{
                 
                 $('div.mainnotice>input[name=status]').attr('value',mainStatus);
                 $('div.modifytitleline>input[name=title]').attr('value',noticeTitle);
-                $('div.modifycontent>input[name=content]').attr('value',noticeContent);
+                $('div.modifycontent>textarea[name=content]').html(noticeContent);
             },
             error:(jqXHR, textStatus)=>{
                 Swal.fire({
@@ -162,17 +162,22 @@ $(()=>{
                 processData : false, //파일첨부용 프로퍼티
                 data : fd,
                 success : (responseJSONObj)=>{
-                    if(responseJSONObj.status==1){
+                    if(responseJSONObj.mainStatus==1 && responseJSONObj.status==1){
                         Swal.fire({
                             icon: 'success',
                             text: responseJSONObj.msg
                         })
                         location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                    }else if(responseJSONObj.mainStatus==0){
+                        Swal.fire({
+                            icon: 'warning',
+                            text: responseJSONObj.mainmsg
+                        })
                     }
                 },
                 error: (jqxhr)=>{
                     Swal.fire({
-                        icon: 'warning',
+                        icon: 'error',
                         text: '다시 한번 시도해주세요🙏'
                     })
                 }
