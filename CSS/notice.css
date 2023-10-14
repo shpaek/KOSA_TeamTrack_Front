@@ -9,7 +9,7 @@ section {
 }
 
 /*게시판제목*/
-.notice>.boardtitle{
+.boardtitle{
     margin : 50px;
     border-left : solid 15px;
     border-bottom: solid 2px #a5a5a5;
@@ -19,21 +19,22 @@ section {
     margin-top: 30px;
     margin-bottom: 30px;
     font-family: 'Black Han Sans', sans-serif;
-    font-size : 30px;
+    font-size : 20px;
 }
 
 /*메인공지 칸*/
 .mainnotice{
-    width : 900px;
+    width : 800px;
     height : 170px;
     padding : 20px;
     margin-top: 60px;
     margin-bottom: 60px;
-    background-color: #f7fbfc;
-    border : 1px;
-    border-style : outset;
-    border-color : #dbdbdb;
+    background-color: #ffffff;
+    border-bottom : 1.5px;
+    border-style : solid;
+    border-color : #fca0a0;
     border-radius: 25px;
+    box-shadow: 5px 5px 30px #fde3e3;
 }
 
 /*제목라인*/
@@ -50,9 +51,9 @@ section {
 
 /*메인공지 제목*/
 .main_topline>a{
-    font-size : 30px;
+    font-size : 23px;
     font-weight: 550;
-    color : rgb(29, 34, 69);
+    color : rgb(52, 50, 50);
 }
 
 .main_contentline{
@@ -67,8 +68,8 @@ section {
 
 /*날짜*/
 .rightspace>span[name=date]{
-    font-size : 20px;
-    color : rgb(104, 104, 104);
+    font-size : 14px;
+    color : #9c9c9c;
 }
 
 /*내리기버튼*/
@@ -79,12 +80,27 @@ section {
     padding-bottom : 1px;
     padding-left: 2px;
     padding-right: 2px;
-    border-color: #bebebe;
+    border : solid;
+    border-color: #f7aeae;
     border-radius: 3px;
     background-color: white;
-    font-color: #011837;
+    color: #fa0303;
     font-weight: 700;
 }
+
+.rightspace>button[name=cancel]:disabled {
+    pointer-events: none;
+  }
+  
+  .rightspace>button[name=cancel]:hover {
+    box-shadow: #fde3e3 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  .rightspace>button[name=cancel]:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
 
 /*본문영역*/
 .main_contentline{
@@ -92,29 +108,65 @@ section {
     padding-bottom: 10px;
 }
 
+/*본문*/
+.main_contentline>p{
+    color : rgb(66, 65, 65);
+    line-height: 230%;
+    font-size: 15px;
+    overflow: hidden;
+    display : -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-align: justify;
+}
+
 
 /*작성버튼*/
 
 .write{
-    width:1200px; 
+    width:1000px; 
 }
 
-/* .write>.writebutton{
-    width:60px;
-    margin-bottom: 20px;
-    margin-left: 90%;
-} */
-
+/*작성버튼*/
 .writebutton>button{
     cursor: pointer;
-    width : 90px;
-    height : 50px;
+    width : 100px;
+    height : 40px;
     margin-left: 90%;
-    background-color: white;
-    border-radius: 5px;
-    border-color: #bebebe;
-    font-size: 20px;
+    background-color: #000000;
+    border-radius: 15px;
+    border:solid 2px #1A1A1A;
+    font-size: 15px;
+    color : white;
+    font-weight: 600;
+    appearance: none;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    text-align: center;
+
 }
+
+.writebutton>button:disabled {
+  pointer-events: none;
+}
+
+.writebutton>button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.writebutton>button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+
 
 
 /*공지목록*/
@@ -125,26 +177,46 @@ section {
 }
 
 .noticelist>table{
-    width : 1200px;
+    width : 1000px;
     border-top:solid 3px #363840;
     border-bottom:solid 3px #363840;
 }
 
 th, td{
-    padding : 30px;
+    padding : 25px;
 
 }
 
 th{
-    font-size: 20px;
+    font-size: 15px;
     border-bottom: solid 3px #363840;
 }
 
 td{
-    font-size: 20px;
+    font-size: 15px;
     border-top : dotted 2px;
     border-color : #dfdfdf;
 }
+
+td>a{
+    color : rgb(45, 45, 45);
+}
+
+td>a:disabled {
+    pointer-events: none;
+  }
+  
+  td>a:hover {
+    border-bottom:solid 1.5px rgb(45, 45, 45);
+    transform: translateY(-2px);
+  }
+  
+  td>a:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+
 
 td:nth-child(odd){
     text-align: center;
@@ -152,6 +224,8 @@ td:nth-child(odd){
 }
 
 
+
+/*페이징*/
 .pagegroup{
     width:900px; 
     text-align: center;
@@ -160,6 +234,41 @@ td:nth-child(odd){
 } 
 
 .pagegroup>span{
+    cursor: pointer;
     padding: 10px;
     font-size: 25px;
+    border-radius: 70px;
 }
+
+.pagegroup>span:disabled {
+    pointer-events: none;
+  }
+  
+  .pagegroup>span:hover {
+    background-color: #000000;
+    color : white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  .pagegroup>span:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+
+
+/*게시글 없습니다*/
+.nothing{
+    padding-top: 150px;
+    text-align: center;
+    width : 1000px;
+    height: 250px;
+    display: none;
+}
+
+.nothing>span{
+    font-size: 20px;
+    color: #515151;
+}
+

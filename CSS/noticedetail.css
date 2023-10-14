@@ -1,3 +1,7 @@
+*{
+    margin:0 auto; 
+}
+
 div.editnotice{
     display : none;
 }
@@ -6,4 +10,57 @@ section {
     margin-left: 270px;
     margin-bottom: 50px;
     padding: 30px;
+}
+
+.editnotice{
+    width : 970px;
+    height : 570px;
+    padding:5px;
+    border: solid 1px;
+    border-color: #CCCCCC;
+    border-radius: 20px;
+}
+
+.mainnotice>label{
+    color : #919191;
+}
+
+.mainnotice{
+    margin:20px;
+}
+
+input[name=title]{
+    padding-left : 10px;
+    margin:20px;
+    width:500px;
+    height:30px;
+    background-color: #f6f7f7;
+    border: solid 1px;
+    border-color : #cccccc;
+    border-radius: 10px;
+}
+
+.modifyfilezone{
+    display : none;
+
+}
+
+textarea[name=content]{
+    padding : 15px;
+    margin:20px;
+    width:900px;
+    height:300px;
+    background-color: #f6f7f7;
+    border-color : #cccccc;
+    border-radius: 20px;
+    resize: none;
+}
+
+.writebutton{
+    margin:10px;
+}
+
+button[type=submit]{
+    float:right;
+    margin-right: 20px;
 }
