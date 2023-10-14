@@ -21,7 +21,7 @@
 
         <!-- JavaScript -->
         <script src="../JS/TeamPage/teamMain.js"></script>
-        <!-- <script src="../JS/MainPage/teamsearch.js"></script> -->
+        <script src="../JS/MainPage/teamsearch.js"></script>
 
     <!-- font -->
     <style>
@@ -57,7 +57,7 @@
             </div>
 
             <!-- 팀 이름 -->
-            <div class="teamNameDiv">팀명: 
+            <div class="teamNameDiv">
                 <p class="teamNameShow"></p>
             </div>
 
@@ -87,18 +87,18 @@
 
             <!-- 팀 조회수 -->
             <div class="teamViewCnt">
-                <span class="teamCntViewSpan1">팀 조회수: </span>
+                <span class="teamCntViewSpan1">👁‍🗨 팀 조회수: </span>
                 <span class="teamCntViewSpan2"></span>
             </div>
 
             <!-- 팀원 목록 -->
+            <p class="intro1"> 🙋🏻‍♀️ 현재 팀 멤버를 확인하세요. </p>
             <div class="teamMemberList">
-                <span class="teamMemberListSpan1">현재 팀 멤버: </span>
-                <span class="teamMemberListSpan2"></span>
+                <span class="teamMemberListSpan1">팀 멤버</span>
             </div>
 
             <!-- 팀 소개글 -->
-            <p class="intro1"> &#128587; 팀에 대한 간단한 정보를 확인하세요. </p>
+            <p class="intro2"> 📃 팀에 대한 간단한 정보를 확인하세요. </p>
             <div class="teamMainIntroduction">
                 <div class="teamMainIntroductionDiv">
                     <p class="teamMainIntroductionP">팀 소개글</p>
@@ -106,7 +106,7 @@
             </div>
 
             <!-- 공지사항 게시판 -->
-            <p class="intro2"> &#128204; 팀의 규칙, 스터디 관련 공지 등 팀에 대한 주요 정보를 확인하세요. </p>
+            <p class="intro3"> &#128204; 팀의 규칙, 스터디 관련 공지 등 팀에 대한 주요 정보를 확인하세요. </p>
             <div class="teamMainNotice">
                 <div class="teamMainNoticeDiv">
                     <span class="noticeNo">공지번호</span>
@@ -125,8 +125,8 @@
             <!-- 팝업 -->
             <form id="teamJoin" action="/#" method="POST" style="display: none;">
                 <p>&#127881; 팀 가입 &#127881;</p>
-                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!"
-                    required rows="5" cols="50" maxlength="2000"></textarea>
+                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요! (최대 200자)"
+                    required rows="5" cols="50" maxlength="200"></textarea>
                 <button type="submit" id="requestJoinTeamBtn">가입요청</button>
             </form>
         </aside>
