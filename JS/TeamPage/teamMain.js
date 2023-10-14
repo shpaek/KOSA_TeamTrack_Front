@@ -1,9 +1,4 @@
-const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
-const frontURL = 'http://localhost:5500/HTML'
-// const teamNo = location.search.substring(1).split('=')[1]
-const teamNo = 9999
-const id = 'test41'
-// const id = 'psh2023';
+const teamNo = new URL(location.href).searchParams.get("teamNo");
 
 function ajaxHandler(method, u, target) {
     console.log(u)
@@ -31,7 +26,7 @@ $(() => {
         // menu
         switch (e.target.className) { // 화살표 함수 내부에서의 this는 윈도우 객체이기 때문에 e.target 사용!
             case 'teamMainPage':
-                location.href = './teamMain.html'
+                location.href = './teamMain.html?teamNo=' + teamNo
                 break;
 
             case 'noticeBoard':
@@ -71,15 +66,15 @@ $(() => {
                 break;
 
             case 'manageTeamCurrentMember':
-                location.href = './teamManageCurrentMember.html'
+                location.href = './teamManageCurrentMember.html?teamNo=' + teamNo
                 break;
 
             case 'manageTeamApproval':
-                location.href = './teamManageApproval.html'
+                location.href = './teamManageApproval.html?teamNo=' + teamNo
                 break;
 
             case 'manageTeamExaminer':
-                location.href = './teamManageExaminer.html'
+                location.href = './teamManageExaminer.html?teamNo=' + teamNo
                 break;
         } // switch(e.target.class)()
         e.preventDefault()
@@ -194,7 +189,7 @@ $(() => {
                 introduction: introduction,
             },
             success: (responseJSONObj) => {
-                location.href = './teamMain.html'
+                location.href = './teamMain.html?teamNo=' + teamNo
             },
             error: (jqXHR, textStatus) => {
                 // 오류 처리
@@ -239,9 +234,9 @@ $(() => {
     })
 
     // 공지 게시글 제목 클릭 시 해당 게시글로 이동
-    // const noticeTitle = $('div.teamMainNoticeDiv>a.noticeTitle')
-    // $('div.teamMainNoticeDiv>a.noticeTitle').on('click', (e) => {
-    //     location.href = `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
-    // })
+    const noticeTitle = $('div.teamMainNoticeDiv>a.noticeTitle')
+    $('div.teamMainNoticeDiv>a.noticeTitle').on('click', (e) => {
+        location.href = `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
+    })
 
 }) // $(() {})

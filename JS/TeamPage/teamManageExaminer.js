@@ -1,7 +1,6 @@
-// const teamNo = 9999;
-// const id = 'psh2023';
-
 $(function() {
+
+    const loginedId = localStorage.getItem("loginedId")
 
     // 팀원 목록을 가져오는 함수
     function getMemberList() {
