@@ -1,10 +1,9 @@
-// const id = 'test41'
 $(() => {
 
     // 출석하기 버튼 클릭 이후 출석 내역 새로 반영하기
     function refreshAttendanceList() {
         $.ajax({
-            url: `${backURL}/teamattendance`,
+            url: backURL + "/teamattendance",
             type: 'GET',
             data: { 
                 id : id,
@@ -37,7 +36,7 @@ $(() => {
     // 출석 여부 확인
     function checkAttendance() {
         $.ajax({
-            url: `${backURL}/teamattendance`,
+            url: backURL + "/teamattendance",
             data: {
                 id : id,
                 teamNo: teamNo,
@@ -59,7 +58,7 @@ $(() => {
     // 출석버튼 클릭 이벤트
     $(".attendanceBtn").click(function () {
         $.ajax({
-            url: `${backURL}/teamattendance`,
+            url: backURL + "/teamattendance",
             type: 'GET',
             data: {
                 id : id,
