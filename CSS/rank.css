@@ -77,14 +77,15 @@ header .searchBar input {
 /* Section */
 /* section nav바 너비만큼 이동 */
 section {
-    margin-left: 230px;
+    width: 90%;
+    margin-left: 99px;
     margin-bottom: 0px;
     padding: 30px;
     background-color: #011837;
 }
 
 section > div.memberRank {
-    margin-left: 70px;
+    margin-left: 150px;
     margin-bottom: 50px;
 }
 

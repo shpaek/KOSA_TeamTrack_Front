@@ -5,7 +5,7 @@ $(() => {
         xhrFields: {
             withCredentials: true
         },
-        url: `${taskbackURL}/mytasklist`,
+        url: `${backURL}/mytasklist`,
         method: 'get',
         data: `teamNo=${teamNo}&currentPage=${cp}`,
         success: (responseJSONObj) => {
@@ -57,7 +57,7 @@ $(() => {
             $tbodyObj.append($copyTrObj)
 
             if(start>1) {
-                let page=`<span class="pg${start-1}">이전</span>&nbsp;&nbsp;`
+                let page=`<span class="pg${start-1}" style="color: rgb(78, 78, 78); font-size:medium;">이전</span>&nbsp;&nbsp;`
                 $pageObj.html($pageObj.html()+page)
             }
             
@@ -74,7 +74,7 @@ $(() => {
             }
 
             if(end!=responseJSONObj.totalPage) {
-                let page=`<span class="pg${end+1}">&nbsp;&nbsp;다음</span>`
+                let page=`<span class="pg${end+1}" style="color: rgb(78, 78, 78); font-size:medium;">&nbsp;&nbsp;다음</span>`
                 $pageObj.html($pageObj.html()+page)
             }
 
