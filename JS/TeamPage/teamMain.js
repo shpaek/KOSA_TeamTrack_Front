@@ -1,6 +1,7 @@
 const backURL = "http://localhost:8888/teamtrack"
 const frontURL = "http://localhost:5500/HTML"
-const id = localStorage.getItem("loginedId")
+// const id = localStorage.getItem("loginedId")
+const id = 'test01'
 const teamNo = new URL(location.href).searchParams.get("teamNo")
 
 function ajaxHandler(method, u, target) {
@@ -101,25 +102,32 @@ $(() => {
                 $teamNameDiv.find('p.teamNameShow').text(teamName)
             } // if
 
+            if (responseJSONObj.teamViewCnt != null) {
+                const viewCnt = responseJSONObj.teamViewCnt;
+                $('span.teamCntViewSpan2').text(viewCnt);
+            }
+            /*
             // 조회수
             if (responseJSONObj.teamViewCnt != null) {
-
                 const viewCnt = responseJSONObj.teamViewCnt
                 const $teamViewCntDiv = $('div.teamViewCnt').first()
 
-                $teamViewCntDiv.find('span[class=teamCntViewSpan2]').text(viewCnt)
+                $teamViewCntDiv.find('span[class=teamCntViewSpan1]').text(viewCnt)
             } // if
+            */
 
-            // 팀원 목록
+            // 팀 멤버 닉네임
             if (responseJSONObj.nicknameList != null) {
-                const nickList = responseJSONObj.nicknameList
-                const $nickSpan = $('span.teamMemberListSpan2')
-
+                const nickList = responseJSONObj.nicknameList;
+                const $nickSpan = $('span.teamMemberListSpan1');
+            
                 nickList.forEach((nickName, index) => {
-                    const $nickCloneSpan = $nickSpan.clone()
-                    $nickCloneSpan.text(nickName)
-                    $nickSpan.parent().append($nickCloneSpan)
-                }) // forEach
+                    const $nickCloneSpan = $nickSpan.clone();
+                    $nickCloneSpan.text(nickName);
+                    $nickSpan.parent().append($nickCloneSpan);
+                }); // forEach
+            
+                $nickSpan.hide();  // 원본 span 숨기기
             } // if
 
             // 팀 소개글
