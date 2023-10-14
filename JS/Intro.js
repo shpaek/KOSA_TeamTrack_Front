@@ -38,7 +38,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: 'http://127.0.0.1:8888/teamtrack/login',
+            url: 'http://localhost:8888/teamtrack/login',
             method: 'post',
             data: idpwddata,
             success: (responseJSONObj) => {
