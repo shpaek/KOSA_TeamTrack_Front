@@ -20,7 +20,7 @@ form input {
     display: inline-block;
     height: 23px;
     margin-left: 55px;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 }
 #pwd1 {
     margin-left: 38px;
@@ -58,4 +58,49 @@ form input {
     font-weight: bold;
     /* color: royalblue; */
     color: white;
+
+    background: linear-gradient(124.47deg, 
+    rgba(255, 255, 255, 0.0), 
+    rgba(255, 255, 255, 0.0), 
+    rgba(255, 255, 255, 0.0)); /* 배경색이 투명하게 보이게 한다 */
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0px);
+}
+
+#signup_box1:hover {
+
+    background: linear-gradient(124.47deg, 
+                rgba(255, 255, 255, 0.2), 
+                rgba(255, 255, 255, 0.0), 
+                rgba(255, 255, 255, 0.2));
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+button {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(124.47deg, 
+              rgba(61, 151, 215, 0.2), 
+              rgba(61, 151, 215, 0.0), 
+              rgba(61, 151, 215, 0.2));
+    backdrop-filter: blur(5px);
+}
+button:hover {
+    background: linear-gradient(124.47deg, 
+              rgba(61, 151, 215, 0.8), 
+              rgba(61, 151, 215, 0.6), 
+              rgba(61, 151, 215, 0.8));
+    top: 1px;
+    margin-top: 1px;
+ }
+
+/* 회원가입 유효성 검사 */
+
+.hide {
+    display: none;
 }
