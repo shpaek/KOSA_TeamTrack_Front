@@ -3,7 +3,7 @@ $(() => {
     // 현재 팀원 목록 가져오기
     function getMemberList() {
         $.ajax({
-            url: `http://localhost:8888/KOSA_TeamTrack_Back/teamdismiss`,
+            url: backURL + "/teamdismiss",
             type: 'GET',
             data: {
                 teamNo: teamNo,
@@ -52,7 +52,7 @@ $(() => {
     // 방출하기
     function dismiss(id) {
         $.ajax({
-            url: `http://localhost:8888/KOSA_TeamTrack_Back/teamdismiss`,
+            url: backURL + "/teamdismiss",
             type: 'GET',
             data: {
                 teamNo: teamNo,
