@@ -47,9 +47,9 @@ $(() => {
                     console.log('성공')
                     alert(responseJSONObj.msg)
                     // Swal.fire({
-               //    icon: 'success',
-               //    text: responseJSONObj.msg
-               // })
+					// 	icon: 'success',
+					// 	text: responseJSONObj.msg
+					// })
                     localStorage.setItem("loginedId", responseJSONObj.id);
                     sessionStorage.setItem("loginedId", responseJSONObj.id);
                     sessionStorage.setItem("nickname", responseJSONObj.nickname)
