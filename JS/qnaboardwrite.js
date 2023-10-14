@@ -1,4 +1,4 @@
-const frontURL = 'http://localhost:5500/HTML'
+// const frontURL = 'http://localhost:5500/HTML'
 
 $(() => {
 
@@ -30,7 +30,7 @@ $(() => {
                 console.log(responseJSONObj)
                 if (responseJSONObj.status == 1) {
                     alert(responseJSONObj.msg)
-                    location.href = `${frontURL}/qnaboard.html?teamNo=${teamNo}`
+                    location.href = `http://localhost:5500/HTML/qnaboard.html?teamNo=${teamNo}`
                 } else {
                     alert(responseJSONObj.msg)
                 }
