@@ -120,13 +120,14 @@ $(() => {
             if (responseJSONObj.nicknameList != null) {
                 const nickList = responseJSONObj.nicknameList;
                 const $nickSpan = $('span.teamMemberListSpan1');
-            
+                
                 nickList.forEach((nickName, index) => {
                     const $nickCloneSpan = $nickSpan.clone();
                     $nickCloneSpan.text(nickName);
+                    $nickCloneSpan.addClass('nickNameStyle'); // 스타일 클래스 추가
                     $nickSpan.parent().append($nickCloneSpan);
                 }); // forEach
-            
+                
                 $nickSpan.hide();  // 원본 span 숨기기
             } // if
 

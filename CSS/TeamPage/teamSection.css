@@ -39,15 +39,6 @@ section {
     margin-bottom: 30px;
 }
 
-/* 닉네임 border */
-.teamMemberBorder {
-    border-radius: 50px;
-    border: 1px solid #011837;
-
-    background-color: #011837;
-    color: white;
-}
-
 /* 팀원 목록 */
 .teamMemberListSpan1 {
     padding: 10px;
@@ -55,6 +46,17 @@ section {
     font-weight: bold;
 
     font-size: 17px;
+}
+
+/* 복제 후에 적용할 스타일 */
+.nickNameStyle {
+    border-radius: 50px;
+    border: 1px solid #011837;
+    background-color: #011837;
+    color: white;
+    padding: 5px 15px; /* 필요에 따라 패딩 추가 */
+    margin: 5px; /* 여백 추가하여 닉네임 간의 간격 조정 */
+    display: inline-block; /* 인라인 요소로 표시 */
 }
 
 /* 영역 소개글 */
