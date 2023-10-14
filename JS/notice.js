@@ -10,7 +10,6 @@ $(()=>{
         method : 'get',
         data : `teamNo=${teamNo}`,
         success: (responseJSONObj)=>{
-            $('div.main_topline>span[name=noticeNo]').show()
             if(responseJSONObj.memStatus == 0){
                 $('div.main_topline>button[name=cancel]').hide()
                 $('div.notice>div.write>button').hide()
@@ -28,7 +27,6 @@ $(()=>{
                 $('div.rightspace>span[name=date]').text(regDate)
                 $('div.main_contentline>p').html(noticeContent)
 
-                $('div.main_topline>span[name=noticeNo]').hide()
             }
         },
         error:(jqXHR, textStatus)=>{
@@ -60,11 +58,15 @@ $(()=>{
             data : `teamNo=${teamNo}&noticeNo=${noticeNo}&mainStatus=0`,
             success: (responseJSONObj)=>{
                 if(responseJSONObj.status==1){
-                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
-                }else{
                     Swal.fire({
                         icon: 'success',
                         text: responseJSONObj.msg
+                    })
+                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                }else{
+                    Swal.fire({
+                        icon: 'warning',
+                        text: responseJSONObj
                     })
                 }
             },
@@ -87,50 +89,59 @@ $(()=>{
             method : 'get',
             data : `currentPage=${cp}&teamNo=${teamNo}`,
             success: (responseJSONObj)=>{
-                const noticeList = responseJSONObj.list
-
-                const $originTrObj = $('div.noticelist>table>thead>tr')
-                const $tbodyObj = $('div.noticelist>table>tbody')
-
-                $tbodyObj.empty()
-
-                $(noticeList).each((index, p)=>{
-                    const $copyTrObj = $originTrObj.clone()
-                    $copyTrObj.empty()
-                    
-                    const $noticeNoObj = `<td>${p.noticeNo}</td>`
-                    $copyTrObj.append($noticeNoObj)
-
-                    const $noticeTitleObj = `<td class="notice_title"><a href='#' 
-                    onclick="location.href = \`${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${p.noticeNo}\`">
-                    ${p.noticeTitle}</a></td>`
-                    
-                    $copyTrObj.append($noticeTitleObj)
-
-                    const $regDateObj = `<td>${p.regDate}</td>`
-                    $copyTrObj.append($regDateObj)
-                    
-                    $tbodyObj.append($copyTrObj)
-                })
-
-
-                const $divPageGroup = $('div.notice>div.pagegroup')
-                $divPageGroup.empty() 
-
-                const startPage = responseJSONObj.startPage //시작페이지
-                const endPage = responseJSONObj.endPage //끝페이지
-
-                if(startPage>1){
-                    let page = `ㅣ<span class="pg${startPage-1}">PREV</span>ㅣ&nbsp;&nbsp;&nbsp;`
-                    $divPageGroup.html($divPageGroup.html()+page)
-                }
-                for(let i = startPage; i<=endPage; i++){
-                    let page=`<span class="pg${i}">${i}</span>&nbsp;&nbsp;&nbsp;`
-                    $divPageGroup.html($divPageGroup.html()+page)
-                }
-                if(endPage!=responseJSONObj.totalPage){
-                    let page=`ㅣ<span class="pg${endPage+1}">NEXT</span>ㅣ`
-                    $divPageGroup.html($divPageGroup.html()+page)
+                console.log(responseJSONObj.list)
+                if(responseJSONObj.list.length==0){
+                    $('div.nothing').show()
+                    $('div.noticelist').hide()
+                    $('div.pagegroup').hide()
+                }else{
+                    const noticeList = responseJSONObj.list
+                    $('div.nothing').hide()
+                    $('div.noticelist').show()
+                    $('div.pagegroup').show()
+                    const $originTrObj = $('div.noticelist>table>thead>tr')
+                    const $tbodyObj = $('div.noticelist>table>tbody')
+    
+                    $tbodyObj.empty()
+    
+                    $(noticeList).each((index, p)=>{
+                        const $copyTrObj = $originTrObj.clone()
+                        $copyTrObj.empty()
+                        
+                        const $noticeNoObj = `<td>${p.noticeNo}</td>`
+                        $copyTrObj.append($noticeNoObj)
+    
+                        const $noticeTitleObj = `<td class="notice_title"><a href='#' 
+                        onclick="location.href = \`${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${p.noticeNo}\`">
+                        ${p.noticeTitle}</a></td>`
+                        
+                        $copyTrObj.append($noticeTitleObj)
+    
+                        const $regDateObj = `<td>${p.regDate}</td>`
+                        $copyTrObj.append($regDateObj)
+                        
+                        $tbodyObj.append($copyTrObj)
+                    })
+    
+    
+                    const $divPageGroup = $('div.notice>div.pagegroup')
+                    $divPageGroup.empty() 
+    
+                    const startPage = responseJSONObj.startPage //시작페이지
+                    const endPage = responseJSONObj.endPage //끝페이지
+    
+                    if(startPage>1){
+                        let page = `ㅣ<span class="pg${startPage-1}">PREV</span>ㅣ&nbsp;&nbsp;&nbsp;`
+                        $divPageGroup.html($divPageGroup.html()+page)
+                    }
+                    for(let i = startPage; i<=endPage; i++){
+                        let page=`<span class="pg${i}">${i}</span>&nbsp;&nbsp;&nbsp;`
+                        $divPageGroup.html($divPageGroup.html()+page)
+                    }
+                    if(endPage!=responseJSONObj.totalPage){
+                        let page=`ㅣ<span class="pg${endPage+1}">NEXT</span>ㅣ`
+                        $divPageGroup.html($divPageGroup.html()+page)
+                    }
                 }
             },
             error:(jqXHR, textStatus)=>{

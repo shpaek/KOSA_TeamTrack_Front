@@ -3,12 +3,10 @@
 
 <head>
     <link rel="stylesheet" href="../css/noticedetail.css">
-    <link rel="stylesheet" href="../css/TeamPage/teamHeader.css">
     <link rel="stylesheet" href="../css/TeamPage/teamNav.css">
     <link rel="stylesheet" href="../css/TeamPage/teamFooter.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="../js/noticedetail.js"></script>
-    <script src="../js/teamheader.js"></script>
 
     <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
@@ -20,10 +18,7 @@
 
 <body>
     <header>
-        <div class="searchBar">
-            <input type="text" placeholder="검색을 하삼">
-            <img class="searchIcon" src="../images/search.png" alt="searchIcon">
-        </div>
+        
     </header>
     <nav>
         <!-- 사이트 로고 -->
@@ -31,17 +26,19 @@
             <img class="logo" src="../images/logoCut.png" alt="logo">
         </a>
 
-        <!-- 팀 이름 -->
-        <p class="teamName">팀명: 셍나</p>
-
         <!-- 팀 프로필 -->
         <div class="teamProfile">
             <img class="teamProfileImg" src='#' alt="teamProfile">
             <p class="teamProfileEdit">편집</p>
         </div>
 
+        <!-- 팀 이름 -->
+        <div class="teamNameDiv">팀명: 
+            <p class="teamNameShow"></p>
+        </div>
+
         <!-- 메뉴 탭 -->
-        <ul>
+        <ul class="nonHiddenTab">
             <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
             <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
             <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
@@ -99,7 +96,7 @@
                     <span>첨부된 파일이 없습니다</span>
                 </div>
                 <div class="modifycontent">
-                    <input type="text" required placeholder="본문" name="content" value="">
+                    <textarea placeholder="본문" name="content" maxlength="500" value="" required></textarea>
                 </div>
                 <div class="writebuttons">
                     <button type="submit">완료</button>
