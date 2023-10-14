@@ -45,12 +45,11 @@ $(() => {
                 break;
 
             case 'QnABoard':
-                // ajaxHandler('GET', '#', $sectionObj)
-                ajaxHandler('GET', './qnaboard.html', $sectionObj)
+                location.href = './qnaboard.html?teamNo=' + teamNo
                 break;
 
             case 'attendencePage':
-                location.href = './teamAttendance.html'
+                location.href = './teamAttendance.html' + teamNo
                 break;
 
             case 'rankPage':
