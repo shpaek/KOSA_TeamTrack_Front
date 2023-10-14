@@ -1,16 +1,4 @@
-function ajaxHandler(method, u, target) {
-  console.log(u)
-
-  if (method == 'GET') {
-    target.load(u, function (response, status, xhr) { // jQuery용 메소드 load()
-      if (status == "error") {
-        alert(xhr.status + ShadowRoot.statusText)
-      } // inner-if
-    })  // .load()
-  } // outer-if
-
-}
-const taskbackURL = 'http://localhost:8888/KOSA_Project2'
+const backURL = 'http://localhost:8888/teamtrack'
 $(() => {
   const loginedId = localStorage.getItem("loginedId");
   const teamNo = localStorage.getItem("taskteamno")
@@ -62,7 +50,6 @@ $(() => {
   })
 
   const $taskmenu = $('div.taskboardmenu>ul>li>a')
-  const $tasksectionObj = $('section.taskboard')
 
   $taskmenu.click((e) => {
     switch (e.target.className) {
@@ -251,7 +238,7 @@ $(() => {
       xhrFields: {
         withCredentials: true
       },
-      url: `${taskbackURL}/settask`,
+      url: `${backURL}/settask`,
       method: 'post',
       data: fd,
       contentType: false, //파일첨부용 프로퍼티

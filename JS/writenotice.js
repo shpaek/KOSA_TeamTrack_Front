@@ -30,14 +30,24 @@ $(()=>{
             success : (responseJSONObj)=>{
                 console.log(responseJSONObj)
                 if(responseJSONObj.status==1){
-                    alert(responseJSONObj.msg)
-                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                    Swal.fire({
+                        icon: 'success',
+                        text: responseJSONObj.msg
+                    }).then(function(){
+                        location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                    });
                 }else{
-                    alert(responseJSONObj.msg)
+                    Swal.fire({
+                        icon: 'error',
+                        text: '다시 한번 시도해주세요🙏'
+                    })
                 }
             },
             error: (jqxhr)=>{
-                alert(jqxhr.status)
+                Swal.fire({
+                    icon: 'error',
+                    text: '다시 한번 시도해주세요🙏'
+                })
             }
         })
         return false
