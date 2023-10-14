@@ -52,7 +52,7 @@ $(() => {
                     localStorage.setItem("loginedId", idValue)
                     sessionStorage.setItem("loginedId", idValue, responseJSONObj.idValue)
                 } else if(responseJSONObj.status == 1) {
-                    // localStorage.setItem("loginedId", idValue)
+                    localStorage.setItem("loginedId", idValue)
                     // sessionStorage.setItem("loginedId", idValue, responseJSONObj.idValue)
                     sessionStorage.setItem("nickname", responseJSONObj.nickname)
                     location.href = './main.html'
