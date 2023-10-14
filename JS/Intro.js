@@ -43,19 +43,23 @@ $(() => {
             data: idpwddata,
             success: (responseJSONObj) => {
                 // controller에서 받아온 응답에 대한 결과
-                if(responseJSONObj.status == 0) {
-                    // alert(responseJSONObj.msg)
-                    Swal.fire({
-						icon: 'success',
-						text: responseJSONObj.msg
-					})
-                    localStorage.setItem("loginedId", idValue)
-                    sessionStorage.setItem("loginedId", idValue, responseJSONObj.idValue)
-                } else if(responseJSONObj.status == 1) {
-                    localStorage.setItem("loginedId", idValue)
-                    // sessionStorage.setItem("loginedId", idValue, responseJSONObj.idValue)
+                if(responseJSONObj.status === 0) {
+                    console.log('성공')
+                    alert(responseJSONObj.msg)
+                    // Swal.fire({
+               //    icon: 'success',
+               //    text: responseJSONObj.msg
+               // })
+                    localStorage.setItem("loginedId", responseJSONObj.id);
+                    sessionStorage.setItem("loginedId", responseJSONObj.id);
                     sessionStorage.setItem("nickname", responseJSONObj.nickname)
                     location.href = './main.html'
+                } else if(responseJSONObj.status === 1) {
+                    console.log('실패')
+                    localStorage.setItem("loginedId", responseJSONObj.id);
+                    sessionStorage.setItem("loginedId", responseJSONObj.id);
+                    sessionStorage.setItem("nickname", responseJSONObj.nickname)
+                    // location.href = './main.html'
                 }
             },
             error : (jqXHR, textStatus) => {

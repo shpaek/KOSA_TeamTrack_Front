@@ -1,7 +1,6 @@
 const backURL = "http://localhost:8888/teamtrack"
 const frontURL = "http://localhost:5500/HTML"
-// const id = localStorage.getItem("loginedId")
-const id = 'test01'
+const id = sessionStorage.getItem("loginedId")
 const teamNo = new URL(location.href).searchParams.get("teamNo")
 
 function ajaxHandler(method, u, target) {
@@ -86,7 +85,8 @@ $(() => {
         url: backURL + "/teammain",
         type: 'GET',
         data: {
-            teamNo: teamNo
+            teamNo: teamNo,
+            id: id
         },
         success: (responseJSONObj) => {
             alert('현재 teamNo = ' + teamNo)
@@ -106,7 +106,7 @@ $(() => {
                 const viewCnt = responseJSONObj.teamViewCnt;
                 $('span.teamCntViewSpan2').text(viewCnt);
             }
-            /*
+
             // 조회수
             if (responseJSONObj.teamViewCnt != null) {
                 const viewCnt = responseJSONObj.teamViewCnt
@@ -114,7 +114,6 @@ $(() => {
 
                 $teamViewCntDiv.find('span[class=teamCntViewSpan1]').text(viewCnt)
             } // if
-            */
 
             // 팀 멤버 닉네임
             if (responseJSONObj.nicknameList != null) {
