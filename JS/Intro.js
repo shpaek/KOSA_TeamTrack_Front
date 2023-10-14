@@ -49,11 +49,11 @@ $(() => {
 						icon: 'success',
 						text: responseJSONObj.msg
 					})
-                    localStorage.setItem("loginedId", idValue)
-                    sessionStorage.setItem("loginedId", idValue, responseJSONObj.idValue)
+                    localStorage.setItem("loginedId", id)
+                    sessionStorage.setItem("loginedId", id, responseJSONObj.id)
                 } else if(responseJSONObj.status == 1) {
-                    localStorage.setItem("loginedId", idValue)
-                    // sessionStorage.setItem("loginedId", idValue, responseJSONObj.idValue)
+                    localStorage.setItem("loginedId", id)
+                    sessionStorage.setItem("loginedId", id, responseJSONObj.id)
                     sessionStorage.setItem("nickname", responseJSONObj.nickname)
                     location.href = './main.html'
                 }
