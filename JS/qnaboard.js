@@ -2,6 +2,8 @@
 // const frontURL = 'http://localhost:5500/HTML'
 
 $(() => {
+
+    console.log(teamNo);
     // 함수 정의: 페이지 데이터를 가져와서 화면에 렌더링하는 함수
     function ajaxHandler(cp) {
         $.ajax({
@@ -20,6 +22,9 @@ $(() => {
 
                 const $originTrObj = $('div.board>div.boardlist>table>thead>tr')
                 const $tbodyObj = $('div.board>div.boardlist>table>tbody')
+
+                console.log($originTrObj);
+                console.log($tbodyObj);
 
                 $tbodyObj.empty()
 
@@ -43,6 +48,8 @@ $(() => {
                         $tbodyObj.append($copyTrObj)
                     } else {
                         // 게시판의 status가 0이라면 출력하지 않음(삭제된 게시물)
+                        console.log($originTrObj);
+                        console.log($tbodyObj);
                     }
                 })
 
