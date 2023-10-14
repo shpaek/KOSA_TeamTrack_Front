@@ -1,20 +1,7 @@
 const backURL = "http://localhost:8888/teamtrack"
 const frontURL = "http://localhost:5500/HTML"
-const id = localStorage.getItem("loginedId")
+const id = sessionStorage.getItem("loginedId")
 const teamNo = new URL(location.href).searchParams.get("teamNo")
-
-function ajaxHandler(method, u, target) {
-    console.log(u)
-
-    if (method == 'GET') {
-        target.load(u, function (response, status, xhr) { // jQuery용 메소드 load()
-            if (status == "error") {
-                alert(xhr.status + xhr.statusText);
-            } // inner-if
-        })  // .load()
-    } // outer-if
-
-} // ajaxHandler
 
 $(() => {
 
@@ -49,7 +36,7 @@ $(() => {
                 break;
 
             case 'attendencePage':
-                location.href = './teamAttendance.html' + teamNo
+                location.href = './teamAttendance.html?teamNo=' + teamNo
                 break;
 
             case 'rankPage':
@@ -83,10 +70,16 @@ $(() => {
     $.ajax({
         url: backURL + "/teammain",
         type: 'GET',
-        data: teamNo,
+        data: {
+            teamNo: teamNo,
+            id: id
+        },
         success: (responseJSONObj) => {
-            alert(teamNo)
-            alert(id)
+            alert('현재 teamNo = ' + teamNo)
+            alert('현재 id = ' + id)
+
+            // 사용자 유형 구분하기
+            handleUserRole(responseJSONObj.userRole)
 
             // 프로필
 
@@ -98,25 +91,32 @@ $(() => {
                 $teamNameDiv.find('p.teamNameShow').text(teamName)
             } // if
 
+            if (responseJSONObj.teamViewCnt != null) {
+                const viewCnt = responseJSONObj.teamViewCnt;
+                $('span.teamCntViewSpan2').text(viewCnt);
+            }
+
             // 조회수
             if (responseJSONObj.teamViewCnt != null) {
-
                 const viewCnt = responseJSONObj.teamViewCnt
                 const $teamViewCntDiv = $('div.teamViewCnt').first()
 
                 $teamViewCntDiv.find('span[class=teamCntViewSpan2]').text(viewCnt)
             } // if
 
-            // 팀원 목록
+            // 팀 멤버 닉네임
             if (responseJSONObj.nicknameList != null) {
-                const nickList = responseJSONObj.nicknameList
-                const $nickSpan = $('span.teamMemberListSpan2')
-
+                const nickList = responseJSONObj.nicknameList;
+                const $nickSpan = $('span.teamMemberListSpan1');
+                
                 nickList.forEach((nickName, index) => {
-                    const $nickCloneSpan = $nickSpan.clone()
-                    $nickCloneSpan.text(nickName)
-                    $nickSpan.parent().append($nickCloneSpan)
-                }) // forEach
+                    const $nickCloneSpan = $nickSpan.clone();
+                    $nickCloneSpan.text(nickName);
+                    $nickCloneSpan.addClass('nickNameStyle'); // 스타일 클래스 추가
+                    $nickSpan.parent().append($nickCloneSpan);
+                }); // forEach
+                
+                $nickSpan.hide();  // 원본 span 숨기기
             } // if
 
             // 팀 소개글
@@ -163,6 +163,24 @@ $(() => {
         }
     }) // ajax
 
+    // 권한
+    function handleUserRole(userRole) {
+        if (userRole === 'customer') {                                                              // 일반 사용자
+            $(".attendencePage").closest("li").hide(); // 출석하러가기 숨기기
+            $("#exitTeam").hide(); // 팀 나가기 숨기기
+            $(".teamProfileEdit").hide(); // 편집 숨기기
+            $(".manageTeam").closest("li").hide(); // 팀 관리 (하위 메뉴 포함) 숨기기
+        } else if (userRole === 'teamLeader') {                                                     // 팀장 사용자
+            $("#exitTeam").hide(); // 팀 나가기 숨기기
+            $("#JoinTeamBtn").hide(); // 팀 가입 숨기기
+        } else if (userRole === 'teamMember') {                                                     // 팀원 사용자
+            $(".manageTeam").closest("li").hide(); // 팀 관리 (하위 메뉴 포함) 숨기기
+            $("#JoinTeamBtn").hide(); // 팀 가입 숨기기
+        } else {
+
+        }
+    }
+
     // ##### 팀 가입 #####################################################
 
     // 팀 가입하기 버튼 클릭 이벤트
@@ -177,7 +195,6 @@ $(() => {
         const introduction = $('#teamJoinIntroduction').val(); // 사용자가 입력한 자기소개
         console.log(introduction);
 
-        backURL + "/teamjoin",
         $.ajax({
             url: backURL + "/teamjoin",
             type: 'GET',
@@ -220,7 +237,7 @@ $(() => {
                 id: id
             },
             success: (responseJSONObj) => {
-                location.href = './teamMain.html'
+                location.href = './teamMain.html?teamNo=' + teamNo
             },
             error: (jqXHR, textStatus) => {
                 // 오류 처리
