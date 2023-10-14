@@ -38,15 +38,20 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: 'http://127.0.0.1:8888/KOSA/login',
+            url: 'http://127.0.0.1:8888/teamtrack/login',
             method: 'post',
             data: idpwddata,
             success: (responseJSONObj) => {
                 // controller에서 받아온 응답에 대한 결과
                 if(responseJSONObj.status == 0) {
-                    alert(responseJSONObj.msg)
+                    // alert(responseJSONObj.msg)
+                    Swal.fire({
+						icon: 'success',
+						text: responseJSONObj.msg
+					})
                 } else if(responseJSONObj.status == 1) {
                     localStorage.setItem("loginedId", idValue)
+                    sessionStorage.setItem("nickname", responseJSONObj.nickname)
                     location.href = './main.html'
                 }
             },

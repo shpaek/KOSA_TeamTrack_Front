@@ -75,8 +75,31 @@ img {
 
     margin-top: 10px;
 
-    background-color: #011837;
-
-    font-weight: bold;
-    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(124.47deg, 
+              rgba(61, 151, 215, 0.2), 
+              rgba(61, 151, 215, 0.0), 
+              rgba(61, 151, 215, 0.2));
+    backdrop-filter: blur(5px);
 }
+
+/* #login_button:hover {
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    left: 20%;
+
+    margin-top: 10px;
+
+    background: linear-gradient(124.47deg, 
+              rgba(61, 151, 215, 0.8), 
+              rgba(61, 151, 215, 0.6), 
+              rgba(61, 151, 215, 0.8));
+    top: 1px;
+    margin-top: 1px;
+}    */

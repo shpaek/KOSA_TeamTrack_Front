@@ -1,8 +1,11 @@
-const backURL = 'http://127.0.0.1:8888/KOSA_TeamTrack_Back'
+const backURL = 'http://127.0.0.1:8888/teamtrack'
 const frontURL = 'http://127.0.0.1:5500/HTML'
 $(() => {
 
     function ajaxSearchHandler(cp, data){
+
+
+
         $.ajax({
             url: backURL+ '/teamhashtag',
             method: 'get',
@@ -66,8 +69,22 @@ $(() => {
                     $copyNewTeam.find("ul>li>span.briefInfo").html(briefInfo)
                     $copyNewTeam.find("ul>li>span.viewcnt").html(viewCnt)
                     console.log($copyNewTeam.find("ul>li>span.viewcnt").html(viewCnt))
-                    //복제본객체를 .productlist객체의 자식으로 추가
-                    $('div.mainteam').append($copyNewTeam)
+                    
+                    $.ajax({
+                        xhrFields: {
+                          responseType: "blob",
+                        },
+                        url: backURL + "/download",
+                        data: "teamNo=" + teamNo + "&opt=profile",
+                        success: (responseData) => {
+                          if (responseData.size > 0) {
+                            const url = URL.createObjectURL(responseData);
+                            $copyNewTeam.find("ul>div>img").attr("src", url);
+                          }
+                        },
+                        error: (jqxhr) => {},
+                      });
+                      $('div.mainteam').append($copyNewTeam)
                 })
                 $originNewTeam.hide()
 

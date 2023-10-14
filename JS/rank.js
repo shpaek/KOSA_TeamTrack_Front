@@ -1,5 +1,5 @@
-const backURL = 'http://localhost:8888/KOSA_Project2'
-const frontURL = 'http://localhost:5500/KOSA_Project2_Front/HTML/'
+const backURL = 'http://localhost:8888/teamtrack'
+const frontURL = 'http://localhost:5500/HTML'
 
 $(() => {
     const urlParams = new URL(location.href).searchParams
@@ -81,8 +81,11 @@ $(() => {
 
                 }
             })
+
         }
+
     })
+
     //---- 팀 내 개인랭킹 클릭했을 때 발생할 일 END ----
 
     //---- select박스에서 월 선택하는 change 이벤트가 발생했을 때 할 일 START ----

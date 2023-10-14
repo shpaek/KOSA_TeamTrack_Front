@@ -23,4 +23,5 @@ div.numtext {
     font-size: xx-large;
     text-align: center;
     height: 40px;
+    cursor: pointer;
 }
