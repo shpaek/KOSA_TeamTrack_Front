@@ -1,8 +1,11 @@
-const backURL = 'http://localhost:8888/KOSA_TeamTrack_Back'
+const backURL = 'http://localhost:8888/teamtrack'
 const frontURL = 'http://localhost:5500/HTML'
 // const teamNo = location.search.substring(1).split('=')[1]
-const teamNo = 9999
-const id = 'test41'
+const urlParams = new URL(location.href).searchParams;
+const teamNo = urlParams.get('teamNo');
+// const teamNo = 9999
+//const id = 'test41'
+const id = localStorage.getItem('loginedId')
 // const id = 'psh2023';
 
 function ajaxHandler(method, u, target) {
@@ -64,9 +67,9 @@ $(() => {
                 break;
 
             case 'manageTeamProperties':
-                const urlParams = new URL(location.href).searchParams;
+                // const urlParams = new URL(location.href).searchParams;
                 // const teamNo = urlParams.get('teamNo');
-                location.href = './teammanageproperties.html?teamNo=' + teamNo
+                location.href = './teammanage.html?teamNo=' + teamNo
                 break;
 
             case 'manageTeamCurrentMember':

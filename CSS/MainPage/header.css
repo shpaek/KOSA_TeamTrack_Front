@@ -1,6 +1,7 @@
-header {
+*{
   font-family: 'Noto Sans KR', sans-serif;
-
+}
+header {
   /* border: solid 1px black; 영역 표시용 나중에 지우기!! */
   display: flex;
   justify-content: center;
@@ -84,7 +85,6 @@ nav>a>img.logo {
 
   padding: 10px 20px 0px 20px; 
 }
-
 
 /* 팀 이름 */
 .membernickname {
@@ -195,6 +195,7 @@ nav>ul>li#exitTeam:hover {
   border-radius: 20px;
   margin-left: 33px;
   display:block;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .button-hover::before,
