@@ -5,7 +5,8 @@ $(()=>{
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
     const noticeNo = urlParams.get('noticeNo')
-    const loginedId = localStorage.getItem('loginedId')
+    const loginedId = localStorage.getItem("loginedId");
+
 
     $.ajax({
         url: backURL+'/noticedetail',
@@ -193,14 +194,14 @@ $(()=>{
                                 title: responseJSONObj.msg,
                                 text: responseJSONObj.mainmsg
                             }).then(result=>{
-                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
                             })
                         }else{
                             Swal.fire({
                                 icon: 'success',
                                 text: responseJSONObj.msg
                             }).then(result=>{
-                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
                             })
                         }
                     }else{
@@ -250,7 +251,7 @@ $(()=>{
                                 icon: 'success',
                                 text: responseJSONObj.msg
                             }).then(result=>{
-                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
                             })
                         }else{
                             alert(responseJSONObj.msg)

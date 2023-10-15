@@ -4,7 +4,7 @@ $(()=>{
     const frontURL = 'http://localhost:5500/HTML'
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
-    const loginedId = localStorage.getItem('loginedId')
+    const loginedId = sessionStorage.getItem("loginedId")
 
     $.ajax({
         url: backURL+'/mainnotice',
@@ -37,7 +37,6 @@ $(()=>{
                 icon: 'error',
                 text: '새로고침 해주세요🙏'
             })
-            console.log(jqXHR)
         }
     })
 
@@ -65,7 +64,7 @@ $(()=>{
                         icon: 'success',
                         text: responseJSONObj.msg
                     })
-                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
                 }else{
                     Swal.fire({
                         icon: 'warning',
