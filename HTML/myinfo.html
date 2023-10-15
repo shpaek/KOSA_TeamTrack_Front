@@ -2,6 +2,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="../css/myinfo.css">
+        <link rel="stylesheet" href="../css/myheader.css">
+        <link rel="stylesheet" href="../css/MainPage/footer.css">
 
         <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
         <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
@@ -19,51 +21,109 @@
         <header>
             <div class="menu">
                 <a href="#" name="myinfo">회원 정보</a>
+                <span>｜</span>
                 <a href="#" name="myteam">마이 팀</a>
             </div>
         </header>
         <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 이름 -->
+
+            <!-- 팀 프로필 -->
+            <form class="profile">
+            <div class="teamProfile">
+                <label for="f1"></label><input type="file" name="f1" id="f1">
+                <img class="teamProfileImg" src='#' alt="teamProfile">
+                </div>
+            </form>
+            <p class="membernickname">아이디</p>
+
+            <!-- 메뉴 탭 -->
+            <ul>
+                
+                <button class="button-hover" data="popup-form">
+                <span>팀 생성하기</span>
+                </button>
+            
+                <li><a href="#" class="myPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 마이페이지</a></li>
+                <li><a href="#" class="myGroupList">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 마이그룹목록</a></li>
+                <li id="exitTeam"><a href="#" class="logout">로그아웃</a></li>
+            </ul>
         </nav>
         <section>
-            <div class="myinfo">
+            <div class="infobox">
                 <div class="infomenu">
                     <ul>
                         <li><a href="#" name="editinfo">내정보 수정</a></li>
                         <li><a href="#" name="editpwd">비밀번호 수정</a></li>
                     </ul>
-                    <a href="#">탈퇴하기</a>
+                    <a href="#" name="withdrawl">탈퇴하기</a>
+                </div>
+                <div class="myinfo">
+                    <div class="leftbox">
+                        <div class="imgbox">
+                            <form>
+                                <div class="imgshow">
+                                    <img src="../images/logo.png">
+                                </div>
+                                <input type="file" name="f1" id="f1"></input>
+                                <div class="filebuttons">
+                                    <button type="submit">저장</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="nicknamebox">
+                            <form>
+                                <div class="nicknameeditline">
+                                    <label>닉네임 : <input type="text"
+                                        name="nickname" value="" required></label>
+                                    <button name="check">중복확인</button>
+                                    <button type="submit">저장</button>
+                                </div>
+                                <div class="dupchkmsg">
+                                    <span name="requiremsg">중복확인이 필요합니다</span>
+                                    <span name="okmsg">사용 가능한 닉네임입니다</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="rightbox">
+                        <form class="info" method="post" accept-charset="UTF-8">
+                                <div>
+                                    <label>아이디 : <input type="text"
+                                    name="id" value="" readonly></label>
+                                </div>
+                                <div>
+                                    <label>이름 : <input type="text"
+                                    name="username" value="" required></label>
+                                </div>
+                                <div>
+                                    <label>생년월일 : <input type="text"
+                                    name="birthday" value="" required></label>
+                                </div>
+                                <div>
+                                    <label>휴대폰 : <input type="text"
+                                    name="phone" value="" required></label>
+                                </div>
+                                <div>
+                                    <label>이메일 : <input type="text"
+                                    name="email" value="" required></label>
+                                </div>
+                                <div class="savebutton">
+                                    <button type="submit">저장</button>
+                                </div>
+                        </form>
+
+                    </div>
                 </div>
             </div>
-            <form class="imgbox">
-                    <img src="../images/logo.png">
-                    <input type="file" name="f1" id="f1"></input>
-                    <button type="submit">저장</button>
-            </form>
-            <form class="nicknamebox">
-                <label>닉네임 : <input type="text"
-                    name="nickname" value="" required></label>
-                <button name="check">중복확인</button>
-                <button type="submit">저장</button>
-                <br>
-                <span name="requiremsg">중복확인이 필요합니다</span>
-                <span name="okmsg">사용 가능한 닉네임입니다</span>
-            </form>
-            <form class="info">
-                    <label>아이디 : <input type="text"
-                        name="id" value="" readonly></label>
-                    <label>이름 : <input type="text"
-                        name="name" value="" required></label>
-                    <label>생년월일 : <input type="text"
-                        name="birthday" value="" required></label>
-                    <label>휴대폰 : <input type="text"
-                        name="phone" value="" required></label>
-                    <label>이메일 : <input type="text"
-                        name="email" value="" required></label>
-                <button type="submit">저장</button>
-            </form>
         </section>
         <footer>
-
+            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
         </footer>
     </body>
 </html>
