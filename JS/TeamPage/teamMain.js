@@ -1,4 +1,4 @@
-const backURL = "http://localhost:8888/teamtrack"
+const backURL = "http://localhost:8888/KOSA_TeamTrack_Back"
 const frontURL = "http://localhost:5500/HTML"
 const id = sessionStorage.getItem("loginedId")
 const teamNo = new URL(location.href).searchParams.get("teamNo")
