@@ -441,3 +441,11 @@ button[name="back"]:disabled {
     box-shadow: none;
     transform: translateY(0);
   }
+
+  ul.nonHiddenTab>li>a{
+    margin-left: 0px;
+}
+
+div.detailtitleline>h4, div.detailcontent>p{
+  color : black;
+}
