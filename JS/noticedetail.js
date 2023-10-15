@@ -1,6 +1,6 @@
 
 $(()=>{
-    const backURL = 'http://localhost:8888/KOSA_Project2'
+    const backURL = 'http://localhost:8888/teamtrack'
     const frontURL = 'http://localhost:5500/HTML'
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
@@ -22,9 +22,9 @@ $(()=>{
             const regDate = responseJSONObj.notice.regDate
 
             if(responseJSONObj.fileName == 'null'){
-                $('div.filezone').hide()
+                $('div.filezone>div').hide()
             }else{
-                $('div.filezone>span').text(responseJSONObj.fileName)
+                $('span.filename').text(responseJSONObj.fileName)
             }
     
             $('div.detailtitleline>h4').html(noticeTitle)
@@ -55,7 +55,6 @@ $(()=>{
                       }).then((result) => {
                         if (result.isConfirmed) location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                       })
-                    // location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                 }else{
                     Swal.fire({
                         icon: 'warning',
@@ -74,8 +73,7 @@ $(()=>{
     })
 
     //---- 파일명 클릭 시 발생 이벤트 ----
-    $('div.filezone>span').click((e)=>{
-        alert('눌렸으')
+    $('span.filename').click((e)=>{
         $.ajax({
             xhrFields: {
                 responseType: "blob",
@@ -88,11 +86,7 @@ $(()=>{
             success: (responseData)=>{
                 console.log(responseData)
                 console.log(responseData.URL)
-                // if(responseData.size > 0){
-                //     const imgurl = URL.createObjectURL(responseData)
-                //     $('form.imgbox>img').attr('src', imgurl)
-                // }
-                location.href = `http://localhost:8888/KOSA_Project2/noticefiledownload?teamNo=${teamNo}&noticeNo=${noticeNo}`
+                location.href = `${backURL}/noticefiledownload?teamNo=${teamNo}&noticeNo=${noticeNo}`
                 Swal.fire({
                     icon: 'success',
                     text: '다운로드 성공하였습니다'
@@ -108,8 +102,9 @@ $(()=>{
     })
 
     //---- 수정버튼 클릭 시 발생 이벤트 ----
-    $('div.noticedetail>div.detailbuttons>button.edit').on('click',(e)=>{
+    $('button.edit').on('click',(e)=>{
         $('div.noticedetail').hide()
+        $('div.detailbuttons').hide()
         $('div.editnotice').show()
 
         $.ajax({
@@ -126,7 +121,8 @@ $(()=>{
                 if(responseJSONObj.fileName == 'null'){
                     $('div.modifyfilezone').hide()
                 }else{
-                    $('div.modifyfilezone>span').text(responseJSONObj.fileName)
+                    $('div.modifyfilezone').show()
+                    $('span.modifyfilename').text(responseJSONObj.fileName)
                 }
                 
                 $('div.mainnotice>input[name=status]').attr('value',mainStatus);
@@ -143,8 +139,36 @@ $(()=>{
         })
     })
 
+    $('span.modifyfilename').click((e)=>{
+        $.ajax({
+            xhrFields: {
+                responseType: "blob",
+            },
+            url: backURL+'/noticefiledownload',
+            method: 'get',
+            contentType: false, //파일첨부용 프로퍼티
+            processData : false, //파일첨부용 프로퍼티
+            data: `teamNo=${teamNo}&noticeNo=${noticeNo}`,
+            success: (responseData)=>{
+                console.log(responseData)
+                console.log(responseData.URL)
+                location.href = `${backURL}/noticefiledownload?teamNo=${teamNo}&noticeNo=${noticeNo}`
+                Swal.fire({
+                    icon: 'success',
+                    text: '다운로드 성공하였습니다'
+                })
+            },
+            error: (jqxhr)=>{
+                Swal.fire({
+                    icon: 'warning',
+                    text: '다시 한번 시도해주세요🙏'
+                })
+            }
+        })
+    })
+
     //---- 완료버튼 클릭 시 발생 이벤트 ----
-    $('div.editnotice>form>div.writebuttons>button[type=submit]').on('click',(e)=>{
+    $('form>div.writebuttons>button[type=submit]').on('click',(e)=>{
         const $formObj = $('form')
 
         $formObj.submit((e) => {
@@ -162,16 +186,27 @@ $(()=>{
                 processData : false, //파일첨부용 프로퍼티
                 data : fd,
                 success : (responseJSONObj)=>{
-                    if(responseJSONObj.mainStatus==1 && responseJSONObj.status==1){
+                    if(responseJSONObj.status==1){
+                        if(responseJSONObj.mainstatus==0){
+                            Swal.fire({
+                                icon: 'success',
+                                title: responseJSONObj.msg,
+                                text: responseJSONObj.mainmsg
+                            }).then(result=>{
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                            })
+                        }else{
+                            Swal.fire({
+                                icon: 'success',
+                                text: responseJSONObj.msg
+                            }).then(result=>{
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                            })
+                        }
+                    }else{
                         Swal.fire({
-                            icon: 'success',
-                            text: responseJSONObj.msg
-                        })
-                        location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
-                    }else if(responseJSONObj.mainStatus==0){
-                        Swal.fire({
-                            icon: 'warning',
-                            text: responseJSONObj.mainmsg
+                            icon: 'error',
+                            text: '다시 한번 시도해주세요🙏'
                         })
                     }
                 },
@@ -187,41 +222,50 @@ $(()=>{
     })
 
     //---- 취소버튼 클릭 시 발생 이벤트 ----
-    $('div.editnotice>div.backbutton>button[name=back]').on('click',(e)=>{
-        const state = {'teamNo':teamNo, 'noticeNo':noticeNo}
-        location.href=`${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
+    $('button[name=back]').on('click',(e)=>{
+        $('div.editnotice').hide()
+        $('div.noticedetail').show()
     })
 
     //---- 삭제버튼 클릭 시 발생 이벤트 ----
-    $('div.noticedetail>div.detailbuttons>button.remove').on('click',(e)=>{
-        var result = confirm("삭제하시겠습니까?")
-        if(result == true){
-            $.ajax({
-                url: backURL+'/deletenotice',
-                method : 'get',
-                data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
-                success: (responseJSONObj)=>{
-                    if(responseJSONObj.status==1){
+    $('button.remove').on('click',(e)=>{
+        Swal.fire({
+            icon: 'question',
+            text: '삭제하시겠습니까?',
+
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+            cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+            confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+            cancelButtonText: '취소',
+        }).then(result => {
+            if (result.isConfirmed) { 
+                $.ajax({
+                    url: backURL+'/deletenotice',
+                    method : 'get',
+                    data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
+                    success: (responseJSONObj)=>{
+                        if(responseJSONObj.status==1){
+                            Swal.fire({
+                                icon: 'success',
+                                text: responseJSONObj.msg
+                            }).then(result=>{
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                            })
+                        }else{
+                            alert(responseJSONObj.msg)
+                        }
+                    },
+                    error:(jqXHR)=>{
                         Swal.fire({
-                            icon: 'success',
-                            text: responseJSONObj.msg
+                            icon: 'warning',
+                            text: '다시 한번 시도해주세요🙏'
                         })
-                        location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
-                    }else{
-                        alert(responseJSONObj.msg)
+                        console.log(jqXHR)
                     }
-                },
-                error:(jqXHR)=>{
-                    Swal.fire({
-                        icon: 'warning',
-                        text: '다시 한번 시도해주세요🙏'
-                    })
-                    console.log(jqXHR)
-                }
-            })
-        }else{
-            return false
-        }
+                })
+            }
+         })
         return false
     })
 

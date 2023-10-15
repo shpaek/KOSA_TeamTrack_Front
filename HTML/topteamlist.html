@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
     <link rel="stylesheet" href="../CSS/MainPage/teamlist.css" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
@@ -29,7 +29,7 @@
             <div class="searchBar">
                 <input
                   type="text"
-                  placeholder="검색을 하삼"
+                  placeholder="팀명 또는 #을 포함하여 해시태그를 검색"
                   id="mainsearch"
                 />
                 <img class="searchIcon" src="../images/search.png" alt="searchIcon" />
@@ -49,11 +49,11 @@
             <form class="profile">
             <div class="teamProfile">
                 <label for="f1"></label><input type="file" name="f1" id="f1">
-                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <img class="teamProfileImg" src='../images/rocket.png' alt="teamProfile">
                     <p class="teamProfileEdit">편집</p>
                 </div>
             </form>
-            <p class="userId">아이디</p>
+            <p class="membernickname">아이디</p>
 
             <!-- 메뉴 탭 -->
             <ul>
@@ -82,7 +82,7 @@
                 <ul class="team">
 
             <div class="profilebox">
-                <img src="../images/search.png" class="teamProfileImage"alt="원본">
+                <img src='../images/rocket.png' class="teamProfileImage"alt="원본">
                 </div>
                 <li><span class="teamName" id="teamName">팀명</span></li><br>
                 <li class="createDate"><span>(</span><span class="createDate">팀생성일</span><span> 생성)</span></li><br>        

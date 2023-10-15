@@ -1,7 +1,7 @@
 
 
 $(()=>{
-    const backURL = 'http://localhost:8888/KOSA_Project2'
+    const backURL = 'http://localhost:8888/teamtrack'
     const frontURL = 'http://localhost:5500/HTML'
     const $formObj = $('form.notice')
     const urlParams = new URL(location.href).searchParams
@@ -30,12 +30,22 @@ $(()=>{
             success : (responseJSONObj)=>{
                 console.log(responseJSONObj)
                 if(responseJSONObj.status==1){
-                    Swal.fire({
-                        icon: 'success',
-                        text: responseJSONObj.msg
-                    }).then(function(){
-                        location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
-                    });
+                    if(responseJSONObj.mainstatus==0){
+                        Swal.fire({
+                            icon: 'success',
+                            title: responseJSONObj.msg,
+                            text: responseJSONObj.mainmsg
+                        }).then(function(){
+                            location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                        });
+                    }else{
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj.msg
+                        }).then(function(){
+                            location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                        });
+                    }
                 }else{
                     Swal.fire({
                         icon: 'error',

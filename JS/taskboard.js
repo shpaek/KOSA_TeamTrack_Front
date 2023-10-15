@@ -69,7 +69,7 @@ $(()=> {
                 break
             case 'alltask':
                 localStorage.setItem("allcp", 1)
-                location.href='./taskall.html?teamNo='+teamNo+'currentPage='+1
+                location.href='./taskall.html?teamNo='+teamNo
                 break
             case 'completetask': 
                 localStorage.setItem("completecp", 1)

@@ -2,6 +2,12 @@ a {
     text-decoration: none;
 }
 
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
 /* 사이드 메뉴바 */
 nav {
     background-color: #011837;

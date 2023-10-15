@@ -1,5 +1,5 @@
 $(()=>{
-    const backURL = 'http://localhost:8888/KOSA_Project2'
+    const backURL = 'http://localhost:8888/teamtrack'
     const frontURL = 'http://localhost:5500/HTML'
 
     //---- 비밀번호 일치 여부 확인 ----

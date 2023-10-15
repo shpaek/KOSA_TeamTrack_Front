@@ -35,8 +35,8 @@ $(() => {
                 const nickname = info.NICKNAME
                 const $currMemberListClone = $currMemberList.clone()
 
-                $currMemberListClone.find('span[class=memberId]').text(id)
-                $currMemberListClone.find('span[class=memberNickname]').text(nickname)
+                $currMemberListClone.find('span[class=memberId]').text(`아이디: ${id} [ ${nickname} ] `);
+                // $currMemberListClone.find('span[class=memberNickname]').text(nickname + " ]");
 
                 $currMemberList.parent().append($currMemberListClone);
             })
