@@ -173,8 +173,6 @@ span.filename:disabled {
 button.edit{
     float:right;
     margin:10px;
-    float:right;
-    margin:10px;
     cursor: pointer;
     width : 80px;
     height : 40px;
@@ -183,16 +181,10 @@ button.edit{
     border:solid 1px #cccccc;
     font-size: 15px;
     color : #979797;
-    appearance: none;
-    box-sizing: border-box;
-    outline: none;
-    text-decoration: none;
     transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    will-change: transform;
+
     text-align: center;
+    touch-action: manipulation;
 }
 
 button.edit:disabled {
@@ -358,6 +350,83 @@ button.remove:disabled {
     background-color: gainsboro;
 }
 
+
+
+
+
+
+
+
+
+
+
+        /* Style the edit form container */
+        .editdetail {
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        /* Style the form elements */
+        .editdetail form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .editdetail form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Style the submit button */
+        .editdetail .submitbuttons {
+            text-align: center;
+        }
+
+        .editdetail .submitbuttons button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .editdetail .submitbuttons button.edit1:hover {
+            background-color: #555;
+        }
+
+        /* Style the '취소' button */
+        .editdetail .backbutton {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .editdetail .backbutton button[name="back"] {
+            background-color: #aaa;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .editdetail .backbutton button[name="back"]:hover {
+            background-color: #888;
+        }
+
 /* ===================== 수정 ====================== */
 
 div.editnotice{
@@ -461,24 +530,19 @@ textarea[name=content]{
     resize: none;
 }
 
+
 /*----------------------------------------------------------------------*/
-
-.writebutton{
-    margin:10px;
-}
-
-/*완료버튼*/
-button[type=submit]{
+/* 공통 스타일 */
+button[type=submit], button[name="back"] {
     cursor: pointer;
-    float:right;
-    width : 100px;
-    height : 40px;
+    width: 100px;
+    height: 40px;
     margin-right: 20px;
     background-color: white;
     border-radius: 15px;
-    border:solid 1px #cccccc;
+    border: 1px solid #cccccc;
     font-size: 15px;
-    color : #979797;
+    color: #979797;
     appearance: none;
     box-sizing: border-box;
     outline: none;
@@ -491,60 +555,30 @@ button[type=submit]{
     text-align: center;
 }
 
-button[type=submit]:disabled {
+button[type=submit]:disabled, button[name="back"]:disabled {
     pointer-events: none;
-  }
-  
-  button[type=submit]:hover {
-    background-color: #343434;
-    color:white;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-  }
-  
-  button[type=submit]:active {
-    box-shadow: none;
-    transform: translateY(0);
-  }
-
-/*-----------------------------------------------------*/
-
-/*취소버튼*/
-button[name="back"]{
-    cursor: pointer;
-    float:right;
-    width : 100px;
-    height : 40px;
-    margin-right: 20px;
-    background-color: white;
-    border-radius: 15px;
-    border:solid 1px #cccccc;
-    font-size: 15px;
-    color : #979797;
-    appearance: none;
-    box-sizing: border-box;
-    outline: none;
-    text-decoration: none;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    will-change: transform;
-    text-align: center;
 }
 
-button[name="back"]:disabled {
-    pointer-events: none;
-  }
-  
-  button[name="back"]:hover {
+button[type=submit]:hover, button[name="back"]:hover {
     background-color: #343434;
-    color:white;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    color: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
     transform: translateY(-2px);
-  }
-  
-  button[name="back"]:active {
+}
+
+button[type=submit]:active, button[name="back"]:active {
     box-shadow: none;
     transform: translateY(0);
-  }
+}
+
+/* 완료버튼 */
+button[type=submit] {
+    float: right;
+    margin-top: 0; /* 위쪽 여백 초기화 */
+}
+
+/* 취소버튼 */
+button[name="back"] {
+    float: right;
+    margin-top: 0; /* 위쪽 여백 초기화 */
+}
