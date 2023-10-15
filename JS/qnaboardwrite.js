@@ -7,9 +7,11 @@ $(() => {
     $formObj.submit((e) => {
         e.preventDefault(); // 기본 제출 동작을 중지합니다.
 
-        alert("in submit")
+        const loginedId = sessionStorage.getItem("loginedId")
+
         const formData = new FormData(e.target);
         formData.append("teamNo", teamNo);
+        formData.append("loginedId", loginedId);
 
         for (const [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
@@ -27,10 +29,17 @@ $(() => {
             success: (responseJSONObj) => {
                 console.log(responseJSONObj)
                 if (responseJSONObj.status == 1) {
-                    alert(responseJSONObj.msg)
+                    // alert(responseJSONObj.msg)
+                    Swal.fire({
+						icon: 'success',
+						text: responseJSONObj.msg
+					})
                     location.href = `http://localhost:5500/HTML/qnaboard.html?teamNo=${teamNo}`
                 } else {
-                    alert(responseJSONObj.msg)
+                    Swal.fire({
+						icon: 'warning',
+						text: responseJSONObj.msg
+					})
                 }
             },
             error: (jqxhr) => {

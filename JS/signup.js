@@ -12,9 +12,32 @@ $(() => {
 		// 입력 아이디 확인
 		const idValue = $("#id").val();
 		if (!idValue) {
-			alert('아이디를 입력하세요.');
+			Swal.fire({
+				icon: 'warning',
+				text: '아이디를 입력하세요.'
+			})
 			return;
 		}
+
+		// 특수문자 검사
+		const specialCharacters = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\]/;
+		if (specialCharacters.test(idValue)) {
+			Swal.fire({
+				icon: 'warning',
+				text: '특수문자를 사용할 수 없습니다.'
+			})
+			return;
+		}
+
+		    // 아이디가 영어로만 구성되어 있는지 검사
+			const englishOnly = /^[a-zA-Z]+$/;
+			if (!englishOnly.test(idValue)) {
+				Swal.fire({
+					icon: 'warning',
+					text: '아이디는 영어만 입력가능 합니다.'
+				});
+				return;
+			}
 
 		$.ajax({
 			xhrFields: {
@@ -60,6 +83,9 @@ $(() => {
 		const $phone = $('form.signup>input[name=phone]')
 		const $email = $('form.signup>input[name=email]')
 
+
+		const specialCharacters = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\]/;
+		const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i; // 간단한 이메일 유효성 검사 정규표현식
 		// alert($nickname.val())
 
 		if (!/^\d{11}$/.test($phone.val())) {
@@ -90,7 +116,17 @@ $(() => {
 			})
 			$pwdArr.eq(0).focus();
 			$pwdArr.eq(0).select();
-		} else {
+		} else if (specialCharacters.test($name.val()) || specialCharacters.test($nickname.val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '이름과 닉네임에 특수문자를 포함할 수 없습니다.'
+			});
+		} else if (!emailPattern.test($email.val())) {
+			Swal.fire({
+			  icon: 'warning',
+			  text: '유효한 이메일 주소를 입력하세요.'
+			});
+		}  else {
 			const formData = new FormData(e.target)
 
 			$.ajax({

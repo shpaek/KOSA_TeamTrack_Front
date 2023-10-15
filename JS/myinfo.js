@@ -18,7 +18,7 @@ $(()=>{
                 console.log(responseData.URL)
                 if(responseData.size > 0){
                     const imgurl = URL.createObjectURL(responseData)
-                    $('div.imgbox>form>img').attr('src', imgurl)
+                    $('div.imgshow>img').attr('src', imgurl)
                 }
             },
             error: (jqxhr)=>{
@@ -130,15 +130,14 @@ $(()=>{
     //---- 닉네임 저장 ----
 
     $('div.nicknamebox>form').submit((e)=>{
+        const nickname = $('div.nicknameeditline>label>input[name=nickname]').val()
         $.ajax({
             xhrFields:{
                 withCredentials : true
             },
             url: `${backURL}/editnickname`,
             method : 'post',
-            contentType: false, //파일첨부용 프로퍼티
-            processData : false, //파일첨부용 프로퍼티
-            data : `nickname=${$('div.nicknameeditline>label>input[name=nickname]').val()}`,
+            data : `nickname=${nickname}`,
             success : (responseJSONObj)=>{
                 console.log(responseJSONObj)
                 if(responseJSONObj.status==1){

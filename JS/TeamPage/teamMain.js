@@ -24,10 +24,10 @@ $(() => {
                 break;
 
             case 'taskBoard':
-                const taskteamno=60
+                // const taskteamno=60
                 // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                localStorage.setItem('taskteamno', taskteamno)
-                location.href = './taskboard.html?teamNo='+taskteamno
+                localStorage.setItem('taskteamno', teamNo)
+                location.href = './taskboard.html?teamNo='+teamNo
                 //location.href = './taskboard.html&teamNo='+teamNo
                 break;
 
@@ -250,21 +250,4 @@ $(() => {
         }
     });
 
-
-    //검색창
-    $teamsearch = $('div.searchBar>img.searchIcon')
-    $teamsearch.click(()=>{
-        const searchData = $("#mainsearch").val()
-        location.href = `./mainsearch.html?data=${searchData}`
-  
-    })
-
-    $input = $("#mainsearch");
-    $input.on('keyup', (e)=>{
-        if(e.keyCode === 13){
-            e.preventDefault();
-            $teamsearch.click()
-        }
-    })
-    
 }) // $(() {})

@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../css/myteamlist.css">
+        <link rel="stylesheet" href="../css/myheader.css">
 
         <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
         <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
@@ -16,20 +17,28 @@
 
     <body>
         <header>
-            <div class="menu">
-                <a href="#" name="myinfo">회원 정보</a>
-                <a href="#" name="myteam">마이 팀</a>
-            </div>
         </header>
         <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+            <!-- 메뉴 탭 -->
+            <ul>
+                <li><a href="#" name="myinfo">🙍‍♂️ 회원 정보</a></li>
+                <li><a href="#" name="myteam">🚩 마이 팀</a></li>
+                <li><a href="#" name="withdrawl">탈퇴하기</a></li>
+            </ul>
         </nav>
         <section>
             <div class="myteam">
-                <ul class="myteamtab">
-                    <li><a href="#" name="active">참여중</a></li>
-                    <li><a href="#" name="end">활동종료</a></li>
-                    <li><a href="#" name="waiting">승인대기</a></li>
-                </ul>
+                <div class="teamtab">
+                    <ul class="myteamtab">
+                        <li><div class="active">참여중</div></li>
+                        <li><div class="end">활동종료</div></li>
+                        <li><div class="waiting">승인대기</div></li>
+                    </ul>
+                </div>
                 <div class="tabcontent">
                     <div class="rejectlist">
                         <h1>승인거절 목록</h1>
