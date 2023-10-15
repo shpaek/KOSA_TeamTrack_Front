@@ -9,9 +9,6 @@ $(() => {
                 teamNo: teamNo,
             },
             success: (responseJSONObj) => {
-                console.log("요청대기자 출력용 ajax 호출 성공!!");
-                console.log(responseJSONObj)
-                console.log('----------------')
 
                 showReqList(responseJSONObj);
             },
@@ -60,11 +57,25 @@ $(() => {
                 id: id,
                 action: 'reqApprove'
             },
-            success: function(responseJSONObj) {
-                location.reload(); // 페이지 리로드
+            success: function (responseJSONObj) {
+                Swal.fire({
+                    title: '승인됨',
+                    text: '요청이 승인되었습니다.',
+                    icon: 'success',
+                    confirmButtonText: '확인'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload(); // 페이지 리로드
+                    }
+                });
             },
-            error: function(jqXHR, textStatus) {
-                alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText);
+            error: function (jqXHR, textStatus) {
+                Swal.fire({
+                    title: '오류',
+                    text: jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText,
+                    icon: 'error',
+                    confirmButtonText: '확인'
+                });
                 console.error(jqXHR);
             }
         });
@@ -80,30 +91,68 @@ $(() => {
                 id: id,
                 action: 'reqReject'
             },
-            success: function(responseJSONObj) {
-                location.reload(); // 페이지 리로드
+            success: function (responseJSONObj) {
+                Swal.fire({
+                    title: '거절됨',
+                    text: '요청이 거절되었습니다.',
+                    icon: 'success',
+                    confirmButtonText: '확인'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload(); // 페이지 리로드
+                    }
+                });
             },
-            error: function(jqXHR, textStatus) {
-                alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText);
+            error: function (jqXHR, textStatus) {
+                Swal.fire({
+                    title: '오류',
+                    text: jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText,
+                    icon: 'error',
+                    confirmButtonText: '확인'
+                });
                 console.error(jqXHR);
             }
         });
     }
-    
+
     // 승인 버튼
-    $(document).on('click', '.approveBtn', function() {
+    $(document).on('click', '.approveBtn', function () {
         const fullText = $(this).parent().siblings('.customerId').text();
         const matches = fullText.match(/아이디: (\S+) \[/);
         const id = matches && matches[1] ? matches[1] : '';
-        approve(id);
+
+        Swal.fire({
+            title: '승인 확인',
+            text: '이 요청을 승인하시겠습니까?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: '승인',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.value) {
+                approve(id);
+            }
+        });
     });
-    
+
     // 거절 버튼
-    $(document).on('click', '.rejectBtn', function() {
+    $(document).on('click', '.rejectBtn', function () {
         const fullText = $(this).parent().siblings('.customerId').text();
         const matches = fullText.match(/아이디: (\S+) \[/);
         const id = matches && matches[1] ? matches[1] : '';
-        reject(id);
+
+        Swal.fire({
+            title: '거절 확인',
+            text: '이 요청을 거절하시겠습니까?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: '거절',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.value) {
+                reject(id);
+            }
+        });
     });
 
     // 페이지가 로드될 때 팀원 목록을 가져옵니다.
