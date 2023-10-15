@@ -5,14 +5,16 @@ $(()=>{
 
     // ---- 메뉴 클릭 시 발생 이벤트 ----
 
-    $('div.menu>a[name=myinfo]').click(()=>{
+    $('nav>ul>li>a[name=myinfo]').click(()=>{
         location.href=`${frontURL}/myinfo.html`
     })
 
-    $('div.menu>a[name=myteam]').click(()=>{
+    $('nav>ul>li>a[name=myteam]').click(()=>{
         location.href=`${frontURL}/myteamlist.html`
     })
 
-
+    $('nav>ul>li>a[name=withdrawl]').click(()=>{
+        location.href=`${frontURL}/deleteaccount.html`
+    })
 
 })
