@@ -114,9 +114,6 @@ $(() => {
 							location.href = './Intro.html';
 						}
 					});
-					// if (responseJSONObj.status == 1) {
-					// 	location.href = './Intro.html'
-					// }
 				},
 				error: (jqxhr) => {
 					alert(jqxhr.status) // 정상처리가 되지 않으면 status = 0

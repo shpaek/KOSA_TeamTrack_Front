@@ -2,10 +2,16 @@ $(() => {
     const frontURL = 'http://localhost:5500/HTML'
     const teamNo = new URLSearchParams(window.location.search).get('teamNo');
     const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
+    const loginedId = sessionStorage.getItem("loginedId")
 
     const url = `http://localhost:8888/teamtrack/qnaboarddetail?teamNo=${teamNo}&qnaNo=${qnaNo}`;
 
     // ======================== 상세 페이지 로드시 할 일 ==============================
+
+    // data를 전역변수로 사용해서 게시글 작성자 정보를 다른 ajax에서 사용하기 위함
+    let data;
+
+
     $.ajax({
         xhrFields: {
             withCredentials: true
@@ -13,7 +19,13 @@ $(() => {
         url: url,
         method: 'get',
         success: (responseJSONObj) => {
-            const data = responseJSONObj; // 반환된 JSON 데이터
+            data = responseJSONObj; // 반환된 JSON 데이터
+
+            // session아이디와 게시글 작성자의 아이디가 같지 않다면 수정, 삭제 버튼 안보이게
+            if (loginedId !== data.id) {
+                $('div.detailbuttons>button.edit').hide();
+                $('div.detailbuttons>button.remove').hide();
+            }
 
             console.log(data);
 
@@ -135,9 +147,8 @@ $(() => {
         const qnaNo = urlParams.get("qnaNo");
         // const content = document.getElementById("content");
         const content = $("#comment").val();
-        // session 아이디를 줘야함
-        // const id = '현재 사용자 정보'
-        const id = 'psh2023'
+        // 세션에 저장된 아이디값이 회원의 아이디
+        const teammemberId = sessionStorage.getItem("loginedId")
 
         console.log(teamNo)
         console.log(qnaNo)
@@ -153,11 +164,11 @@ $(() => {
                 teamNo: teamNo,
                 qnaNo: qnaNo,
                 content: content,
-                id: id
+                teammemberId: teammemberId
             },
             // data : $form.serialize(),
             success: (responseJSONObj) => {
-
+                location.reload();
             },
             error: (jqxhr) => {
                 alert(jqxhr.status)
@@ -209,6 +220,12 @@ $(() => {
                         const selectModifyButtonCol = $('<td>').addClass('comment-select-modifyButton').html('<button>수정</button>');
                         const selectDeleteButtonCol = $('<td>').addClass('comment-select-deleteButton').html('<button>삭제</button>');
 
+                        // session아이디와 작성자 아아디를 비교해서 같지 않다면 수정과 삭제버튼 가리기
+                        if (loginedId !== comments.teammemberId) {
+                            selectModifyButtonCol.hide();
+                            selectDeleteButtonCol.hide();
+                        }
+
                         // 행에 셀 추가
                         row.append(commentNoCol, writerCol, contentCol, regdateCol, selectButtonCol, selectReplyButtonCol, selectModifyButtonCol, selectDeleteButtonCol);
 
@@ -257,6 +274,12 @@ $(() => {
                         const parentCommentRow = tableBody.find('.comment-row .comment-No:contains(' + parentCommentNo + ')').closest('tr');
                         parentCommentRow.after(replyRow);
 
+                        // session아이디와 작성자 아아디를 비교해서 같지 않다면 수정과 삭제버튼 가리기
+                        if (loginedId !== comments.teammemberId) {
+                            selectModifyButtonCol_reply.hide();
+                            selectDeleteButtonCol_reply.hide();
+                        }
+
                         // 댓글 삭제시 가리기
                         if (comments.commentStatus === 0) {
                             replyRow.addClass('grey-background');
@@ -297,41 +320,37 @@ $(() => {
         console.log(qnaNo);
         console.log(commentNo);
 
-        // 현재 사용자가 게시글의 작성자인지 확인
-        // const boardAuthor = commentRow.find('.comment-info').text();
-        // const boardAuthor = data.id;
-        // const currentUser = '현재 사용자'; // 현재 사용자정보 가져와서 게시글 사용자와 비교해야함 ******
-
-        // if (author === currentUser) { ******************
-        // 현재 사용자가 댓글의 작성자인 경우, '/qnaboardcommentpick'로 POST 요청을 보냅니다.
-        $.ajax({
-            xhrFields: {
-                withCredentials: true
-            },
-            url: 'http://localhost:8888/teamtrack/qnaboardcommentpick',
-            method: 'post',
-            data: {
-                teamNo: teamNo,
-                qnaNo: qnaNo,
-                commentNo: commentNo
-            },
-            success: (responseJSONObj2) => {
-                console.log(responseJSONObj2)
-                if (responseJSONObj2.status == 1) {
-                    alert(responseJSONObj2.msg)
-                } else {
-                    alert(responseJSONObj2.msg)
+        // 전역변수로 선언한 data를 가져와서 비교 ***
+        if (loginedId === data.id) {
+            $.ajax({
+                xhrFields: {
+                    withCredentials: true
+                },
+                url: 'http://localhost:8888/teamtrack/qnaboardcommentpick',
+                method: 'post',
+                data: {
+                    teamNo: teamNo,
+                    qnaNo: qnaNo,
+                    commentNo: commentNo
+                },
+                success: (responseJSONObj2) => {
+                    console.log(responseJSONObj2)
+                    if (responseJSONObj2.status == 1) {
+                        alert(responseJSONObj2.msg)
+                    } else {
+                        alert(responseJSONObj2.msg)
+                    }
+                },
+                error: (error) => {
+                    console.error("에러:", error);
                 }
-            },
-            error: (error) => {
-                console.error("에러:", error);
-            }
-        });
+            });
+        } else {
+            alert(data.id)
+            alert("작성자만 채택할 수 있습니다.");
+            return false;
+        }
 
-        // } else { //***************** 
-
-        // alert("작성자만 채택할 수 있습니다.");
-        // }
         return false;
     });
 
@@ -366,11 +385,12 @@ $(() => {
         const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
         // const commentNo = commentRow.find('.comment-No').text();
         const commentNo = parseInt(commentRow.find('.comment-No').text());
-        const id = 'psh2023'
+        const id = sessionStorage.getItem("loginedId")
 
         console.log('teamNo ', teamNo);
         console.log('qnaNo', qnaNo);
         console.log('commentNo', commentNo);
+        console.log('id', id)
 
         // 답글 폼을 댓글 아래에 추가합니다.
         commentRow.after(replyTextArea, replySubmitButton);
@@ -383,12 +403,13 @@ $(() => {
             e.preventDefault(); // 폼의 기본 동작을 중지하고 Ajax를 수행할 수 있도록 합니다.
 
             const content = replyTextArea.val(); // 사용자가 입력한 내용을 가져오기
-            const id = 'psh2023';
+            const teammemberId = sessionStorage.getItem("loginedId")
 
             console.log('reply submit teamNo ', teamNo);
             console.log('reply submit qnaNo', qnaNo);
             console.log('reply submit commentNo', commentNo);
             console.log('reply submit content', content);
+            console.log('reply submit teammemberId', teammemberId);
 
             // 나머지 Ajax 호출 등 추가 작업
             $.ajax({
@@ -402,10 +423,10 @@ $(() => {
                     qnaNo: qnaNo,
                     commentGroup: commentNo,
                     content: content,
-                    id: id
+                    teammemberId: teammemberId
                 },
                 success: (responseJSONObj3) => {
-
+                    location.reload();
                 },
                 error: (error) => {
                     console.error("에러:", error);
@@ -429,7 +450,7 @@ $(() => {
 
         // seesion아이디 사용해야 함
         // const id = 'psh2023'
-        const loginedId = localStorage.getItem("loginedId")
+        const loginedId = sessionStorage.getItem("loginedId")
 
         console.log('teamNo ', teamNo);
         console.log('qnaNo', qnaNo);
@@ -449,8 +470,9 @@ $(() => {
                 id: id
             },
             success: (responseJSONObj3) => {
-                if(responseJSONObj3 == 1) {
+                if(responseJSONObj3 === 1) {
                     alert(responseJSONObj3.msg)
+                    location.reload();
                 } else {
                     alert(responseJSONObj3.msg)
                 }
@@ -472,23 +494,6 @@ $(() => {
         _this.hide();
         _this.siblings('.reCommentCloseBtn').show();
 
-
-        // // 선택한 댓글을 감싸는 상위 <tr> 엘리먼트를 찾습니다.
-        // const commentRow = _this.closest('tr.reply-comment-row');
-
-        // // 선택한 댓글에 대한 답글 폼을 동적으로 생성합니다.
-        // const Form = $('<form class="commentwrite modify-form">');
-        // const Table = $('<table class="commentsubmit">');
-        // const Row = $('<tr>');
-        // const TextArea = $('<textarea style="width: 1100px" rows="3" cols="30" name="comment" placeholder="댓글을 입력하세요"></textarea>');
-        // const SubmitButton = $('<button type="submit">수정</button>');
-
-        // Row.append($('<td>').append(TextArea));
-        // Row.append($('<td>').append(SubmitButton));
-        // Table.append(Row);
-        // Form.append(Table);
-
-        
         // 선택한 댓글을 감싸는 상위 <tr> 엘리먼트를 찾습니다.
         const commentRow = _this.closest('tr.comment-row');
 
@@ -508,7 +513,7 @@ $(() => {
         const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
 
         const commentNo = parseInt(commentRow.find('.comment-No').text());
-        const id = 'psh2023'
+        const id = sessionStorage.getItem("loginedId")
 
         console.log('teamNo ', teamNo);
         console.log('qnaNo', qnaNo);
@@ -525,7 +530,7 @@ $(() => {
             e.preventDefault(); // 폼의 기본 동작을 중지하고 Ajax를 수행할 수 있도록
 
             const content = modifyTextArea.val(); // 사용자가 입력한 내용을 가져오기
-            const id = 'psh2023';
+            const id = sessionStorage.getItem("loginedId")
 
             console.log('mdofiy submit teamNo ', teamNo);
             console.log('mdofiy submit qnaNo', qnaNo);
@@ -549,6 +554,7 @@ $(() => {
                 success: (responseJSONObj4) => {
                     if(responseJSONObj4 == 1) {
                         alert(responseJSONObj4.msg)
+                        location.reload();
                     } {
                         alert(responseJSONObj4.msg)
                     }
@@ -635,6 +641,7 @@ $(() => {
                 success: (responseJSONObj5) => {
                     if(responseJSONObj5.status === 1){
                         alert(responseJSONObj5.msg)
+                        location.reload();
                     } else {
                         alert(responseJSONObj5.msg)
                     }
@@ -683,6 +690,7 @@ $(() => {
                 success: (responseJSONObj5) => {
                     if(responseJSONObj5.status === 1){
                         alert(responseJSONObj5.msg)
+                        location.reload();
                     } else {
                         alert(responseJSONObj5.msg)
                     }
