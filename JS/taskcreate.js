@@ -39,7 +39,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href = './teammain.html'
+            location.href='./teammain.html?teamNo='+teamNo+'&id='+localStorage('loginedId')
           }
         })
 
@@ -79,7 +79,7 @@ $(() => {
         }).then((result) => {
           if (result.isConfirmed) {
             localStorage.setItem("allcp", 1)
-            location.href = './taskall.html?teamNo=' + teamNo + 'currentPage=' + 1
+            location.href = './taskall.html?teamNo=' + teamNo + '&currentPage=' + 1
           }
         })
 
@@ -95,7 +95,7 @@ $(() => {
         }).then((result) => {
           if (result.isConfirmed) {
             localStorage.setItem("completecp", 1)
-            location.href = './taskcomplete.html?teamNo=' + teamNo + 'currentPage=' + 1
+            location.href = './taskcomplete.html?teamNo=' + teamNo + '&currentPage=' + 1
           }
         })
 
@@ -111,7 +111,7 @@ $(() => {
         }).then((result) => {
           if (result.isConfirmed) {
             localStorage.setItem("mycp", 1)
-            location.href = './taskmy.html?teamNo=' + teamNo + 'currentPage=' + 1
+            location.href = './taskmy.html?teamNo=' + teamNo + '&currentPage=' + 1
           }
         })
 
