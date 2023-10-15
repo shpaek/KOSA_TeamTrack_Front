@@ -1,7 +1,7 @@
 $(() => {
     $("#date1").datepicker({
 		dateFormat: "yy-mm-dd", // 날짜의 형식
-		minDate: 0,
+        minDate: null,
 		nextText: ">",
 		prevText: "<",
 		onSelect: function (date) {
@@ -9,8 +9,6 @@ $(() => {
 			var startDate = $(this).datepicker('getDate');
 			var minDate = $(this).datepicker('getDate');
 			endDate.datepicker('setDate', minDate);
-			startDate.setDate(startDate.getDate() + 30);
-			endDate.datepicker('option', 'maxDate', startDate);
 			endDate.datepicker('option', 'minDate', minDate);
 		}
 	});

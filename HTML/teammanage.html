@@ -13,15 +13,20 @@
     <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
     <link rel="stylesheet" href="../CSS/MainPage/teamform.css" />
 
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
     <!-- SweetAlert2 JS 스크립트 불러오기 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
 
     <script src="../JS/TeamPage/teammanage.js"></script>
+    <script src="../JS/TeamPage/teamMain.js"></script>
 
     <!-- font -->
     <style>
@@ -87,65 +92,69 @@
       <h3 class="form__title">팀 수정하기</h3>
       <form class="form" method="post" enctype="multipart/form-data">
         <label for="f1">프로필:</label><input type="file" name="f1" id="f1">
-        <img class="teamProfileImg2" src='#' alt="teamProfile2">
+        <img class="teamProfileImg2" src='../images/rocket.png' alt="teamProfile2">
 
         <div class="formgroup">
           <label for="teamName" class="formgroup__text">팀명:</label>
-          <input class="form__field" id="teamName" type="text" name="teamName"  placeholder="10자이내" maxlength="10" defaultValue="" required/>
+          <input class="form__field" id="teamName" type="text" name="teamName"  placeholder="10자 이내 입력" maxlength="10"
+          onkeyup="characterCheck(this)" required/>
           <button type="button">중복확인</button>
         </div>
-
         <div class="formgroup">
         <div class="formgroup__text">온/오프라인:</div>
         <label class="radio-design">
-          <input type="radio" name="onOffLine" value="온라인" id="onOffLine1" defaultValue="">
+          <input type="radio" name="onOffLine" value="온라인" id="onOffLine1" checked/>
           <span class="radio-circle"></span>온라인
         </label>
         <label class="radio-design">
-          <input type="radio" name="onOffLine" value="오프라인" id="onOffLine2" defaultValue="">
+          <input type="radio" name="onOffLine" value="오프라인" id="onOffLine2"/>
           <span class="radio-circle"></span>오프라인
         </label>
         </div>
-
+        
         <div class="formgroup">
           <p class="formgroup__text">최대 인원:</p>
-          <input type="number" id="maxMember" name="maxMember" value="1" max="20" min="1"  defaultValue="" required/>명(최대 20명)
+          <input type="number" id="maxMember" name="maxMember" value="1" max="20" min="1"  required/>명(최대 20명)
         </div>
 
         <div class="formgroup">
             <p class="formgroup__text">스터디 타입:</p>
-            <input class="form__field" id="studyType" type="text" name="studyType" placeholder="예) 자바, 자격증" defaultValue="" required/>
+            <input class="form__field" id="studyType" type="text" name="studyType" placeholder="예) 자바, 자격증"  maxlength="10" required/>
         </div>
             
-        <div class="formgroup__text">스터디 기간:</div>
+        <div class="formgroup__text" id="studyType">스터디 기간:</div>
             <div>
               <label class="start">시작 날짜:
-                <input type="date" id="startDate" name="startDate" min="2023-10-01" max="2030-12-31"  defaultValue="" required/>
+                <input type="text" id="startDate" name="startDate" min="2023-10-01" max="2030-12-31" required/>
               </label>
               <label class="end">종료 날짜:
-                <input type="date" id="endDate" name="endDate" min="2023-10-01" max="2030-12-31"  defaultValue="" required/>
+                <input type="text" id="endDate" name="endDate" min="2023-10-01" max="2030-12-31"  required/>
               </label>
         </div>
 
         <div class="formgroup">
             <p class="formgroup__text">해시태그:</p>
-            <input class="form__field_hashtag" id="hashtag1" type="text" name="hashtag1" placeholder="10자 이내" defaultValue="" required/>
-            <input class="form__field_hashtag" id="hashtag2" type="text" name="hashtag2" placeholder="10자 이내" defaultValue="" required/>
-            <input class="form__field_hashtag" id="hashtag3" type="text" name="hashtag3" placeholder="10자 이내" defaultValue="" required/>
-            <input class="form__field_hashtag" id="hashtag4" type="text" name="hashtag4" placeholder="10자 이내" defaultValue="" required/>
-            <input class="form__field_hashtag" id="hashtag5" type="text" name="hashtag5" placeholder="10자 이내" defaultValue="" required/>
+            <input class="form__field_hashtag" id="hashtag1" type="text" name="hashtag1" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            required/>
+            <input class="form__field_hashtag" id="hashtag2" type="text" name="hashtag2" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            required/>
+            <input class="form__field_hashtag" id="hashtag3" type="text" name="hashtag3" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            required/>
+            <input class="form__field_hashtag" id="hashtag4" type="text" name="hashtag4" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            required/>
+            <input class="form__field_hashtag" id="hashtag5" type="text" name="hashtag5" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            required/>
         </div>
 
         <div class="formgroup">
             <p class="formgroup__text">한줄 소개:</p>
-            <input class="form__field" id="briefInfo" type="text" name="briefInfo" placeholder="20자 이내" defaultValue="" required/>
+            <input class="form__field" id="briefInfo" type="text" name="briefInfo" placeholder="20자 이내 입력"  maxlength="20" required/>
         </div>
 
         <div class="formgroup">
             <p class="formgroup__text">팀 소개:</p>
-            <textarea class="form__field2" id="teamInfo" name="teamInfo" cols="60" rows="4" defaultValue="" required></textarea>
+            <textarea class="form__field2" id="teamInfo" name="teamInfo" cols="60" rows="4" placeholder="500자 이내 입력" maxlength="500" required></textarea>
         </div>
-
         <button class="alter" type="submit">수정하기</button>
       </form>
         <button class="delete">삭제하기</button>

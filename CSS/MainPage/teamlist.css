@@ -1,9 +1,13 @@
+*{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 section {
   margin-left: 240px;
   margin-bottom: 50px;
   padding: 30px;
   font-family: 'Noto Sans KR', sans-serif;
-  height: 1500px;
+  height: 1700px;
 }
 
 
@@ -22,7 +26,7 @@ li{
 
 .team{
   width: 350px;
-  height: 400px;
+  height: 450px;
       border: 5pt groove #c0c0c066;
       border-radius: 20px;
 }
@@ -63,4 +67,8 @@ li{
 
 .hashtag1:hover,.hashtag2:hover,.hashtag3:hover,.hashtag4:hover,.hashtag5:hover{
   text-decoration: underline;
+}
+
+.pagegroup{
+  margin: 0 auto;
 }

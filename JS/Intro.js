@@ -45,21 +45,23 @@ $(() => {
                 // controller에서 받아온 응답에 대한 결과
                 if(responseJSONObj.status === 0) {
                     console.log('성공')
-                    alert(responseJSONObj.msg)
-                    // Swal.fire({
-					// 	icon: 'success',
-					// 	text: responseJSONObj.msg
-					// })
+                    Swal.fire({
+						icon: 'success',
+						text: responseJSONObj.msg
+					}) .then((result)  => {
                     localStorage.setItem("loginedId", responseJSONObj.id);
                     sessionStorage.setItem("loginedId", responseJSONObj.id);
                     sessionStorage.setItem("nickname", responseJSONObj.nickname)
                     location.href = './main.html'
+                    })
                 } else if(responseJSONObj.status === 1) {
-                    console.log('실패')
+                    Swal.fire({
+						icon: 'warning',
+						text: responseJSONObj.msg
+					})
                     localStorage.setItem("loginedId", responseJSONObj.id);
                     sessionStorage.setItem("loginedId", responseJSONObj.id);
                     sessionStorage.setItem("nickname", responseJSONObj.nickname)
-                    // location.href = './main.html'
                 }
             },
             error : (jqXHR, textStatus) => {

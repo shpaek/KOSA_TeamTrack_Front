@@ -1,5 +1,3 @@
-// const frontURL = 'http://localhost:5500/HTML'
-
 $(() => {
 
     const $formObj = $('form.qnaboard')
@@ -21,7 +19,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: `http://localhost:8888/KOSA/qnaboardcreate`,
+            url: `http://localhost:8888/teamtrack/qnaboardcreate`,
             method: 'post',
             contentType: false,
             processData: false,
