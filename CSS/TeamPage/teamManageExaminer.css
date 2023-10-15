@@ -30,6 +30,17 @@ body {
     padding-bottom: 10px;
 }
 
+/* 출제자 목록 */
+.manageExaminerP2 {
+    font-size: 22px;
+    font-weight: bold;
+    
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
 /* 알림문구 */
 .info {
     font-size: 15px;
@@ -43,7 +54,7 @@ body {
     margin-bottom: 30px;
 }
 
-/* 멤버 리스트 원본  */
+/* 멤버 리스트 원본 및 제출자 목록에 동일한 스타일 적용 */
 .memberDiv {
     display: flex;
     align-items: center;
@@ -58,26 +69,67 @@ body {
     margin-bottom: 10px;
 }
 
-.memberDiv:last-child {
-    margin-bottom: 0;
+.examinerInfo {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #e0e0e0;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.memberDiv:last-child, .examinerInfo:last-child {
+    margin-bottom: 10px;
 }
 
 /* 라디오 버튼 */
-.memberDiv input[type="radio"] {
+.memberDiv input[type="radio"], .examinerInfo input[type="radio"] {
     margin-right: 15px;
 }
 
 /* 멤버 리스트 출력 영역 */
-.memberDiv div {
+.memberDiv div, .examinerInfo div {
     display: flex;
     align-items: center;
 }
 
+.examinerInfoDIv {
+    margin-top: 20px;
+}
+
 /* 아이디 닉네임 */
-.memberDiv .memberId,
+.memberDiv .memberId, 
 .memberDiv .memberNickname {
     margin-right: 10px;
     font-size: 18px;
+}
+
+.examinerInfo .info1,
+.examinerInfo .info2,
+.examinerInfo .info3,
+.examinerInfo .info4 {
+    font-size: 16px;
+}
+
+.info1 {
+    flex: 1; 
+}
+
+.info2 {
+    flex: 3;
+}
+
+.info3 {
+    flex: 3;
+}
+
+.info4 {
+    flex: 3;
 }
 
 /* 라벨 스타일 */
@@ -142,3 +194,4 @@ button[type="submit"]:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
 }
+
