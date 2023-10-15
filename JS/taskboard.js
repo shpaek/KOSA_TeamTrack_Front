@@ -53,7 +53,7 @@ $(()=> {
                 icon: 'warning',
                 text: '권한이 없습니다.'
               })
-              location.href='./teammain.html?teamNo='+teamNo+'&id='+localStorage('loginedId')
+              location.href='./teammain.html?teamNo='+teamNo+'&id='+localStorage.getItem('loginedId')
         }
     })
 
