@@ -250,4 +250,21 @@ $(() => {
         }
     });
 
+
+    //검색창
+    $teamsearch = $('div.searchBar>img.searchIcon')
+    $teamsearch.click(()=>{
+        const searchData = $("#mainsearch").val()
+        location.href = `./mainsearch.html?data=${searchData}`
+  
+    })
+
+    $input = $("#mainsearch");
+    $input.on('keyup', (e)=>{
+        if(e.keyCode === 13){
+            e.preventDefault();
+            $teamsearch.click()
+        }
+    })
+    
 }) // $(() {})
