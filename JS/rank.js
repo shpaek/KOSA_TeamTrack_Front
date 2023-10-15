@@ -63,15 +63,22 @@ $(() => {
         method: 'get',
         data: `teamNo=${teamNo}`,
         success: (responseJSONObj) => { //응답데이터 전달
-            
+            console.log(responseJSONObj)
             //원본 객체 찾기 
             const $originOption = $('#monthSelect>option')
             const $selectObj = $('#monthSelect')
+            const uniqueMonth = new Set()
             
             responseJSONObj.forEach((element) => {
                 console.log(element)
                 const month = element.month
                 console.log(month)
+
+                uniqueMonth.add(month)
+            })
+
+            const uniqueMonthArray = Array.from(uniqueMonth)
+            uniqueMonthArray.forEach((month) => {
                 //복제본
                 const $copyOption = $originOption.clone()
                 $copyOption.empty()
