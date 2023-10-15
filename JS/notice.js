@@ -62,7 +62,7 @@ $(()=>{
                         icon: 'success',
                         text: responseJSONObj.msg
                     })
-                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
                 }else{
                     Swal.fire({
                         icon: 'warning',

@@ -1,6 +1,8 @@
 $(()=>{
     const backURL = 'http://localhost:8888/teamtrack'
     const frontURL = 'http://localhost:5500/HTML'
+    const loginedId = sessionStorage.getItem("loginedId");
+    
 
     //---- 비밀번호 일치 여부 확인 ----
 
@@ -13,7 +15,7 @@ $(()=>{
             },
             url: backURL+'/pwdcheck',
             method : 'post',
-            data : `pwd=${pwd}`,
+            data : `loginedId=${loginedId}&pwd=${pwd}`,
             success : (responseJSONObj)=>{
                 if(responseJSONObj.status==1){
                     Swal.fire({
@@ -60,7 +62,7 @@ $(()=>{
                 },
                 url: `${backURL}/editmypwd`,
                 method : 'post',
-                data : `pwd=${pwd}`,
+                data : `loginedId=${loginedId}&pwd=${pwd}`,
                 success : (responseJSONObj)=>{
                     console.log(responseJSONObj)
                     if(responseJSONObj.status==1){
