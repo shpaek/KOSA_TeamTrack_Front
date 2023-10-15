@@ -246,4 +246,78 @@ div.savebutton{
     transform: translateY(0);
   }
 
+  div.filebuttons>label{
+    cursor: pointer;
+    width : 150px;
+    height : 30px;
+    padding:4px;
+    background-color: white;
+    border-radius: 15px;
+    border:solid 1px #cccccc;
+    font-size: 15px;
+    color : #979797;
+    appearance: none;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    text-align: center;
+  }
+
+  div.filebuttons>label:disabled {
+    pointer-events: none;
+  }
   
+  div.filebuttons>label:hover {
+    background-color: #343434;
+    color:white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  div.filebuttons>label:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+  div.filebuttons>button[name=profilesave]{
+    cursor: pointer;
+    width : 60px;
+    height : 30px;
+    margin-left: 20px;
+    background-color: white;
+    border-radius: 15px;
+    border:solid 1px #cccccc;
+    font-size: 15px;
+    color : #979797;
+    appearance: none;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    text-align: center;
+  }
+
+  div.filebuttons>button[name=profilesave]:disabled {
+    pointer-events: none;
+  }
+  
+  div.filebuttons>button[name=profilesave]:hover {
+    background-color: #343434;
+    color:white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  div.filebuttons>button[name=profilesave]:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
