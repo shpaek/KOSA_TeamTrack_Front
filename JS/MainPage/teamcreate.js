@@ -1,5 +1,4 @@
 const backURL = 'http://localhost:8888/teamtrack'
-const frontURL = 'http://localhost:5500/HTML'
 function characterCheck(obj) {
     var regExp = /#/gi;
 
@@ -9,10 +8,49 @@ function characterCheck(obj) {
     }
 }
 
+
 $(() => {
-    //DOM트리에서 section객체찾기
-    //alert("login용 window load eventhandler")
-    //const loginedId = localStorage.getItem("loginedId")
+
+    $('.membernickname').text(sessionStorage.getItem('nickname'))
+    const loginedId = localStorage.getItem("loginedId")
+    const $img = $('nav>ul>li>img.profile')
+    $img.parent().hide()
+
+       $.ajax({
+            xhrFields: {
+                responseType: "blob",
+            },
+            url: backURL + '/userprofiledownload',
+            success: (responseData) => {
+                if (responseData.size > 0) {
+                    const url = URL.createObjectURL(responseData)
+                    $img.attr('src', url)
+                    $img.parent().show()
+                }
+            },
+            error: (jqxhr) => {
+
+            }
+        })
+
+        $("#startDate").datepicker({
+            dateFormat: "yy-mm-dd", // 날짜의 형식
+            minDate: 0,
+            nextText: ">",
+            prevText: "<",
+            onSelect: function (date) {
+                var endDate = $('#endDate');
+                var startDate = $(this).datepicker('getDate');
+                var minDate = $(this).datepicker('getDate');
+                endDate.datepicker('setDate', minDate);
+                endDate.datepicker('option', 'minDate', minDate);
+            }
+        });
+        $('#endDate').datepicker({
+            dateFormat: "yy-mm-dd", // 날짜의 형식
+            nextText: ">",
+            prevText: "<"
+        }); 
 
     const $btCreate = $('form.form>button.create[type=submit]')
     const $teamName = $('form.form>div.formgroup>input.form__field[name=teamName]')
@@ -28,15 +66,12 @@ $(() => {
 
     $btDupchk.click(() => {
 
-        //e.preventDefault();
-
-        // alert('버튼클릭 확인')
-
-        // 입력 아이디 확인
         const teamNameValue = $("#teamName").val();
         if (!teamNameValue) {
-            alert('팀명을 입력하세요.');
-            return;
+            Swal.fire({
+                icon: 'warning',
+                text: '팀명을 입력하세요.'
+            })
         }
 
         $.ajax({
@@ -49,9 +84,15 @@ $(() => {
             data: 'teamName='+teamNameValue+"&gubun=teamName",
             success : (responseJSONObj) => {
                 if(responseJSONObj.status == 0) {
-                    alert('이미 사용중인 팀명입니다.')
+                    Swal.fire({
+                        icon: 'warning',
+                        text: '이미 사용중인 팀명입니다.'
+                    })
                 } else {
-                    alert('사용 가능한 팀명입니다.')
+                    Swal.fire({
+                        icon: 'success',
+                        text: '사용 가능한 팀명입니다.'
+                    })
                     $btCreate.show()
                 } // if-else
             },
@@ -76,7 +117,12 @@ $(() => {
         });
     });
 
+    var profileImage = $("#profileImage");
+    var fileInput = $("#f1");
 
+    profileImage.on("click", function() {
+        fileInput.click();
+    });
 
 
     const $form = $('div>form.form')
@@ -122,7 +168,6 @@ $(() => {
         fd.append('hashtag5', hashtag5Value)
         fd.append('briefInfo', briefInfoValue)
         fd.append('teamInfo', teamInfoValue)
-        fd.append('briefInfo', briefInfoValue)
 
         fd.forEach((value, key)=>{
             console.log(key)
@@ -141,12 +186,29 @@ $(() => {
             success: (responseJSONObj) => {
                 //요청이 성공하고 성공적으로 응답이 되었을 때 할 일
                 //alert(responseText)
-                    alert(responseJSONObj.msg)
-                    location.href = './main.html'
+                Swal.fire({
+                    icon: 'success',
+                    text: responseJSONObj.msg
+                })
+                $.ajax({
+                    url: backURL+ '/teamnamedupcheck',
+                    method: 'get',
+                    data: "teamName="+teamName,
+                    success: (responseJSONObj) => {
+                        const teamNo = responseJSONObj.teamNo
+                        
+                        location.href = `./teammain.html?teamNo=${teamNo}`
+                    },
+                        error: () => {
+                
+                    }
+                })
             },
             error: (jqXHR, textStatus) => {
-                //응답, 요청에 오류가 있는 경우
-                alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText)
+                Swal.fire({
+                    icon: 'warning',
+                    text: responseJSONObj.msg
+                })
             }
         })
         
@@ -157,7 +219,7 @@ $(() => {
     const $close = $('div.popup-form__close')
     const $sectionObj = $('section')
 
-    $close.click((e) => {
+    $close.click(() => {
        //location.href = './main.html'
        location.href = "./main.html"
     })
