@@ -2,8 +2,6 @@ $(()=>{
     const backURL = 'http://localhost:8888/teamtrack'
     const frontURL = 'http://localhost:5500/HTML'
 
-    var status = 1
-
     function ajaxHandler(url){
         $.ajax({
             xhrFields: {
@@ -131,76 +129,120 @@ $(()=>{
 
     $('div.nicknamebox>form').submit((e)=>{
         const nickname = $('div.nicknameeditline>label>input[name=nickname]').val()
-        $.ajax({
-            xhrFields:{
-                withCredentials : true
-            },
-            url: `${backURL}/editnickname`,
-            method : 'post',
-            data : `nickname=${nickname}`,
-            success : (responseJSONObj)=>{
-                console.log(responseJSONObj)
-                if(responseJSONObj.status==1){
-                    Swal.fire({
-                        icon: 'success',
-                        text: responseJSONObj.msg
-                    }).then(result=>{
-                        location.href=`${frontURL}/myinfo.html`
-                    })
-                }else{
+
+        if (specialCharacters.test(nickname.val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '닉네임에 특수문자를 포함할 수 없습니다.'
+			});
+		} else{
+
+            $.ajax({
+                xhrFields:{
+                    withCredentials : true
+                },
+                url: `${backURL}/editnickname`,
+                method : 'post',
+                data : `nickname=${nickname}`,
+                success : (responseJSONObj)=>{
+                    console.log(responseJSONObj)
+                    if(responseJSONObj.status==1){
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj.msg
+                        }).then(result=>{
+                            location.href=`${frontURL}/myinfo.html`
+                        })
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            text: '다시 한번 시도해주세요🙏'
+                        })
+                    }
+                },
+                error: (jqxhr)=>{
                     Swal.fire({
                         icon: 'error',
                         text: '다시 한번 시도해주세요🙏'
                     })
                 }
-            },
-            error: (jqxhr)=>{
-                Swal.fire({
-                    icon: 'error',
-                    text: '다시 한번 시도해주세요🙏'
-                })
-            }
-        })
+            })
+        }
         return false
     })
 
     // ---- 아이디, 비밀번호, 닉네임 제외 정보 수정 ----
 
     $('form.info').submit((e)=>{
-        console.log($('form.info').serialize())
-        $.ajax({
-            xhrFields:{
-                withCredentials : true
-            },
-            url: `${backURL}/editmyinfo`,
-            method : 'post',
-            contentType: false, //파일첨부용 프로퍼티
-            processData : false, //파일첨부용 프로퍼티
-            data : $('form.info').serialize(),
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            success : (responseJSONObj)=>{
-                console.log(responseJSONObj)
-                if(responseJSONObj.status==1){
-                    Swal.fire({
-                        icon: 'success',
-                        text: responseJSONObj.msg
-                    }).then(result=>{
-                        location.href=`${frontURL}/myinfo.html`
-                    })
-                }else{
+        const $name = $('form.info>div>label>input[name=username]')
+		const $birthday = $('form.info>div>label>input[name=birthday]')
+		const $phone = $('form.info>div>label>input[name=phone]')
+        const $email = $('form.info>div>label>input[name=email]')
+
+        const specialCharacters = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\]/;
+        const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+        if (!/^\d{11}$/.test($phone.val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '휴대폰 번호는 11자리의 숫자여야 합니다.'
+			});
+			$phone.focus();
+			$phone.select();
+		} else if (/[^0-9]/.test($phone.val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '휴대폰 번호에는 숫자만 입력하세요.'
+			});
+			$phone.focus();
+			$phone.select();
+		}else if (specialCharacters.test($name.val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '이름에 특수문자를 포함할 수 없습니다.'
+			});
+		} else if (!emailPattern.test($email.val())) {
+			Swal.fire({
+			  icon: 'warning',
+			  text: '유효한 이메일 주소를 입력하세요.'
+			});
+		}  else {
+
+            console.log($('form.info').serialize())
+            $.ajax({
+                xhrFields:{
+                    withCredentials : true
+                },
+                url: `${backURL}/editmyinfo`,
+                method : 'post',
+                contentType: false, //파일첨부용 프로퍼티
+                processData : false, //파일첨부용 프로퍼티
+                data : $('form.info').serialize(),
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success : (responseJSONObj)=>{
+                    console.log(responseJSONObj)
+                    if(responseJSONObj.status==1){
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj.msg
+                        }).then(result=>{
+                            location.href=`${frontURL}/myinfo.html`
+                        })
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            text: '다시 한번 시도해주세요🙏'
+                        })
+                    }
+                },
+                error: (jqxhr)=>{
                     Swal.fire({
                         icon: 'error',
                         text: '다시 한번 시도해주세요🙏'
                     })
                 }
-            },
-            error: (jqxhr)=>{
-                Swal.fire({
-                    icon: 'error',
-                    text: '다시 한번 시도해주세요🙏'
-                })
-            }
-        })
+            })
+        }
         return false
     })
 

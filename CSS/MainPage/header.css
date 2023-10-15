@@ -8,7 +8,7 @@ header {
   align-items: center;
   padding: 20px 0px 50px 0px;
 
-  margin-left: 200px; /* nav의 너비만큼 마진 추가 */
+  margin-left: 228px; /* nav의 너비만큼 마진 추가 */
 }
 
 /* 검색창 영역 */
@@ -137,6 +137,8 @@ nav>a>img.logo {
 nav ul {
   list-style-type: none;
   padding: 0;
+  width: 240px;
+  margin: 16px 0;
 }
 
 /* 메뉴 탭들 */
@@ -149,7 +151,7 @@ nav ul li {
 
   font-size: 15px;
 
-  margin: 10px 0px 10px 0px;
+  margin: 10px 10px 10px 10px;
   padding: 10px;
 }
 
@@ -193,7 +195,7 @@ nav>ul>li#exitTeam:hover {
   border: 0;
   cursor: pointer;
   border-radius: 20px;
-  margin-left: 27px;
+  margin-left: 40px;
   display:block;
   font-family: 'Noto Sans KR', sans-serif;
 }

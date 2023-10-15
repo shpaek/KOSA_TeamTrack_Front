@@ -264,6 +264,8 @@ $(()=>{
                         console.log(jqXHR)
                     }
                 })
+            }else{
+                return false
             }
          })
         return false

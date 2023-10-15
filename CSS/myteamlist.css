@@ -84,25 +84,26 @@ div.rejectlist>ul>li>div.reject>img{
 .teamlist{
     border : solid 1px #CCCCCC;
     border-radius: 10px;
-    padding:30px;
+    padding:60px;
 }
 
 .teamlist>ul>li{
     list-style: none;
 }
 
-/* 팀목록 칸 */
+
 .teamlist>ul>li>div.team{
-    cursor:pointer;
     width:600px;
-    border-bottom:solid 1px;
-    border-left:solid 1px;
-    border-right:solid 1px;
+    height:70px;
+    background-color: #f6f7f7;
+    border-bottom:solid 1px #CCCCCC;
+    border-left:solid 1px #CCCCCC;
+    border-right:solid 1px #CCCCCC;
 }
 
 /* 팀목록 칸 맨 위 */
 div.teamlist>ul>li:nth-child(2)>div.team{
-    border-top : solid 1px;
+    border-top : solid 1px #CCCCCC;
 }
 
 /* 팀번호 */
@@ -110,15 +111,60 @@ div.teamlist>ul>li>div.team>span[name="teamno"]{
     display : none;
 }
 
-/* 이미지들 */
-div.teamlist>ul>li>div.team>img{
-    width:50px;
-}
 
 /* 팀장 표시 */
 div.teamlist>ul>li>div.team>img.leader{
     visibility: hidden;
+    margin-left : 20px;
+    width: 30px;
+    padding-bottom:10px;
 }
+
+img.logo{
+    width:50px;
+    margin-left: 20px;
+    padding-top:10px;
+}
+
+a[name=teamname]{
+    position: relative;
+    margin-left: 30px;
+    bottom:20px;
+}
+
+button[name=activity]{
+    position: relative;
+    float: right;
+    background-color: white;
+    top:20px;
+    margin-right: 40px;
+    border : solid 1px #cccccc;
+}
+button[name=withdrawl]{
+    position: relative;
+    float:right;
+    background-color: white;
+    top:20px;
+    margin-right: 20px;
+    border : solid 1px #cccccc;
+}
+button[name=cancel]{
+    position: relative;
+    float:right;
+    background-color: white;
+    top:20px;
+    margin-right: 40px;
+    border : solid 1px #cccccc;
+}
+button[name=ok]{
+    position: relative;
+    float:right;
+    background-color: white;
+    top:20px;
+    margin-right: 40px;
+    border : solid 1px #cccccc;
+}
+
 
 div.teamlist>h1{
     display:none;
@@ -159,3 +205,18 @@ div.teamlist>ul>li>div>button[name=cancel]{
     transform: translateY(0);
   }
 
+span.nothing{
+    position:relative;
+    padding-top: 150px;
+    top:150px;
+    text-align: center;
+    width : 400px;
+    height: 250px;
+    display: none;
+    font-size: 20px;
+    color: #515151;
+}
+
+h1{
+    margin-bottom: 40px;
+}
