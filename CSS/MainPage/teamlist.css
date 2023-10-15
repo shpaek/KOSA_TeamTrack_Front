@@ -3,9 +3,9 @@
 }
 
 section {
-  margin-left: 240px;
+  margin-left: 230px;
   margin-bottom: 50px;
-  padding: 30px;
+  padding: 0px;
   font-family: 'Noto Sans KR', sans-serif;
   height: 1700px;
 }
@@ -15,7 +15,7 @@ ul{
   text-align: center;
   float: left;
   padding: 0;
-  margin: 30px 17px;
+  margin-left: 48px;
 }
 
 li{
@@ -72,7 +72,7 @@ li{
 /*페이징*/
 .pagegroup{
   position: absolute;
-  top: 1400px;
+  top: 1300px;
   left: 55%;
   transform: translate(-50%, -50%);
   width:300px; 
@@ -116,10 +116,81 @@ li{
 
 .crownimg{
   width: 100px;
-  margin: 0;
+  margin: 10px;
 }
 
-.more{
-  height: 30px;
-  margin: 10px auto
+
+/*버튼 디자인*/
+/* 기본 버튼 스타일 */
+.more {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #3498db;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
+
+/* 버튼 호버 효과 */
+.more:hover {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* 버튼 액티브 효과 */
+.more:active {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  color: #fff;
+}
+
+.new:hover, .top:hover{
+  text-decoration: underline;
+}
+.top{
+  margin-left: 70px;
+}
+.studydate{
+text-align: center;
+}
+
+
+
+/*검색 버튼*/
+.search {
+  display: inline-block;
+
+  padding: 5px 15px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #3498db;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* 버튼 호버 효과 */
+.search:hover {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* 버튼 액티브 효과 */
+.search:active {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  color: #fff;
+}
+
+
+
