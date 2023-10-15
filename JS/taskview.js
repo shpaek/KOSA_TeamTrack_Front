@@ -14,6 +14,16 @@ $(() => {
                 alert(responseJSONObj.msg)
                 return
             } else if (responseJSONObj.status == 1) {
+                if (responseJSONObj.role === 'customer') {
+                    Swal.fire({
+                      text: "권한이 없습니다",
+                      icon: 'error'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        location.href = './taskboard.html?teamNo=' + teamNo
+                      }
+                    })
+                  }
                 const title = responseJSONObj.title
                 const nickname = responseJSONObj.nickname
                 //const regdate = responseJSONObj.regdate
