@@ -22,6 +22,18 @@ $(() => {
           }
         })
       } else if (responseJSONObj.status == 1) {
+
+        if (responseJSONObj.role === 'customer') {
+          Swal.fire({
+            text: "팀에 가입해주세요",
+            icon: 'error'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.href = './taskboard.html?teamNo=' + teamNo
+            }
+          })
+        }
+
         const $originObj = $('div.answercontent')
         const cnt = responseJSONObj.answerCnt
         const title = responseJSONObj.title
@@ -113,7 +125,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href='./teammain.html?teamNo='+teamNo+'&id='+localStorage('loginedId')
+            location.href = './teammain.html?teamNo=' + teamNo + '&id=' + localStorage.getItem('loginedId')
           }
         })
 

@@ -118,3 +118,7 @@ section.taskboard{
     margin:0 0 0 0;
     height: auto;
 }
+
+section.section{
+    padding-left:0;
+}

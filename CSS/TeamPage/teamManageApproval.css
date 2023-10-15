@@ -65,6 +65,13 @@ body {
     margin-left: 20px;
 }
 
+/* 자기소개 부분 너비 지정 -> 너무 길면 스크롤 생김 */
+.customerIntroduction {
+    overflow: auto;
+
+    width: 65%;
+}
+
 /* id랑 닉네임 위치 */
 .customerId, .customerNickname {
     margin-right: 20px;
