@@ -1,3 +1,6 @@
+// const backURL = 'http://192.168.1.20:8888/teamtrack'
+// const frontURL = 'http://192.168.1.20:5500/HTML'
+
 const backURL = 'http://localhost:8888/teamtrack'
 const frontURL = 'http://localhost:5500/HTML'
 $(() => {
@@ -23,11 +26,7 @@ $(() => {
 
             }
         })
-    
-
-    //DOM트리에서 section객체찾기
-    //const sectionObj = document.querySelector('section')
-    
+      
 
     //DOM트리에서 nav>ul>li>a객체들 찾기
     //const menus = document.querySelectorAll('nav>ul>li>a')

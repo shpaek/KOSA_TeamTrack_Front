@@ -2,8 +2,6 @@ $(() => {
 
     function ajaxSearchHandler(cp, data){
 
-
-
         $.ajax({
             url: backURL+ '/teamhashtag',
             method: 'get',
@@ -131,8 +129,6 @@ $(() => {
         const currentPage = pg.substr(2)
         ajaxSearchHandler(currentPage, data)
     })
-
-
 
     })
 
