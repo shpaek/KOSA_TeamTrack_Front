@@ -9,7 +9,6 @@
     
     font-weight: bold;
 
-    /* 버튼의 위치 재조정 */
     bottom: 60px;
     right: 60px;
 
@@ -23,10 +22,14 @@
 
 /* 팀 가입 버튼 클릭 시 */
 #JoinTeamBtn:hover {
-    font-weight: bold;
+    cursor: pointer;
+    background-color: #011837;
 
     font-size: 19px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
 }
 
 /* 팀 가입 버튼 클릭 시 팝업 */
@@ -88,5 +91,12 @@ aside>form>p {
 
 /* 가입 요청 버튼 호버 */
 #requestJoinTeamBtn:hover {
+    cursor: pointer;
+    background-color: #011837;
+
     font-size: 16px;
+    font-weight: bold;
+
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
 }

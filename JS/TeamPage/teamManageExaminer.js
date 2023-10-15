@@ -1,5 +1,4 @@
-$(function() {
-    url: backURL + "/teamselectexaminer",
+$(function () {
     // 팀원 목록을 가져오는 함수
     function getMemberList() {
         $.ajax({
@@ -36,8 +35,8 @@ $(function() {
                 const $memberCloneDiv = $memberDiv.clone();
 
                 $memberCloneDiv.find('input[type="radio"]').val(id).attr('id', `memberId${index}`);
-                $memberCloneDiv.find('span[class=memberId]').text(id);
-                $memberCloneDiv.find('span[class=memberNickname]').text(nickname);
+                $memberCloneDiv.find('span[class=memberId]').text("아이디: " + id + " [");
+                $memberCloneDiv.find('span[class=memberNickname]').text(nickname + " ]");
 
                 $memberDiv.parent().append($memberCloneDiv);
             });
@@ -49,7 +48,7 @@ $(function() {
     }
 
     // 폼 제출 이벤트 핸들러
-    $("#examinerForm").submit(function(e) {
+    $("#examinerForm").submit(function (e) {
         e.preventDefault(); // 기본 제출 동작 방지
 
         const selectedId = $("input[name='checked']:checked").val();
