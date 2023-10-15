@@ -9,8 +9,6 @@ $(() => {
 
         const loginedId = sessionStorage.getItem("loginedId")
 
-        console.log("loginedId", loginedId);
-
         const formData = new FormData(e.target);
         formData.append("teamNo", teamNo);
         formData.append("loginedId", loginedId);
