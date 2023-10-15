@@ -39,7 +39,7 @@ $(() => {
           cancelButtonColor: '#d33',
         }).then((result) => {
           if (result.isConfirmed) {
-            location.href='./teammain.html?teamNo='+teamNo+'&id='+localStorage('loginedId')
+            location.href='./teammain.html?teamNo='+teamNo+'&id='+localStorage.getItem('loginedId')
           }
         })
 

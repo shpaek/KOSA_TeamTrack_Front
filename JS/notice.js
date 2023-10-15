@@ -4,15 +4,18 @@ $(()=>{
     const frontURL = 'http://localhost:5500/HTML'
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
+    const loginedId = localStorage.getItem('loginedId')
 
     $.ajax({
         url: backURL+'/mainnotice',
         method : 'get',
-        data : `teamNo=${teamNo}`,
+        data : `teamNo=${teamNo}&loginedId=${loginedId}`,
         success: (responseJSONObj)=>{
-            if(responseJSONObj.memStatus == 0){
-                $('div.main_topline>button[name=cancel]').hide()
-                $('div.notice>div.write>button').hide()
+            //alert(responseJSONObj.memStatus)
+            if(responseJSONObj.memStatus == '0'){
+                //alert('여기까지 와요')
+                $('div.main_topline>div.rightspace>button[name=cancel]').hide()
+                $('div.writebutton>button').hide()
             }
             if(responseJSONObj.notice == null){
                 $('div.mainnotice').hide()
@@ -122,7 +125,7 @@ $(()=>{
                         
                         $tbodyObj.append($copyTrObj)
                     })
-    
+                    
     
                     const $divPageGroup = $('div.notice>div.pagegroup')
                     $divPageGroup.empty() 

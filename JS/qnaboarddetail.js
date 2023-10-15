@@ -90,12 +90,18 @@ $(() => {
                 data: fd,
                 success: (responseJSONObj) => {
                     if (responseJSONObj.status == 1) {
-                        alert(responseJSONObj.msg)
-                        // history.pushState(teamNo ,null, `${frontURL}/qnaboard.html?teamNo=${teamNo}`)
-                        location.href = `${frontURL}/qnaboard.html?teamNo=${teamNo}`
-                        // ajaxHandler('GET', `${frontURL}/qnaboard.html?teamNo=${teamNo}`, $sectionObj )
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj.msg
+                        }).then((result) => {
+                            location.href = `${frontURL}/qnaboard.html?teamNo=${teamNo}`
+                        });
+
                     } else {
-                        alert(responseJSONObj.msg)
+                        Swal.fire({
+                            icon: 'warning',
+                            text: responseJSONObj.msg
+                        })
                     }
                 },
                 error: (jqxhr) => {
@@ -109,9 +115,14 @@ $(() => {
     
     // ========================= 삭제버튼 클릭 시 발생 이벤트 ===============================
     $('div.detailbuttons>button.remove').on('click', (e) => {
-        var result = confirm("삭제하시겠습니까?")
-
-        if (result == true) {
+        Swal.fire({
+            icon: 'success',
+            title: '삭제하시겠습니까?',
+            showCancelButton: true,
+            confirmButtonText: '삭제',
+            cancelButtonText: '취소'
+        }).then((result) => {
+        if (result.isConfirmed) {
             $.ajax({
                 xhrFields: {
                     withCredentials: true
@@ -121,10 +132,17 @@ $(() => {
                 data: `teamNo=${teamNo}&qnaNo=${qnaNo}`,
                 success: (responseJSONObj) => {
                     if (responseJSONObj.status == 1) {
-                        alert(responseJSONObj.msg)
-                        location.href = `http://localhost:5500/HTML/qnaboard.html?teamNo=${teamNo}`
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj.msg
+                        }).then((result) => {
+                            location.href = `http://localhost:5500/HTML/qnaboard.html?teamNo=${teamNo}`
+                        });
                     } else {
-                        alert(responseJSONObj.msg)
+                        Swal.fire({
+                            icon: 'warning',
+                            text: responseJSONObj.msg
+                        })
                     }
                 },
                 error: (jqXHR) => {
@@ -135,6 +153,7 @@ $(() => {
         } else {
             return false
         }
+    });
         return false
     })
 
@@ -353,9 +372,15 @@ $(() => {
                 success: (responseJSONObj2) => {
                     console.log(responseJSONObj2)
                     if (responseJSONObj2.status == 1) {
-                        alert(responseJSONObj2.msg)
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj2.msg
+                        })
                     } else {
-                        alert(responseJSONObj2.msg)
+                        Swal.fire({
+                            icon: 'warning',
+                            text:  '작성자만 채택할 수 있습니다.'
+                        })
                     }
                 },
                 error: (error) => {
@@ -364,7 +389,10 @@ $(() => {
             });
         } else {
             alert(data.id)
-            alert("작성자만 채택할 수 있습니다.");
+            Swal.fire({
+                icon: 'warning',
+                text: "작성자만 채택할 수 있습니다."
+            });
             return false;
         }
 
@@ -488,10 +516,17 @@ $(() => {
             },
             success: (responseJSONObj3) => {
                 if(responseJSONObj3 === 1) {
-                    alert(responseJSONObj3.msg)
-                    location.reload();
+                    Swal.fire({
+						icon: 'success',
+						text: responseJSONObj3.msg
+					}).then((result) => {
+                        location.reload();
+					});
                 } else {
-                    alert(responseJSONObj3.msg)
+                    Swal.fire({
+						icon: 'warning',
+						text: responseJSONObj3.msg
+					})
                 }
             },
             error: (error) => {
@@ -570,10 +605,17 @@ $(() => {
                 },
                 success: (responseJSONObj4) => {
                     if(responseJSONObj4 == 1) {
-                        alert(responseJSONObj4.msg)
-                        location.reload();
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj4.msg
+                        }).then((result) => {
+                            location.reload();
+                        });
                     } {
-                        alert(responseJSONObj4.msg)
+                        Swal.fire({
+                            icon: 'warning',
+                            text: responseJSONObj4.msg
+                        })
                     }
                 },
                 error: (error) => {
@@ -617,7 +659,7 @@ $(() => {
         const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
 
         const commentNo = parseInt(commentRow_reply.find('.comment-No').text());
-        const id = 'psh2023'
+        const loginedId = sessionStorage.getItem("loginedId")
 
         console.log('teamNo ', teamNo);
         console.log('qnaNo', qnaNo);
@@ -634,7 +676,7 @@ $(() => {
             e.preventDefault(); // 폼의 기본 동작을 중지하고 Ajax를 수행할 수 있도록 합니다.
 
             const content = modifyTextArea_reply.val(); // 사용자가 입력한 내용을 가져오기
-            const id = 'psh2023';
+            const loginedId = sessionStorage.getItem("loginedId")
 
             console.log('reply submit teamNo ', teamNo);
             console.log('reply submit qnaNo', qnaNo);
@@ -653,14 +695,21 @@ $(() => {
                     qnaNo: qnaNo,
                     commentNo: commentNo,
                     content: content,
-                    id: id
+                    id: loginedId
                 },
                 success: (responseJSONObj5) => {
                     if(responseJSONObj5.status === 1){
-                        alert(responseJSONObj5.msg)
-                        location.reload();
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj5.msg
+                        }).then((result) => {
+                            location.reload();
+                        });
                     } else {
-                        alert(responseJSONObj5.msg)
+                        Swal.fire({
+                            icon: 'warning',
+                            text: responseJSONObj5.msg
+                        })
                     }
                 },
                 error: (error) => {
@@ -685,7 +734,7 @@ $(() => {
         const qnaNo = new URLSearchParams(window.location.search).get('qnaNo');
 
         const commentNo = parseInt(commentRow_reply.find('.comment-No').text());
-        const id = 'psh2023'
+        const loginedId = sessionStorage.getItem("loginedId")
 
         console.log('teamNo ', teamNo);
         console.log('qnaNo', qnaNo);
@@ -702,14 +751,21 @@ $(() => {
                     teamNo: teamNo,
                     qnaNo: qnaNo,
                     commentNo: commentNo,
-                    id: id
+                    id: loginedId
                 },
                 success: (responseJSONObj5) => {
                     if(responseJSONObj5.status === 1){
-                        alert(responseJSONObj5.msg)
-                        location.reload();
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj5.msg
+                        }).then((result) => {
+                            location.reload();
+                        });
                     } else {
-                        alert(responseJSONObj5.msg)
+                        Swal.fire({
+                            icon: 'warning',
+                            text: responseJSONObj5.msg
+                        })
                     }
                 },
                 error: (error) => {
@@ -719,8 +775,5 @@ $(() => {
 
         return false;
     });
-
-
-
 
 });

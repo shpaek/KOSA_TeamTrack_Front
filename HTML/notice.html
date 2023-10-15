@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="../css/notice.css">
-        <link rel="stylesheet" href="../css/TeamPage/teamNav.css">
-        <link rel="stylesheet" href="../css/TeamPage/teamFooter.css">
+<html lang="ko">
 
-        <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
-        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- SweetAlert2 JS 스크립트 불러오기 -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-        
+    <title>TeamTrack!!</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="../js/notice.js"></script> 
-        <script src="../js/teamheader.js"></script> 
+    <link href="../images/favicon.ico" rel="icon">
 
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
-            </style>
-    </head>
-    <body>
-        <header>
-            
-        </header>
-        <nav>
-            <!-- 사이드 메뉴바 -->
+    <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 JS 스크립트 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
+    <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
+    <link rel="stylesheet" href="../css/notice.css">
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="../JS/TeamPage/teamMain.js"></script>
+    <script src="../js/notice.js"></script> 
+
+    <!-- font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="mainContainer">
+
+        <!-- 사이드 메뉴바 -->
         <nav>
             <!-- 사이트 로고 -->
             <a href="../HTML/main.html">
@@ -63,7 +76,10 @@
                 <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
             </ul>
         </nav>
+
+        <!-- 컨텐츠 영역 -->
         <section class="section">
+
             <div class="boardtitle">
                 <h2>📢 NOTICE</h3>
             </div>
@@ -104,9 +120,38 @@
             <div class="nothing">
                 <span>게시글이 없습니다</span>
             </div>
+
         </section>
+
+
+        <aside>
+            <!-- 팀 가입하기 버튼 -->
+            <button id="JoinTeamBtn">팀 가입</button>
+
+            <!-- 팝업 -->
+            <form id="teamJoin" action="/#" method="POST" style="display: none;">
+                <p>&#127881; 팀 가입 &#127881;</p>
+                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction"
+                    placeholder="팀 가입을 위한 자기소개를 입력해주세요! (최대 200자)" required rows="5" cols="50"
+                    maxlength="200"></textarea>
+                <button type="submit" id="requestJoinTeamBtn">가입요청</button>
+            </form>
+        </aside>
+
+        <!-- 푸터 -->
         <footer>
-            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+            <div class="copyright">
+            <p>©Copyright TeamTrack. All rights reserved</p>
+            </div>
+            <div class="agreement">
+            <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+            <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+            <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+            </div>
         </footer>
-    </body>
+
+    </div>
+
+</body>
+
 </html>

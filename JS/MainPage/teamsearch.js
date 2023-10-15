@@ -105,8 +105,6 @@ $(() => {
                  $divPageGroup.html($divPageGroup.html()+page)
              }
 
-
-
             },
             error: () => {
    
