@@ -44,9 +44,9 @@ $(() => {
                 break;
 
             case 'manageTeamProperties':
-                const urlParams = new URL(location.href).searchParams;
+                // const urlParams = new URL(location.href).searchParams;
                 // const teamNo = urlParams.get('teamNo');
-                location.href = './teammanageproperties.html?teamNo=' + teamNo
+                location.href = './teammanage.html?teamNo=' + teamNo
                 break;
 
             case 'manageTeamCurrentMember':
