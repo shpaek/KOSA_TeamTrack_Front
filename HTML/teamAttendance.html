@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TeamAttendance</title>
+    <title>teamAttendance</title>
 
     <link href="../images/favicon.ico" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
@@ -24,11 +25,12 @@
     <script src="../JS/TeamPage/teamMain.js"></script>
     <script src="../JS/TeamPage/teamAttendance.js"></script>
 
-    <!-- Font -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- font -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
     </style>
-
 </head>
 
 <body>
@@ -36,8 +38,8 @@
         <header>
             <!-- 검색창 -->
             <div class="searchBar">
-                <input type="text" placeholder="검색을 하삼">
-                <img class="searchIcon" src="../images/search.png" alt="searchIcon">
+                <input type="text" placeholder="팀명 또는 #을 포함하여 해시태그를 검색" id="mainsearch" />
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon" />
             </div>
         </header>
 
@@ -48,13 +50,15 @@
                 <img class="logo" src="../images/logoCut.png" alt="logo">
             </a>
 
-            <!-- 팀 이름 -->
-            <p class="teamName">팀명: 셍나</p>
-
             <!-- 팀 프로필 -->
             <div class="teamProfile">
-                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <img class="teamProfileImg" src='../images/rocket.png' alt="teamProfile">
                 <p class="teamProfileEdit">편집</p>
+            </div>
+
+            <!-- 팀 이름 -->
+            <div class="teamNameDiv">
+                <p class="teamNameShow"></p>
             </div>
 
             <!-- 메뉴 탭 -->
@@ -90,7 +94,7 @@
                 </div>
 
                 <p class="attendanceList">출석내역</p>
-                <p class="notice">출석내역은 최대 20개 보여집니다.</p>
+                <p class="info">💡 &nbsp; 출석 내역은 최대 20개 보여집니다.</p>
                 <div class="attendance2">
                     <div class="attendanceCheck"></div>
                 </div>
@@ -100,11 +104,18 @@
 
         <!-- 푸터 -->
         <footer>
-            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+            <div class="copyright">
+                <p>©Copyright TeamTrack. All rights reserved</p>
+            </div>
+            <div class="agreement">
+                <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+                <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+                <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact
+                    Us</a>
+            </div>
         </footer>
 
     </div>
-
 </body>
 
 </html>
