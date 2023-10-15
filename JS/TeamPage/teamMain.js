@@ -219,37 +219,59 @@ $(() => {
                         });
                     },
                     error: (jqXHR, textStatus) => {
-                        // 오류 처리
-                        alert("팀 가입 실패: " + textStatus);
-                        console.log(textStatus);
+                        Swal.fire(
+                            '가입 요청 전송 오류',
+                            '팀에 가입 요청을 전송하지 못했습니다.',
+                            'error'
+                        );
                         console.error(jqXHR);
                     }
                 });
             }
         });
     });
-    
+
     // 팀 나가기 버튼 클릭 이벤트
     $('#exitTeam').click(function () {
-        alert('정말 팀을 나가시겠습니까?')
-        $.ajax({
-            url: backURL + "/teamleave",
-            type: 'GET',
-            data: {
-                teamNo: teamNo,
-                id: id
-            },
-            success: (responseJSONObj) => {
-                location.href = './teamMain.html?teamNo=' + teamNo
-            },
-            error: (jqXHR, textStatus) => {
-                // 오류 처리
-                alert("팀 탈퇴 실패: " + textStatus);
-                console.log(textStatus)
-                console.error(jqXHR);
+        Swal.fire({
+            title: '팀 나가기',
+            text: '팀을 정말 나가시겠습니까?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '나가기',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: backURL + "/teamleave",
+                    type: 'GET',
+                    data: {
+                        teamNo: teamNo,
+                        id: id
+                    },
+                    success: (responseJSONObj) => {
+                        Swal.fire(
+                            '팀 나가기 성공',
+                            '팀 나가기를 성공했습니다!',
+                            'success'
+                        ).then(() => {
+                            location.href = './teamMain.html?teamNo=' + teamNo;
+                        });
+                    },
+                    error: (jqXHR, textStatus) => {
+                        Swal.fire(
+                            '팀 나가기 오류',
+                            '팀 탈퇴 중 오류가 발생했습니다.',
+                            'error'
+                        );
+                        console.error(jqXHR);
+                    }
+                });
             }
         });
-    })
+    });
 
     // 공지 게시글 제목 클릭 시 해당 게시글로 이동
     const noticeTitle = $('div.teamMainNoticeDiv>a.noticeTitle')
