@@ -1,10 +1,22 @@
-const backURL = 'http://127.0.0.1:8888/teamtrack'
-const frontURL = 'http://127.0.0.1:5500/HTML'
-
-
-
 $(() => {
-
+    $("#date1").datepicker({
+		dateFormat: "yy-mm-dd", // 날짜의 형식
+        minDate: null,
+		nextText: ">",
+		prevText: "<",
+		onSelect: function (date) {
+			var endDate = $('#date2');
+			var startDate = $(this).datepicker('getDate');
+			var minDate = $(this).datepicker('getDate');
+			endDate.datepicker('setDate', minDate);
+			endDate.datepicker('option', 'minDate', minDate);
+		}
+	});
+	$('#date2').datepicker({
+		dateFormat: "yy-mm-dd", // 날짜의 형식
+		nextText: ">",
+		prevText: "<"
+	});  
 
 
     function ajaxHandler(url, data){

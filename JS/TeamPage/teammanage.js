@@ -1,10 +1,34 @@
-const backURL = "http://127.0.0.1:8888/teamtrack";
-const frontURL = "http://127.0.0.1:5500/HTML";
-
-//const teamNo = location.search.substring(8);
+const backURL = 'http://localhost:8888/teamtrack'
+const frontURL = 'http://localhost:5500/HTML'
 const teamNo = new URL(location.href).searchParams.get("teamNo");
+function characterCheck(obj){
+  var regExp = /[#]/gi
 
+  if(regExp.test(obj.value)){
+      alert("#는 입력할 수 없습니다.");
+      obj.value = obj.value.substring( 0 , obj.value.length - 1 );
+  }
+}
 $(() => {
+  $("#startDate").datepicker({
+		dateFormat: "yy-mm-dd", // 날짜의 형식
+		minDate: 0,
+		nextText: ">",
+		prevText: "<",
+		onSelect: function (date) {
+			var endDate = $('#endDate');
+			var startDate = $(this).datepicker('getDate');
+			var minDate = $(this).datepicker('getDate');
+			endDate.datepicker('setDate', minDate);
+			endDate.datepicker('option', 'minDate', minDate);
+		}
+	});
+	$('#endDate').datepicker({
+		dateFormat: "yy-mm-dd", // 날짜의 형식
+		nextText: ">",
+		prevText: "<"
+	}); 
+
   const $img = $("form.form>img.teamProfileImg2");
 
   $.ajax({
@@ -39,6 +63,8 @@ $(() => {
         hashtags.push(hashtag);
       });
 
+  
+
       $("#teamName").val(t.teamName);
       $("#studyType").val(t.studyType);
       if (t.onOffLine == "온라인") {
@@ -56,6 +82,8 @@ $(() => {
       $("#hashtag3").val(hashtags[2]);
       $("#hashtag4").val(hashtags[3]);
       $("#hashtag5").val(hashtags[4]);
+
+      
     },
     error: () => {},
   });
@@ -191,8 +219,7 @@ $(() => {
   const $sectionObj = $("section");
 
   $close.click((e) => {
-    //location.href = './main.html'
-    history.back();
+    location.href = './teammain.html?teamNo='+teamNo
   });
 
   const $deleteButton = $("button.delete");
@@ -250,6 +277,19 @@ $(() => {
     const url = URL.createObjectURL(e.target.files[0])
     $('form.form img.teamProfileImg2').attr('src', url)
 })
+
+    //해시태그 중복 입력 방지
+    const hashtagInputs = $('.form__field_hashtag');
+
+    hashtagInputs.on('blur', function (e) {
+        const currentValue = $(this).val();
+        hashtagInputs.each(function () {
+            if (this !== e.target && $(this).val() === currentValue) {
+                $(e.target).val('').focus();
+            }
+            
+        });
+    });
 
 
 });

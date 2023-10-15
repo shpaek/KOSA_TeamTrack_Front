@@ -1,16 +1,19 @@
-const backURL = 'http://localhost:8888/KOSA_Project2'
-const frontURL = 'http://localhost:5500/HTML'
+// const backURL = 'http://localhost:8888/teamtrack'
+// const frontURL = 'http://localhost:5500/HTML'
 
 $(() => {
+
+    console.log(teamNo);
     // 함수 정의: 페이지 데이터를 가져와서 화면에 렌더링하는 함수
     function ajaxHandler(cp) {
         $.ajax({
             xhrFields: {
                 withCredentials: true
             },
-            url: "http://127.0.0.1:8888/KOSA/qnaboard",
+            url: "http://localhost:8888/teamtrack/qnaboard",
             method: 'get',
-            data: `currentPage=${cp}&teamNo=64`,  // temaNo 값 가변적이여함
+            // data: `currentPage=${cp}&teamNo=64`,  // temaNo 값 가변적이여함
+            data: `currentPage=${cp}&teamNo=${teamNo}`,
             success: (responseJSONObj) => {
                 const boardList = responseJSONObj.list
 
@@ -19,6 +22,9 @@ $(() => {
 
                 const $originTrObj = $('div.board>div.boardlist>table>thead>tr')
                 const $tbodyObj = $('div.board>div.boardlist>table>tbody')
+
+                console.log($originTrObj);
+                console.log($tbodyObj);
 
                 $tbodyObj.empty()
 
@@ -32,7 +38,7 @@ $(() => {
                         $copyTrObj.append($boardNoObj)
 
                         // boardTitle부분 클릭시 
-                        const $boardTitleObj = `<td class="board_title"><a href="http://127.0.0.1:5500/HTML/qnaboarddetail.html?teamNo=64&qnaNo=${p.qnaNo}">
+                        const $boardTitleObj = `<td class="board_title"><a href="http://localhost:5500/HTML/qnaboarddetail.html?teamNo=${teamNo}&qnaNo=${p.qnaNo}">
                                                 ${p.title}</a></td>`
                         $copyTrObj.append($boardTitleObj)
 
@@ -42,6 +48,8 @@ $(() => {
                         $tbodyObj.append($copyTrObj)
                     } else {
                         // 게시판의 status가 0이라면 출력하지 않음(삭제된 게시물)
+                        console.log($originTrObj);
+                        console.log($tbodyObj);
                     }
                 })
 
@@ -83,7 +91,7 @@ $(() => {
 
     // 글 작성 버튼 클릭 시 새 글 작성 페이지로 이동
     $('div.board>div.write>button').on('click', (e) => {
-        location.href = `http://127.0.0.1:5500/HTML/qnaboardwrite.html?teamNo=64`     // teamNo 값 가변적이여함
+        location.href = `http://localhost:5500/HTML/qnaboardwrite.html?teamNo=${teamNo}`     // teamNo 값 가변적이여함
     })
 
     /* 'div.pagegroup' = 현재 돔 트리에 존재하는 객체 */

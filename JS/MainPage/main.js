@@ -1,22 +1,17 @@
-//window.addEventListener('load', () => {
-// $(document).ready()
+const backURL = 'http://localhost:8888/teamtrack'
+const frontURL = 'http://localhost:5500/HTML'
 $(() => {
     //$('#maincontainer>nav>p').text(sessionStorage.getItem('nickname'))
     $('.membernickname').text(sessionStorage.getItem('nickname'))
     const loginedId = localStorage.getItem("loginedId")
     const $img = $('nav>ul>li>img.profile')
     $img.parent().hide()
-    if (loginedId == null) { //로그인이 안 된 경우
-        //로그인, 가입메뉴 보여주기 / 자소서, 프로필이미지, 로그아웃메뉴 안 보여주기
-    
-    } else { //로그인 된 경우
-        //자소서, 프로필이미지, 로그아웃메뉴 보여주기 / 로그인, 가입메뉴 안 보여주기
+
        $.ajax({
             xhrFields: {
                 responseType: "blob",
             },
-            url: backURL + '/download',
-            data: 'id=' + loginedId + "&opt=profile",
+            url: backURL + '/userprofiledownload',
             success: (responseData) => {
                 if (responseData.size > 0) {
                     const url = URL.createObjectURL(responseData)
@@ -28,7 +23,7 @@ $(() => {
 
             }
         })
-    }
+    
 
     //DOM트리에서 section객체찾기
     //const sectionObj = document.querySelector('section')
@@ -38,35 +33,35 @@ $(() => {
     //const menus = document.querySelectorAll('nav>ul>li>a')
     const $menus = $('nav>ul>li>a')
 
-
-    $menus.click((e) => {
-        //alert('메뉴클릭됨')
-        console.log(e.target.className)
-        //menu
-        switch (e.target.className) {
-            case 'myPage':
-                //location.href = './mypage.html'
-                break
-            case 'myGroupList':
-                location.href = './myGroupList.html'
-                break
-            case 'logout':
-                $.ajax({
-                    xhrFields: {
-                        withCredentials: true
-                    },
-                    url: backURL + "/logout",
-                    method: "GET",
-                    success: () => {
-                        localStorage.removeItem('loginedId')
-                        location.href = './intro.html'
-                    }
-                })
-                break
-
-        }
-        e.preventDefault()
-    })
+    $menus.each(function() {
+        $(this).on('click', function(e) {
+            switch (e.target.className) {
+                case 'myPage':
+                    //location.href = './mypage.html'
+                    break;
+                case 'myGroupList':
+                    location.href = './myGroupList.html';
+                    break;
+                case 'logout':
+                    $.ajax({
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        url: backURL + "/logout",
+                        method: "GET",
+                        success: () => {
+                            console.log("Logout successful");
+                            localStorage.removeItem('loginedId');
+                            location.href = './Intro.html';
+                        }, error: (xhr, status, error) => {
+                            console.error("Logout Error:", error);
+                        }
+                    });
+                    break;
+            }
+            e.preventDefault();
+        });
+    });
     //----메뉴객체에서 클릭이벤트가 발생했을 때 할 일 END----
 
     //----로고img객체에서 클릭이벤트가 발생했을 때 할 일 START----

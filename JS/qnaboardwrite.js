@@ -1,5 +1,3 @@
-const frontURL = 'http://127.0.0.1:5500/HTML'
-
 $(() => {
 
     const $formObj = $('form.qnaboard')
@@ -21,7 +19,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: `http://127.0.0.1:8888/KOSA/qnaboardcreate`,
+            url: `http://localhost:8888/teamtrack/qnaboardcreate`,
             method: 'post',
             contentType: false,
             processData: false,
@@ -30,7 +28,7 @@ $(() => {
                 console.log(responseJSONObj)
                 if (responseJSONObj.status == 1) {
                     alert(responseJSONObj.msg)
-                    location.href = `${frontURL}/qnaboard.html?teamNo=${teamNo}`
+                    location.href = `http://localhost:5500/HTML/qnaboard.html?teamNo=${teamNo}`
                 } else {
                     alert(responseJSONObj.msg)
                 }
