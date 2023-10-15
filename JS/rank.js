@@ -1,5 +1,5 @@
-const backURL = 'http://localhost:8080/teamtrack'
-const frontURL = 'http://localhost:5500/HTML'
+// const backURL = 'http://localhost:8080/teamtrack'
+// const frontURL = 'http://localhost:5500/HTML'
 
 
 $(() => {
