@@ -133,14 +133,8 @@ $(()=>{
 
     $('div.nicknamebox>form').submit((e)=>{
         const nickname = $('div.nicknameeditline>label>input[name=nickname]').val()
-
-        if (specialCharacters.test(nickname.val())) {
-			Swal.fire({
-				icon: 'warning',
-				text: '닉네임에 특수문자를 포함할 수 없습니다.'
-			});
-		} else{
-
+        
+ 
             $.ajax({
                 xhrFields:{
                     withCredentials : true
@@ -155,7 +149,7 @@ $(()=>{
                             icon: 'success',
                             text: responseJSONObj.msg
                         }).then(result=>{
-                            location.href=`${frontURL}/myinfo.html`
+                            location.href=`${frontURL}/myinfo.html?loginedId=${loginedId}`
                         })
                     }else{
                         Swal.fire({
@@ -171,7 +165,6 @@ $(()=>{
                     })
                 }
             })
-        }
         return false
     })
 
