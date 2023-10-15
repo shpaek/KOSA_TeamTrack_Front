@@ -4,8 +4,8 @@ $(() => {
     //$('#maincontainer>nav>p').text(sessionStorage.getItem('nickname'))
     $('.membernickname').text(sessionStorage.getItem('nickname'))
     const loginedId = localStorage.getItem("loginedId")
-    const $img = $('nav>ul>li>img.profile')
-    $img.parent().hide()
+    const $img = $('div.teamProfile img.teamProfileImg')
+
 
        $.ajax({
             xhrFields: {
@@ -77,23 +77,6 @@ $(() => {
         location.href = './teamcreate.html'
     })
 
-
-    $('form.profile>input[name=f1]').change((e)=>{
-        console.log(e.target.files[0])
-        const url = URL.createObjectURL(e.target.files[0])
-        $('form.profile img.profile').attr('src', url)
-    })
-    
-    function onClickUpload() {
-        let myInput = document.getElementById("f1");
-        myInput.click();
-
-    }
-
-    const $edit = $('div.teamProfile>p.teamProfileEdit')
-    $edit.click(() => {
-        onClickUpload()
-    })
 
     $teamsearch = $('div.searchBar>img.searchIcon')
     $teamsearch.click(()=>{
