@@ -1,6 +1,8 @@
 $(()=>{
     const backURL = 'http://localhost:8888/teamtrack'
     const frontURL = 'http://localhost:5500/HTML'
+    const loginedId = sessionStorage.getItem("loginedId");
+
 
     function ajaxHandler(url){
         $.ajax({
@@ -9,6 +11,7 @@ $(()=>{
             },
             url: url,
             method: 'get',
+            data: `loginedId=${loginedId}`,
             contentType: false, //파일첨부용 프로퍼티
             processData : false, //파일첨부용 프로퍼티
             success: (responseData)=>{
@@ -33,6 +36,7 @@ $(()=>{
     $.ajax({
         url: backURL+'/myinfo',
         method : 'get',
+        data : `loginedId=${loginedId}`,
         success: (responseJSONObj)=>{
             const id = responseJSONObj.id
             const nickname = responseJSONObj.nickname
@@ -58,6 +62,7 @@ $(()=>{
 
     $('div.imgbox>form').submit((e)=>{
         const fd = new FormData(e.target)
+        fd.append(loginedId)
         
         $.ajax({
             xhrFields:{
@@ -98,13 +103,12 @@ $(()=>{
     //---- 닉네임 중복확인 ----
 
     $('div.nicknameeditline>button[name=check]').click(() => {
+        const nickname = $('div.nicknameeditline>label>input[name=nickname]').val()
         $.ajax({
             url: backURL+'/nicknamedupchk',
             method : 'get',
-            data : `nickname=${$('div.nicknameeditline>label>input[name=nickname]').val()}`,
+            data : `nickname=${nickname}&loginedId=${loginedId}`,
             success : (responseJSONObj)=>{
-                console.log($('div.nicknamebox>label>input[name=nickname]').val())
-                console.log(responseJSONObj.status)
                 if(responseJSONObj.status == 1){
                     $('div.nicknameeditline>button[type=submit]').show()
                     $('div.dupchkmsg>span[name=requiremsg]').hide()
@@ -143,7 +147,7 @@ $(()=>{
                 },
                 url: `${backURL}/editnickname`,
                 method : 'post',
-                data : `nickname=${nickname}`,
+                data : `nickname=${nickname}&loginedId=${loginedId}`,
                 success : (responseJSONObj)=>{
                     console.log(responseJSONObj)
                     if(responseJSONObj.status==1){

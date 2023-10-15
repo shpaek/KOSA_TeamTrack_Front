@@ -4,11 +4,12 @@ $(()=>{
     const frontURL = 'http://localhost:5500/HTML'
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
+    const loginedId = sessionStorage.getItem("loginedId")
 
     $.ajax({
         url: backURL+'/mainnotice',
         method : 'get',
-        data : `teamNo=${teamNo}`,
+        data : `teamNo=${teamNo}&loginedId=${loginedId}`,
         success: (responseJSONObj)=>{
             if(responseJSONObj.memStatus == 0){
                 $('div.main_topline>button[name=cancel]').hide()
@@ -34,7 +35,6 @@ $(()=>{
                 icon: 'error',
                 text: '새로고침 해주세요🙏'
             })
-            console.log(jqXHR)
         }
     })
 
