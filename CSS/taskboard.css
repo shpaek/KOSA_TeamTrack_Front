@@ -36,7 +36,7 @@ div.taskboardmenu>ul>li {
 div.taskboardmenu>ul>li>a {
     /* vertical-align: baseline; */
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 div.taskboardmenu>ul>li>a:hover {
