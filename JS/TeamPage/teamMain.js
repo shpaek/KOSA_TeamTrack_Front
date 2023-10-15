@@ -79,13 +79,6 @@ $(() => {
             // 사용자 유형 구분하기
             handleUserRole(responseJSONObj.userRole)
 
-            // 프로필
-            // $('form.profile>input[name=f1]').change((e)=>{
-            //     console.log(e.target.files[0])
-            //     const url = URL.createObjectURL(e.target.files[0])
-            //     $('form.profile img.profile').attr('src', url)
-            // })
-
             // 팀명
             if (responseJSONObj.teamList != null) {
                 const teamName = responseJSONObj.teamList.teamName
@@ -94,10 +87,10 @@ $(() => {
                 $teamNameDiv.find('p.teamNameShow').text(teamName)
             } // if
 
-            if (responseJSONObj.teamViewCnt != null) {
-                const viewCnt = responseJSONObj.teamViewCnt;
-                $('span.teamCntViewSpan2').text(viewCnt);
-            }
+            // if (responseJSONObj.teamViewCnt != null) {
+            //     const viewCnt = responseJSONObj.teamViewCnt;
+            //     $('span.teamCntViewSpan2').text(viewCnt);
+            // }
 
             // 조회수
             if (responseJSONObj.teamViewCnt != null) {
@@ -286,5 +279,22 @@ $(() => {
             $('#teamJoin').hide();
         }
     });
+
+    // 팀 프로필
+    $.ajax({
+        xhrFields: {
+          responseType: "blob",
+        },
+        url: backURL + "/download",
+        data: "teamNo=" + teamNo + "&opt=profile",
+        success: (responseData) => {
+          if (responseData.size > 0) {
+            const url = URL.createObjectURL(responseData);
+            $copyNewTeam.find("nav>div>img").attr("src", url);
+          }
+        },
+        error: (jqxhr) => {},
+      });
+    
 
 }) // $(() {})
