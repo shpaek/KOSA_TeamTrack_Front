@@ -25,7 +25,7 @@ $(() => {
 
         if (responseJSONObj.role === 'customer') {
           Swal.fire({
-            text: "권한이 없습니다",
+            text: "팀에 가입해주세요",
             icon: 'error'
           }).then((result) => {
             if (result.isConfirmed) {

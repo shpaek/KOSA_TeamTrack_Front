@@ -41,7 +41,7 @@ $(() => {
                 break;
 
             case 'rankPage':
-                location.href=`./rank.html?teamNo=${teamNo}`
+                location.href = `./rank.html?teamNo=${teamNo}`
                 break;
 
             case 'manageTeamProperties':
@@ -76,17 +76,9 @@ $(() => {
             id: id
         },
         success: (responseJSONObj) => {
-            // alert('현재 teamNo = ' + teamNo)
-            // alert('현재 id = ' + id)
 
             // 사용자 유형 구분하기
             handleUserRole(responseJSONObj.userRole)
-
-            // 사용자 유형 구분하기
-            handleUserRole(responseJSONObj.userRole)
-
-            // 프로필
-
 
             // 팀명
             if (responseJSONObj.teamList != null) {
@@ -95,11 +87,6 @@ $(() => {
 
                 $teamNameDiv.find('p.teamNameShow').text(teamName)
             } // if
-
-            if (responseJSONObj.teamViewCnt != null) {
-                const viewCnt = responseJSONObj.teamViewCnt;
-                $('span.teamCntViewSpan2').text(viewCnt);
-            }
 
             // 조회수
             if (responseJSONObj.teamViewCnt != null) {
@@ -113,14 +100,14 @@ $(() => {
             if (responseJSONObj.nicknameList != null) {
                 const nickList = responseJSONObj.nicknameList;
                 const $nickSpan = $('span.teamMemberListSpan1');
-                
+
                 nickList.forEach((nickName, index) => {
                     const $nickCloneSpan = $nickSpan.clone();
                     $nickCloneSpan.text(nickName);
                     $nickCloneSpan.addClass('nickNameStyle'); // 스타일 클래스 추가
                     $nickSpan.parent().append($nickCloneSpan);
                 }); // forEach
-                
+
                 $nickSpan.hide();  // 원본 span 숨기기
             } // if
 
@@ -141,7 +128,7 @@ $(() => {
 
                 list.forEach((notice, index) => {
                     const noticeNo = notice.noticeNo
-                    const noticeTitle = notice.noticeTitle // 이거 제목 누르면 공지사항 게시판에 그 게시물로 이동해야댐!!
+                    const noticeTitle = notice.noticeTitle
                     const noticeContent = notice.noticeContent
                     const regDate = notice.regDate
 
@@ -181,6 +168,11 @@ $(() => {
         }
     }
 
+    // 팀 프로필 편집 클릭 이벤트
+    $(".teamProfileEdit").click(function () {
+        location.href = './teammanage.html?teamNo=' + teamNo;
+    });
+
     // 팀 가입하기 버튼 클릭 이벤트
     $('#JoinTeamBtn').click(function () {
         $('#teamJoin').show();
@@ -188,54 +180,92 @@ $(() => {
 
     // 가입하기 버튼
     $('#requestJoinTeamBtn').click(function (e) {
+        e.preventDefault(); // 페이지 이동을 방지
+
         const $target = $(e.target);
-
         const introduction = $('#teamJoinIntroduction').val(); // 사용자가 입력한 자기소개
-        console.log(introduction);
 
-        $.ajax({
-            url: backURL + "/teamjoin",
-            type: 'GET',
-            data: {
-                teamNo: teamNo,
-                id: id,
-                introduction: introduction,
-            },
-            success: (responseJSONObj) => {
-                location.href = './teamMain.html?teamNo=' + teamNo
-            },
-            error: (jqXHR, textStatus) => {
-                // 오류 처리
-                alert("팀 가입 실패: " + textStatus);
-                console.log(textStatus)
-                console.error(jqXHR);
+        Swal.fire({
+            title: '가입 요청 전송',
+            text: '팀에 가입 요청을 전송하시겠습니까?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '가입요청'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: backURL + "/teamjoin",
+                    type: 'GET',
+                    data: {
+                        teamNo: teamNo,
+                        id: id,
+                        introduction: introduction,
+                    },
+                    success: (responseJSONObj) => {
+                        Swal.fire(
+                            '가입 요청 전송 성공',
+                            '팀에 가입 요청을 전송했습니다!',
+                            'success'
+                        ).then(() => {
+                            location.href = './teamMain.html?teamNo=' + teamNo;
+                        });
+                    },
+                    error: (jqXHR, textStatus) => {
+                        Swal.fire(
+                            '가입 요청 전송 오류',
+                            '팀에 가입 요청을 전송하지 못했습니다.',
+                            'error'
+                        );
+                        console.error(jqXHR);
+                    }
+                });
             }
         });
-
     });
 
-    // 팀 가입하기 버튼 클릭 이벤트
+    // 팀 나가기 버튼 클릭 이벤트
     $('#exitTeam').click(function () {
-        alert('정말 팀을 나가시겠습니까?')
-
-        $.ajax({
-            url: backURL + "/teamleave",
-            type: 'GET',
-            data: {
-                teamNo: teamNo,
-                id: id
-            },
-            success: (responseJSONObj) => {
-                location.href = './teamMain.html?teamNo=' + teamNo
-            },
-            error: (jqXHR, textStatus) => {
-                // 오류 처리
-                alert("팀 탈퇴 실패: " + textStatus);
-                console.log(textStatus)
-                console.error(jqXHR);
+        Swal.fire({
+            title: '팀 나가기',
+            text: '팀을 정말 나가시겠습니까?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '나가기',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: backURL + "/teamleave",
+                    type: 'GET',
+                    data: {
+                        teamNo: teamNo,
+                        id: id
+                    },
+                    success: (responseJSONObj) => {
+                        Swal.fire(
+                            '팀 나가기 성공',
+                            '팀 나가기를 성공했습니다!',
+                            'success'
+                        ).then(() => {
+                            location.href = './teamMain.html?teamNo=' + teamNo;
+                        });
+                    },
+                    error: (jqXHR, textStatus) => {
+                        Swal.fire(
+                            '팀 나가기 오류',
+                            '팀 탈퇴 중 오류가 발생했습니다.',
+                            'error'
+                        );
+                        console.error(jqXHR);
+                    }
+                });
             }
         });
-    })
+    });
 
     // 공지 게시글 제목 클릭 시 해당 게시글로 이동
     const noticeTitle = $('div.teamMainNoticeDiv>a.noticeTitle')
@@ -250,5 +280,45 @@ $(() => {
             $('#teamJoin').hide();
         }
     });
+
+    // 팀 프로필
+    /*
+    $.ajax({
+        xhrFields: {
+            responseType: "blob",
+        },
+        url: backURL + "/download",
+        data: "teamNo=" + teamNo + "&opt=profile",
+        success: (responseData) => {
+            if (responseData.size > 0) {
+                const url = URL.createObjectURL(responseData);
+                $copyNewTeam.find("nav>div>img").attr("src", url);
+            }
+        },
+        error: (jqxhr) => { },
+    });
+    */
+
+    /*
+    const $img = $('nav>div>img.teamProfileImg')
+    // $img.parent().hide()
+
+       $.ajax({
+            xhrFields: {
+                responseType: "blob",
+            },
+            url: backURL + '/userprofiledownload',
+            success: (responseData) => {
+                if (responseData.size > 0) {
+                    const url = URL.createObjectURL(responseData)
+                    $img.attr('src', url)
+                    $img.parent().show()
+                }
+            },
+            error: (jqxhr) => {
+
+            }
+        })
+    */
 
 }) // $(() {})

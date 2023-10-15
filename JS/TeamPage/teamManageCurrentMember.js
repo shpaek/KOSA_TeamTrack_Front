@@ -58,10 +58,21 @@ $(function () {
                 id: id,
                 action: 'memberDismiss'
             },
-            success: function(responseJSONObj) {
-                location.reload(); // 페이지 리로드
+            success: function (responseJSONObj) {
+                // 방출 성공 후의 메시지 표시
+                swal.fire({
+                    title: '멤버 방출',
+                    text: '멤버 방출을 성공했습니다.',
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: '확인'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload();
+                    }
+                });
             },
-            error: function(jqXHR, textStatus) {
+            error: function (jqXHR, textStatus) {
                 alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText);
                 console.error(jqXHR);
             }
@@ -69,20 +80,28 @@ $(function () {
     }
 
     // 방출 버튼 클릭 이벤트
-    // $(document).on('click', '.dismissBtn', function() {
-    //     // const id = $(this).parent().siblings('.memberId').text();
-    //     const id = $(this).siblings('.memberId').text();
-    //     dismiss(id);
-    // });
-
-    // 방출 버튼 클릭 이벤트
-    $(document).on('click', '.dismissBtn', function() {
+    $(document).on('click', '.dismissBtn', function () {
         const fullText = $(this).siblings('.memberId').text();
         const matches = fullText.match(/아이디: (\S+) \[/);
         const id = matches && matches[1] ? matches[1] : '';
-        dismiss(id);
+
+        swal.fire({
+            title: '멤버 방출',
+            text: "멤버를 방출하시겠습니까? 해당 멤버는 팀 재가입이 불가능합니다.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '방출',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // 확인 버튼을 눌렀을 때의 동작
+                dismiss(id);
+            }
+        });
     });
-    
+
     // 페이지가 로드될 때 팀원 목록을 가져옵니다.
     getMemberList();
 

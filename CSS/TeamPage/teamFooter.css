@@ -1,15 +1,10 @@
-body {
+*{
     font-family: 'Noto Sans KR', sans-serif;
-    color: #333;
-    line-height: 1.6;
-}
-
+  }
 footer {
     flex-shrink: 0;
-
-    text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-flow: row nowrap;
 
@@ -24,8 +19,22 @@ footer {
     z-index: 1;
 }
 
-/* footer content */
 footer p {
     margin: 0;
     padding: 0;
+}
+
+.copyright {
+    margin: 260px;
+}
+
+/* 이용약관, 개인정보이용약관, Contact Us 스타일 */
+.agreement {
+    margin: 0;
+}
+
+.agreement a {
+    margin: 20px;
+    color: #fff;
+    cursor: pointer;
 }
