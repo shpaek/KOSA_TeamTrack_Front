@@ -1,5 +1,5 @@
 $(()=>{
-    const backURL = 'http://localhost:8888/KOSA_Project2'
+    const backURL = 'http://localhost:8888/teamtrack'
     const frontURL = 'http://localhost:5500/HTML'
 
     var status = 1
@@ -18,11 +18,14 @@ $(()=>{
                 console.log(responseData.URL)
                 if(responseData.size > 0){
                     const imgurl = URL.createObjectURL(responseData)
-                    $('form.imgbox>img').attr('src', imgurl)
+                    $('div.imgbox>form>img').attr('src', imgurl)
                 }
             },
             error: (jqxhr)=>{
-                
+                Swal.fire({
+                    icon: 'error',
+                    text: '다시 한번 시도해주세요🙏'
+                })
             }
         })
     }
@@ -40,20 +43,22 @@ $(()=>{
             const phone = responseJSONObj.phone
             const email = responseJSONObj.email
             
-            $('form.info>label>input[name=id]').attr('value',id);
-            $('form.nicknamebox>label>input[name=nickname]').attr('value',nickname);
-            $('form.info>label>input[name=name]').attr('value',name);
-            $('form.info>label>input[name=birthday]').attr('value',birthday);
-            $('form.info>label>input[name=phone]').attr('value',phone);
-            $('form.info>label>input[name=email]').attr('value',email);
+            $('form.info>div>label>input[name=id]').attr('value',id);
+            $('div.nicknameeditline>label>input[name=nickname]').attr('value',nickname);
+            $('form.info>div>label>input[name=username]').attr('value',name);
+            $('form.info>div>label>input[name=birthday]').attr('value',birthday);
+            $('form.info>div>label>input[name=phone]').attr('value',phone);
+            $('form.info>div>label>input[name=email]').attr('value',email);
         },
         error:(jqXHR, textStatus)=>{
-            alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
-            console.log(jqXHR)
+            Swal.fire({
+                icon: 'error',
+                text: '다시 한번 시도해주세요🙏'
+            })
         }
     })
 
-    $('form.imgbox').submit((e)=>{
+    $('div.imgbox>form').submit((e)=>{
         const fd = new FormData(e.target)
         
         $.ajax({
@@ -68,14 +73,24 @@ $(()=>{
             success : (responseJSONObj)=>{
                 console.log(responseJSONObj)
                 if(responseJSONObj.status==1){
-                    alert(responseJSONObj.msg)
-                    location.href=`${frontURL}/myinfo.html`
+                    Swal.fire({
+                        icon: 'success',
+                        text: responseJSONObj.msg
+                    }).then(result=>{
+                        location.href=`${frontURL}/myinfo.html`
+                    })
                 }else{
-                    alert(responseJSONObj.msg)
+                    Swal.fire({
+                        icon: 'error',
+                        text: '다시 한번 시도해주세요🙏'
+                    })
                 }
             },
             error: (jqxhr)=>{
-                alert(jqxhr.status)
+                Swal.fire({
+                    icon: 'error',
+                    text: '다시 한번 시도해주세요🙏'
+                })
             }
         })
         return false
@@ -84,23 +99,27 @@ $(()=>{
 
     //---- 닉네임 중복확인 ----
 
-    $('form.nicknamebox>button[name=check]').click(() => {
+    $('div.nicknameeditline>button[name=check]').click(() => {
         $.ajax({
             url: backURL+'/nicknamedupchk',
             method : 'get',
-            data : `nickname=${$('form.nicknamebox>label>input[name=nickname]').val()}`,
+            data : `nickname=${$('div.nicknameeditline>label>input[name=nickname]').val()}`,
             success : (responseJSONObj)=>{
-                console.log($('form.nicknamebox>label>input[name=nickname]').val())
+                console.log($('div.nicknamebox>label>input[name=nickname]').val())
                 console.log(responseJSONObj.status)
                 if(responseJSONObj.status == 1){
-                    $('form.nicknamebox>button[type=submit]').show()
-                    $('form.nicknamebox>span[name=requiremsg]').hide()
-                    $('form.nicknamebox>span[name=okmsg]').show()
+                    $('div.nicknameeditline>button[type=submit]').show()
+                    $('div.dupchkmsg>span[name=requiremsg]').hide()
+                    $('div.dupchkmsg>span[name=okmsg]').show()
                 }else{
-                    alert('이미 사용중인 닉네임입니다')
-                    $('form.nicknamebox>button[type=submit]').hide()
-                    $('form.nicknamebox>span[name=okmsg]').hide()
-                    $('form.nicknamebox>span[name=requiremsg]').show()
+                    Swal.fire({
+                        icon: 'warning',
+                        text: '이미 사용중인 닉네임입니다'
+                    }).then(result=>{
+                        $('div.nicknameeditline>>button[type=submit]').hide()
+                        $('div.dupchkmsg>span[name=okmsg]').hide()
+                        $('div.dupchkmsg>span[name=requiremsg]').show()
+                    })
                 }
             }
         })
@@ -110,7 +129,7 @@ $(()=>{
 
     //---- 닉네임 저장 ----
 
-    $('form.nicknamebox').submit((e)=>{
+    $('div.nicknamebox>form').submit((e)=>{
         $.ajax({
             xhrFields:{
                 withCredentials : true
@@ -119,18 +138,28 @@ $(()=>{
             method : 'post',
             contentType: false, //파일첨부용 프로퍼티
             processData : false, //파일첨부용 프로퍼티
-            data : `nickname=${$('form.nicknamebox>label>input[name=nickname]').val()}`,
+            data : `nickname=${$('div.nicknameeditline>label>input[name=nickname]').val()}`,
             success : (responseJSONObj)=>{
                 console.log(responseJSONObj)
                 if(responseJSONObj.status==1){
-                    alert(responseJSONObj.msg)
-                    location.href=`${frontURL}/myinfo.html`
+                    Swal.fire({
+                        icon: 'success',
+                        text: responseJSONObj.msg
+                    }).then(result=>{
+                        location.href=`${frontURL}/myinfo.html`
+                    })
                 }else{
-                    alert(responseJSONObj.msg)
+                    Swal.fire({
+                        icon: 'error',
+                        text: '다시 한번 시도해주세요🙏'
+                    })
                 }
             },
             error: (jqxhr)=>{
-                alert(jqxhr.status)
+                Swal.fire({
+                    icon: 'error',
+                    text: '다시 한번 시도해주세요🙏'
+                })
             }
         })
         return false
@@ -139,6 +168,7 @@ $(()=>{
     // ---- 아이디, 비밀번호, 닉네임 제외 정보 수정 ----
 
     $('form.info').submit((e)=>{
+        console.log($('form.info').serialize())
         $.ajax({
             xhrFields:{
                 withCredentials : true
@@ -148,17 +178,28 @@ $(()=>{
             contentType: false, //파일첨부용 프로퍼티
             processData : false, //파일첨부용 프로퍼티
             data : $('form.info').serialize(),
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             success : (responseJSONObj)=>{
                 console.log(responseJSONObj)
                 if(responseJSONObj.status==1){
-                    alert(responseJSONObj.msg)
-                    location.href=`${frontURL}/myinfo.html`
+                    Swal.fire({
+                        icon: 'success',
+                        text: responseJSONObj.msg
+                    }).then(result=>{
+                        location.href=`${frontURL}/myinfo.html`
+                    })
                 }else{
-                    alert(responseJSONObj.msg)
+                    Swal.fire({
+                        icon: 'error',
+                        text: '다시 한번 시도해주세요🙏'
+                    })
                 }
             },
             error: (jqxhr)=>{
-                alert(jqxhr.status)
+                Swal.fire({
+                    icon: 'error',
+                    text: '다시 한번 시도해주세요🙏'
+                })
             }
         })
         return false
