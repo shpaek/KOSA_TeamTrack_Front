@@ -30,12 +30,22 @@ $(()=>{
             success : (responseJSONObj)=>{
                 console.log(responseJSONObj)
                 if(responseJSONObj.status==1){
-                    Swal.fire({
-                        icon: 'success',
-                        text: responseJSONObj.msg
-                    }).then(function(){
-                        location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
-                    });
+                    if(responseJSONObj.mainstatus==0){
+                        Swal.fire({
+                            icon: 'success',
+                            title: responseJSONObj.msg,
+                            text: responseJSONObj.mainmsg
+                        }).then(function(){
+                            location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                        });
+                    }else{
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj.msg
+                        }).then(function(){
+                            location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                        });
+                    }
                 }else{
                     Swal.fire({
                         icon: 'error',

@@ -186,20 +186,23 @@ $(()=>{
                 processData : false, //파일첨부용 프로퍼티
                 data : fd,
                 success : (responseJSONObj)=>{
-                    if(responseJSONObj.mainstatus==1 && responseJSONObj.status==1){
-                        Swal.fire({
-                            icon: 'success',
-                            text: responseJSONObj.msg
-                        }).then(result=>{
-                            location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
-                        })
-                    }else if(responseJSONObj.mainstatus==0){
-                        Swal.fire({
-                            icon: 'warning',
-                            text: responseJSONObj.mainmsg
-                        }).then(result=>{
-                            
-                        })
+                    if(responseJSONObj.status==1){
+                        if(responseJSONObj.mainstatus==0){
+                            Swal.fire({
+                                icon: 'success',
+                                title: responseJSONObj.msg,
+                                text: responseJSONObj.mainmsg
+                            }).then(result=>{
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                            })
+                        }else{
+                            Swal.fire({
+                                icon: 'success',
+                                text: responseJSONObj.msg
+                            }).then(result=>{
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                            })
+                        }
                     }else{
                         Swal.fire({
                             icon: 'error',
