@@ -10,15 +10,6 @@ $(()=> {
         method: 'get',
         data: `teamNo=${teamNo}`, //&id=${id}
         success: (responseJSONObj) => {
-            if(responseJSONObj.msg != undefined){
-                Swal.fire({
-                    icon: 'warning',
-                    text: '과제가 존재하지 않습니다.'
-                  })
-                //alert('과제가 존재하지 않습니다.')
-                return
-            }
-
             const $originTrObj = $('div.board>div.content>table>thead>tr')
             $originTrObj.addClass('maintask')
             const $tbodyObj = $('div.board>div.content>table>tbody')
@@ -56,6 +47,13 @@ $(()=> {
             
             $tbodyObj.append($copyTrObj)
 
+        },
+        error: ()=>{
+            Swal.fire({
+                icon: 'warning',
+                text: '권한이 없습니다.'
+              })
+              location.href='./teammain.html?teamNo='+teamNo+'&id='+localStorage('loginedId')
         }
     })
 
@@ -69,7 +67,7 @@ $(()=> {
                 break
             case 'alltask':
                 localStorage.setItem("allcp", 1)
-                location.href='./taskall.html?teamNo='+teamNo
+                location.href='./taskall.html?teamNo='+teamNo+'&currentPage='+1
                 break
             case 'completetask': 
                 localStorage.setItem("completecp", 1)
@@ -100,7 +98,7 @@ $(()=> {
                   })
             } else if(responseJSONObj.status==1) {
               //alert('성공')
-              localStorage.setItem("loginedId", responseJSONObj.loginedId)
+              //localStorage.setItem("loginedId", responseJSONObj.loginedId)
               localStorage.setItem("taskteamno", teamNo)
               localStorage.setItem("taskNo", responseJSONObj.taskNo)
               location.href='./taskcreate.html'
@@ -112,6 +110,6 @@ $(()=> {
     $('section.taskboard>div.board>div.content>table').on('click', 'tbody tr.maintask', function() {
         const taskNo = $(this).data('taskNo')
         localStorage.setItem("taskNo", taskNo)
-        location.href='./taskexam.html?taskNo='+taskNo
+        location.href='./taskexam.html?teamNo='+teamNo+'taskNo='+taskNo
     })
 })

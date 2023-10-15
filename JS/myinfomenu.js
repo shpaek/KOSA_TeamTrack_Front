@@ -10,7 +10,7 @@ $(()=>{
 
     // ---- 비밀번호 수정 ----
     $('div.infomenu>ul>li>a[name=editpwd]').click(()=>{
-        //location.href=`${frontURL}/mypwd.html`
+        location.href=`${frontURL}/mypwd.html`
     })
 
     // ---- 회원 탈퇴하기 ----

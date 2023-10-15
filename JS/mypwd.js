@@ -4,8 +4,9 @@ $(()=>{
 
     //---- 비밀번호 일치 여부 확인 ----
 
-    $('form.mypwd>button[name=check]').click(() => {
-        const pwd = $('form.mypwd>label>input[name=oldpwd]').val()
+    $('form.mypwd>div.old>button[name=check]').click(() => {
+        const pwd = $('form.mypwd>div.old>label>input[name=oldpwd]').val()
+        console.log(pwd)
         $.ajax({
             xhrFields:{
                 withCredentials : true
@@ -15,11 +16,17 @@ $(()=>{
             data : `pwd=${pwd}`,
             success : (responseJSONObj)=>{
                 if(responseJSONObj.status==1){
-                    alert(responseJSONObj.msg)
-                    $('form.mypwd>label[name=newpwdlabel]').show()
-                    $('form.mypwd>button[type=submit]').show()
+                    Swal.fire({
+                        icon: 'success',
+                        text: responseJSONObj.msg
+                    })
+                    $('form.mypwd>div.new>label[name=newpwdlabel]').show()
+                    $('form.mypwd>div.pwdsave>button[type=submit]').show()
                 }else{
-                    alert(responseJSONObj.msg)
+                    Swal.fire({
+                        icon: 'error',
+                        text: '다시 한번 시도해주세요🙏'
+                    })
                 }
             }
         })
@@ -30,11 +37,23 @@ $(()=>{
     //---- 비밀번호 변경 ----
 
     $('form.mypwd').submit((e)=>{
-        const pwd = $('form.mypwd>label[name=newpwdlabel]>input[name=newpwd]').val()
-        const pwd2 = $('form.mypwd>label[name=newpwdlabel]>input[name=newpwd2]').val()
+        const pwd = $('input[name=newpwd]').val()
+        const pwd2 = $('input[name=newpwd2]').val()
 
         if(pwd==pwd2){
-            $('form.mypwd>span[name=alert]').hide()
+            $('span[name=alert]').hide()
+        }else{
+            $('span[name=alert]').show()
+        }
+
+        if (!strongPassword($('input[name=newpwd]').val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '비밀번호는 8자 이상이어야 하며, 영문, 숫자, 특수문자를 포함해야 합니다.'
+			})
+			$('input[name=newpwd]').focus();
+			$('input[name=newpwd]').select();
+		}else{
             $.ajax({
                 xhrFields:{
                     withCredentials : true
@@ -45,18 +64,25 @@ $(()=>{
                 success : (responseJSONObj)=>{
                     console.log(responseJSONObj)
                     if(responseJSONObj.status==1){
-                        alert(responseJSONObj.msg)
+                        Swal.fire({
+                            icon: 'success',
+                            text: responseJSONObj.msg
+                        })
                         location.href=`${frontURL}/mypwd.html`
                     }else{
-                        alert(responseJSONObj.msg)
+                        Swal.fire({
+                            icon: 'error',
+                            text: '다시 한번 시도해주세요🙏'
+                        })
                     }
                 },
                 error: (jqxhr)=>{
-                    alert(jqxhr.status)
+                    Swal.fire({
+                        icon: 'error',
+                        text: '다시 한번 시도해주세요🙏'
+                    })
                 }
             })
-        }else{
-            $('form.mypwd>span[name=alert]').show()
         }
         return false
     })

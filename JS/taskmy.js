@@ -78,13 +78,20 @@ $(() => {
                 $pageObj.html($pageObj.html()+page)
             }
 
+        }, 
+        error: ()=>{
+            Swal.fire({
+                icon: 'warning',
+                text: '권한이 없습니다.'
+              })
+              location.href='./teammain.html?teamNo='+teamNo+'&id='+localStorage('loginedId')
         }
     })
 
     $('section.taskboard>div.myboard>div.mycontent>table').on('click', 'tbody tr.mytask', function() {
         const taskNo = $(this).data('taskNo')
         localStorage.setItem("taskNo", taskNo)
-        location.href='./taskview.html?taskNo='+taskNo
+        location.href='./taskview.html?teamNo='+teamNo+'&taskNo='+taskNo
     });
 
     $('div.taskpage').click((e)=>{
