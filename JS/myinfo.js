@@ -167,6 +167,31 @@ $(()=>{
     // ---- 아이디, 비밀번호, 닉네임 제외 정보 수정 ----
 
     $('form.info').submit((e)=>{
+		const $birthday = $('form.info>div>label>input[name=birthday]')
+		const $phone = $('form.info>div>label>input[name=phone]')
+
+        if (!/^\d{11}$/.test($phone.val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '휴대폰 번호는 11자리의 숫자여야 합니다.'
+			});
+			$phone.focus();
+			$phone.select();
+		} else if (/[^0-9]/.test($phone.val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '휴대폰 번호에는 숫자만 입력하세요.'
+			});
+			$phone.focus();
+			$phone.select();
+		} else if (!strongPassword($pwdArr.eq(0).val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '비밀번호는 8자 이상이어야 하며, 영문, 숫자, 특수문자를 포함해야 합니다.'
+			})
+			$pwdArr.eq(0).focus();
+			$pwdArr.eq(0).select();
+		}
         console.log($('form.info').serialize())
         $.ajax({
             xhrFields:{

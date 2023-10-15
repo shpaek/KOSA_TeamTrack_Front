@@ -4,8 +4,9 @@ $(()=>{
 
     //---- 비밀번호 일치 여부 확인 ----
 
-    $('form.mypwd>button[name=check]').click(() => {
-        const pwd = $('form.mypwd>label>input[name=oldpwd]').val()
+    $('form.mypwd>div.old>button[name=check]').click(() => {
+        const pwd = $('form.mypwd>div.old>label>input[name=oldpwd]').val()
+        console.log(pwd)
         $.ajax({
             xhrFields:{
                 withCredentials : true
@@ -16,8 +17,8 @@ $(()=>{
             success : (responseJSONObj)=>{
                 if(responseJSONObj.status==1){
                     alert(responseJSONObj.msg)
-                    $('form.mypwd>label[name=newpwdlabel]').show()
-                    $('form.mypwd>button[type=submit]').show()
+                    $('form.mypwd>div.new>label[name=newpwdlabel]').show()
+                    $('form.mypwd>div.pwdsave>button[type=submit]').show()
                 }else{
                     alert(responseJSONObj.msg)
                 }
@@ -30,11 +31,11 @@ $(()=>{
     //---- 비밀번호 변경 ----
 
     $('form.mypwd').submit((e)=>{
-        const pwd = $('form.mypwd>label[name=newpwdlabel]>input[name=newpwd]').val()
-        const pwd2 = $('form.mypwd>label[name=newpwdlabel]>input[name=newpwd2]').val()
+        const pwd = $('input[name=newpwd]').val()
+        const pwd2 = $('input[name=newpwd2]').val()
 
         if(pwd==pwd2){
-            $('form.mypwd>span[name=alert]').hide()
+            $('span[name=alert]').hide()
             $.ajax({
                 xhrFields:{
                     withCredentials : true
@@ -56,7 +57,7 @@ $(()=>{
                 }
             })
         }else{
-            $('form.mypwd>span[name=alert]').show()
+            $('span[name=alert]').show()
         }
         return false
     })
