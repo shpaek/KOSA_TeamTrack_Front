@@ -9,9 +9,6 @@ $(() => {
                 teamNo: teamNo,
             },
             success: (responseJSONObj) => {
-                console.log("요청대기자 출력용 ajax 호출 성공!!");
-                console.log(responseJSONObj)
-                console.log('----------------')
 
                 showReqList(responseJSONObj);
             },
@@ -61,7 +58,16 @@ $(() => {
                 action: 'reqApprove'
             },
             success: function (responseJSONObj) {
-                location.reload(); // 페이지 리로드
+                Swal.fire({
+                    title: '승인됨',
+                    text: '요청이 승인되었습니다.',
+                    icon: 'success',
+                    confirmButtonText: '확인'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload(); // 페이지 리로드
+                    }
+                });
             },
             error: function (jqXHR, textStatus) {
                 Swal.fire({
@@ -86,7 +92,16 @@ $(() => {
                 action: 'reqReject'
             },
             success: function (responseJSONObj) {
-                location.reload(); // 페이지 리로드
+                Swal.fire({
+                    title: '거절됨',
+                    text: '요청이 거절되었습니다.',
+                    icon: 'success',
+                    confirmButtonText: '확인'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload(); // 페이지 리로드
+                    }
+                });
             },
             error: function (jqXHR, textStatus) {
                 Swal.fire({
