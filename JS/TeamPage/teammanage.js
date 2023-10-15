@@ -1,5 +1,4 @@
-const backURL = 'http://localhost:8888/teamtrack'
-const frontURL = 'http://localhost:5500/HTML'
+const backURL = "http://localhost:8888/teamtrack";
 const teamNo = new URL(location.href).searchParams.get("teamNo");
 function characterCheck(obj){
   var regExp = /[#]/gi
@@ -9,7 +8,40 @@ function characterCheck(obj){
       obj.value = obj.value.substring( 0 , obj.value.length - 1 );
   }
 }
-$(() => {
+$(document).ready(() => {
+
+  const $img = $("form.form img.teamProfileImg2");
+
+  $.ajax({
+    xhrFields: {
+      responseType: "blob",
+    },
+    url: backURL + "/download",
+    data: "teamNo=" + teamNo + "&opt=profile",
+    success: (responseData) => {
+      if (responseData.size > 0) {
+        const url = URL.createObjectURL(responseData);
+        $img.attr("src", url);
+        $img.parent().show();
+      }
+    },
+    error: (jqxhr) => {},
+  });
+
+
+  $("form.form input[name=f1]").on("change", (e) => {
+    console.log(e.target.files[0]);
+    const url = URL.createObjectURL(e.target.files[0]);
+    $("form.form img.teamProfileImg2").attr("src", url);
+  });
+
+  var profileImage = $("#profileImage");
+  var fileInput = $("#f1");
+
+  profileImage.on("click", function() {
+      fileInput.click();
+  });
+
   $("#startDate").datepicker({
 		dateFormat: "yy-mm-dd", // 날짜의 형식
 		minDate: 0,
@@ -29,23 +61,7 @@ $(() => {
 		prevText: "<"
 	}); 
 
-  const $img = $("form.form>img.teamProfileImg2");
 
-  $.ajax({
-    xhrFields: {
-      responseType: "blob",
-    },
-    url: backURL + "/download",
-    data: "teamNo=" + teamNo + "&opt=profile",
-    success: (responseData) => {
-      if (responseData.size > 0) {
-        const url = URL.createObjectURL(responseData);
-        $img.attr("src", url);
-        $img.parent().show();
-      }
-    },
-    error: (jqxhr) => {},
-  });
 
   $.ajax({
     url: backURL + "/teamdelete",
@@ -104,6 +120,7 @@ $(() => {
     $btCreate.hide();
   });
 
+
   // ----- 중복확인 버튼 클릭했을대 할 일 START -----
 
   $btDupchk.click(() => {
@@ -145,6 +162,9 @@ $(() => {
   }); // $btDupChk.click
   // ----- 중복확인 버튼 클릭했을대 할 일 END -----
 
+
+
+
   const $form = $("div>form.form");
   //DOM트리에서 form객체찾기
   //----form객체에서 submit이벤트가 발생했을 때 할 일 START----
@@ -163,8 +183,8 @@ $(() => {
     const briefInfoValue = $("input[name=briefInfo]").val();
     const teamInfoValue = $("textarea[name=teamInfo]").val();
 
-    //const loginedId = localStorage.getItem('loginedId');
-    const loginedId = "psh2023";
+    const loginedId = localStorage.getItem('loginedId');
+    //const loginedId = "psh2023";
     const fd = new FormData();
     const files = $('input[type="file"]');
     for (let i = 0; i < files.length; i++) {
@@ -279,11 +299,7 @@ $(() => {
     });
   });
 
-  $('form.form>input[name=f1]').change((e)=>{
-    console.log(e.target.files[0])
-    const url = URL.createObjectURL(e.target.files[0])
-    $('form.form img.teamProfileImg2').attr('src', url)
-})
+
 
     //해시태그 중복 입력 방지
     const hashtagInputs = $('.form__field_hashtag');
