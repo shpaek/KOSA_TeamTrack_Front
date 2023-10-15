@@ -1,4 +1,4 @@
-const backURL = 'http://localhost:8080/KOSA_TeamTrack_Back'
+const backURL = 'http://localhost:8080/teamtrack'
 const frontURL = 'http://localhost:5500/HTML'
 
 
