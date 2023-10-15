@@ -111,7 +111,7 @@ $(()=>{
         $.ajax({
             url: backURL+'/noticedetail',
             method : 'get',
-            data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
+            data : `teamNo=${teamNo}&noticeNo=${noticeNo}&loginedId=${loginedId}`,
             success: (responseJSONObj)=>{
                 const noticeTitle = responseJSONObj.notice.noticeTitle
                 const noticeContent = responseJSONObj.notice.noticeContent

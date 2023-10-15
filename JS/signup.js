@@ -29,15 +29,14 @@ $(() => {
 			return;
 		}
 
-		    // 아이디가 영어로만 구성되어 있는지 검사
-			const englishOnly = /^[a-zA-Z]+$/;
-			if (!englishOnly.test(idValue)) {
-				Swal.fire({
-					icon: 'warning',
-					text: '아이디는 영어만 입력가능 합니다.'
-				});
-				return;
-			}
+		const englishAndNumbersOnly = /^[a-zA-Z0-9]+$/;
+		if (!englishAndNumbersOnly.test(idValue)) {
+			Swal.fire({
+				icon: 'warning',
+				text: '아이디는 영어와 숫자만 입력 가능합니다.'
+			});
+			return;
+		}
 
 		$.ajax({
 			xhrFields: {
