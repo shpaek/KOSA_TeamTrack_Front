@@ -24,10 +24,10 @@ $(() => {
                 break;
 
             case 'taskBoard':
-                const taskteamno=60
+                // const taskteamno=60
                 // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                localStorage.setItem('taskteamno', taskteamno)
-                location.href = './taskboard.html?teamNo='+taskteamno
+                localStorage.setItem('taskteamno', teamNo)
+                location.href = './taskboard.html?teamNo='+teamNo
                 //location.href = './taskboard.html&teamNo='+teamNo
                 break;
 

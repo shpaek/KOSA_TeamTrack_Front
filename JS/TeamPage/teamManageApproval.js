@@ -89,16 +89,20 @@ $(() => {
             }
         });
     }
-
-    // 승인 버튼 클릭 이벤트
+    
+    // 승인 버튼
     $(document).on('click', '.approveBtn', function() {
-        const id = $(this).parent().siblings('.customerId').text();
+        const fullText = $(this).parent().siblings('.customerId').text();
+        const matches = fullText.match(/아이디: (\S+) \[/);
+        const id = matches && matches[1] ? matches[1] : '';
         approve(id);
     });
-
-    // 거절 버튼 클릭 이벤트
+    
+    // 거절 버튼
     $(document).on('click', '.rejectBtn', function() {
-        const id = $(this).parent().siblings('.customerId').text();
+        const fullText = $(this).parent().siblings('.customerId').text();
+        const matches = fullText.match(/아이디: (\S+) \[/);
+        const id = matches && matches[1] ? matches[1] : '';
         reject(id);
     });
 
