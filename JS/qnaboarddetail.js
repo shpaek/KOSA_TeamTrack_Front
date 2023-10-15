@@ -51,7 +51,6 @@ $(() => {
         $('#commentList').hide(); // 댓글 목록 숨기기
         $('div.container>div>div>span').hide(); // 'Comments' 부분 숨기기
 
-
         $.ajax({
             url: url,
             method: 'get',
