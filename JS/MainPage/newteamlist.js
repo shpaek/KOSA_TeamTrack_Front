@@ -65,7 +65,6 @@ $(() => {
                     const hashtag3 = hashtags[2]
                     const hashtag4 = hashtags[3]
                     const hashtag5 = hashtags[4]
-        
                     //$copyTopTeam.find("ul>li>img").attr('src', '../images/' + prodNo + '.jpg').attr("alt", prodName)
                     
                     $copyNewTeam.find("ul>li>span.teamName").html(teamName)
