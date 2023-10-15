@@ -131,7 +131,7 @@ $(() => {
                     })
                     return
                 } else {
-                    location.href = taskbackURL + '/taskdownload?teamNo=' + teamNo + '&taskNo=' + taskNo
+                    location.href = backURL + '/taskdownload?teamNo=' + teamNo + '&taskNo=' + taskNo
                 }
             },
             error: () => {
