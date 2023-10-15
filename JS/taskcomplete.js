@@ -100,6 +100,6 @@ $(() => {
         const currentPage=pg.substr(2)
         if(currentPage=='gebar' || currentPage=='skpage') return false
         localStorage.setItem('completecp', currentPage)
-        location.href='./taskcomplete.html?currentPage='+currentPage
+        location.href='./taskcomplete.html?teamNo='+teamNo+'&currentPage='+currentPage
     })
 })

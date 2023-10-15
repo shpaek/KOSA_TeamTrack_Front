@@ -40,7 +40,7 @@ $(() => {
                     location.href = './myinfo.html'
                     break;
                 case 'myGroupList':
-                    location.href = './myGroupList.html';
+                    location.href = './myteamList.html';
                     break;
                 case 'logout':
                     $.ajax({
@@ -52,6 +52,7 @@ $(() => {
                         success: () => {
                             console.log("Logout successful");
                             localStorage.removeItem('loginedId');
+                            sessionStorage.clear();
                             location.href = './Intro.html';
                         }, error: (xhr, status, error) => {
                             console.error("Logout Error:", error);

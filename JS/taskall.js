@@ -95,6 +95,6 @@ $(() => {
         const currentPage=pg.substr(2)
         if(currentPage=='gebar' || currentPage=='skpage') return false
         localStorage.setItem('allcp', currentPage)
-        location.href='./taskall.html?currentPage='+currentPage
+        location.href='./taskall.html?teamNo='+teamNo+'&currentPage='+currentPage
     })
 })
