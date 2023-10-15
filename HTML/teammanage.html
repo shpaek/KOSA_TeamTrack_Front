@@ -41,7 +41,7 @@
           <div class="searchBar">
               <input
                 type="text"
-                placeholder="검색을 하삼"
+                placeholder="팀명 또는 #을 포함하여 해시태그를 검색"
                 id="mainsearch"
               />
               <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon"/>
@@ -90,9 +90,11 @@
     <div class="popup-form__close"></div>
     <div class="popup-form__content">
       <h3 class="form__title">팀 수정하기</h3>
-      <form class="form" method="post" enctype="multipart/form-data">
-        <label for="f1">프로필:</label><input type="file" name="f1" id="f1">
-        <img class="teamProfileImg2" src='../images/rocket.png' alt="teamProfile2">
+      <form class="form" id="popupform" method="post" enctype="multipart/form-data">
+        <div class ="profileImageDiv" >
+        <label for="f1"></label><input type="file" name="f1" id="f1"/>
+        <img id="profileImage" class="teamProfileImg2" src='../images/rocket.png' alt="teamProfile2">
+      </div>
 
         <div class="formgroup">
           <label for="teamName" class="formgroup__text">팀명:</label>
