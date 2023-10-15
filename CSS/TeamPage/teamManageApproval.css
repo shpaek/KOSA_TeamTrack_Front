@@ -77,9 +77,31 @@ body {
     margin-right: 20px;
 }
 
-/* 버튼 위치 */
+.customerInfo {
+    display: flex;
+    align-items: center;
+    width: 100%;  /* 전체 너비를 사용하도록 설정 */
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.customerId {
+    flex: 2; /* 20% */
+    margin-right: 20px;
+}
+
+.customerIntroduction {
+    flex: 6; /* 60% */
+    overflow: auto;
+    margin-right: 20px;
+}
+
 .btnLocation {
-    margin-left: auto;  /* 버튼을 오른쪽 끝으로 이동 */
+    flex: 2; /* 20% */
+    justify-content: flex-end;
+    margin-left: auto; 
+    margin-right: auto;
 }
 
 /* 승인 버튼 */

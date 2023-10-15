@@ -42,6 +42,62 @@ $(function () {
         }
     }
 
+    // 출제자 목록을 가져오는 함수
+    function getExaminer() {
+        $.ajax({
+            url: backURL + "/teamselectexaminer",
+            type: 'GET',
+            data: {
+                teamNo: teamNo,
+                action: 'getExaminer'
+            },
+            success: (responseJSONObj) => {
+                showExaminer(responseJSONObj);
+            },
+            error: (jqXHR, textStatus) => {
+                swal.fire('오류', '회원 목록을 가져오는데 실패했습니다.', 'error');
+                console.error(jqXHR);
+            }
+        });
+    }
+
+    // 출제자 정보 보여주는 영역
+    function showExaminer(data) {
+        if (data && data.methodMap && data.methodMap.examinerInfo) {
+            const examList = data.methodMap.examinerInfo;
+            const $examinerInfoDIv = $('div.examinerInfoDIv').first();
+
+            examList.forEach((info, index) => {
+                const task_no = info.TASK_NO;
+                const id = info.ID;
+                const duedate1 = formatDate(info.DUEDATE1);
+                const duedate2 = formatDate(info.DUEDATE2);
+
+                const $examinerInfoCloneDiv = $examinerInfoDIv.clone();
+
+                $examinerInfoCloneDiv.find('span[class=info1]').text("No_" + task_no + "  ");
+                $examinerInfoCloneDiv.find('span[class=info2]').text("아이디: " + id + "  ");
+                $examinerInfoCloneDiv.find('span[class=info3]').text("시작날짜: " + duedate1 + "  ");
+                $examinerInfoCloneDiv.find('span[class=info4]').text("마감날짜:" + duedate2 + "  ");
+
+                $examinerInfoDIv.parent().append($examinerInfoCloneDiv);
+            });
+
+            $examinerInfoDIv.hide();
+        } else {
+            console.log("팀원 정보가 없습니다!");
+        }
+    }
+
+    // 날짜 변환
+    function formatDate(timestamp) {
+        const date = new Date(timestamp);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더함!!
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
     // 폼 제출 이벤트 핸들러
     $("#examinerForm").submit(function (e) {
         e.preventDefault();
@@ -109,4 +165,5 @@ $(function () {
 
     // 페이지가 로드될 때 팀원 목록을 가져옵니다.
     getMemberList();
+    getExaminer();
 });

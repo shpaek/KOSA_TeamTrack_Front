@@ -132,18 +132,19 @@
         </div>
 
         <div class="formgroup">
-            <p class="formgroup__text">해시태그:</p>
-            <input class="form__field_hashtag" id="hashtag1" type="text" name="hashtag1" placeholder="10자 이내 입력(#제외)" maxlength="10"
-            required/>
-            <input class="form__field_hashtag" id="hashtag2" type="text" name="hashtag2" placeholder="10자 이내 입력(#제외)" maxlength="10"
-            required/>
-            <input class="form__field_hashtag" id="hashtag3" type="text" name="hashtag3" placeholder="10자 이내 입력(#제외)" maxlength="10"
-            required/>
-            <input class="form__field_hashtag" id="hashtag4" type="text" name="hashtag4" placeholder="10자 이내 입력(#제외)" maxlength="10"
-            required/>
-            <input class="form__field_hashtag" id="hashtag5" type="text" name="hashtag5" placeholder="10자 이내 입력(#제외)" maxlength="10"
-            required/>
-        </div>
+          <p class="formgroup__text">해시태그:</p>
+          <input class="form__field_hashtag" id="hashtag1" type="text" name="hashtag1" placeholder="10자 이내 입력(#제외)" maxlength="10"
+          onkeyup="characterCheck(this)" required/>
+          <input class="form__field_hashtag" id="hashtag2" type="text" name="hashtag2" placeholder="10자 이내 입력(#제외)" maxlength="10"
+          onkeyup="characterCheck(this)" required/>
+          <input class="form__field_hashtag" id="hashtag3" type="text" name="hashtag3" placeholder="10자 이내 입력(#제외)" maxlength="10"
+          onkeyup="characterCheck(this)" required/>
+          <input class="form__field_hashtag" id="hashtag4" type="text" name="hashtag4" placeholder="10자 이내 입력(#제외)" maxlength="10"
+          onkeyup="characterCheck(this)" required/>
+          <input class="form__field_hashtag" id="hashtag5" type="text" name="hashtag5" placeholder="10자 이내 입력(#제외)" maxlength="10"
+          onkeyup="characterCheck(this)" required/>
+      </div>
+
 
         <div class="formgroup">
             <p class="formgroup__text">한줄 소개:</p>

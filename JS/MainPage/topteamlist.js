@@ -158,9 +158,7 @@ $(() => {
         //alert(prodNo)
         location.href = `./product.html?prodno=${prodNo}`
     })
-
-
-    
+ 
     $datesearch = $('div>button.search')
     $datesearch.click(()=>{
         const startDate = $("#date1").val()
@@ -168,9 +166,6 @@ $(() => {
         const data = `currentPage=1&column=viewCnt&startDate=${startDate}&endDate=${endDate}`
         ajaxHandler("/teamfilter", data)
     })
-
-
-
 
     })
 
