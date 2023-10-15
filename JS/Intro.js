@@ -62,6 +62,11 @@ $(() => {
                     localStorage.setItem("loginedId", responseJSONObj.id);
                     sessionStorage.setItem("loginedId", responseJSONObj.id);
                     sessionStorage.setItem("nickname", responseJSONObj.nickname)
+                } else if(responseJSONObj.status === 2) {
+                    Swal.fire({
+						icon: 'warning',
+						text: responseJSONObj.msg
+					})
                 }
             },
             error : (jqXHR, textStatus) => {

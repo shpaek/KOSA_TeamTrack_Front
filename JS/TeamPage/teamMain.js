@@ -87,11 +87,6 @@ $(() => {
                 $teamNameDiv.find('p.teamNameShow').text(teamName)
             } // if
 
-            // if (responseJSONObj.teamViewCnt != null) {
-            //     const viewCnt = responseJSONObj.teamViewCnt;
-            //     $('span.teamCntViewSpan2').text(viewCnt);
-            // }
-
             // 조회수
             if (responseJSONObj.teamViewCnt != null) {
                 const viewCnt = responseJSONObj.teamViewCnt
@@ -171,6 +166,11 @@ $(() => {
             $("#JoinTeamBtn").hide(); // 팀 가입 숨기기
         }
     }
+
+    // 팀 프로필 편집 클릭 이벤트
+    $(".teamProfileEdit").click(function () {
+        location.href = './teammanage.html?teamNo=' + teamNo;
+    });
 
     // 팀 가입하기 버튼 클릭 이벤트
     $('#JoinTeamBtn').click(function () {
@@ -281,20 +281,43 @@ $(() => {
     });
 
     // 팀 프로필
+    /*
     $.ajax({
         xhrFields: {
-          responseType: "blob",
+            responseType: "blob",
         },
         url: backURL + "/download",
         data: "teamNo=" + teamNo + "&opt=profile",
         success: (responseData) => {
-          if (responseData.size > 0) {
-            const url = URL.createObjectURL(responseData);
-            $copyNewTeam.find("nav>div>img").attr("src", url);
-          }
+            if (responseData.size > 0) {
+                const url = URL.createObjectURL(responseData);
+                $copyNewTeam.find("nav>div>img").attr("src", url);
+            }
         },
-        error: (jqxhr) => {},
-      });
-    
+        error: (jqxhr) => { },
+    });
+    */
+
+    /*
+    const $img = $('nav>div>img.teamProfileImg')
+    // $img.parent().hide()
+
+       $.ajax({
+            xhrFields: {
+                responseType: "blob",
+            },
+            url: backURL + '/userprofiledownload',
+            success: (responseData) => {
+                if (responseData.size > 0) {
+                    const url = URL.createObjectURL(responseData)
+                    $img.attr('src', url)
+                    $img.parent().show()
+                }
+            },
+            error: (jqxhr) => {
+
+            }
+        })
+    */
 
 }) // $(() {})

@@ -1,8 +1,5 @@
 $(() => {
-
-
-
-    function ajaxSearchHandler(cp, data){
+  function ajaxSearchHandler(cp, data){
         $.ajax({
             url: backURL+ '/teamsearch',
             method: 'get',
@@ -117,28 +114,30 @@ $(() => {
         })
        
     }
-    const param = new URL(location.href).searchParams.get("data")
-    data = "data="+param
-    //data = location.search.substr(1)
-    //alert(data)
+    
+// 현재 URL에서 프래그먼트를 가져옴
+const hashFragment = window.location.hash;
+
+// 만약 프래그먼트가 존재하면 '#'을 제외하고 추출
+if (hashFragment) {
+    const dataParam = hashFragment.slice(1); // '#' 제외
+    const decodedData = decodeURIComponent(dataParam);
+    console.log(decodedData);
+    data = "data="+decodedData+"&table=team_hashtag&column=hashtag_name"
+} else {
+    const decodedData = new URL(location.href).searchParams.get("data")
+    data = "data="+decodedData+"&table=team&column=team_name"
+}
+    
+    // const param = new URL(location.href).searchParams.get("data")
     ajaxSearchHandler(1, data)
     $('div.pagegroup').on('click', 'span', (e) => {
         //alert($(e.target).html() + ": " + $(e.target).attr('class') + "페이지가 클릭되었습니다")
         const pg = $(e.target).attr('class')
         const currentPage = pg.substr(2)
-        const searchData = $("#mainsearch").val()
-        ajaxSearchHandler(currentPage, searchData)
+        ajaxSearchHandler(currentPage, data)
     })
 
-
-    $('div.productlist').on('click', 'div.product', (e)=>{
-        //alert('클릭되었습니다')
-        //alert($(e.target).attr('src').lastIndexOf('.'))
-        const src = $(e.target).attr('src')
-        const prodNo = src.substring(src.lastIndexOf('/')+1, src.lastIndexOf('.'))
-        //alert(prodNo)
-        location.href = `./product.html?prodno=${prodNo}`
-    })
 
     $teamsearch = $('div.searchBar>img.searchIcon')
     $teamsearch.click(()=>{

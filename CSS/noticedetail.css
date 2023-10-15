@@ -245,6 +245,18 @@ div.editnotice{
 
 /*제목*/
 input[name=title]{
+  padding-left : 10px;
+  margin:20px;
+  width:500px;
+  height:30px;
+  background-color: #f6f7f7;
+  border: solid 1px;
+  border-color : #cccccc;
+  border-radius: 10px;
+}
+
+/*제목*/
+input[name=title]{
     padding-left : 10px;
     margin:20px;
     width:500px;

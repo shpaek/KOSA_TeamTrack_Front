@@ -142,7 +142,6 @@ $(() => {
     $formObj.submit((e) => {
         e.preventDefault(); // 기본 제출 동작을 중지합니다.
 
-        alert("in submit")
         const teamNo = urlParams.get("teamNo");
         const qnaNo = urlParams.get("qnaNo");
         // const content = document.getElementById("content");
@@ -168,7 +167,21 @@ $(() => {
             },
             // data : $form.serialize(),
             success: (responseJSONObj) => {
-                location.reload();
+                if (responseJSONObj.status == 1) {
+                    Swal.fire({
+						icon: 'success',
+						text: responseJSONObj.msg
+					}).then((result) => {
+                        location.reload();
+					});
+                } else {
+                    Swal.fire({
+						icon: 'warning',
+						text: responseJSONObj.msg
+					}).then((result) => {
+                        location.reload();
+					});
+                }
             },
             error: (jqxhr) => {
                 alert(jqxhr.status)

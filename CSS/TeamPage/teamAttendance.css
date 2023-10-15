@@ -26,6 +26,14 @@ body {
     border-bottom: 2px solid #e0e0e0;
 }
 
+/* 알림문구 */
+.info {
+    font-size: 15px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
 /* 출석하기 버튼 */
 .attendanceBtn {
     padding: 10px 15px; 

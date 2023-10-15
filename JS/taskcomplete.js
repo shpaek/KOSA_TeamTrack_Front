@@ -10,10 +10,6 @@ $(() => {
         method: 'get',
         data: `teamNo=${teamNo}&currentPage=${cp}`,
         success: (responseJSONObj) => {
-            if(responseJSONObj.msg != undefined){
-                alert('과제가 존재하지 않습니다.')
-                return
-            }
 
             const $originTrObj = $('div.completeboard>div.completecontent>table>thead>tr')
             $originTrObj.addClass('completetask')
@@ -86,13 +82,20 @@ $(() => {
                 $pageObj.html($pageObj.html()+page)
             }
 
+        },
+        error: ()=>{
+            Swal.fire({
+                icon: 'warning',
+                text: '권한이 없습니다.'
+              })
+              location.href='./teammain.html?teamNo='+teamNo+'&id='+localStorage('loginedId')
         }
     })
 
     $('section.taskboard>div.completeboard>div.completecontent>table').on('click', 'tbody tr.completetask', function() {
         const taskNo = $(this).data('taskNo')
         localStorage.setItem("taskNo", taskNo)
-        location.href='./taskview.html?taskNo='+taskNo
+        location.href='./taskview.html?teamNo='+teamNo+'&taskNo='+taskNo
     });
 
     $('div.taskpage').click((e)=>{
