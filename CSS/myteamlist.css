@@ -93,6 +93,7 @@ div.rejectlist>ul>li>div.reject>img{
 
 /* 팀목록 칸 */
 .teamlist>ul>li>div.team{
+    cursor:pointer;
     width:600px;
     border-bottom:solid 1px;
     border-left:solid 1px;

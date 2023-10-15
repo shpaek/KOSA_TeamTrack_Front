@@ -173,6 +173,9 @@ $(()=>{
         $('div.teamlist>ul>li>div>button[name=activity]').show()
         $('div.teamlist>ul>li>div>button[name=withdrawl]').show()
         $('div.teamlist>ul>li>div>button[name=cancel]').hide()
+        $('div.active').css("background-color", '#cccccc')
+        $('div.end').css("background-color", 'white')
+        $('div.waiting').css("background-color", 'white')
     })
 
     //---- 활동종료 팀 ----
@@ -184,6 +187,9 @@ $(()=>{
         $('div.teamlist>ul>li>div>button[name=activity]').show()
         $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
         $('div.teamlist>ul>li>div>button[name=cancel]').hide()
+        $('div.active').css("background-color", 'white')
+        $('div.end').css("background-color", '#cccccc')
+        $('div.waiting').css("background-color", 'white')
     })
 
     //---- 승인대기 팀 ----
@@ -195,6 +201,19 @@ $(()=>{
         $('div.teamlist>ul>li>div>button[name=activity]').hide()
         $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
         $('div.teamlist>ul>li>div>button[name=cancel]').show()
+        $('div.active').css("background-color", 'white')
+        $('div.end').css("background-color", 'white')
+        $('div.waiting').css("background-color", '#cccccc')
+    })
+
+    $(document).on('click', 'div.team>a[name=reject_teamname]', function(e) {
+        const teamNo=$(e.target).siblings(':eq(0)').text()
+        location.href=`${frontURL}/teammain.html?teamNo=${teamNo}`
+    })
+
+    $(document).on('click', 'div.team>a[name=teamname]', function(e) {
+        const teamNo=$(e.target).siblings(':eq(0)').text()
+        location.href=`${frontURL}/teammain.html?teamNo=${teamNo}`
     })
 
     //---- 승인거절 알림 확인 -----
