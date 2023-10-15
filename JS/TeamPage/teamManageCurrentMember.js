@@ -1,5 +1,4 @@
-$(() => {
-
+$(function () {
     // 현재 팀원 목록 가져오기
     function getMemberList() {
         $.ajax({
@@ -70,14 +69,20 @@ $(() => {
     }
 
     // 방출 버튼 클릭 이벤트
-    $(document).on('click', '.dismissBtn', function() {
-        // const id = $(this).parent().siblings('.memberId').text();
-        const id = $(this).siblings('.memberId').text();
-        alert(id)
-        dismiss(id);
-        alert("성공")
-    });
+    // $(document).on('click', '.dismissBtn', function() {
+    //     // const id = $(this).parent().siblings('.memberId').text();
+    //     const id = $(this).siblings('.memberId').text();
+    //     dismiss(id);
+    // });
 
+    // 방출 버튼 클릭 이벤트
+    $(document).on('click', '.dismissBtn', function() {
+        const fullText = $(this).siblings('.memberId').text();
+        const matches = fullText.match(/아이디: (\S+) \[/);
+        const id = matches && matches[1] ? matches[1] : '';
+        dismiss(id);
+    });
+    
     // 페이지가 로드될 때 팀원 목록을 가져옵니다.
     getMemberList();
 
