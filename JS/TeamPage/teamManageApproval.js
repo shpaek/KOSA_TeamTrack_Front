@@ -36,9 +36,8 @@ $(() => {
                 const introduction = info.INTRODUCTION
                 const $waitListClone = $waitList.clone()
 
-                $waitListClone.find('span[class=customerId]').text(id)
-                $waitListClone.find('span[class=customerNickname]').text(nickname)
-                $waitListClone.find('span[class=customerIntroduction]').text(introduction)
+                $waitListClone.find('span[class=customerId]').text(`아이디: ${id} [${nickname}], `);
+                $waitListClone.find('span[class=customerIntroduction]').text("자기소개: " + introduction)
 
                 $waitList.parent().append($waitListClone);
             })
