@@ -1,4 +1,4 @@
-// const backURL = 'http://localhost:8888/teamtrack'
+//const backURL = 'http://localhost:8888/teamtrack'
 $(()=> {
     const teamNo = localStorage.getItem('taskteamno')
 
@@ -73,11 +73,11 @@ $(()=> {
                 break
             case 'completetask': 
                 localStorage.setItem("completecp", 1)
-                location.href='./taskcomplete.html?teamNo='+teamNo+'currentPage='+1
+                location.href='./taskcomplete.html?teamNo='+teamNo+'&currentPage='+1
                 break
             case 'mytask':
                 localStorage.setItem("mycp", 1)
-                location.href='./taskmy.html?teamNo='+teamNo+'currentPage='+1
+                location.href='./taskmy.html?teamNo='+teamNo+'&currentPage='+1
                 break
         }
         e.preventDefault()

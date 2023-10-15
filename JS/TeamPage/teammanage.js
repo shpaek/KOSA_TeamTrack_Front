@@ -107,15 +107,13 @@ $(() => {
   // ----- 중복확인 버튼 클릭했을대 할 일 START -----
 
   $btDupchk.click(() => {
-    //e.preventDefault();
 
-    // alert('버튼클릭 확인')
-
-    // 입력 아이디 확인
     const teamNameValue = $("#teamName").val();
     if (!teamNameValue) {
-      alert("팀명을 입력하세요.");
-      return;
+      Swal.fire({
+        icon: 'warning',
+        text: '팀명을 입력하세요.'
+      })
     }
 
     $.ajax({
@@ -128,11 +126,17 @@ $(() => {
       data: "teamName=" + teamNameValue + "&gubun=teamName",
       success: (responseJSONObj) => {
         if (responseJSONObj.status == 0) {
-          alert("이미 사용중인 팀명입니다.");
-        } else {
-          alert("사용 가능한 팀명입니다.");
-          $btCreate.show();
-        } // if-else
+          Swal.fire({
+            icon: 'warning',
+            text: '이미 사용중인 팀명입니다.'
+        })
+      } else {
+        Swal.fire({
+            icon: 'success',
+            text: '사용 가능한 팀명입니다.'
+        })
+        $btCreate.show()
+    } // if-else
       },
       error: (jqxhr) => {
         alert(jqxhr.status); // 정상처리가 되지 않으면 status = 0
@@ -201,14 +205,17 @@ $(() => {
       processData: false, //파일첨부용 프로퍼티
       data: fd, //"t=tValue&"
       success: (responseJSONObj) => {
-        //요청이 성공하고 성공적으로 응답이 되었을 때 할 일
-        //alert(responseText)
-        alert(responseJSONObj.msg);
+        Swal.fire({
+          icon: 'success',
+          text: responseJSONObj.msg
+      })
         
       },
       error: (jqXHR, textStatus) => {
-        //응답, 요청에 오류가 있는 경우
-        alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText);
+        Swal.fire({
+          icon: 'warning',
+          text: responseJSONObj.msg
+      })
       },
     });
     return false;
@@ -247,7 +254,7 @@ $(() => {
             Swal.fire({
               title: "팀 삭제하기",
               text: "삭제되었습니다.",
-              icon: "warning",
+              icon: "success",
               showCancelButton: false,
               confirmButtonColor: "#3085d6",
               cancelButtonColor: "#d33",
