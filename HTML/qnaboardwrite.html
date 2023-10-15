@@ -15,6 +15,14 @@
     <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
     <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
     <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
+    <link rel="stylesheet" href="../CSS/qnaboardwrite.css">
+
+    <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 JS 스크립트 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    
 
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -85,38 +93,24 @@
 
         <!-- 컨텐츠 영역 -->
         <section class="section">
-
-            <form class="qnaboard" method="post"> 
-
-                <div class="titleline">
-                    <input type="text" required placeholder="제목을 입력하세요" name="title">
-                    <input type="file" name="file" id="file"></input>
-                </div>
-
-                <div class="contentline">
-                    <input type="text" required placeholder="내용을 입력하세요" name="content">
-                </div>
-
-                <div class="write">
-                    <button type="submit">완료</button>
-                </div>
-            </form>  
-            
-
+            <div class="qnaboardbox">
+                <form class="qnaboard" method="post"> 
+                    <div class="titleline">
+                        <input type="text" required placeholder="제목을 입력하세요" name="title" maxlength="40">
+                        <input type="file" name="file" id="file"></input>
+                    </div>
+    
+                    <div class="content">
+                        <!-- <input type="text" required placeholder="내용을 입력하세요" name="content" maxlength="500"> -->
+                        <textarea type="text" required placeholder="내용을 입력하세요" name="content" maxlength="500"></textarea>
+                    </div>
+    
+                    <div class="write">
+                        <button type="submit">완료</button>
+                    </div>
+                </form>  
+            </div>
         </section>
-
-        <aside>
-            <!-- 팀 가입하기 버튼 -->
-            <button id="JoinTeamBtn">팀 가입</button>
-
-            <!-- 팝업 -->
-            <form id="teamJoin" action="/#" method="POST" style="display: none;">
-                <p>&#127881; 팀 가입 &#127881;</p>
-                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!"
-                    required rows="5" cols="50" maxlength="2000"></textarea>
-                <button type="submit" id="requestJoinTeamBtn">가입요청</button>
-            </form>
-        </aside>
 
         <!-- 푸터 -->
         <footer>

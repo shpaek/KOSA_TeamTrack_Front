@@ -20,7 +20,7 @@ $(() => {
 			xhrFields: {
 				withCredentials: true
 			},
-			url: 'http://127.0.0.1:8888/KOSA/iddupcheck',
+			url: 'http://localhost:8888/teamtrack/iddupcheck',
 			method: 'get',
 			// data : `id=${$id.val()}`,
 			data: `id=${idValue}`,
@@ -97,7 +97,7 @@ $(() => {
 				// xhrFields: {
 				//     withCredentials: true
 				// },
-				url: 'http://127.0.0.1:8888/KOSA/signup',
+				url: 'http://localhost:8888/teamtrack/signup',
 				method: 'post',
 				contentType: false,
 				processData: false,
@@ -114,9 +114,6 @@ $(() => {
 							location.href = './Intro.html';
 						}
 					});
-					// if (responseJSONObj.status == 1) {
-					// 	location.href = './Intro.html'
-					// }
 				},
 				error: (jqxhr) => {
 					alert(jqxhr.status) // 정상처리가 되지 않으면 status = 0

@@ -3,7 +3,7 @@ $(() => {
     // 가입 요청 목록 가져오기
     function getReqList() {
         $.ajax({
-            url: `http://localhost:8888/KOSA_TeamTrack_Back/teamreqaccept`,
+            url: backURL + "/teamreqaccept",
             type: 'GET',
             data: {
                 teamNo: teamNo,
@@ -54,7 +54,7 @@ $(() => {
     // 승인하기
     function approve(id) {
         $.ajax({
-            url: `http://localhost:8888/KOSA_TeamTrack_Back/teamreqaccept`,
+            url: backURL + "/teamreqaccept",
             type: 'GET',
             data: {
                 teamNo: teamNo,
@@ -74,7 +74,7 @@ $(() => {
     // 거절하기
     function reject(id) {
         $.ajax({
-            url: `http://localhost:8888/KOSA_TeamTrack_Back/teamreqaccept`,
+            url: backURL + "/teamreqaccept",
             type: 'GET',
             data: {
                 teamNo: teamNo,
