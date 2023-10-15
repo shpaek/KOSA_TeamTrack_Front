@@ -1,5 +1,5 @@
-//window.addEventListener('load', () => {
-// $(document).ready()
+const backURL = 'http://localhost:8888/teamtrack'
+const frontURL = 'http://localhost:5500/HTML'
 $(() => {
     //$('#maincontainer>nav>p').text(sessionStorage.getItem('nickname'))
     $('.membernickname').text(sessionStorage.getItem('nickname'))

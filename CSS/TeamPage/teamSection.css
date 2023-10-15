@@ -6,14 +6,20 @@ section {
     padding: 30px;
 
     width: 80%;
-    
-    /* 나중에 지우기 */
-    /* border: 1px solid black; */
+}
+
+/* 영역 소개글 */
+p.intro1, p.intro2, p.intro3 {
+    margin-left: 30px;
+
+    font-weight: bold;
+    font-size: 18px;
 }
 
 /* 팀 조회수 영역 */
 .teamViewCnt {
     border: 1px solid black;
+    display: inline-block; 
 
     width: 90%;
     height: 30px;
@@ -25,32 +31,43 @@ section {
 /* 팀 조회수 */
 .teamCntViewSpan1, .teamCntViewSpan2 {
     font-weight: bold;
+    display: inline-block;
 
     font-size: 17px;
 }
 
 /* 팀원 영역 */
 .teamMemberList {
-    border: 1px solid black;
-
     width: 90%;
-    height: 400px;
 
     margin-left: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 /* 팀원 목록 */
-.teamMemberListSpan1, .teamMemberListSpan2 {
+.teamMemberListSpan1 {
+    padding: 10px;
+    
     font-weight: bold;
 
-    font-size: 17px;
+    font-size: 15px;
 }
 
-/* 영역 소개글 */
-p.intro1, p.intro2 {
-    font-weight: bold;
-    font-size: 18px;
+/* 복제 후에 적용할 스타일 */
+.nickNameStyle {
+    display: inline-block;
+
+    border-radius: 20px; 
+    border: 1px solid #011837;
+
+    background-color: #011837;
+    color: white;
+
+    padding: 7px 20px; 
+    margin-right: 5px;
+    
+    transition: all 0.3s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* 팀 소개글 영역 */
@@ -66,7 +83,9 @@ p.intro1, p.intro2 {
 
 /* 팀 소개글 */
 .teamMainIntroductionP {
+    font-weight: bold;
 
+    font-size: 17px;
 }
 
 /* 공지사항 영역 */

@@ -1,7 +1,24 @@
-const backURL = 'http://127.0.0.1:8888/teamtrack'
-const frontURL = 'http://127.0.0.1:5500/HTML'
 $(() => {
-
+    $("#date1").datepicker({
+		dateFormat: "yy-mm-dd", // 날짜의 형식
+		minDate: 0,
+		nextText: ">",
+		prevText: "<",
+		onSelect: function (date) {
+			var endDate = $('#date2');
+			var startDate = $(this).datepicker('getDate');
+			var minDate = $(this).datepicker('getDate');
+			endDate.datepicker('setDate', minDate);
+			startDate.setDate(startDate.getDate() + 30);
+			endDate.datepicker('option', 'maxDate', startDate);
+			endDate.datepicker('option', 'minDate', minDate);
+		}
+	});
+	$('#date2').datepicker({
+		dateFormat: "yy-mm-dd", // 날짜의 형식
+		nextText: ">",
+		prevText: "<"
+	});   
 
       
     function ajaxHandler(url, data){
@@ -144,11 +161,13 @@ $(() => {
         location.href = `./product.html?prodno=${prodNo}`
     })
 
+
+    
     $datesearch = $('div>button.search')
     $datesearch.click(()=>{
         const startDate = $("#date1").val()
         const endDate = $("#date2").val()
-        const data = `currentPage=1&column=createdate&startDate=${startDate}&endDate=${endDate}`
+        const data = `currentPage=1&column=viewCnt&startDate=${startDate}&endDate=${endDate}`
         ajaxHandler("/teamfilter", data)
     })
 

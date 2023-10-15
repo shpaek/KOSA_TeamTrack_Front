@@ -9,7 +9,7 @@ section {
 }
 
 
-.noticebox{
+.qnaboardbox{
     width : 970px;
     height : 570px;
     padding:5px;
@@ -18,13 +18,13 @@ section {
     border-radius: 20px;
 }
 
-.mainnotice>label{
+/* .mainnotice>label{
     color : #919191;
 }
 
 .mainnotice{
     margin:20px;
-}
+} */
 
 input[name=title]{
     padding-left : 10px;
