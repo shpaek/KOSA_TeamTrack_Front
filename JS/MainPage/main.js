@@ -37,7 +37,7 @@ $(() => {
         $(this).on('click', function(e) {
             switch (e.target.className) {
                 case 'myPage':
-                    //location.href = './mypage.html'
+                    location.href = './myinfo.html'
                     break;
                 case 'myGroupList':
                     location.href = './myGroupList.html';

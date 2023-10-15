@@ -19,50 +19,20 @@
 
     <body>
         <header>
-            <div class="menu">
-                <a href="#" name="myinfo">회원 정보</a>
-                <span>｜</span>
-                <a href="#" name="myteam">마이 팀</a>
-            </div>
         </header>
         <nav>
             <!-- 사이트 로고 -->
             <a href="../HTML/main.html">
                 <img class="logo" src="../images/logoCut.png" alt="logo">
             </a>
-
-            <!-- 팀 이름 -->
-
-            <!-- 팀 프로필 -->
-            <form class="profile">
-            <div class="teamProfile">
-                <label for="f1"></label><input type="file" name="f1" id="f1">
-                <img class="teamProfileImg" src='#' alt="teamProfile">
-                </div>
-            </form>
-            <p class="membernickname">아이디</p>
-
             <!-- 메뉴 탭 -->
             <ul>
-                
-                <button class="button-hover" data="popup-form">
-                <span>팀 생성하기</span>
-                </button>
-            
-                <li><a href="#" class="myPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 마이페이지</a></li>
-                <li><a href="#" class="myGroupList">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 마이그룹목록</a></li>
-                <li id="exitTeam"><a href="#" class="logout">로그아웃</a></li>
+                <li><a href="#" name="myinfo">🙍‍♂️ 회원 정보</a></li>
+                <li><a href="#" name="myteam">🚩 마이 팀</a></li>
+                <li><a href="#" name="withdrawl">탈퇴하기</a></li>
             </ul>
         </nav>
         <section>
-            <div class="infobox">
-                <div class="infomenu">
-                    <ul>
-                        <li><a href="#" name="editinfo">내정보 수정</a></li>
-                        <li><a href="#" name="editpwd">비밀번호 수정</a></li>
-                    </ul>
-                    <a href="#" name="withdrawl">탈퇴하기</a>
-                </div>
                 <div class="myinfo">
                     <div class="leftbox">
                         <div class="imgbox">
@@ -70,9 +40,9 @@
                                 <div class="imgshow">
                                     <img src="../images/logo.png">
                                 </div>
-                                <input type="file" name="f1" id="f1"></input>
                                 <div class="filebuttons">
-                                    <button type="submit">저장</button>
+                                    <label> 프로필 지정 <input type="file" name="f1" id="f1"></input></label>
+                                    <button type="submit" name="profilesave">저장</button>
                                 </div>
                             </form>
                         </div>
@@ -120,7 +90,6 @@
 
                     </div>
                 </div>
-            </div>
         </section>
         <footer>
             <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
