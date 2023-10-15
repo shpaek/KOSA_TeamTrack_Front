@@ -21,10 +21,7 @@ $(()=>{
              "background":"conic-gradient("+colorname+" 0% "+i+"%, #ffffff "+i+"% 100%)"
         });
      }
-    //draw(50, 'div.attendance', '#ccc');
-    //draw(50, 'div.taskcomplete', '#8b22ff');
-
-
+  
     $.ajax({
         url: backURL+'/myactivity',
         method : 'get',
@@ -74,8 +71,10 @@ $(()=>{
 
         },
         error:(jqXHR, textStatus)=>{
-            alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
-            console.log(jqXHR)
+            Swal.fire({
+                icon: 'error',
+                text: '다시 한번 시도해주세요🙏'
+            })
         }
     })
 })

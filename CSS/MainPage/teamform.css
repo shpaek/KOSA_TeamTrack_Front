@@ -7,6 +7,9 @@
   display: block; /* Change 'none' to 'block' to make the file input visible */
 }
 
+.section{
+  height: 1600px;
+}
 .popup-form {
 
   overflow: auto;
@@ -490,4 +493,34 @@ nav>ul>li#exitTeam:hover {
 }
 #f1{
   display: none;
+}
+
+/*검색 버튼*/
+.dupchk {
+  display: inline-block;
+
+  padding: 5px 15px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #3498db;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* 버튼 호버 효과 */
+.dupchk:hover {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* 버튼 액티브 효과 */
+.dupchk:active {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  color: #fff;
 }

@@ -5,6 +5,10 @@ $(() => {
 
     console.log(teamNo);
     // 함수 정의: 페이지 데이터를 가져와서 화면에 렌더링하는 함수
+    console.log();
+
+    const loginedId = sessionStorage.getItem("loginedId")
+
     function ajaxHandler(cp) {
         $.ajax({
             xhrFields: {
@@ -13,12 +17,27 @@ $(() => {
             url: "http://localhost:8888/teamtrack/qnaboard",
             method: 'get',
             // data: `currentPage=${cp}&teamNo=64`,  // temaNo 값 가변적이여함
-            data: `currentPage=${cp}&teamNo=${teamNo}`,
+            // data: `currentPage=${cp}&teamNo=${teamNo}`,
+            data: {
+                currentPage: cp,
+                teamNo: teamNo,
+                loginedId: loginedId
+            },
             success: (responseJSONObj) => {
                 const boardList = responseJSONObj.list
+                // const memberList = responseJSONObj.memberInfo
 
                 // boardList 데이터 확인
                 console.log(boardList);
+
+                // 상태가 0이면 작성 버튼을 숨김
+                // if (memberInfo.status === 0) {
+                //     // 작성 버튼을 숨김
+                //     $('#writeButton').hide();
+                // } else {
+                //     // 작성 버튼을 표시
+                //     $('#writeButton').show();
+                // }
 
                 const $originTrObj = $('div.board>div.boardlist>table>thead>tr')
                 const $tbodyObj = $('div.board>div.boardlist>table>tbody')
@@ -91,7 +110,24 @@ $(() => {
 
     // 글 작성 버튼 클릭 시 새 글 작성 페이지로 이동
     $('div.board>div.write>button').on('click', (e) => {
-        location.href = `http://localhost:5500/HTML/qnaboardwrite.html?teamNo=${teamNo}`     // teamNo 값 가변적이여함
+        $.ajax({
+            xhrFields: {
+            withCredentials: true
+        },
+        url: `http://localhost:8888/teamtrack/qnaboardmemberchk`,
+        method: 'get',
+        data: `teamNo=${teamNo}`,
+        success: (responseJSONObj2) => {
+            if(responseJSONObj2.status === 0) {
+                Swal.fire({
+                    icon: 'question',
+                    text: responseJSONObj2.msg
+                })
+            } else if (responseJSONObj2.status === 1) {
+                location.href = `http://localhost:5500/HTML/qnaboardwrite.html?teamNo=${teamNo}`     // teamNo 값 가변적이여함
+            }
+        }
+    })
     })
 
     /* 'div.pagegroup' = 현재 돔 트리에 존재하는 객체 */
