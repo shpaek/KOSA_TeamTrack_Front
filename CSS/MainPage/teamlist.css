@@ -15,7 +15,7 @@ ul{
   text-align: center;
   float: left;
   padding: 0;
-  margin: 30px 10px;
+  margin: 30px 17px;
 }
 
 li{
@@ -69,6 +69,57 @@ li{
   text-decoration: underline;
 }
 
+/*페이징*/
 .pagegroup{
-  margin: 0 auto;
+  position: absolute;
+  top: 1400px;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width:300px; 
+  text-align: center;
+  margin-top: 500px;
+  margin-bottom: 50px;
+} 
+
+.pagegroup>span{
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 70px;
+}
+
+.pagegroup>span:disabled {
+  pointer-events: none;
+}
+
+.pagegroup>span:hover {
+  background-color: #000000;
+  color : white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.pagegroup>span:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+
+.toplogo{
+  text-align: center;
+}
+
+.topnine{
+  font-size: 60px;
+  margin: 0 auto
+}
+
+.crownimg{
+  width: 100px;
+  margin: 0;
+}
+
+.more{
+  height: 30px;
+  margin: 10px auto
 }
