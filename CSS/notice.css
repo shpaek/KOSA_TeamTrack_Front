@@ -272,3 +272,6 @@ td:nth-child(odd){
     color: #515151;
 }
 
+ul.nonHiddenTab>li>a{
+    margin-left: 0px;
+}
