@@ -5,12 +5,12 @@ $(()=>{
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
     const noticeNo = urlParams.get('noticeNo')
-
+    const loginedId = localStorage.getItem('loginedId')
 
     $.ajax({
         url: backURL+'/noticedetail',
         method : 'get',
-        data : `teamNo=${teamNo}&noticeNo=${noticeNo}`,
+        data : `teamNo=${teamNo}&noticeNo=${noticeNo}&loginedId=${loginedId}`,
         success: (responseJSONObj)=>{
             if(responseJSONObj.memStatus == 0){
                 $('div.noticedetail>div.setmainbutton>button').hide()
