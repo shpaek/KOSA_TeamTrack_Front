@@ -1,6 +1,13 @@
 const backURL = 'http://localhost:8888/teamtrack'
 const frontURL = 'http://localhost:5500/HTML'
+function characterCheck(obj) {
+    var regExp = /#/gi;
 
+    if (regExp.test(obj.value)) {
+        alert("#는 입력할 수 없습니다.");
+        obj.value = obj.value.substring(0, obj.value.length - 1);
+    }
+}
 
 $(() => {
     //DOM트리에서 section객체찾기
@@ -54,6 +61,22 @@ $(() => {
         })
     }) // $btDupChk.click
     // ----- 중복확인 버튼 클릭했을대 할 일 END -----
+
+
+    //해시태그 중복 입력 방지
+    const hashtagInputs = $('.form__field_hashtag');
+
+    hashtagInputs.on('blur', function (e) {
+        const currentValue = $(this).val();
+        hashtagInputs.each(function () {
+            if (this !== e.target && $(this).val() === currentValue) {
+                $(e.target).val('').focus();
+            }
+            
+        });
+    });
+
+
 
 
     const $form = $('div>form.form')

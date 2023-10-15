@@ -9,8 +9,6 @@ $(() => {
 			var startDate = $(this).datepicker('getDate');
 			var minDate = $(this).datepicker('getDate');
 			endDate.datepicker('setDate', minDate);
-			startDate.setDate(startDate.getDate() + 30);
-			endDate.datepicker('option', 'maxDate', startDate);
 			endDate.datepicker('option', 'minDate', minDate);
 		}
 	});
@@ -123,7 +121,7 @@ $(() => {
              }
 
              if(endPage != responseJSONObj.totalPage){
-                 let page = `[<span class="pg${endPage + 1}">NEXT</span>]`
+                 let page = `[<span class="pg${endPage + 1}">&#10157;</span>]`
                  $divPageGroup.html($divPageGroup.html()+page)
              }
 
