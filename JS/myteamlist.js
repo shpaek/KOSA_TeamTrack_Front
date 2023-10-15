@@ -54,7 +54,11 @@ $(()=>{
                                 }
                               }
                             },
-                            error: (jqxhr) => {},
+                            error: (jqxhr) => {
+                                Swal.fire({
+                                icon: 'error',
+                                text: '새로고침 해주세요🙏'
+                            })},
                           });
                         $copyObj.find("div.team>a[name=teamname]").html(teamName)
     
@@ -84,8 +88,10 @@ $(()=>{
                 }
             },
             error:(jqXHR, textStatus)=>{
-                alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
-                console.log(jqXHR)
+                Swal.fire({
+                    icon: 'error',
+                    text: '새로고침 해주세요🙏'
+                })
                 return false
             }
         })
@@ -133,7 +139,12 @@ $(()=>{
                                 }
                               }
                             },
-                            error: (jqxhr) => {},
+                            error: (jqxhr) => {
+                                Swal.fire({
+                                    icon: 'error',
+                                    text: '새로고침 해주세요🙏'
+                                })
+                            },
                           });
 
                         $copyObj.find("div.reject>a[name=reject_teamname]").html(teamName)
@@ -164,8 +175,10 @@ $(()=>{
                 }
             },
             error:(jqXHR, textStatus)=>{
-                alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
-                console.log(jqXHR)
+                Swal.fire({
+                    icon: 'error',
+                    text: '새로고침 해주세요🙏'
+                })
                 return false
             }
         })
@@ -247,8 +260,10 @@ $(()=>{
                 $('div.teamlist>ul>li>div>button[name=cancel]').show()
             },
             error:(jqXHR)=>{
-                alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
-                console.log(jqXHR)
+                Swal.fire({
+                    icon: 'error',
+                    text: '새로고침 해주세요🙏'
+                })
                 return false
             }
         })
@@ -258,33 +273,45 @@ $(()=>{
     //---- 승인대기 취소 -----
     $(document).on('click', 'div.team>button[name=cancel]', function(e) {
         const teamNo = $(e.target).siblings(':eq(0)').text()
-        var result = confirm("대기를 취소하시겠습니까?")
-        if(result == true){
-            $.ajax({
-                url: backURL+'/cancelwaiting',
-                method : 'get',
-                data : `teamNo=${teamNo}`,
-                success: (responseJSONObj)=>{
-                    if(responseJSONObj.status==1){
-                        alert(responseJSONObj.msg)
-                    }else{
-                        alert(responseJSONObj.msg)
+        Swal.fire({
+            icon: 'question',
+            text: '삭제하시겠습니까?',
+
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+            cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+            confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+            cancelButtonText: '취소',
+        }).then(result => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: backURL+'/cancelwaiting',
+                    method : 'get',
+                    data : `teamNo=${teamNo}`,
+                    success: (responseJSONObj)=>{
+                        if(responseJSONObj.status==1){
+                            alert(responseJSONObj.msg)
+                        }else{
+                            alert(responseJSONObj.msg)
+                        }
+                        ajaxHandler_reject(1)
+                        ajaxHandler(1, 3)
+                        $('div.teamlist>h1').show()
+                        $('div.teamlist>ul>li>div>button[name=activity]').hide()
+                        $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
+                        $('div.teamlist>ul>li>div>button[name=cancel]').show()
+                    },
+                    error:(jqXHR)=>{
+                        Swal.fire({
+                            icon: 'warning',
+                            text: '다시 한번 시도해주세요🙏'
+                        })
                     }
-                    ajaxHandler_reject(1)
-                    ajaxHandler(1, 3)
-                    $('div.teamlist>h1').show()
-                    $('div.teamlist>ul>li>div>button[name=activity]').hide()
-                    $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
-                    $('div.teamlist>ul>li>div>button[name=cancel]').show()
-                },
-                error:(jqXHR)=>{
-                    alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
-                    console.log(jqXHR)
-                }
-            })
-        }else{
-            return false
-        }
+                })
+            }else{
+                return false
+            }
+        })
         return false
     })
 
