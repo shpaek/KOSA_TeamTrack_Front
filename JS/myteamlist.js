@@ -1,6 +1,8 @@
 $(()=>{
-    const backURL = 'http://localhost:8888/KOSA_Project2'
+    const backURL = 'http://localhost:8888/teamtrack'
     const frontURL = 'http://localhost:5500/HTML'
+
+    var menustatus=1
 
 
     // ------------------- 참여중/활동종료/승인대기 팀목록 ----------------------------
@@ -29,7 +31,25 @@ $(()=>{
                         $copyObj.find("div.team>img.leader").css('visibility', 'visible')
                     }
 
-                    $copyObj.find("div.team>img.logo").attr('src','../images/'+teamName+'.png')
+
+                    $.ajax({
+                        xhrFields: {
+                          responseType: "blob",
+                        },
+                        url: backURL + "/download",
+                        data: "teamNo=" + teamNo + "&opt=profile",
+                        success: (responseData) => {
+                          if (responseData.size > 0) {
+                            const url = URL.createObjectURL(responseData);
+                            if(responseData!=null){
+                                $copyObj.find("div.team>img.logo").attr("src", url);
+                            }else{
+                                $copyObj.find("div.team>img.logo").attr('src','../images/'+teamName+'.png')
+                            }
+                          }
+                        },
+                        error: (jqxhr) => {},
+                      });
                     $copyObj.find("div.team>a[name=teamname]").html(teamName)
 
                     $('div.teamlist>ul').append($copyObj)
@@ -44,15 +64,15 @@ $(()=>{
                 const endPage = responseJSONObj.endPage //끝페이지
 
                 if(startPage>1){
-                    let page = `[<span class="pg${startPage-1}">PREV</span>]&nbsp;&nbsp;&nbsp;`
+                    let page = `ㅣ<span class="pg${startPage-1}">PREV</span>ㅣ&nbsp;&nbsp;&nbsp;`
                     $divPageGroup.html($divPageGroup.html()+page)
                 }
                 for(let i = startPage; i<=endPage; i++){
-                    let page=`[<span class="pg${i}">${i}</span>]&nbsp;&nbsp;&nbsp;`
+                    let page=`<span class="pg${i}">${i}</span>&nbsp;&nbsp;&nbsp;`
                     $divPageGroup.html($divPageGroup.html()+page)
                 }
                 if(endPage!=responseJSONObj.totalPage){
-                    let page=`[<span class="pg${endPage+1}">NEXT</span>]`
+                    let page=`ㅣ<span class="pg${endPage+1}">NEXT</span>ㅣ`
                     $divPageGroup.html($divPageGroup.html()+page)
                 }
             },
@@ -87,7 +107,25 @@ $(()=>{
 
                         $copyObj.find("div.reject>span[name=reject_teamno]").html(teamNo)
 
-                        $copyObj.find("div.reject>img.reject_logo").attr('src','../images/'+teamName+'.png')
+                        $.ajax({
+                            xhrFields: {
+                              responseType: "blob",
+                            },
+                            url: backURL + "/download",
+                            data: "teamNo=" + teamNo + "&opt=profile",
+                            success: (responseData) => {
+                              if (responseData.size > 0) {
+                                const url = URL.createObjectURL(responseData);
+                                if(responseData!=null){
+                                    $copyObj.find("div.reject>img.reject_logo").attr("src", url);
+                                }else{
+                                    $copyObj.find("div.reject>img.reject_logo").attr('src','../images/'+teamName+'.png')
+                                }
+                              }
+                            },
+                            error: (jqxhr) => {},
+                          });
+
                         $copyObj.find("div.reject>a[name=reject_teamname]").html(teamName)
 
                         $('div.rejectlist>ul').append($copyObj)
@@ -102,15 +140,15 @@ $(()=>{
                     const endPage = responseJSONObj.endPage //끝페이지
 
                     if(startPage>1){
-                        let page = `[<span class="pg${startPage-1}">PREV</span>]&nbsp;&nbsp;&nbsp;`
+                        let page = `ㅣ<span class="pg${startPage-1}">PREV</span>ㅣ&nbsp;&nbsp;&nbsp;`
                         $divPageGroup.html($divPageGroup.html()+page)
                     }
                     for(let i = startPage; i<=endPage; i++){
-                        let page=`[<span class="pg${i}">${i}</span>]&nbsp;&nbsp;&nbsp;`
+                        let page=`<span class="pg${i}">${i}</span>&nbsp;&nbsp;&nbsp;`
                         $divPageGroup.html($divPageGroup.html()+page)
                     }
                     if(endPage!=responseJSONObj.totalPage){
-                        let page=`[<span class="pg${endPage+1}">NEXT</span>]`
+                        let page=`ㅣ<span class="pg${endPage+1}">NEXT</span>ㅣ`
                         $divPageGroup.html($divPageGroup.html()+page)
                     }
                 }
@@ -123,37 +161,59 @@ $(()=>{
     }
 
     //---- 팀 조회 메인 ----
-    ajaxHandler(1 ,1)
+    ajaxHandler(1 ,menustatus)
 
 
     //---- 참여중 팀 ----
-    $('ul.myteamtab>li>a[name=active]').click(()=>{
+    $('ul.myteamtab>li>div.active').click(()=>{
         $('div.teamlist>h1').hide()
-        ajaxHandler(1, 1)
+        menustatus=1
+        ajaxHandler(1, menustatus)
         $('div.rejectlist').hide()
         $('div.teamlist>ul>li>div>button[name=activity]').show()
         $('div.teamlist>ul>li>div>button[name=withdrawl]').show()
         $('div.teamlist>ul>li>div>button[name=cancel]').hide()
+        $('div.active').css("background-color", '#cccccc')
+        $('div.end').css("background-color", 'white')
+        $('div.waiting').css("background-color", 'white')
     })
 
     //---- 활동종료 팀 ----
-    $('ul.myteamtab>li>a[name=end]').click(()=>{
-        ajaxHandler(1, 2)
+    $('ul.myteamtab>li>div.end').click(()=>{
+        menustatus=2
+        ajaxHandler(1, menustatus)
         $('div.rejectlist').hide()
         $('div.teamlist>h1').hide()
         $('div.teamlist>ul>li>div>button[name=activity]').show()
         $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
         $('div.teamlist>ul>li>div>button[name=cancel]').hide()
+        $('div.active').css("background-color", 'white')
+        $('div.end').css("background-color", '#cccccc')
+        $('div.waiting').css("background-color", 'white')
     })
 
     //---- 승인대기 팀 ----
-    $('ul.myteamtab>li>a[name=waiting]').click(()=>{
+    $('ul.myteamtab>li>div.waiting').click(()=>{
         ajaxHandler_reject(1)
-        ajaxHandler(1, 3)
+        menustatus=3
+        ajaxHandler(1, menustatus)
         $('div.teamlist>h1').show()
         $('div.teamlist>ul>li>div>button[name=activity]').hide()
         $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
         $('div.teamlist>ul>li>div>button[name=cancel]').show()
+        $('div.active').css("background-color", 'white')
+        $('div.end').css("background-color", 'white')
+        $('div.waiting').css("background-color", '#cccccc')
+    })
+
+    $(document).on('click', 'div.team>a[name=reject_teamname]', function(e) {
+        const teamNo=$(e.target).siblings(':eq(0)').text()
+        location.href=`${frontURL}/teammain.html?teamNo=${teamNo}`
+    })
+
+    $(document).on('click', 'div.team>a[name=teamname]', function(e) {
+        const teamNo=$(e.target).siblings(':eq(0)').text()
+        location.href=`${frontURL}/teammain.html?teamNo=${teamNo}`
     })
 
     //---- 승인거절 알림 확인 -----
@@ -215,18 +275,23 @@ $(()=>{
         }
         return false
     })
+
+    $(document).on('click', 'div.team>button[name=activity]', function(e) {
+        const teamNo=$(e.target).siblings(':eq(0)').text()
+        location.href=`${frontURL}/myactivity.html?teamNo=${teamNo}`
+    })
     
     //---- 페이지 ----
     $('div.rejectlist>div.pagegroup_reject').on('click','span',(e)=>{ 
         const pg = $(e.target).attr('class')
         const currentPage = pg.substr(2)
-        ajaxHandler(currentPage)
+        ajaxHandler_reject(currentPage)
     }) 
 
     $('div.teamlist>div.pagegroup_team').on('click','span',(e)=>{ 
         const pg = $(e.target).attr('class')
         const currentPage = pg.substr(2)
-        ajaxHandler(currentPage)
+        ajaxHandler(currentPage,menustatus)
     }) 
  
 })

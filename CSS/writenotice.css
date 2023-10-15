@@ -39,7 +39,7 @@ input[name=title]{
 }
 
 
-/*첨부파일 버튼*/
+/* 첨부파일 버튼*/
 input[type=file]::file-selector-button{
     cursor: pointer;
     width : 100px;

@@ -4,18 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TeamTrack!!</title>
 
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="../images/favicon.ico" rel="icon">
     <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
     <link rel="stylesheet" href="../CSS/MainPage/teamform.css" />
+        <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
-
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
- 
+
+
+    <!-- SweetAlert2 JS 스크립트 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     
+ 
+   
     <script src="../JS/MainPage/teamcreate.js"></script>
-    <script src="../JS/MainPage/main.js"></script>
+   
 
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
@@ -56,8 +62,8 @@
                 <span>팀 생성하기</span>
                 </button>
 
-                <li><a href="#" class="myPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 마이페이지</a></li>
-                <li><a href="#" class="myGroupList">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 마이그룹목록</a></li>
+                <li><a href="#" class="myPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127939; 마이페이지</a></li>
+                <li><a href="#" class="myGroupList">&nbsp;&nbsp;&nbsp;&nbsp;&#128203; 마이그룹목록</a></li>
                 <li id="exitTeam"><a href="#" class="logout">로그아웃</a></li>
             </ul>
         </nav>
@@ -66,10 +72,12 @@
   <div class="popup-form__wrapper">
     <div class="popup-form__close"></div>
     <div class="popup-form__content">
-      <h3 class="form__title">팀 생성하기</h3>
+      <h3 class="form__title">팀 생성하기</h3><br>
       <form class="form" id="popupform" method="post" enctype="multipart/form-data">
-        <label for="f1">프로필:</label><input type="file" name="f1" id="f1"/>
-        <img class="teamProfileImg2" src='../images/rocket.png' alt="teamProfile2">
+        <div class ="profileImageDiv" >
+        <label for="f1"></label><input type="file" name="f1" id="f1"/>
+        <img id="profileImage" class="teamProfileImg2" src='../images/rocket.png' alt="teamProfile2">
+      </div>
 
         <div class="formgroup">
           <label for="teamName" class="formgroup__text">팀명:</label>

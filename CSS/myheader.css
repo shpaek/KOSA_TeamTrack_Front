@@ -60,58 +60,11 @@ nav {
     padding: 10px 20px 0px 20px; 
   }
   
-  
-  /* 팀 이름 */
-  .membernickname {
-    text-align: center;
-    font-weight: bold;
-  
-    font-size: 20px;
-  
-    margin:auto;
-  }
-  
-  /* 프로필 전체 영역 */
-  .teamProfile {
-    width: 180px;
-    height: 180px;
-  
-    border: 2px solid white; /* 영역 표시 */
-    border-radius: 50%;
-    
-    overflow: hidden;   /* 영역 벗어나는 이미지 숨김 처리 */
-    
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-  
-  /* 프로필 편집 버튼 */
-  .teamProfileEdit{
-    text-align: center;
-    cursor: pointer;
-  
-    width: 100%;
-    height: 50px;
-  
-    margin-top: 70%;
-    padding: 5px 0px 0px 0px;
-  
-    background-color: rgb(131, 131, 131);
-  }
-  
-  /* 프로필 사이즈 조절 */
-  .teamProfileImg {
-    object-fit: cover;  /* 영역 내에 이미지 꽉 채우기 */
-    
-    width: 100%;
-    height: 100%;
-  }
-  
   /* 메뉴 탭 영역 */
   nav ul {
     list-style-type: none;
     padding: 0;
+    padding-top: 100px;
   }
   
   /* 메뉴 탭들 */
@@ -139,8 +92,8 @@ nav {
   }
   
   /* 팀 나가기 호버 안했을 때 */
-  nav>ul>li#exitTeam {
-    display: flex;  /* 요소를 화면에 보이게 함 */
+  nav>ul>li>a[name=withdrawl] {
+    display: flex;   
     position: absolute;
   
     margin-top: 90px;
