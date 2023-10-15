@@ -8,6 +8,7 @@
     <title>TeamTrack!!</title>
 
     <link href="../images/favicon.ico" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
@@ -19,9 +20,11 @@
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-        <!-- JavaScript -->
-        <script src="../JS/TeamPage/teamMain.js"></script>
-        <script src="../JS/MainPage/teamsearch.js"></script>
+    <!-- JavaScript -->
+    <script src="../JS/TeamPage/teamMain.js"></script>
+    <script src="../JS/MainPage/teamsearch.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
     <!-- font -->
     <style>
@@ -34,13 +37,9 @@
         <header>
             <!-- 검색창 -->
             <div class="searchBar">
-                <input
-                  type="text"
-                  placeholder="검색을 하삼"
-                  id="mainsearch"
-                />
-                <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon"/>
-              </div>
+                <input type="text" placeholder="팀명 또는 #을 포함하여 해시태그를 검색" id="mainsearch" />
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon" />
+            </div>
         </header>
 
         <!-- 사이드 메뉴바 -->
@@ -85,6 +84,11 @@
         <!-- 컨텐츠 영역 -->
         <section class="section">
 
+            <!-- 팀 이름 -->
+            <div class="teamNameDiv">
+                <p class="teamNameShow"></p>
+            </div>
+
             <!-- 팀 조회수 -->
             <div class="teamViewCnt">
                 <span class="teamCntViewSpan1">👁‍🗨 팀 조회수: </span>
@@ -127,8 +131,9 @@
             <!-- 팝업 -->
             <form id="teamJoin" action="/#" method="POST" style="display: none;">
                 <p>&#127881; 팀 가입 &#127881;</p>
-                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요! (최대 200자)"
-                    required rows="5" cols="50" maxlength="200"></textarea>
+                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction"
+                    placeholder="팀 가입을 위한 자기소개를 입력해주세요! (최대 200자)" required rows="5" cols="50"
+                    maxlength="200"></textarea>
                 <button type="submit" id="requestJoinTeamBtn">가입요청</button>
             </form>
         </aside>

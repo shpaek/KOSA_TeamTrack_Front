@@ -35,19 +35,16 @@ nav>a>img.logo {
 
 /* 팀 이름 */
 .teamNameDiv {
-    text-align: left;
+    text-align: center;
     font-weight: bold;
 
-    font-size: 20px;
-
-    padding: 0px 0px 0px 20px; 
-
-    margin-left: 20px;
-    margin-bottom: 5px;
+    /* margin-left: 90px; */
 }
 
 .teamNameShow {
     margin: auto;
+
+    font-size: 18px;
 }
 
 /* 프로필 전체 영역 */
@@ -62,7 +59,7 @@ nav>a>img.logo {
     
     margin: auto;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 /* 프로필 편집 버튼 */

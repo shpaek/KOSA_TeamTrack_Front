@@ -11,6 +11,7 @@ $(() => {
             },
             success: (responseJSONObj) => {
                 const methodResponse = responseJSONObj.method;
+
                 if (methodResponse && methodResponse.attendanceList) {
                     const list = methodResponse.attendanceList;
                     const $attendanceDiv = $('div.attendance2').first();
@@ -44,11 +45,12 @@ $(() => {
             },
             success: (responseJSONObj) => {
                 const statusResponse = responseJSONObj.statusMap;
-                console.log(responseJSONObj);
-                if (statusResponse && statusResponse.status === 2) {
-                    alert(statusResponse.msg);
+                // console.log(responseJSONObj);
+
+                // statusResponse.status 값이 2인 경우(즉, 이미 오늘 출석했다는 의미), 출석 버튼을 비활성화
+                if (statusResponse && statusResponse.status === 2) {   
                     $(".attendanceBtn").prop("disabled", true);
-                } else {
+                } else {    // 아직 출석 X
                     $(".attendanceBtn").prop("disabled", false);
                 }
             }
@@ -67,11 +69,11 @@ $(() => {
             },
             success: (responseJSONObj) => {
                 const statusResponse = responseJSONObj.statusMap;
-                alert(statusResponse.msg);
-                if (statusResponse && statusResponse.status === 2) {
+                // alert(statusResponse.msg);
+                if (statusResponse && statusResponse.status === 2) {    // 이미 출석함
                     alert('오늘 이미 출석하셨습니다!');
                     $(".attendanceBtn").prop("disabled", true);
-                } else {
+                } else {    // 안함!
                     refreshAttendanceList();
                 }
             },
