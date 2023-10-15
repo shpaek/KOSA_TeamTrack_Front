@@ -1,4 +1,5 @@
 const backURL = "http://localhost:8888/teamtrack"
+// const backURL = "http://localhost:8080/KOSA_TeamTrack_Back"
 const frontURL = "http://localhost:5500/HTML"
 const id = sessionStorage.getItem("loginedId")
 const teamNo = new URL(location.href).searchParams.get("teamNo")
@@ -24,10 +25,10 @@ $(() => {
                 break;
 
             case 'taskBoard':
-                // const taskteamno=60
+                const taskteamno=60
                 // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                localStorage.setItem('taskteamno', teamNo)
-                location.href = './taskboard.html?teamNo='+teamNo
+                localStorage.setItem('taskteamno', taskteamno)
+                location.href = './taskboard.html?teamNo='+taskteamno
                 //location.href = './taskboard.html&teamNo='+teamNo
                 break;
 
