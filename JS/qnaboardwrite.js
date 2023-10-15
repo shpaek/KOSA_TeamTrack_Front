@@ -29,10 +29,17 @@ $(() => {
             success: (responseJSONObj) => {
                 console.log(responseJSONObj)
                 if (responseJSONObj.status == 1) {
-                    alert(responseJSONObj.msg)
+                    // alert(responseJSONObj.msg)
+                    Swal.fire({
+						icon: 'success',
+						text: responseJSONObj.msg
+					})
                     location.href = `http://localhost:5500/HTML/qnaboard.html?teamNo=${teamNo}`
                 } else {
-                    alert(responseJSONObj.msg)
+                    Swal.fire({
+						icon: 'warning',
+						text: responseJSONObj.msg
+					})
                 }
             },
             error: (jqxhr) => {
