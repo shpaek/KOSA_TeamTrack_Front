@@ -193,12 +193,17 @@ $(()=>{
                         }).then(result=>{
                             location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
                         })
-                    }else if(responseJSONObj.mainStatus==0){
+                    }else if(responseJSONObj.mainstatus==0){
                         Swal.fire({
                             icon: 'warning',
                             text: responseJSONObj.mainmsg
                         }).then(result=>{
                             
+                        })
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            text: '다시 한번 시도해주세요🙏'
                         })
                     }
                 },
