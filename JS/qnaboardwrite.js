@@ -7,9 +7,13 @@ $(() => {
     $formObj.submit((e) => {
         e.preventDefault(); // 기본 제출 동작을 중지합니다.
 
-        alert("in submit")
+        const loginedId = sessionStorage.getItem("loginedId")
+
+        console.log("loginedId", loginedId);
+
         const formData = new FormData(e.target);
         formData.append("teamNo", teamNo);
+        formData.append("loginedId", loginedId);
 
         for (const [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
