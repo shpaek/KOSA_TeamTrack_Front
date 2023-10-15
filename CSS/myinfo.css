@@ -8,34 +8,17 @@ section{
     padding: 30px;
 }
 
-.infobox{
-    width:1000px;
-    height:500px;
-}
-
-.infomenu{
-    width:20%;
-    height:500px;
-    float:left;
-    border : solid 1px;
-    box-sizing: border-box;
-    border-color: #CCCCCC;
-    border-radius: 20px;
-}
-
-.infomenu>ul>li{
-    list-style: none;
-}
 
 /*편집 영역*/
 
 .myinfo{
-    width:80%;
+    width:1000px;
     height:500px;
     padding:20px;
     padding-top:50px;
     padding-bottom:50px;
-    float:left;
+    margin-top: 50px;
+    margin-bottom: 50px;
     border : solid 1px;
     box-sizing: border-box;
     border-color: #CCCCCC;
@@ -45,11 +28,13 @@ section{
 .leftbox{
     margin:0 auto;
     width:50%;
+    height:400px;
     float:left;
     padding:20px;
     padding:5px;
     box-sizing: border-box;
     border : none;
+    border-right:solid 1px  #CCCCCC;
 }
 
 .rightbox{
@@ -68,6 +53,7 @@ section{
 .imgshow{
     width: 100px;
     height: 100px; 
+    margin:5px;
     border : solid 1px #959595;
     border-radius: 70%;
     overflow: hidden;
@@ -78,6 +64,52 @@ section{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.filebuttons{
+    padding:5px;
+}
+
+/*첨부파일 버튼*/
+.writebuttons>label>input[name=f1]::file-selector-button{
+    cursor: pointer;
+    width : 100px;
+    height : 25px;
+    background-color: white;
+    border-radius: 15px;
+    border:solid 1px #cccccc;
+    font-size: 15px;
+    color : #979797;
+    appearance: none;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    text-align: center;
+}
+
+input[type=file]::file-selector-button:disabled {
+    pointer-events: none;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background-color: #343434;
+    color:white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  input[type=file]::file-selector-button:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+button[name=profilesave]{
+    
 }
 
 /*닉네임 박스*/
@@ -148,7 +180,7 @@ input[name=nickname]{
 
 
 .nicknameeditline>button[type=submit]{
-    /*display:none;*/
+    display:none;
 }
 
 
@@ -160,10 +192,14 @@ input[name=nickname]{
 
 span[name=requiremsg]{
     display:none;
+    color:red;
+    font-size: 12px;
 }
 
 span[name=okmsg]{
     display:none;
+    color:green;
+    font-size: 12px;
 }
 
 .info{
