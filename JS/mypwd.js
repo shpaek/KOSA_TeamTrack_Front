@@ -36,6 +36,18 @@ $(()=>{
 
         if(pwd==pwd2){
             $('span[name=alert]').hide()
+        }else{
+            $('span[name=alert]').show()
+        }
+
+        if (!strongPassword($('input[name=newpwd]').val())) {
+			Swal.fire({
+				icon: 'warning',
+				text: '비밀번호는 8자 이상이어야 하며, 영문, 숫자, 특수문자를 포함해야 합니다.'
+			})
+			$('input[name=newpwd]').focus();
+			$('input[name=newpwd]').select();
+		}else{
             $.ajax({
                 xhrFields:{
                     withCredentials : true
@@ -56,8 +68,6 @@ $(()=>{
                     alert(jqxhr.status)
                 }
             })
-        }else{
-            $('span[name=alert]').show()
         }
         return false
     })

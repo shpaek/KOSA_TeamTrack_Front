@@ -132,12 +132,6 @@ button[name=profilesave]{
 
 input[name=nickname]{
     width:140px;
-    padding-bottom: 10px;
-    outline: none;
-    border: solid 2px #cccccc;
-    border-top:none;
-    border-left:none;
-    border-right:none;
     font-size: 13px;
 }
 
@@ -251,3 +245,5 @@ div.savebutton{
     box-shadow: none;
     transform: translateY(0);
   }
+
+  

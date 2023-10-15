@@ -14,73 +14,82 @@ $(()=>{
             data : `currentPage=${cp}&menustatus=${menustatus}`,
             success: (responseJSONObj)=>{
                 const teamList = responseJSONObj.list
-  
-                const $originObj = $('div.teamlist>ul>li').first()
-                $originObj.siblings().remove() 
-                $originObj.show()
 
-                $(teamList).each((index, p)=>{
-                    const $copyObj = $originObj.clone()
-                    const teamNo = p.teamNo
-                    const teamName = p.teamName
-                    const status = p.status
-
-                    $copyObj.find("div.team>span[name=teamno]").html(teamNo)
-
-                    if(status==3){
-                        $copyObj.find("div.team>img.leader").css('visibility', 'visible')
+                if(teamList.length==0){
+                    $('div.teamlist').hide()
+                    $('span.nothing').show()
+                }else{
+                    $('div.teamlist').show()
+                    $('span.nothing').hide()
+                    const $originObj = $('div.teamlist>ul>li').first()
+                    $originObj.siblings().remove() 
+                    $originObj.show()
+    
+                    $(teamList).each((index, p)=>{
+                        const $copyObj = $originObj.clone()
+                        const teamNo = p.teamNo
+                        const teamName = p.teamName
+                        const status = p.status
+    
+                        $copyObj.find("div.team>span[name=teamno]").html(teamNo)
+    
+                        if(status==3){
+                            $copyObj.find("div.team>img.leader").css('visibility', 'visible')
+                        }
+    
+    
+                        $.ajax({
+                            xhrFields: {
+                              responseType: "blob",
+                            },
+                            url: backURL + "/download",
+                            data: "teamNo=" + teamNo + "&opt=profile",
+                            success: (responseData) => {
+                              if (responseData.size > 0) {
+                                const url = URL.createObjectURL(responseData);
+                                if(responseData!=null){
+                                    $copyObj.find("div.team>img.logo").attr("src", url);
+                                }else{
+                                    $copyObj.find("div.team>img.logo").attr('src','../images/'+teamName+'.png')
+                                }
+                              }
+                            },
+                            error: (jqxhr) => {},
+                          });
+                        $copyObj.find("div.team>a[name=teamname]").html(teamName)
+    
+                        $('div.teamlist>ul').append($copyObj)
+                    })
+                    $originObj.hide()
+    
+    
+                    const $divPageGroup = $('div.teamlist>div.pagegroup_team')
+                    $divPageGroup.empty() 
+    
+                    const startPage = responseJSONObj.startPage //시작페이지
+                    const endPage = responseJSONObj.endPage //끝페이지
+    
+                    if(startPage>1){
+                        let page = `ㅣ<span class="pg${startPage-1}">PREV</span>ㅣ&nbsp;&nbsp;&nbsp;`
+                        $divPageGroup.html($divPageGroup.html()+page)
                     }
-
-
-                    $.ajax({
-                        xhrFields: {
-                          responseType: "blob",
-                        },
-                        url: backURL + "/download",
-                        data: "teamNo=" + teamNo + "&opt=profile",
-                        success: (responseData) => {
-                          if (responseData.size > 0) {
-                            const url = URL.createObjectURL(responseData);
-                            if(responseData!=null){
-                                $copyObj.find("div.team>img.logo").attr("src", url);
-                            }else{
-                                $copyObj.find("div.team>img.logo").attr('src','../images/'+teamName+'.png')
-                            }
-                          }
-                        },
-                        error: (jqxhr) => {},
-                      });
-                    $copyObj.find("div.team>a[name=teamname]").html(teamName)
-
-                    $('div.teamlist>ul').append($copyObj)
-                })
-                $originObj.hide()
-
-
-                const $divPageGroup = $('div.teamlist>div.pagegroup_team')
-                $divPageGroup.empty() 
-
-                const startPage = responseJSONObj.startPage //시작페이지
-                const endPage = responseJSONObj.endPage //끝페이지
-
-                if(startPage>1){
-                    let page = `ㅣ<span class="pg${startPage-1}">PREV</span>ㅣ&nbsp;&nbsp;&nbsp;`
-                    $divPageGroup.html($divPageGroup.html()+page)
-                }
-                for(let i = startPage; i<=endPage; i++){
-                    let page=`<span class="pg${i}">${i}</span>&nbsp;&nbsp;&nbsp;`
-                    $divPageGroup.html($divPageGroup.html()+page)
-                }
-                if(endPage!=responseJSONObj.totalPage){
-                    let page=`ㅣ<span class="pg${endPage+1}">NEXT</span>ㅣ`
-                    $divPageGroup.html($divPageGroup.html()+page)
+                    for(let i = startPage; i<=endPage; i++){
+                        let page=`<span class="pg${i}">${i}</span>&nbsp;&nbsp;&nbsp;`
+                        $divPageGroup.html($divPageGroup.html()+page)
+                    }
+                    if(endPage!=responseJSONObj.totalPage){
+                        let page=`ㅣ<span class="pg${endPage+1}">NEXT</span>ㅣ`
+                        $divPageGroup.html($divPageGroup.html()+page)
+                    }
                 }
             },
             error:(jqXHR, textStatus)=>{
                 alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
                 console.log(jqXHR)
+                return false
             }
         })
+  
     }
 
     //---------------------------- 거절된 팀목록 -------------------------------------
@@ -92,8 +101,9 @@ $(()=>{
             success: (responseJSONObj)=>{
                 const teamList = responseJSONObj.list
 
-                if(teamList == null){
+                if(teamList.length==0){
                     $('div.rejectlist').hide()
+                    $('span.nothing').show()
                 }else{
                     $('div.rejectlist').show()
                     const $originObj = $('div.rejectlist>ul>li').first()
@@ -156,6 +166,7 @@ $(()=>{
             error:(jqXHR, textStatus)=>{
                 alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
                 console.log(jqXHR)
+                return false
             }
         })
     }
@@ -238,6 +249,7 @@ $(()=>{
             error:(jqXHR)=>{
                 alert(jqXHR.readyState+":"+jqXHR.status+":"+jqXHR.statusText)
                 console.log(jqXHR)
+                return false
             }
         })
         return false

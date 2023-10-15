@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../css/deleteaccount.css">
+        <link rel="stylesheet" href="../css/myheader.css">
  
         <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
         <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
@@ -11,34 +12,35 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="../js/deleteaccount.js"></script> 
+        <script src="../js/myheader.js"></script> 
     </head>
 
     <body>
         <header>
-            <div class="menu">
-                <a href="#" name="myinfo">회원 정보</a>
-                <a href="#" namd="myteam">마이 팀</a>
-            </div>
         </header>
         <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+            <!-- 메뉴 탭 -->
+            <ul>
+                <li><a href="#" name="myinfo">🙍‍♂️ 회원 정보</a></li>
+                <li><a href="#" name="myteam">🚩 마이 팀</a></li>
+                <li><a href="#" name="withdrawl">탈퇴하기</a></li>
+            </ul>
         </nav>
         <section>
-            <div class="myinfo">
-                <div class="infomenu">
-                    <ul>
-                        <li><a href="#">내정보 수정</a></li>
-                        <li><a href="#">비밀번호 수정</a></li>
-                    </ul>
-                    <a href="#">탈퇴하기</a>
+            <div class="withdrawldiv">
+                <div class="content">
+                    <p>사용하고 계신 아이디는 탈퇴할 경우 재사용 및 복구가 불가능합니다.</p><br>
+                    <p>탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다.</p>
                 </div>
+                <form class="agree">
+                    <input type="checkbox" id="status" name="status" value="0">안내 사항을 모두 확인하였으며, 이에 동의합니다.</input>
+                    <br><button type="submit">확인</button>
+                </form>
             </div>
-            <div class="content">
-                <p>탈퇴하면 이러이러이러한데 정말정말 진짜진짜 리얼로 탈퇴하시겠습니까?</p>
-            </div>
-            <form class="agree">
-                <input type="checkbox" id="status" name="status" value="0">안내 사항을 모두 확인하였으며, 이에 동의합니다.</input>
-                <button type="submit">확인</button>
-            </form>
         </section>
         <footer>
             
