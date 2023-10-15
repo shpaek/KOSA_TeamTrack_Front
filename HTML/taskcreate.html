@@ -9,18 +9,18 @@
 
     <link href="../images/favicon.ico" rel="icon">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
-    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
-    <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
-    <link rel="stylesheet" href="../CSS/taskboard.css">
-    <link rel="stylesheet" href="../CSS/taskcreate.css">
-
     <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
     <!-- SweetAlert2 JS 스크립트 불러오기 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
+    <link rel="stylesheet" href="../CSS/taskboard.css">
+    <link rel="stylesheet" href="../CSS/taskcreate.css">
 
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -40,7 +40,7 @@
         <!-- 사이드 메뉴바 -->
         <nav>
             <!-- 사이트 로고 -->
-            <a href="#" class="logo">
+            <a href="../HTML/main.html">
                 <img class="logo" src="../images/logoCut.png" alt="logo">
             </a>
 
@@ -51,7 +51,9 @@
             </div>
 
             <!-- 팀 이름 -->
-            <p class="teamName">팀명: 셍나</p>
+            <div class="teamNameDiv">
+                <p class="teamNameShow"></p>
+            </div>
 
             <!-- 메뉴 탭 -->
             <ul class="nonHiddenTab">
@@ -86,8 +88,8 @@
                 </div>
                 <br><br>
                 <div class="taskanswer">
-                    <div class="answercnt">답 개수 : <input type="number" name="cnt" required>&nbsp;&nbsp;<button
-                            class="answerset" type="button">설정</button></div>
+                    <div class="answercnt">답 개수 : <input type="number" name="cnt" required>&nbsp;&nbsp;
+                        <button class="answerset" type="button">설정</button></div>
                     <br>
                     <div class="answer"></div>
                 </div>
@@ -99,11 +101,16 @@
 
         </section>
 
-
-
         <!-- 푸터 -->
         <footer>
-            <p>© TeamTrack!! 어쩌구 쩌쩌꾸</p>
+            <div class="copyright">
+            <p>©Copyright TeamTrack. All rights reserved</p>
+            </div>
+            <div class="agreement">
+            <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+            <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+            <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+            </div>
         </footer>
 
     </div>
