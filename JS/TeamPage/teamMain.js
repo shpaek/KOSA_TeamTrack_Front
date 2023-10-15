@@ -3,19 +3,6 @@ const frontURL = "http://localhost:5500/HTML"
 const id = sessionStorage.getItem("loginedId")
 const teamNo = new URL(location.href).searchParams.get("teamNo")
 
-function ajaxHandler(method, u, target) {
-    console.log(u)
-
-    if (method == 'GET') {
-        target.load(u, function (response, status, xhr) { // jQuery용 메소드 load()
-            if (status == "error") {
-                alert(xhr.status + xhr.statusText);
-            } // inner-if
-        })  // .load()
-    } // outer-if
-
-} // ajaxHandler
-
 $(() => {
 
     // DOM Tree에서 section 객체 찾기
@@ -49,7 +36,7 @@ $(() => {
                 break;
 
             case 'attendencePage':
-                location.href = './teamAttendance.html' + teamNo
+                location.href = './teamAttendance.html?teamNo=' + teamNo
                 break;
 
             case 'rankPage':
@@ -88,10 +75,14 @@ $(() => {
             id: id
         },
         success: (responseJSONObj) => {
-            alert('현재 teamNo = ' + teamNo)
-            alert('현재 id = ' + id)
+            // alert('현재 teamNo = ' + teamNo)
+            // alert('현재 id = ' + id)
+
+            // 사용자 유형 구분하기
+            handleUserRole(responseJSONObj.userRole)
 
             // 프로필
+
 
             // 팀명
             if (responseJSONObj.teamList != null) {
@@ -152,19 +143,16 @@ $(() => {
 
                     const $noticeCloneDiv = $noticeDiv.clone() // 복제본 만들기
 
-                    $noticeCloneDiv.find('span[class=noticeNo]').text(noticeNo)
-                    $noticeCloneDiv.find('a[class=noticeTitle]').text(noticeTitle)
-                    $noticeCloneDiv.find('span[class=noticeContent]').text(noticeContent)
-                    $noticeCloneDiv.find('span[class=regDate]').text(regDate)
+                    $noticeCloneDiv.find('span[class=noticeNo]').text("No" + "(" + noticeNo + ")")
+                    $noticeCloneDiv.find('span[class=regDate]').text("등록일: " + regDate)
+                    $noticeCloneDiv.find('a[class=noticeTitle]').text("제목: " + noticeTitle)
+                    $noticeCloneDiv.find('span[class=noticeContent]').text("내용: " + noticeContent)
 
                     $noticeDiv.parent().append($noticeCloneDiv) // 복제본 추가
 
                 }) // forEach
+                $noticeDiv.hide(); // 원본 숨기기
             } // if
-
-            // 다 불러오기 전까지는 버튼 안보이게 숨기기
-            $('#JoinTeamBtn').prop('disabled', false);
-            $('#LeaveTeamBtn').prop('disabled', false);
 
         },
         error: (jqXHR, textStatus) => {
@@ -173,7 +161,21 @@ $(() => {
         }
     }) // ajax
 
-    // ##### 팀 가입 #####################################################
+    // 권한
+    function handleUserRole(userRole) {
+        if (userRole === 'customer') {                                                              // 일반 사용자
+            $(".attendencePage").closest("li").hide(); // 출석하러가기 숨기기
+            $("#exitTeam").hide(); // 팀 나가기 숨기기
+            $(".teamProfileEdit").hide(); // 편집 숨기기
+            $(".manageTeam").closest("li").hide(); // 팀 관리 (하위 메뉴 포함) 숨기기
+        } else if (userRole === 'teamLeader') {                                                     // 팀장 사용자
+            $("#exitTeam").hide(); // 팀 나가기 숨기기
+            $("#JoinTeamBtn").hide(); // 팀 가입 숨기기
+        } else if (userRole === 'teamMember') {                                                     // 팀원 사용자
+            $(".manageTeam").closest("li").hide(); // 팀 관리 (하위 메뉴 포함) 숨기기
+            $("#JoinTeamBtn").hide(); // 팀 가입 숨기기
+        }
+    }
 
     // 팀 가입하기 버튼 클릭 이벤트
     $('#JoinTeamBtn').click(function () {
@@ -206,17 +208,8 @@ $(() => {
             }
         });
 
-        // 팀 가입 팝업창 바깥쪽을 클릭했을 때 팝업창 숨기기
-        $(document).click(function (e) {
-            const $target = $(e.target);
-            if (!$target.closest('#teamJoin').length && !$target.closest('#JoinTeamBtn').length) {
-                $('#teamJoin').hide();
-            }
-        });
-
     });
 
-    // ##### 팀 나가기 #####################################################
     // 팀 가입하기 버튼 클릭 이벤트
     $('#exitTeam').click(function () {
         alert('정말 팀을 나가시겠습니까?')
@@ -229,7 +222,7 @@ $(() => {
                 id: id
             },
             success: (responseJSONObj) => {
-                location.href = './teamMain.html'
+                location.href = './teamMain.html?teamNo=' + teamNo
             },
             error: (jqXHR, textStatus) => {
                 // 오류 처리
@@ -245,5 +238,13 @@ $(() => {
     $('div.teamMainNoticeDiv>a.noticeTitle').on('click', (e) => {
         location.href = `${frontURL}/noticedetail.html?teamNo=${teamNo}&noticeNo=${noticeNo}`
     })
+
+    // 팀 가입 팝업창 바깥쪽을 클릭했을 때 팝업창 숨기기
+    $(document).on('click', function (e) {
+        const $target = $(e.target);
+        if (!$target.closest('#teamJoin').length && !$target.closest('#JoinTeamBtn').length) {
+            $('#teamJoin').hide();
+        }
+    });
 
 }) // $(() {})

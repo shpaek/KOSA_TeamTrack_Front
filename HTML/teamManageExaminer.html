@@ -86,10 +86,12 @@
             <div class="examinerDiv">
                 <p class="manageExaminerP">출제자 선정</p>
 
+                <p class="info">💡 &nbsp;[&nbsp;&nbsp;] 내부는 해당 회원의 닉네임입니다.</p>
+
                 <!-- 멤버 내역 출력과 출제자 선정을 위한 폼 -->
                 <form id="examinerForm" method="POST">
                     <div class="memberList">
-    
+
                         <!-- 멤버 원본 -->
                         <div class="memberDiv">
                             <div class="memberInfo">
@@ -98,23 +100,26 @@
                                 <span class="memberNickname">닉네임</span>
                             </div>
                         </div>
-    
+
                     </div>
-    
+
                     <!-- 출제일과 마감일 설정 영역 -->
-                    <div>
-                        <label for="startDate">시작날짜: </label>
-                        <input type="date" id="startDate" name="startDate">
-    
-                        <label for="endDate">마감날짜: </label>
-                        <input type="date" id="endDate" name="endDate">
+                    <div class="dateSetting">
+                        <div class="dateBlock">
+                            <label for="startDate">시작날짜: </label>
+                            <input type="date" id="startDate" name="startDate">
+                        </div>
+                        <div class="dateBlock">
+                            <label for="endDate">마감날짜: </label>
+                            <input type="date" id="endDate" name="endDate">
+                        </div>
                     </div>
-    
+
                     <!-- 제출 버튼 -->
                     <div>
                         <button type="submit">출제자 선정</button>
                     </div>
-    
+
                 </form>
             </div>
 
