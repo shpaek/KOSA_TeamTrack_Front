@@ -1,3 +1,4 @@
+//const backURL = "http://192.168.1.20:8888/teamtrack";
 const backURL = "http://localhost:8888/teamtrack";
 function characterCheck(obj) {
   var regExp = /#/gi;
@@ -143,7 +144,7 @@ $(document).ready(() => {
     const teamInfoValue = $("textarea[name=teamInfo]").val();
 
     const loginedId = localStorage.getItem('loginedId');
-    //const loginedId = "psh2023";
+
     const fd = new FormData();
     const files = $('input[type="file"]');
     for (let i = 0; i < files.length; i++) {
@@ -217,7 +218,6 @@ $(document).ready(() => {
   const $sectionObj = $("section");
 
   $close.click(() => {
-    //location.href = './main.html'
     location.href = "./main.html";
   });
 });
