@@ -47,6 +47,9 @@ $(() => {
         $('div.editdetail').show()
         $('div.detailbuttons>button.edit1').show()
         $('div.detailbuttons>button.edit').hide()
+        $('.commentwrite').hide(); // 댓글 작성부분 숨기기
+        $('#commentList').hide(); // 댓글 목록 숨기기
+        $('div.container>div>div>span').hide(); // 'Comments' 부분 숨기기
 
         $.ajax({
             url: url,
@@ -56,7 +59,8 @@ $(() => {
                 const data = responseJSONObj;
 
                 $('div.modifytitleline>input[name=title]').attr('value', data.title);
-                $('div.modifycontent>input[name=content]').attr('value', data.content);
+                // $('div.modifycontent>input[name=content]').attr('value', data.content);
+                $('div.modifycontent>textarea[name=content]').text(data.content);
             },
             error: (jqXHR, textStatus) => {
                 alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText)
