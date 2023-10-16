@@ -18,8 +18,8 @@ $(document).ready(() => {
   var profileImage = $("#profileImage");
   var fileInput = $("#f1");
 
-  profileImage.on("click", function() {
-      fileInput.click();
+  profileImage.on("click", function () {
+    fileInput.click();
   });
 
   $("#startDate").datepicker({
@@ -43,7 +43,7 @@ $(document).ready(() => {
 
   $(".membernickname").text(sessionStorage.getItem("nickname"));
   const loginedId = localStorage.getItem("loginedId");
-  const $img = $("nav>ul>li>img.profile");
+  const $img = $('div.teamProfile img.teamProfileImg')
   $img.parent().hide();
 
   $.ajax({
@@ -51,6 +51,7 @@ $(document).ready(() => {
       responseType: "blob",
     },
     url: backURL + "/userprofiledownload",
+    data: `loginedId=${loginedId}`,
     success: (responseData) => {
       if (responseData.size > 0) {
         const url = URL.createObjectURL(responseData);
@@ -58,7 +59,7 @@ $(document).ready(() => {
         $img.parent().show();
       }
     },
-    error: (jqxhr) => {},
+    error: (jqxhr) => { },
   });
 
   const $btCreate = $("form.form>button.create[type=submit]");
@@ -167,13 +168,14 @@ $(document).ready(() => {
     fd.append("hashtag5", hashtag5Value);
     fd.append("briefInfo", briefInfoValue);
     fd.append("teamInfo", teamInfoValue);
-    
+
 
     fd.forEach((value, key) => {
       console.log(key);
       console.log(value);
       console.log("-----------");
     });
+
     $.ajax({
       xhrFields: {
         withCredentials: true,
@@ -189,18 +191,20 @@ $(document).ready(() => {
         Swal.fire({
           icon: "success",
           text: responseJSONObj.msg,
-        });
-        $.ajax({
-          url: backURL + "/teamnamedupcheck",
-          method: "get",
-          data: "teamName=" + teamNameValue,
-          success: (responseJSONObj) => {
-            const teamNo = responseJSONObj.teamNo;
-
-            location.href = `./teammain.html?teamNo=${teamNo}`;
-          },
-          error: () => {},
-        });
+          confirmButtonColor: "#3085d6",
+        }).then((result) => {
+          $.ajax({
+            url: backURL + "/teamnamedupcheck",
+            method: "get",
+            data: "teamName=" + teamNameValue,
+            success: (responseJSONObj) => {
+              const teamNo = responseJSONObj.teamNo;
+  
+              location.href = `./teammain.html?teamNo=${teamNo}`;
+            },
+            error: () => {},
+          });
+        })
       },
       error: (jqXHR, textStatus) => {
         Swal.fire({
