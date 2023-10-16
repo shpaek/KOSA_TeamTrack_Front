@@ -21,7 +21,7 @@ $(() => {
                 break;
 
             case 'noticeBoard':
-                location.href = `./notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
+                location.href = `./notice.html?teamNo=${teamNo}&loginedId=${id}`
                 break;
 
             case 'taskBoard':
@@ -282,7 +282,7 @@ $(() => {
     });
 
     // 팀 프로필
-    
+    const $img = $('div.teamProfile img.teamProfileImg')
     $.ajax({
         xhrFields: {
             responseType: "blob",
@@ -292,7 +292,8 @@ $(() => {
         success: (responseData) => {
             if (responseData.size > 0) {
                 const url = URL.createObjectURL(responseData);
-                $copyNewTeam.find("nav>div>img").attr("src", url);
+                $img.attr('src', url)
+                $img.parent().show()
             }
         },
         error: (jqxhr) => { },

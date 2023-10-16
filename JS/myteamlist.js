@@ -334,4 +334,47 @@ $(()=>{
         ajaxHandler(currentPage,menustatus)
     }) 
  
+    $(document).on('click', 'div.team>button[name=withdrawl]', function(e) {
+        const teamNo=$(e.target).siblings(':eq(0)').text()
+
+        Swal.fire({
+            title: '팀 나가기',
+            text: '팀을 정말 나가시겠습니까?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '나가기',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: backURL + "/teamleave",
+                    type: 'GET',
+                    data: {
+                        teamNo: teamNo,
+                        id: id
+                    },
+                    success: (responseJSONObj) => {
+                        Swal.fire(
+                            '팀 나가기 성공',
+                            '팀 나가기를 성공했습니다!',
+                            'success'
+                        ).then(() => {
+                            location.href=`${frontURL}/myteamlist.html?loginedId=${loginedId}`                         });
+                    },
+                    error: (jqXHR, textStatus) => {
+                        Swal.fire(
+                            '팀 나가기 오류',
+                            '팀 탈퇴 중 오류가 발생했습니다.',
+                            'error'
+                        );
+                        console.error(jqXHR);
+                    }
+                });
+            }
+        });
+    })
+
+
 })
