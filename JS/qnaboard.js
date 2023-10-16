@@ -14,7 +14,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: "http://localhost:8888/teamtrack/qnaboard",
+            url: "http://192.168.1.20:8888/teamtrack/qnaboard",
             method: 'get',
             // data: `currentPage=${cp}&teamNo=64`,  // temaNo 값 가변적이여함
             // data: `currentPage=${cp}&teamNo=${teamNo}`,
@@ -57,7 +57,7 @@ $(() => {
                         $copyTrObj.append($boardNoObj)
 
                         // boardTitle부분 클릭시 
-                        const $boardTitleObj = `<td class="board_title"><a href="http://localhost:5500/HTML/qnaboarddetail.html?teamNo=${teamNo}&qnaNo=${p.qnaNo}">
+                        const $boardTitleObj = `<td class="board_title"><a href="http://192.168.1.20:5500/HTML/qnaboarddetail.html?teamNo=${teamNo}&qnaNo=${p.qnaNo}">
                                                 ${p.title}</a></td>`
                         $copyTrObj.append($boardTitleObj)
 
@@ -114,7 +114,7 @@ $(() => {
             xhrFields: {
             withCredentials: true
         },
-        url: `http://localhost:8888/teamtrack/qnaboardmemberchk`,
+        url: `http://192.168.1.20:8888/teamtrack/qnaboardmemberchk`,
         method: 'get',
         data: `teamNo=${teamNo}`,
         success: (responseJSONObj2) => {
@@ -124,7 +124,7 @@ $(() => {
                     text: responseJSONObj2.msg
                 })
             } else if (responseJSONObj2.status === 1) {
-                location.href = `http://localhost:5500/HTML/qnaboardwrite.html?teamNo=${teamNo}`     // teamNo 값 가변적이여함
+                location.href = `http://192.168.1.20:5500/HTML/qnaboardwrite.html?teamNo=${teamNo}`     // teamNo 값 가변적이여함
             }
         }
     })

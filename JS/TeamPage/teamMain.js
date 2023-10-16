@@ -1,6 +1,6 @@
-const backURL = "http://localhost:8888/teamtrack"
+const backURL = "http://192.168.1.20:8888/teamtrack"
 // const backURL = "http://localhost:8080/KOSA_TeamTrack_Back"
-const frontURL = "http://localhost:5500/HTML"
+const frontURL = "http://192.168.1.20:5500/HTML"
 const id = sessionStorage.getItem("loginedId")
 const teamNo = new URL(location.href).searchParams.get("teamNo")
 
@@ -25,10 +25,10 @@ $(() => {
                 break;
 
             case 'taskBoard':
-                const taskteamno=60
+                //const taskteamno=60
                 // ajaxHandler('GET', './taskboard.html', $sectionObj)
-                localStorage.setItem('taskteamno', taskteamno)
-                location.href = './taskboard.html?teamNo='+taskteamno
+                localStorage.setItem('taskteamno', teamNo)
+                location.href = './taskboard.html?teamNo='+teamNo
                 //location.href = './taskboard.html&teamNo='+teamNo
                 break;
 
@@ -282,7 +282,7 @@ $(() => {
     });
 
     // 팀 프로필
-    /*
+    
     $.ajax({
         xhrFields: {
             responseType: "blob",
@@ -297,7 +297,7 @@ $(() => {
         },
         error: (jqxhr) => { },
     });
-    */
+    
 
     /*
     const $img = $('nav>div>img.teamProfileImg')
