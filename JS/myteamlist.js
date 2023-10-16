@@ -12,7 +12,7 @@ $(()=>{
         $.ajax({
             url: `${backURL}/myteamlist`,
             method : 'get',
-            data : `currentPage=${cp}&menustatus=${menustatus}`,
+            data : `currentPage=${cp}&menustatus=${menustatus}&loginedId=${loginedId}`,
             success: (responseJSONObj)=>{
                 const teamList = responseJSONObj.list
 
@@ -104,7 +104,7 @@ $(()=>{
         $.ajax({
             url: `${backURL}/rejectedteam`,
             method : 'get',
-            data : `currentPage=${cp}`,
+            data : `currentPage=${cp}&loginedId=${loginedId}`,
             success: (responseJSONObj)=>{
                 const teamList = responseJSONObj.list
 
@@ -248,7 +248,7 @@ $(()=>{
         $.ajax({
             url: backURL+'/rejectcheck',
             method : 'get',
-            data : `teamNo=${teamNo}`,
+            data : `teamNo=${teamNo}&loginedId=${loginedId}`,
             success: (responseJSONObj)=>{
                 if(responseJSONObj.status!=1){
                     alert(responseJSONObj.msg)
@@ -288,7 +288,7 @@ $(()=>{
                 $.ajax({
                     url: backURL+'/cancelwaiting',
                     method : 'get',
-                    data : `teamNo=${teamNo}`,
+                    data : `teamNo=${teamNo}&loginedId=${loginedId}`,
                     success: (responseJSONObj)=>{
                         if(responseJSONObj.status==1){
                             alert(responseJSONObj.msg)

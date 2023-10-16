@@ -15,7 +15,7 @@ $(()=>{
             },
             url: backURL+'/pwdcheck',
             method : 'post',
-            data : `pwd=${pwd}`,
+            data : `loginedId=${loginedId}&pwd=${pwd}`,
             success : (responseJSONObj)=>{
                 if(responseJSONObj.status==1){
                     Swal.fire({
@@ -62,7 +62,7 @@ $(()=>{
                 },
                 url: `${backURL}/editmypwd`,
                 method : 'post',
-                data : `pwd=${pwd}`,
+                data : `loginedId=${loginedId}&pwd=${pwd}`,
                 success : (responseJSONObj)=>{
                     console.log(responseJSONObj)
                     if(responseJSONObj.status==1){
