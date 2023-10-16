@@ -110,6 +110,6 @@ $(()=> {
     $('section.taskboard>div.board>div.content>table').on('click', 'tbody tr.maintask', function() {
         const taskNo = $(this).data('taskNo')
         localStorage.setItem("taskNo", taskNo)
-        location.href='./taskexam.html?teamNo='+teamNo+'taskNo='+taskNo
+        location.href='./taskexam.html?teamNo='+teamNo+'&taskNo='+taskNo
     })
 })

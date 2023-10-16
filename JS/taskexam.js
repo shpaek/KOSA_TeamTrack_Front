@@ -1,4 +1,3 @@
-const backURL = 'http://192.168.1.20:8888/teamtrack'
 $(() => {
   const teamNo = localStorage.getItem('taskteamno')
   const taskNo = localStorage.getItem('taskNo')
@@ -8,7 +7,7 @@ $(() => {
     xhrFields: {
       withCredentials: true
     },
-    url: `${backURL}/viewtask`,
+    url: `http://192.168.1.20:8888/teamtrack/viewtask`,
     method: 'get',
     data: `teamNo=${teamNo}&taskNo=${taskNo}`,
     success: (responseJSONObj) => {
@@ -287,5 +286,20 @@ $(() => {
     })
 
   })
+
+  $.ajax({
+    xhrFields: {
+      responseType: "blob",
+    },
+    url: backURL + "/download",
+    data: "teamNo=" + teamNo + "&opt=profile",
+    success: (responseData) => {
+      if (responseData.size > 0) {
+        const url = URL.createObjectURL(responseData);
+        $copyNewTeam.find("nav>div>img").attr("src", url);
+      }
+    },
+    error: (jqxhr) => { },
+  });
 
 });
