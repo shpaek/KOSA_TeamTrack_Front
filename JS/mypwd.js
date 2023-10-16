@@ -1,6 +1,8 @@
 $(()=>{
-    const backURL = 'http://localhost:8888/teamtrack'
-    const frontURL = 'http://localhost:5500/HTML'
+    const backURL = 'http://192.168.1.20:8888/teamtrack'
+    const frontURL = 'http://192.168.1.20:5500/HTML'
+    const loginedId = sessionStorage.getItem("loginedId");
+    
 
     //---- 비밀번호 일치 여부 확인 ----
 

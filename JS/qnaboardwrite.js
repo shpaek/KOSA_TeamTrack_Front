@@ -21,7 +21,7 @@ $(() => {
             xhrFields: {
                 withCredentials: true
             },
-            url: `http://localhost:8888/teamtrack/qnaboardcreate`,
+            url: `http://192.168.1.20:8888/teamtrack/qnaboardcreate`,
             method: 'post',
             contentType: false,
             processData: false,
@@ -34,7 +34,7 @@ $(() => {
 						icon: 'success',
 						text: responseJSONObj.msg
 					})
-                    location.href = `http://localhost:5500/HTML/qnaboard.html?teamNo=${teamNo}`
+                    location.href = `http://192.168.1.20:5500/HTML/qnaboard.html?teamNo=${teamNo}`
                 } else {
                     Swal.fire({
 						icon: 'warning',

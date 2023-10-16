@@ -1,4 +1,4 @@
-const backURL = 'http://localhost:8888/teamtrack'
+const backURL = 'http://192.168.1.20:8888/teamtrack'
 $(() => {
   const teamNo = localStorage.getItem('taskteamno')
   const taskNo = localStorage.getItem('taskNo')
