@@ -7,15 +7,15 @@ $(()=>{
     // ---- 메뉴 클릭 시 발생 이벤트 ----
 
     $('nav>ul>li>a[name=myinfo]').click(()=>{
-        location.href=`${frontURL}/myinfo.html?loginedId=${loginedId}`
+        location.href=`${frontURL}/myinfo.html?id=${loginedId}`
     })
 
     $('nav>ul>li>a[name=myteam]').click(()=>{
-        location.href=`${frontURL}/myteamlist.html?loginedId=${loginedId}`
+        location.href=`${frontURL}/myteamlist.html?id=${loginedId}`
     })
 
     $('nav>ul>li>a[name=withdrawl]').click(()=>{
-        location.href=`${frontURL}/deleteaccount.html?loginedId=${loginedId}`
+        location.href=`${frontURL}/deleteaccount.html?id=${loginedId}`
     })
 
 })

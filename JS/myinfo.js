@@ -1,7 +1,7 @@
 $(()=>{
     const backURL = 'http://192.168.1.20:8888/teamtrack'
     const frontURL = 'http://192.168.1.20:5500/HTML'
-    const loginedId = sessionStorage.getItem("loginedId");
+    const id = sessionStorage.getItem("loginedId");
 
 
     function ajaxHandler(url){
@@ -11,7 +11,7 @@ $(()=>{
             },
             url: url,
             method: 'get',
-            data: `loginedId=${loginedId}`,
+            data: `id=${id}`,
             contentType: false, //파일첨부용 프로퍼티
             processData : false, //파일첨부용 프로퍼티
             success: (responseData)=>{
@@ -36,7 +36,7 @@ $(()=>{
     $.ajax({
         url: backURL+'/myinfo',
         method : 'get',
-        data : `loginedId=${loginedId}`,
+        data : `id=${id}`,
         success: (responseJSONObj)=>{
             const id = responseJSONObj.id
             const nickname = responseJSONObj.nickname
@@ -62,7 +62,7 @@ $(()=>{
 
     $('div.imgbox>form').submit((e)=>{
         const fd = new FormData(e.target)
-        fd.append(loginedId)
+        fd.append(id)
         
         $.ajax({
             xhrFields:{
@@ -80,7 +80,7 @@ $(()=>{
                         icon: 'success',
                         text: responseJSONObj.msg
                     }).then(result=>{
-                        location.href=`${frontURL}/myinfo.html`
+                        location.href=`${frontURL}/myinfo.html?id=${id}`
                     })
                 }else{
                     Swal.fire({
@@ -107,7 +107,7 @@ $(()=>{
         $.ajax({
             url: backURL+'/nicknamedupchk',
             method : 'get',
-            data : `nickname=${nickname}&loginedId=${loginedId}`,
+            data : `nickname=${nickname}&id=${id}`,
             success : (responseJSONObj)=>{
                 if(responseJSONObj.status == 1){
                     $('div.nicknameeditline>button[type=submit]').show()
@@ -141,7 +141,7 @@ $(()=>{
                 },
                 url: `${backURL}/editnickname`,
                 method : 'post',
-                data : `nickname=${nickname}&loginedId=${loginedId}`,
+                data : `nickname=${nickname}&id=${id}`,
                 success : (responseJSONObj)=>{
                     console.log(responseJSONObj)
                     if(responseJSONObj.status==1){
@@ -149,7 +149,7 @@ $(()=>{
                             icon: 'success',
                             text: responseJSONObj.msg
                         }).then(result=>{
-                            location.href=`${frontURL}/myinfo.html?loginedId=${loginedId}`
+                            location.href=`${frontURL}/myinfo.html?id=${id}`
                         })
                     }else{
                         Swal.fire({
@@ -223,7 +223,7 @@ $(()=>{
                             icon: 'success',
                             text: responseJSONObj.msg
                         }).then(result=>{
-                            location.href=`${frontURL}/myinfo.html`
+                            location.href=`${frontURL}/myinfo.html?id=${id}`
                         })
                     }else{
                         Swal.fire({

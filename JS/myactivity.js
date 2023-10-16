@@ -4,7 +4,7 @@ $(()=>{
     const frontURL = 'http://192.168.1.20:5500/HTML'
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
-    const loginedId = sessionStorage.getItem("loginedId")
+    const id = sessionStorage.getItem("loginedId")
 
     function draw(max, classname, colorname){
         var i=1;
@@ -26,7 +26,7 @@ $(()=>{
     $.ajax({
         url: backURL+'/myactivity',
         method : 'get',
-        data : `teamNo=${teamNo}&loginedId=${loginedId}`,
+        data : `teamNo=${teamNo}&id=${id}`,
         success: (responseJSONObj)=>{
             const r = responseJSONObj
 

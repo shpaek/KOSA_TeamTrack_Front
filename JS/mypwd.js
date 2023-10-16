@@ -1,7 +1,7 @@
 $(()=>{
     const backURL = 'http://192.168.1.20:8888/teamtrack'
     const frontURL = 'http://192.168.1.20:5500/HTML'
-    const loginedId = sessionStorage.getItem("loginedId");
+    const id = sessionStorage.getItem("loginedId");
     
 
     //---- 비밀번호 일치 여부 확인 ----
@@ -15,7 +15,7 @@ $(()=>{
             },
             url: backURL+'/pwdcheck',
             method : 'post',
-            data : `loginedId=${loginedId}&pwd=${pwd}`,
+            data : `id=${id}&pwd=${pwd}`,
             success : (responseJSONObj)=>{
                 if(responseJSONObj.status==1){
                     Swal.fire({
@@ -62,7 +62,7 @@ $(()=>{
                 },
                 url: `${backURL}/editmypwd`,
                 method : 'post',
-                data : `loginedId=${loginedId}&pwd=${pwd}`,
+                data : `id=${id}&pwd=${pwd}`,
                 success : (responseJSONObj)=>{
                     console.log(responseJSONObj)
                     if(responseJSONObj.status==1){
@@ -70,7 +70,7 @@ $(()=>{
                             icon: 'success',
                             text: responseJSONObj.msg
                         })
-                        location.href=`${frontURL}/mypwd.html`
+                        location.href=`${frontURL}/mypwd.html?id=${id}`
                     }else{
                         Swal.fire({
                             icon: 'error',

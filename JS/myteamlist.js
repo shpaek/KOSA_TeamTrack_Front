@@ -1,7 +1,7 @@
 $(()=>{
     const backURL = 'http://192.168.1.20:8888/teamtrack'
     const frontURL = 'http://192.168.1.20:5500/HTML'
-    const loginedId = sessionStorage.getItem("loginedId");
+    const id = sessionStorage.getItem("loginedId");
 
     var menustatus=1
 
@@ -12,7 +12,7 @@ $(()=>{
         $.ajax({
             url: `${backURL}/myteamlist`,
             method : 'get',
-            data : `currentPage=${cp}&menustatus=${menustatus}&loginedId=${loginedId}`,
+            data : `currentPage=${cp}&menustatus=${menustatus}&id=${loginedId}`,
             success: (responseJSONObj)=>{
                 const teamList = responseJSONObj.list
 
@@ -104,7 +104,7 @@ $(()=>{
         $.ajax({
             url: `${backURL}/rejectedteam`,
             method : 'get',
-            data : `currentPage=${cp}&loginedId=${loginedId}`,
+            data : `currentPage=${cp}&id=${loginedId}`,
             success: (responseJSONObj)=>{
                 const teamList = responseJSONObj.list
 
@@ -248,7 +248,7 @@ $(()=>{
         $.ajax({
             url: backURL+'/rejectcheck',
             method : 'get',
-            data : `teamNo=${teamNo}&loginedId=${loginedId}`,
+            data : `teamNo=${teamNo}&id=${loginedId}`,
             success: (responseJSONObj)=>{
                 if(responseJSONObj.status!=1){
                     alert(responseJSONObj.msg)
@@ -288,7 +288,7 @@ $(()=>{
                 $.ajax({
                     url: backURL+'/cancelwaiting',
                     method : 'get',
-                    data : `teamNo=${teamNo}&loginedId=${loginedId}`,
+                    data : `teamNo=${teamNo}&id=${loginedId}`,
                     success: (responseJSONObj)=>{
                         if(responseJSONObj.status==1){
                             alert(responseJSONObj.msg)
@@ -318,7 +318,7 @@ $(()=>{
 
     $(document).on('click', 'div.team>button[name=activity]', function(e) {
         const teamNo=$(e.target).siblings(':eq(0)').text()
-        location.href=`${frontURL}/myactivity.html?teamNo=${teamNo}`
+        location.href=`${frontURL}/myactivity.html?teamNo=${teamNo}&id=${id}`
     })
     
     //---- 페이지 ----
@@ -361,7 +361,7 @@ $(()=>{
                             '팀 나가기를 성공했습니다!',
                             'success'
                         ).then(() => {
-                            location.href=`${frontURL}/myteamlist.html?loginedId=${loginedId}`                         });
+                            location.href=`${frontURL}/myteamlist.html?id=${loginedId}`                         });
                     },
                     error: (jqXHR, textStatus) => {
                         Swal.fire(

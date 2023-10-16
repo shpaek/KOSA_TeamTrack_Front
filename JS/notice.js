@@ -63,12 +63,13 @@ $(()=>{
                     Swal.fire({
                         icon: 'success',
                         text: responseJSONObj.msg
+                    }).then(result=>{
+                        location.href=`${frontURL}/notice.html?teamNo=${teamNo}&id=${id}`
                     })
-                    location.href=`${frontURL}/notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
                 }else{
                     Swal.fire({
                         icon: 'warning',
-                        text: responseJSONObj
+                        text: responseJSONObj.msg
                     })
                 }
             },

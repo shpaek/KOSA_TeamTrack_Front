@@ -36,7 +36,7 @@ $(()=>{
                             title: responseJSONObj.msg,
                             text: responseJSONObj.mainmsg
                         }).then(function(){
-                            location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                            location.href=`${frontURL}/notice.html?teamNo=${teamNo}&id=${id}`
                         });
                     }else{
                         Swal.fire({

@@ -5,13 +5,13 @@ $(()=>{
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
     const noticeNo = urlParams.get('noticeNo')
-    const loginedId = localStorage.getItem("loginedId");
+    const id = localStorage.getItem("loginedId");
 
 
     $.ajax({
         url: backURL+'/noticedetail',
         method : 'get',
-        data : `teamNo=${teamNo}&noticeNo=${noticeNo}&loginedId=${loginedId}`,
+        data : `teamNo=${teamNo}&noticeNo=${noticeNo}&id=${loginedId}`,
         success: (responseJSONObj)=>{
             if(responseJSONObj.memStatus == 0){
                 $('div.noticedetail>div.setmainbutton>button').hide()
@@ -54,7 +54,7 @@ $(()=>{
                         icon: 'success',
                         text: responseJSONObj.msg
                       }).then((result) => {
-                        if (result.isConfirmed) location.href=`${frontURL}/notice.html?teamNo=${teamNo}`
+                        if (result.isConfirmed) location.href=`${frontURL}/notice.html?teamNo=${teamNo}&id=${id}`
                       })
                 }else{
                     Swal.fire({
@@ -71,6 +71,7 @@ $(()=>{
                 console.log(jqXHR)
             }
         })
+        return false
     })
 
     //---- 파일명 클릭 시 발생 이벤트 ----
@@ -111,7 +112,7 @@ $(()=>{
         $.ajax({
             url: backURL+'/noticedetail',
             method : 'get',
-            data : `teamNo=${teamNo}&noticeNo=${noticeNo}&loginedId=${loginedId}`,
+            data : `teamNo=${teamNo}&noticeNo=${noticeNo}&id=${loginedId}`,
             success: (responseJSONObj)=>{
                 const noticeTitle = responseJSONObj.notice.noticeTitle
                 const noticeContent = responseJSONObj.notice.noticeContent
@@ -194,14 +195,14 @@ $(()=>{
                                 title: responseJSONObj.msg,
                                 text: responseJSONObj.mainmsg
                             }).then(result=>{
-                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}&id=${id}`
                             })
                         }else{
                             Swal.fire({
                                 icon: 'success',
                                 text: responseJSONObj.msg
                             }).then(result=>{
-                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}&id=${id}`
                             })
                         }
                     }else{
@@ -251,7 +252,7 @@ $(()=>{
                                 icon: 'success',
                                 text: responseJSONObj.msg
                             }).then(result=>{
-                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
+                                location.href=`${frontURL}/notice.html?teamNo=${teamNo}&id=${loginedId}`
                             })
                         }else{
                             alert(responseJSONObj.msg)
