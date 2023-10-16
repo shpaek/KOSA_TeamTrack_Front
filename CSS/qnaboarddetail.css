@@ -582,3 +582,7 @@ button[name="back"] {
     float: right;
     margin-top: 0; /* 위쪽 여백 초기화 */
 }
+
+ul.nonHiddenTab>li>a{
+    margin-left: 0px;
+}

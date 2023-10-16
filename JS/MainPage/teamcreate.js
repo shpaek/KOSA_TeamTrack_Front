@@ -193,7 +193,7 @@ $(document).ready(() => {
         $.ajax({
           url: backURL + "/teamnamedupcheck",
           method: "get",
-          data: "teamName=" + teamName,
+          data: "teamName=" + teamNameValue,
           success: (responseJSONObj) => {
             const teamNo = responseJSONObj.teamNo;
 

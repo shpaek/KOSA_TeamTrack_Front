@@ -20,7 +20,7 @@ $(() => {
                 break;
 
             case 'noticeBoard':
-                location.href = `./notice.html?teamNo=${teamNo}&loginedId=${loginedId}`
+                location.href = `./notice.html?teamNo=${teamNo}&loginedId=${id}`
                 break;
 
             case 'taskBoard':

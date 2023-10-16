@@ -126,3 +126,6 @@ td:nth-child(odd){
     background-color: #0056b3; /* 호버 시 배경색 변경 */
     /* transform: scale(1.1); 호버 시 확대 효과 */
 }
+ul.nonHiddenTab>li>a{
+    margin-left: 0px;
+}

@@ -15,6 +15,7 @@ $(() => {
                 responseType: "blob",
             },
             url: backURL + '/userprofiledownload',
+            data: `loginedId=${loginedId}`,
             success: (responseData) => {
                 if (responseData.size > 0) {
                     const url = URL.createObjectURL(responseData)
