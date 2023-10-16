@@ -1,8 +1,8 @@
 
 
 $(()=>{
-    const backURL = 'http://192.168.1.20:8888/teamtrack'
-    const frontURL = 'http://192.168.1.20:5500/HTML'
+    // const backURL = 'http://192.168.1.20:8888/teamtrack'
+    // const frontURL = 'http://192.168.1.20:5500/HTML'
     const $formObj = $('form.notice')
     const urlParams = new URL(location.href).searchParams
     const teamNo = urlParams.get('teamNo')
@@ -49,14 +49,14 @@ $(()=>{
                 }else{
                     Swal.fire({
                         icon: 'error',
-                        text: '다시 한번 시도해주세요🙏'
+                        text: '1다시 한번 시도해주세요🙏'
                     })
                 }
             },
             error: (jqxhr)=>{
                 Swal.fire({
                     icon: 'error',
-                    text: '다시 한번 시도해주세요🙏'
+                    text: '2다시 한번 시도해주세요🙏'
                 })
             }
         })

@@ -453,3 +453,7 @@ div.detailtitleline>h4, div.detailcontent>p{
 div.filezone{
   color:black;
 }
+
+ul.nonHiddenTab>li>a{
+  margin-left: 0px;
+}
