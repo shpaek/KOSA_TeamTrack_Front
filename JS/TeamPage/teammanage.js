@@ -12,6 +12,7 @@ function characterCheck(obj){
 $(document).ready(() => {
 
   const $img = $("form.form img.teamProfileImg2");
+  const $img2 = $("div.teamProfile img.teamProfileImg");
 
   $.ajax({
     xhrFields: {
@@ -24,6 +25,8 @@ $(document).ready(() => {
         const url = URL.createObjectURL(responseData);
         $img.attr("src", url);
         $img.parent().show();
+        $img2.attr("src", url);
+        $img2.parent().show();
       }
     },
     error: (jqxhr) => {},
