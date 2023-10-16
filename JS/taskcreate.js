@@ -293,5 +293,22 @@ $(() => {
 
   })
 
+  const $img = $('div.teamProfile img.teamProfileImg')
+    $.ajax({
+        xhrFields: {
+            responseType: "blob",
+        },
+        url: backURL + "/download",
+        data: "teamNo=" + teamNo + "&opt=profile",
+        success: (responseData) => {
+            if (responseData.size > 0) {
+                const url = URL.createObjectURL(responseData);
+                $img.attr('src', url)
+                $img.parent().show()
+            }
+        },
+        error: (jqxhr) => { },
+    });
+
 
 });
