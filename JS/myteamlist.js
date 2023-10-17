@@ -4,6 +4,9 @@ $(()=>{
     const loginedId = sessionStorage.getItem("loginedId");
 
     var menustatus=1
+    $('div.active').css("background-color", '#cccccc')
+    $('div.end').css("background-color", 'white')
+    $('div.waiting').css("background-color", 'white')
 
 
     // ------------------- 참여중/활동종료/승인대기 팀목록 ----------------------------
@@ -12,7 +15,7 @@ $(()=>{
         $.ajax({
             url: `${backURL}/myteamlist`,
             method : 'get',
-            data : `currentPage=${cp}&menustatus=${menustatus}&loginedId=${loginedId}`,
+            data : `currentPage=${cp}&menustatus=${menustatus}&id=${loginedId}`,
             success: (responseJSONObj)=>{
                 const teamList = responseJSONObj.list
 
@@ -104,7 +107,7 @@ $(()=>{
         $.ajax({
             url: `${backURL}/rejectedteam`,
             method : 'get',
-            data : `currentPage=${cp}&loginedId=${loginedId}`,
+            data : `currentPage=${cp}&id=${loginedId}`,
             success: (responseJSONObj)=>{
                 const teamList = responseJSONObj.list
 
@@ -113,6 +116,8 @@ $(()=>{
                     $('span.nothing').show()
                 }else{
                     $('div.rejectlist').show()
+                    $('div.rejectlist>h1').show()
+                    $('span.nothing').hide()
                     const $originObj = $('div.rejectlist>ul>li').first()
                     $originObj.siblings().remove() 
                     $originObj.show()
@@ -192,9 +197,10 @@ $(()=>{
     //---- 참여중 팀 ----
     $('ul.myteamtab>li>div.active').click(()=>{
         $('div.teamlist>h1').hide()
+        $('div.rejectlist').hide()
+        $('div.rejectlist>h1').hide()
         menustatus=1
         ajaxHandler(1, menustatus)
-        $('div.rejectlist').hide()
         $('div.teamlist>ul>li>div>button[name=activity]').show()
         $('div.teamlist>ul>li>div>button[name=withdrawl]').show()
         $('div.teamlist>ul>li>div>button[name=cancel]').hide()
@@ -209,6 +215,7 @@ $(()=>{
         ajaxHandler(1, menustatus)
         $('div.rejectlist').hide()
         $('div.teamlist>h1').hide()
+        $('div.rejectlist>h1').show()
         $('div.teamlist>ul>li>div>button[name=activity]').show()
         $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
         $('div.teamlist>ul>li>div>button[name=cancel]').hide()
@@ -223,6 +230,7 @@ $(()=>{
         menustatus=3
         ajaxHandler(1, menustatus)
         $('div.teamlist>h1').show()
+        $('div.rejectlist>h1').hide()
         $('div.teamlist>ul>li>div>button[name=activity]').hide()
         $('div.teamlist>ul>li>div>button[name=withdrawl]').hide()
         $('div.teamlist>ul>li>div>button[name=cancel]').show()
@@ -248,7 +256,7 @@ $(()=>{
         $.ajax({
             url: backURL+'/rejectcheck',
             method : 'get',
-            data : `teamNo=${teamNo}&loginedId=${loginedId}`,
+            data : `teamNo=${teamNo}&id=${loginedId}`,
             success: (responseJSONObj)=>{
                 if(responseJSONObj.status!=1){
                     alert(responseJSONObj.msg)
@@ -288,7 +296,7 @@ $(()=>{
                 $.ajax({
                     url: backURL+'/cancelwaiting',
                     method : 'get',
-                    data : `teamNo=${teamNo}&loginedId=${loginedId}`,
+                    data : `teamNo=${teamNo}&id=${loginedId}`,
                     success: (responseJSONObj)=>{
                         if(responseJSONObj.status==1){
                             alert(responseJSONObj.msg)
@@ -353,7 +361,7 @@ $(()=>{
                     type: 'GET',
                     data: {
                         teamNo: teamNo,
-                        id: id
+                        id: loginedId
                     },
                     success: (responseJSONObj) => {
                         Swal.fire(
@@ -361,7 +369,7 @@ $(()=>{
                             '팀 나가기를 성공했습니다!',
                             'success'
                         ).then(() => {
-                            location.href=`${frontURL}/myteamlist.html?loginedId=${loginedId}`                         });
+                            location.href=`${frontURL}/myteamlist.html?id=${loginedId}`                         });
                     },
                     error: (jqXHR, textStatus) => {
                         Swal.fire(
