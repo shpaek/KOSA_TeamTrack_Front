@@ -4,7 +4,7 @@ $(()=>{
     const id = sessionStorage.getItem("loginedId");
 
 
-    function ajaxHandler(url){
+    function ajaxHandler(url,data){
         $.ajax({
             xhrFields: {
                 responseType: "blob",
@@ -31,7 +31,7 @@ $(()=>{
         })
     }
     
-    ajaxHandler(`${backURL}/userprofiledownload`)
+    ajaxHandler(`${backURL}/userprofiledownload`,id)
 
     $.ajax({
         url: backURL+'/myinfo',
@@ -62,7 +62,7 @@ $(()=>{
 
     $('div.imgbox>form').submit((e)=>{
         const fd = new FormData(e.target)
-        fd.append(id)
+        fd.append("id",id)
         
         $.ajax({
             xhrFields:{
@@ -242,6 +242,44 @@ $(()=>{
         }
         return false
     })
+
+
+    //------------ 유효성검사 -----------------
+    
+	// 생년월일 유효성 검사  
+	$('#birthday').on('keyup', function () {
+		var phone = document.getElementById("birthday").value;
+
+		if (/^\d{8}$/.test(phone)) { // 8자리의 숫자만 허용
+			mismatchMessage.style.display = "none"; // 숨김
+		} else {
+			if (/[^0-9]/.test(phone)) { // 숫자 이외의 문자가 있는 경우
+				mismatchMessage.style.display = "block"; // 표시
+			} else if (/^\d{9,}$/.test(phone)) {
+				mismatchMessage.style.display = "block"; // 9자리 숫자 이상이면 표시
+			} else {
+				mismatchMessage.style.display = "none";
+			}
+		}
+	});
+
+    // 휴대폰 유효성 검사  
+	$('#phone').on('keyup', function () {
+		var phone = document.getElementById("phone").value;
+		var mismatchMessage = document.querySelector(".mismatch-phone");
+
+		if (/^\d{11}$/.test(phone)) { // 11자리의 숫자만 허용
+			mismatchMessage.style.display = "none"; // 숨김
+		} else {
+			if (/[^0-9]/.test(phone)) { // 숫자 이외의 문자가 있는 경우
+				mismatchMessage.style.display = "block"; // 표시
+			} else if (/^\d{9,}$/.test(phone)) {
+				mismatchMessage.style.display = "block"; // 숫자 11자리 이상이면 표시
+			} else {
+				mismatchMessage.style.display = "none"; // 숫자가 11자리 아닌 경우 숨김
+			}
+		}
+	});
 
 
 
