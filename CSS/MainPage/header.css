@@ -175,8 +175,7 @@ nav>ul>li#exitTeam {
   bottom: 10px;
   right: 10px;
   
-  opacity: 0.2;
-  transition: opacity 0.3s;
+
 }
 
 /* 팀 나가기 호버했을 때 */

@@ -11,12 +11,12 @@ $(()=>{
     $.ajax({
         url: backURL+'/noticedetail',
         method : 'get',
-        data : `teamNo=${teamNo}&noticeNo=${noticeNo}&loginedId=${loginedId}`,
+        data : `teamNo=${teamNo}&noticeNo=${noticeNo}&id=${loginedId}`,
         success: (responseJSONObj)=>{
             if(responseJSONObj.memStatus == 0){
                 $('div.noticedetail>div.setmainbutton>button').hide()
-                $('div.noticedetail>div.detailbuttons>button.edit').hide()
-                $('div.noticedetail>div.detailbuttons>button.remove').hide()
+                $('div.detailbuttons>button.edit').hide()
+                $('div.detailbuttons>button.remove').hide()
             }
             const noticeTitle = responseJSONObj.notice.noticeTitle
             const noticeContent = responseJSONObj.notice.noticeContent

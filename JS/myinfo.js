@@ -80,7 +80,7 @@ $(()=>{
                         icon: 'success',
                         text: responseJSONObj.msg
                     }).then(result=>{
-                        location.href=`${frontURL}/myinfo.html`
+                        location.href=`${frontURL}/myinfo.html?id=${loginedId}`
                     })
                 }else{
                     Swal.fire({
