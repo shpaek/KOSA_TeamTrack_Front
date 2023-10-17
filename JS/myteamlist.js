@@ -198,7 +198,6 @@ $(()=>{
     $('ul.myteamtab>li>div.active').click(()=>{
         $('div.teamlist>h1').hide()
         $('div.rejectlist').hide()
-        $('div.rejectlist>h1').hide()
         menustatus=1
         ajaxHandler(1, menustatus)
         $('div.teamlist>ul>li>div>button[name=activity]').show()
@@ -284,7 +283,7 @@ $(()=>{
         const teamNo = $(e.target).siblings(':eq(0)').text()
         Swal.fire({
             icon: 'question',
-            text: '삭제하시겠습니까?',
+            text: '취소하시겠습니까?',
 
             showCancelButton: true,
             confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
@@ -299,9 +298,15 @@ $(()=>{
                     data : `teamNo=${teamNo}&id=${loginedId}`,
                     success: (responseJSONObj)=>{
                         if(responseJSONObj.status==1){
-                            alert(responseJSONObj.msg)
+                            Swal.fire({
+                                icon: 'success',
+                                text: responseJSONObj
+                            })
                         }else{
-                            alert(responseJSONObj.msg)
+                            Swal.fire({
+                                icon: 'warning',
+                                text: '다시 한번 시도해주세요🙏'
+                            })
                         }
                         ajaxHandler_reject(1)
                         ajaxHandler(1, 3)
@@ -311,10 +316,7 @@ $(()=>{
                         $('div.teamlist>ul>li>div>button[name=cancel]').show()
                     },
                     error:(jqXHR)=>{
-                        Swal.fire({
-                            icon: 'warning',
-                            text: '다시 한번 시도해주세요🙏'
-                        })
+                        
                     }
                 })
             }else{
