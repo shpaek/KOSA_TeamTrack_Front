@@ -2,6 +2,7 @@ $(()=>{
     const backURL = 'http://192.168.1.20:8888/teamtrack'
     const frontURL = 'http://192.168.1.20:5500/HTML'
     const loginedId = sessionStorage.getItem("loginedId");
+    
 
 
     function ajaxHandler(url){
@@ -60,9 +61,21 @@ $(()=>{
         }
     })
 
-    $('div.imgbox>form').submit((e)=>{
-        const fd = new FormData(e.target)
-        fd.append(loginedId)
+
+    $("form.userprofile input[name=f1]").on("change", (e) => {
+        console.log(e.target.files[0]);
+        const url = URL.createObjectURL(e.target.files[0]);
+        $("form.userprofile img.userprofileimg").attr("src", url);
+      });
+
+    $('form.userprofile').submit((e)=>{
+        //const fd = new FormData(e.target)
+        const fd = new FormData()
+        const files = $('input[type="file"]');
+        for (let i = 0; i < files.length; i++) {
+        fd.append("f1", files[i].files[0]); // 각 파일 필드의 첫 번째 파일을 추가
+        }
+        fd.append("loginedId", loginedId);
         
         $.ajax({
             xhrFields:{
@@ -243,6 +256,17 @@ $(()=>{
         return false
     })
 
+    // ---- 메뉴 클릭 시 발생 이벤트 ----
 
+    $('nav>ul>li>a[name=myinfo]').click(()=>{
+        location.href=`${frontURL}/myinfo.html?loginedId=${loginedId}`
+    })
 
+    $('nav>ul>li>a[name=myteam]').click(()=>{
+        location.href=`${frontURL}/myteamlist.html?loginedId=${loginedId}`
+    })
+
+    $('nav>ul>li>a[name=withdrawl]').click(()=>{
+        location.href=`${frontURL}/deleteaccount.html?loginedId=${loginedId}`
+    })
 })
