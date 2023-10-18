@@ -136,7 +136,7 @@ $(() => {
 
                     $noticeCloneDiv.find('span[class=noticeNo]').text("No" + "(" + noticeNo + ")")
                     $noticeCloneDiv.find('span[class=regDate]').text("등록일: " + regDate)
-                    $noticeCloneDiv.find('a[class=noticeTitle]').text("제목: " + noticeTitle)
+                    $noticeCloneDiv.find('span[class=noticeTitle]').text("제목: " + noticeTitle)
                     $noticeCloneDiv.find('span[class=noticeContent]').text("내용: " + noticeContent)
 
                     $noticeDiv.parent().append($noticeCloneDiv) // 복제본 추가
@@ -165,6 +165,7 @@ $(() => {
         } else if (userRole === 'teamMember') {                                                     // 팀원 사용자
             $(".manageTeam").closest("li").hide(); // 팀 관리 (하위 메뉴 포함) 숨기기
             $("#JoinTeamBtn").hide(); // 팀 가입 숨기기
+            $(".teamProfileEdit").hide(); // 편집 숨기기
         }
     }
 
@@ -204,13 +205,25 @@ $(() => {
                         introduction: introduction,
                     },
                     success: (responseJSONObj) => {
-                        Swal.fire(
-                            '가입 요청 전송 성공',
-                            '팀에 가입 요청을 전송했습니다!',
-                            'success'
-                        ).then(() => {
-                            location.href = './teamMain.html?teamNo=' + teamNo;
-                        });
+                        if(responseJSONObj.status == 2) {
+                            Swal.fire({
+                                title: '팀 가입 요청 승인 실패',
+                                text: '해당 팀에서 방출되셨습니다. 팀 재가입이 불가능합니다.',
+                                icon: 'error',
+                                confirmButtonText: '확인',
+                            }).then((result) => {
+                                location.href = './teamMain.html?teamNo=' + teamNo;
+                            });
+                        } else {
+                            Swal.fire({
+                                title: '팀 가입 요청 전송 성공',
+                                text: '팀에 가입 요청을 전송했습니다!',
+                                icon: 'success',
+                                confirmButtonText: '확인',
+                            }).then(() => {
+                                location.href = './teamMain.html?teamNo=' + teamNo;
+                            });
+                        }
                     },
                     error: (jqXHR, textStatus) => {
                         Swal.fire(

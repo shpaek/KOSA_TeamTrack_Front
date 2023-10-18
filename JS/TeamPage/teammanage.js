@@ -1,5 +1,5 @@
-// const backURL = "http://192.168.1.20:8888/teamtrack";
-const backURL = "http://localhost:8888/teamtrack";
+const backURL = "http://192.168.1.20:8888/teamtrack";
+// const backURL = "http://localhost:8888/teamtrack";
 const teamNo = new URL(location.href).searchParams.get("teamNo");
 function characterCheck(obj){
   var regExp = /[#]/gi
