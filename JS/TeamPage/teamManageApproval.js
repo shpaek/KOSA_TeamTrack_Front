@@ -57,9 +57,21 @@ $(() => {
                 id: id,
                 action: 'reqApprove'
             },
-            success: function (responseJSONObj) {
+            success: (responseJSONObj) => {
+                if(responseJSONObj.status == 3) {        // 실패
+                    Swal.fire({
+                        title: '팀 가입 요청 승인 실패',
+                        text: responseJSONObj.msg,
+                        icon: 'error',
+                        confirmButtonText: '확인'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload(); // 페이지 리로드
+                        }
+                    });
+                }else{
                 Swal.fire({
-                    title: '승인됨',
+                    title: '팀 가입 요청 승인 성공',
                     text: '요청이 승인되었습니다.',
                     icon: 'success',
                     confirmButtonText: '확인'
@@ -68,6 +80,7 @@ $(() => {
                         location.reload(); // 페이지 리로드
                     }
                 });
+            }
             },
             error: function (jqXHR, textStatus) {
                 Swal.fire({
@@ -93,7 +106,7 @@ $(() => {
             },
             success: function (responseJSONObj) {
                 Swal.fire({
-                    title: '거절됨',
+                    title: '팀 가입 요청 거절 성공',
                     text: '요청이 거절되었습니다.',
                     icon: 'success',
                     confirmButtonText: '확인'
@@ -122,7 +135,7 @@ $(() => {
         const id = matches && matches[1] ? matches[1] : '';
 
         Swal.fire({
-            title: '승인 확인',
+            title: '팀 가입 요청 승인 확인',
             text: '이 요청을 승인하시겠습니까?',
             icon: 'question',
             showCancelButton: true,
@@ -142,7 +155,7 @@ $(() => {
         const id = matches && matches[1] ? matches[1] : '';
 
         Swal.fire({
-            title: '거절 확인',
+            title: '팀 가입 요청 거절 확인',
             text: '이 요청을 거절하시겠습니까?',
             icon: 'question',
             showCancelButton: true,

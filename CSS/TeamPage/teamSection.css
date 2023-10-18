@@ -134,6 +134,10 @@ p.intro1, p.intro2, p.intro3 {
     margin-right: 10px;
 }
 
+.noticeNo {
+    font-weight: bold;
+}
+
 /* 등록일 */
 .regDate {
     font-size: 14px; 
@@ -156,15 +160,6 @@ p.intro1, p.intro2, p.intro3 {
 
     font-size: 17px;
     margin-bottom: 10px;
-}
-
-/* 공지 제목 호버 */
-.noticeTitle:hover {
-    color: #011837;
-
-    font-size: 18px;
-
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* 텍스트 그림자 추가 */
 }
 
 /* 공지 제목 방문 이후에도 색깔 똑같이 */

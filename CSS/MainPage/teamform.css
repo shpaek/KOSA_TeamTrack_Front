@@ -167,7 +167,7 @@
             user-select: none;
   }
   
-  .create {
+  .create, .alter, .delete {
     border: none;
     padding: 15px 10px;
     text-align: center;
@@ -259,9 +259,6 @@
 
 /*header.css*/
 
-*{
-  font-family: 'Noto Sans KR', sans-serif;
-}
 header {
   /* border: solid 1px black; 영역 표시용 나중에 지우기!! */
   display: flex;
