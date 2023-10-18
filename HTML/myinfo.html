@@ -13,7 +13,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="../js/myinfo.js"></script> 
-        <script src="../js/myheader.js"></script> 
+        <!-- <script src="../js/myheader.js"></script>  -->
 
     </head>
 
@@ -36,13 +36,13 @@
                 <div class="myinfo">
                     <div class="leftbox">
                         <div class="imgbox">
-                            <form>
+                            <form class="userprofile">
                                 <div class="imgshow">
-                                    <img src="../images/logo.png">
+                                    <img src="../images/logo.png" class="userprofileimg">
                                 </div>
                                 <div class="filebuttons">
                                     <label> 프로필 지정 <input type="file" name="f1" id="f1"></input></label>
-                                    <button type="submit" name="profilesave">저장</button>
+                                    <button name="profilesave">저장</button>
                                 </div>
                             </form>
                         </div>
@@ -73,11 +73,11 @@
                                 </div>
                                 <div>
                                     <label>생년월일 : <input type="text"
-                                    name="birthday" value="" required></label>&nbsp;&nbsp;&nbsp;<span style="font-size: 11px;">8자리 숫자</span>
+                                    name="birthday" value="" required></label><!--&nbsp;&nbsp;&nbsp;<span style="font-size: 11px;">8자리 숫자</span>-->
                                 </div>
                                 <div>
                                     <label>휴대폰 : <input type="text"
-                                    name="phone" value="" required></label>&nbsp;&nbsp;&nbsp;<span style="font-size: 11px;">11자리 숫자</span>
+                                    name="phone" value="" required></label><!--&nbsp;&nbsp;&nbsp;<span style="font-size: 11px;">11자리 숫자</span>-->
                                 </div>
                                 <div>
                                     <label>이메일 : <input type="text"

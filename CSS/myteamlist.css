@@ -51,24 +51,32 @@ ul.myteamtab>li>div{
 /* --------------------- 승인거절 목록 ----------------------- */
 
 .rejectlist{
-    width : 900px;
-    display : none;
+    border : solid 1px #CCCCCC;
+    border-radius: 10px;
+    padding:60px;
+    display:none
+}
+
+.rejectlist>ul>li{
+    list-style: none;
 }
 
 /* 거절목록 칸 */
 .rejectlist>ul>li>div.reject{
-    width:900px;
-    border-bottom:solid 1px;
-    border-left:solid 1px;
-    border-right:solid 1px;
+    width:600px;
+    height:70px;
+    background-color: #f6f7f7;
+    border-bottom:solid 1px #CCCCCC;
+    border-left:solid 1px #CCCCCC;
+    border-right:solid 1px #CCCCCC;
 }
 
-/* 팀목록 칸 맨 위 */
+/* 거절된 팀목록 칸 맨 위 */
 div.rejectlist>ul>li:nth-child(2)>div.reject{
-    border-top : solid 1px;
+    border-top : solid 1px #CCCCCC;
 }
 
-/* 팀번호 */
+/* 거절된 팀번호 */
 div.rejectlist>ul>li>div.reject>span[name="reject_teamno"]{
     display : none;
 }
@@ -78,7 +86,52 @@ div.rejectlist>ul>li>div.reject>img{
     width:50px;
 }
 
+img.reject_logo{
+    width:50px;
+    margin-left: 20px;
+    padding-top:10px;
+}
 
+a[name=reject_teamname]{
+    position: relative;
+    margin-left: 30px;
+    bottom:20px;
+}
+
+div.rejectlist>h1{
+    display:none;
+}
+
+/*거절된 팀리스트 페이징*/
+.pagegroup_reject{
+    width:900px; 
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 50px;
+} 
+
+.pagegroup_reject>span{
+    cursor: pointer;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 70px;
+}
+
+.pagegroup_reject>span:disabled {
+    pointer-events: none;
+  }
+  
+  .pagegroup_reject>span:hover {
+    background-color: #000000;
+    color : white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  .pagegroup_reject>span:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
 
 
 /* ---------------------- 팀목록 ------------------------*/
@@ -216,8 +269,4 @@ span.nothing{
     display: none;
     font-size: 20px;
     color: #515151;
-}
-
-h1{
-    margin-bottom: 40px;
 }

@@ -13,6 +13,7 @@ $(() => {
        $.ajax({
             xhrFields: {
                 responseType: "blob",
+                withCredentials: true,
             },
             url: backURL + '/userprofiledownload',
             data: `loginedId=${loginedId}`,
@@ -103,6 +104,9 @@ $(document).on("click", "#teamName", function(e) {
     
     const teamName = e.target.textContent;
     $.ajax({
+        xhrFields: {
+            withCredentials: true,
+          },
       url: backURL+ '/teamnamedupcheck',
       method: 'get',
       data: "teamName="+teamName,

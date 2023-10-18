@@ -33,10 +33,7 @@ $(()=>{
             }
         },
         error:(jqXHR, textStatus)=>{
-            Swal.fire({
-                icon: 'error',
-                text: '새로고침 해주세요🙏'
-            })
+            
         }
     })
 
@@ -73,11 +70,7 @@ $(()=>{
                 }
             },
             error:(jqXHR, textStatus)=>{
-                Swal.fire({
-                    icon: 'error',
-                    text: '다시 한번 시도해주세요🙏'
-                })
-                console.log(jqXHR)
+                
             }
         })
     }) 
@@ -147,11 +140,7 @@ $(()=>{
                 }
             },
             error:(jqXHR, textStatus)=>{
-                Swal.fire({
-                    icon: 'error',
-                    text: '새로고침 해주세요🙏'
-                })
-                console.log(jqXHR)
+                
             }
         })
     }
