@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TeamTrack!!</title>
+
+    <link href="../images/favicon.ico" rel="icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
+    <link rel="stylesheet" href="../CSS/qnaboarddetail.css">
+
+    <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 JS 스크립트 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <!-- JavaScript -->
+        <script src="../JS/TeamPage/teamMain.js"></script>
+        <script src="../JS/MainPage/teamsearch.js"></script>
+        <script src="../JS/qnaboarddetail.js"></script>
+
+    <!-- font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="mainContainer">
+        <header>
+            <!-- 검색창 -->
+            <div class="searchBar">
+                <input
+                  type="text"
+                  placeholder="검색을 하삼"
+                  id="mainsearch"
+                />
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon"/>
+              </div>
+        </header>
+
+        <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 프로필 -->
+            <div class="teamProfile">
+                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <p class="teamProfileEdit">편집</p>
+            </div>
+
+            <!-- 팀 이름 -->
+            <div class="teamNameDiv">팀명: 
+                <p class="teamNameShow"></p>
+            </div>
+
+            <!-- 메뉴 탭 -->
+            <ul class="nonHiddenTab">
+                <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
+                <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
+                <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
+                <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
+                <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
+                <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
+                <li>
+                    <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
+                    <ul class="hiddenTab">
+                        <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
+                        <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
+                        <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
+                        <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
+                    </ul>
+                </li>
+                <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
+            </ul>
+        </nav>
+
+        <!-- 컨텐츠 영역 -->
+        <section class="section">
+
+
+    <div class="detailbuttons">
+        <button class="edit">수정</button>
+        <button class="remove">삭제</button>
+    </div>
+
+    <div class="boarddetail">
+        <table>
+            <tr>
+                <th>제목</th>
+                <td id="title">
+                    <!-- <textarea name="title1" id="title1" cols="30" rows="1" readonly></textarea> -->
+                </td>
+                <th>작성일</th>
+                <td id="regdate">
+                    <!-- <textarea name="regdate1" id="regadte1" cols="20" rows="1" readonly></textarea> -->
+                    <!-- <input type="text" id="regdate1" readonly> -->
+                </td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td id="id"></td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td id="content">
+                    <!-- <textarea name="content1" id="content1" id="" cols="30" rows="10" readonly></textarea> -->
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+    
+        <!-- 수정 -->
+        <div class="editdetail" hidden>
+            <form method="post"> 
+                <div class="modifytitleline">
+                    <input type="text"
+                            required placeholder="제목을 입력하세요"
+                            name="title"
+                            value="">
+                    <!-- <input type="file" name="f1" id="f1"></input> -->
+                </div>
+                <!-- <div class="modifycontent">
+                    <input type="text" 
+                        required placeholder="본문"
+                        name="content"
+                        value="">
+                </div> -->
+                <div class="modifycontent">
+                    <textarea
+                        required
+                        placeholder="본문"
+                        name="content"
+                    ></textarea>
+                </div>
+                <!-- <div class="writebuttons">
+                    <button type="submit">완료</button>
+                </div> -->
+                <div class="submitbuttons">
+                    <button type="submit" class="edit1" >완료</button>
+                </div>
+            </form>
+            <!-- <div class="backbutton">
+                <button name="back">취소</button>
+            </div> -->
+        </div>  
+
+        <div class="container">
+
+            <br><br>
+
+            <div>
+                <div>
+                    <span><strong>Comments</strong></span> <span id="Cnt"></span>
+                </div>
+                <!-- 게시글 작성할 때 처럼 form 데이터로 만들면 되는지..? -->
+                <form class="commentwrite">
+                    <div>
+                        <table class="commentsubmit">
+                            <tr>
+                                <td>
+                                    <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
+                                    <br>
+                                    <div>
+                                        <button type="submit">작성</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="container">
+            <!-- < id="commentList" name="commentList" method="get"> -->
+                <div id="commentList">
+                    <table>
+                        <tr>
+                            <th>작성자</th>
+                            <!-- <td id="writer"></td> -->
+                            <th>내용:</th>
+                            <!-- <td id="commentContent"></td> -->
+                            <th>작성일:</th>
+                            <!-- <td id="commentRegdate"></td> -->
+                            <th>채택</th>
+                            
+                            <th>답글</th>
+                        </tr>
+                    </table>
+                </div>
+            <!-- </form> -->
+        </div>
+
+
+        </section>
+
+        <aside>
+            <!-- 팀 가입하기 버튼 -->
+            <button id="JoinTeamBtn">팀 가입</button>
+
+            <!-- 팝업 -->
+            <form id="teamJoin" action="/#" method="POST" style="display: none;">
+                <p>&#127881; 팀 가입 &#127881;</p>
+                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction" placeholder="팀 가입을 위한 자기소개를 입력해주세요!"
+                    required rows="5" cols="50" maxlength="2000"></textarea>
+                <button type="submit" id="requestJoinTeamBtn">가입요청</button>
+            </form>
+        </aside>
+
+        <!-- 푸터 -->
+        <footer>
+            <div class="copyright">
+            <p>©Copyright TeamTrack. All rights reserved</p>
+            </div>
+            <div class="agreement">
+            <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+            <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+            <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

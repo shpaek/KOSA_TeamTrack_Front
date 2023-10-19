@@ -1,0 +1,72 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+a {
+    text-decoration: none;
+  }
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    font-family: 'Noto Sans KR', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 0px 50px 0px;
+
+    margin-left: 200px; /* nav의 너비만큼 마진 추가 */
+}
+
+/* 검색창 영역 */
+header .searchBar {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+  
+    padding: 10px;
+    margin-top: 30px;
+  
+    width: 350px;
+    height: 20px;
+  
+    border: 1.5px solid black;
+    border-radius: 50px;
+  }
+  
+  /* 검색창 아이콘 */
+  header>div>img {
+    position: absolute;
+  
+    /* 아이콘 사이즈 */
+    width: 22px;
+    height: 22px;
+  
+    /* 아이콘 위치 */
+    left: 10px;
+    top: 50%;
+    
+    /* 아이콘 수직 중앙 정렬 */
+    transform: translateY(-50%);
+  }
+  
+  /* 검색창 인풋 영역 */
+  header .searchBar input {
+    outline: none;
+    
+    width: 80%;
+    height: 100%;
+  
+    left: 10px;
+  
+    border: 0px;
+  
+    font-size: 16px;
+  }

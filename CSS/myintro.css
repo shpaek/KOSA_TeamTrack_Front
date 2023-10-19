@@ -1,0 +1,45 @@
+*{
+    margin:0 auto; 
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.myinfo{
+    cursor: pointer;
+    width : 450px;
+    height: 450px;
+    margin : 100px;
+    margin-top: 300px;
+    background-color: #011837;
+    border-style : solid;
+    border-color: white;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.myinfo>h1{
+    margin-top:40%;
+    color : white;
+}
+
+.myteam{
+    cursor: pointer;
+    width : 450px;
+    height: 450px;
+    margin : 100px;
+    margin-top: 300px;
+    background-color: #011837;
+    border-style : solid;
+    border-color: white;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.myteam>h1{
+    margin-top:40%;
+    color : white;
+}

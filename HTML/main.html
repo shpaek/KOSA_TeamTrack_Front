@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TeamTrack!!</title>
+
+    <link href="../images/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="../CSS/MainPage/header.css" />
+    <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
+    <link rel="stylesheet" href="../CSS/MainPage/teamlist.css" />
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="../JS/MainPage/main.js"></script>
+    <script src="../JS/MainPage/mainteamlist.js"></script>
+
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+  </style>
+  </head>
+  <body>
+    <div id="mainContainer">
+        <header>
+            <!-- 검색창 -->
+            <div class="searchBar">
+                <input
+                  type="text"
+                  placeholder="팀명 또는 #을 포함하여 해시태그를 검색"
+                  id="mainsearch"
+                />
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon"/>
+              </div>
+        </header>
+
+        <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 이름 -->
+
+            <!-- 팀 프로필 -->
+            <form class="profile">
+            <div class="teamProfile">
+
+                <img class="teamProfileImg" src='../images/rocket.png' alt="teamProfile">
+                </div>
+            </form>
+            <p class="membernickname">아이디</p>
+
+            <!-- 메뉴 탭 -->
+            <ul>
+                
+                <button class="button-hover" data="popup-form">
+                <span>팀 생성하기</span>
+                </button>
+            
+                <li><a href="#" class="myPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127939; 마이페이지</a></li>
+                <li><a href="#" class="myGroupList">&nbsp;&nbsp;&nbsp;&nbsp;&#128203; 마이그룹목록</a></li>
+                <li id="exitTeam"><a href="#" class="logout">로그아웃</a></li>
+            </ul>
+        </nav>
+        
+        <!-- 컨텐츠 영역 -->
+        <section class="section">
+            <div class = toplogo>
+            <button class="more">MORE</button><br>
+        
+        <img class="crownimg" src="../images/crown.png" alt="searchIcon" />
+        <h2 class="topnine">TOP9</h2>
+    </div>
+        <div class="mainteam">
+            
+
+            <div class="teamlist">
+                <ul class="team">
+                    
+                    <div class="profilebox">
+                    
+                    <img src='../images/rocket.png' class="teamProfileImage"alt="원본">
+                    </div>
+                    <li><span class="teamName" id="teamName">팀명</span></li><br>
+                    <li class="createDate"><span>(</span><span class="createDate">팀생성일</span><span> 생성)</span></li><br>        
+                    <li><span class="studyType">스터디종류</span></li><br>
+                    <li><span class="onOffLine">온/오프라인</span></li><br>
+                    
+                    <li><span class="joinMember">참여인원</span></li><span>명/</span>
+                    
+                    <li><span class="maxMember">최대인원</span><span>명</span></li>
+                    <br>
+       
+                    
+   
+                    <li><span class="startDate">스터디 시작일</span></li>
+                    <span>~</span>
+                    <li><span class="endDate">스터디 종료일</span></li><br>
+
+                    <div class="hashtag">
+                    <li><span>#</span><span class="hashtag1"></span></li>
+                    <li><span>#</span><span class="hashtag2"></span></li>
+                    <li><span>#</span><span class="hashtag3"></span></li>
+                    <li><span>#</span><span class="hashtag4"></span></li>
+                    <li><span>#</span><span class="hashtag5"></span></li><br>
+                    </div>
+                    <li><span class="briefInfo">한줄설명</span></li><br>
+                    <li><span class="viewcnt">조회수</span></li><span>회</span>
+                </ul>
+            </div>
+
+
+        </div>
+
+    </section>
+       
+        <!-- 푸터 -->
+        <footer>
+            <div class="copyright">
+            <p>©Copyright TeamTrack. All rights reserved</p>
+            </div>
+            <div class="agreement">
+            <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+            <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+            <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

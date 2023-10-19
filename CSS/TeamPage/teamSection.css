@@ -1,0 +1,174 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* section nav바 너비만큼 이동 */
+section {
+    margin-left: 270px;
+    margin-bottom: 50px;
+    height: 1400px;
+    padding: 30px;
+    width: 80%;
+}
+
+/* 영역 소개글 */
+p.intro1, p.intro2, p.intro3 {
+    width: 90%;
+
+    border-top: 1px solid #c4c4c4;
+    
+    padding-top: 10px;
+    margin-left: 30px;
+
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* 팀 조회수 영역 */
+.teamViewCnt {
+    display: inline-block;
+
+    width: 90%;
+    height: 30px;
+
+    margin-left: 30px;
+    /* margin-bottom: 30px; */
+}
+
+/* 팀 조회수 */
+.teamCntViewSpan1, .teamCntViewSpan2 {
+    font-weight: bold;
+    display: inline-block;
+
+    font-size: 17px;
+}
+
+/* 팀원 영역 */
+.teamMemberList {
+    width: 90%;
+
+    margin-left: 30px;
+    margin-bottom: 50px;
+}
+
+/* 팀원 목록 */
+.teamMemberListSpan1 {
+    padding: 10px;
+
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* 복제 후에 적용할 스타일 */
+.nickNameStyle {
+    display: inline-block;
+
+    border-radius: 20px; 
+    border: 1px solid #011837;
+
+    background-color: #011837;
+    color: white;
+
+    padding: 7px 20px; 
+    margin-right: 5px;
+
+    transition: all 0.3s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 팀 소개글 영역 */
+.teamMainIntroduction {
+    width: 90%;
+    height: auto;
+
+    margin-left: 30px;
+    margin-bottom: 50px;
+}
+
+/* 팀 소개글 */
+.teamMainIntroductionP {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+/* 공지사항 영역 */
+.teamMainNotice {
+    width: 90%;
+    height: auto;
+
+    margin-left: 30px;
+}
+
+/* 공지사항 전체 영역 스타일링 */
+.teamMainNoticeDiv {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+
+    border: 1px solid #ccc;
+    border-radius: 10px; 
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+
+    padding: 15px; 
+    margin-bottom: 20px; 
+
+    background-color: #f9f9f9; 
+}
+
+/* 공지사항 noticeNo랑 regDate 정렬 */
+.noticeDiv {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 100%;
+
+    margin-bottom: 10px; 
+}
+
+/* 간격 */
+.noticeNo, .regDate {
+    margin-right: 10px;
+}
+
+.noticeNo {
+    font-weight: bold;
+}
+
+/* 등록일 */
+.regDate {
+    font-size: 14px; 
+    color: #888; 
+}
+
+/* 제목이랑 내용 정렬 */
+.noticeTitle, .noticeContent {
+    display: block; 
+
+    width: 100%;
+}
+
+/* 공지 제목 */
+.noticeTitle {
+    font-weight: bold; 
+    text-decoration: none;
+    
+    color:#011837;
+
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+/* 공지 제목 방문 이후에도 색깔 똑같이 */
+.noticeTitle:visited {
+    color: inherit;
+}
+
+/* 공지 내용 */
+.noticeContent {
+    font-size: 15px;
+    font-weight: 600;
+}

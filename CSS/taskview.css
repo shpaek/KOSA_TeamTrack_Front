@@ -1,0 +1,55 @@
+div.taskviewbox{
+    /* background-color: rgb(231, 231, 231); */
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 8px;
+}
+div.taskviewbox>div.tasktitle {
+    padding-left: 30px;
+}
+div.taskviewbox>hr{
+    width:95%;
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+div.taskviewbox>div.taskinfo{
+    padding-left: 30px;
+}
+
+div.taskviewbox>div.taskanswer{
+    padding-left: 30px;
+}
+div.taskanswercontent{
+    border: 0.5px solid;
+    width:95%;
+    height:auto;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div.taskviewbox>div.tasknickname{
+    font-size: small;
+    margin-right: 50px;
+    text-align: right;
+}
+div.taskviewbox>div.myanswer{
+    margin-left: 30px;
+}
+div.myanswercontent{
+    border: 0.5px solid;
+    width:95%;
+    height:auto;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+button{
+    width: 50px;
+    height: 30px;
+    margin-left:10px;
+    cursor: pointer;
+}
+button.taskfiledown{
+    width:70px;
+}

@@ -1,0 +1,109 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width : 100%;
+    height : 100%;
+    object-fit : cover;
+    z-index: -1000;
+}
+form {
+    z-index: 1;
+}
+table input {
+    width: 250px;
+    height: 22px;
+    border-radius: 5px;
+}
+img {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    left: 31%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px 1px #dadce0;
+}
+
+#signup_box1 {
+    position : absolute;
+    top: 22%;
+    left: 55%;
+    
+    font-weight: bold;
+    font-size: small;
+    /* color: royalblue; */
+    color: whitesmoke;
+}
+
+#login_box1 {
+    position: absolute;
+    width: 350px;
+    height: 400px;
+    top: 25%;
+    left: 40%;
+
+    /* background-color:gainsboro; */
+    border-radius: 2%;
+    display: flex;
+    justify-content: center;
+
+    font-weight: bold;
+    /* color: royalblue; */
+    color: white;
+}
+
+#login_box1 form {
+    display: inline-block; /* form을 인라인 블록 요소로 설정 */
+    text-align: left; /* form 내부 텍스트 왼쪽 정렬 */
+    margin: auto; /* 수평 가운데 정렬 */
+}
+
+#login_save {
+    display: flex; /* 내부 요소를 가로 정렬 */
+    align-items: center; /* 내부 요소를 세로 중앙 정렬 */
+}
+#login_save div {
+    font-size: 4px;
+}
+
+#login_button {
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    left: 20%;
+
+    margin-top: 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(124.47deg, 
+              rgba(61, 151, 215, 0.2), 
+              rgba(61, 151, 215, 0.0), 
+              rgba(61, 151, 215, 0.2));
+    backdrop-filter: blur(5px);
+}
+
+/* #login_button:hover {
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    left: 20%;
+
+    margin-top: 10px;
+
+    background: linear-gradient(124.47deg, 
+              rgba(61, 151, 215, 0.8), 
+              rgba(61, 151, 215, 0.6), 
+              rgba(61, 151, 215, 0.8));
+    top: 1px;
+    margin-top: 1px;
+}    */

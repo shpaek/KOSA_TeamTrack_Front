@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TeamTrack!!</title>
+
+<!-- jQuery를 먼저 불러옵니다. -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- 나머지 스크립트 및 스타일 시트는 이후에 불러옵니다. -->
+<!-- ... -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script src="../JS/MainPage/teamcreate.js"></script>
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+<link href="../images/favicon.ico" rel="icon">
+<link rel="stylesheet" href="../CSS/MainPage/footer.css" />
+<link rel="stylesheet" href="../CSS/MainPage/teamform.css" />
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+  </style>
+  </head>
+  <body>
+    <div id="mainContainer">
+        <header>
+            <!-- 검색창 -->
+            <div class="searchBar">
+                <input type="text" placeholder="팀명 또는 #을 포함하여 해시태그를 검색">
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon">
+            </div>
+        </header>
+
+        <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 이름 -->
+
+            <!-- 팀 프로필 -->
+            <form class="profile">
+            <div class="teamProfile">
+
+                <img class="teamProfileImg" src='../images/rocket.png' alt="teamProfile">
+
+                </div>
+            </form>
+            <p class="membernickname">아이디</p>
+
+            <!-- 메뉴 탭 -->
+            <ul>
+                <button class="button-hover" data="popup-form">
+                <span>팀 생성하기</span>
+                </button>
+
+                <li><a href="#" class="myPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127939; 마이페이지</a></li>
+                <li><a href="#" class="myGroupList">&nbsp;&nbsp;&nbsp;&nbsp;&#128203; 마이그룹목록</a></li>
+                <li id="exitTeam"><a href="#" class="logout">로그아웃</a></li>
+            </ul>
+        </nav>
+  <section class="section">
+<div class="popup-form">
+  <div class="popup-form__wrapper">
+    <div class="popup-form__close"></div>
+    <div class="popup-form__content">
+      <h3 class="form__title">팀 생성하기</h3><br>
+      <form class="form" id="popupform" method="post" enctype="multipart/form-data">
+        <div class ="profileImageDiv" >
+        <label for="f1"></label><input type="file" name="f1" id="f1" accept=".png"/>
+        <img id="profileImage" class="teamProfileImg2" src='../images/rocket.png' alt="teamProfile2">
+      </div>
+
+        <div class="formgroup">
+          <label for="teamName" class="formgroup__text">팀명:</label>
+          <input class="form__field" id="teamName" type="text" name="teamName"  placeholder="10자 이내 입력" maxlength="10"
+          onkeyup="characterCheck(this)" required/>
+          <button type="button" class="dupchk">중복확인</button>
+        </div>
+        <div class="formgroup">
+        <div class="formgroup__text">온/오프라인:</div>
+        <label class="radio-design">
+          <input type="radio" name="onOffLine" value="온라인" id="onOffLine1" checked/>
+          <span class="radio-circle"></span>온라인
+        </label>
+        <label class="radio-design">
+          <input type="radio" name="onOffLine" value="오프라인" id="onOffLine2"/>
+          <span class="radio-circle"></span>오프라인
+        </label>
+        </div>
+        
+        <div class="formgroup">
+          <p class="formgroup__text">최대 인원:</p>
+          <input type="number" id="maxMember" name="maxMember" value="1" max="20" min="1"  required/>명(최대 20명)
+        </div>
+
+        <div class="formgroup">
+            <p class="formgroup__text">스터디 타입:</p>
+            <input class="form__field" id="studyType" type="text" name="studyType" placeholder="예) 자바, 자격증"  maxlength="10" required/>
+        </div>
+            
+        <div class="formgroup__text" id="studyType">스터디 기간:</div>
+            <div>
+              <label class="start">시작 날짜:
+                <input type="text" id="startDate" name="startDate" min="2023-10-01" max="2030-12-31" required/>
+              </label>
+              <label class="end">종료 날짜:
+                <input type="text" id="endDate" name="endDate" min="2023-10-01" max="2030-12-31"  required/>
+              </label>
+        </div>
+
+        <div class="formgroup">
+            <p class="formgroup__text">해시태그:</p>
+            <input class="form__field_hashtag" id="hashtag1" type="text" name="hashtag1" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            onkeyup="characterCheck(this)" required/>
+            <input class="form__field_hashtag" id="hashtag2" type="text" name="hashtag2" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            onkeyup="characterCheck(this)" required/>
+            <input class="form__field_hashtag" id="hashtag3" type="text" name="hashtag3" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            onkeyup="characterCheck(this)" required/>
+            <input class="form__field_hashtag" id="hashtag4" type="text" name="hashtag4" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            onkeyup="characterCheck(this)" required/>
+            <input class="form__field_hashtag" id="hashtag5" type="text" name="hashtag5" placeholder="10자 이내 입력(#제외)" maxlength="10"
+            onkeyup="characterCheck(this)" required/>
+        </div>
+
+        <div class="formgroup">
+            <p class="formgroup__text">한줄 소개:</p>
+            <input class="form__field" id="briefInfo" type="text" name="briefInfo" placeholder="20자 이내 입력"  maxlength="20" required/>
+        </div>
+
+        <div class="formgroup">
+            <p class="formgroup__text">팀 소개:</p>
+            <textarea class="form__field2" id="teamInfo" name="teamInfo" cols="60" rows="4" placeholder="500자 이내 입력" maxlength="500" required></textarea>
+        </div>
+
+        <button class="create" type="submit">생성하기</button>
+      </form>
+      
+    </div>
+  </div>
+</div>
+  </section>
+
+</body>
+
+        <!-- 푸터 -->
+        <footer>
+          <div class="copyright">
+          <p>©Copyright TeamTrack. All rights reserved</p>
+          </div>
+          <div class="agreement">
+          <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+          <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+          <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+          </div>
+      </footer>

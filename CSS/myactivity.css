@@ -1,0 +1,135 @@
+*{
+  margin:0 auto;
+}
+
+section{
+  margin-left: 270px;
+  margin-bottom: 50px;
+  padding: 30px;
+}
+
+
+.doc{
+    width:1000px;
+    height:850px;
+    padding-top:50px;
+    padding-bottom:50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border : solid 1px;
+    box-sizing: border-box;
+    border-color: #CCCCCC;
+    border-radius: 20px;
+}
+
+.team{
+  width: 1000px;
+  height: 200px;
+  border-bottom: solid 1px #CCCCCC;
+  float: left;
+  margin-bottom: 40px;
+}
+
+.team>img.reject_logo{
+  width:100px;
+  float:left;
+  margin-left: 40px;
+}
+
+.teaminfo{
+  float:left;
+  width: 450px;
+  height:400px;
+  margin-left: 20px;
+  font-size: 15px;
+  overflow: hidden;
+  display : -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-align: justify;
+  line-height: 180%;
+}
+
+.date{
+  float:right;
+  margin-right:40px;
+  font-size: 13px;
+}
+
+.activity{
+  font-size: 15px;
+  line-height: 180%;
+}
+
+.my{
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.rank{
+  margin-top: 40px;
+  margin-left: 40px;
+  font-size : 20px;
+  font-weight: 700;
+  font-style: oblique;
+}
+
+.rate{
+  width: 700px;
+  height:250px;
+  padding:10px;
+  text-align: center;
+  margin-top: 80px;
+  margin-left: 250px;
+}
+
+.attendancediv{
+  float:left;
+}
+
+.taskdiv{
+  float:left;
+  margin-left: 70px;
+}
+
+div.attendance {
+    position: relative;
+    display:inline-block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+div.taskcomplete {
+    position: relative;
+    display:inline-block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  span.a{
+    background: #fff;
+    display : block;
+    position: absolute;
+    top:50%; left:50%;
+    width:100px; height:100px;
+    border-radius: 50%;
+    text-align:center; 
+    line-height: 100px;
+    font-size:30px;
+     transform: translate(-50%, -50%);
+  }
+
+  span.t{
+    background: #fff;
+    display : block;
+    position: absolute;
+    top:50%; left:50%;
+    width:100px; height:100px;
+    border-radius: 50%;
+    text-align:center; 
+    line-height: 100px;
+    font-size:30px;
+     transform: translate(-50%, -50%);
+  }

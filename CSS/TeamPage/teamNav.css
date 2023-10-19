@@ -1,0 +1,187 @@
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 사이드 메뉴바 */
+nav {
+    background-color: #011837;
+    color: white;
+    position: fixed;
+
+    width: 240px;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    z-index: 3; /* footer 위에 놓기 */
+}
+
+/* 사이트 로고 */
+nav>a>img.logo {
+    cursor: pointer;
+
+    width: 200px;
+    height: 40px;
+
+    padding: 10px 20px 0px 20px; 
+}
+
+/* 팀 이름 */
+.teamNameDiv {
+    text-align: center;
+    font-weight: bold;
+
+    /* margin-left: 90px; */
+}
+
+.teamNameShow {
+    margin: auto;
+
+    font-size: 18px;
+}
+
+/* 프로필 전체 영역 */
+.teamProfile {
+    position: relative; /* 상대 위치 지정 */
+    overflow: hidden;   /* 영역 벗어나는 이미지 숨김 처리 */
+
+    width: 180px;
+    height: 180px;
+
+    border: 2px solid white; /* 영역 표시 */
+    border-radius: 50%;
+    
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* 프로필 편집 버튼 */
+.teamProfileEdit{
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+
+    margin-top: 70%;
+    padding: 5px 0px 0px 0px;
+
+    background-color: rgb(131, 131, 131);
+
+    transform: translateY(65%);
+}
+
+/* 프로필 사이즈 조절 */
+.teamProfileImg {
+    object-fit: cover;  /* 영역 내에 이미지 꽉 채우기 */
+    
+    width: 100%;
+    height: 100%;
+}
+
+/* 메뉴 탭 영역 */
+nav ul.nonHiddenTab {
+    list-style-type: none;
+    padding: 0;
+
+    height: 250px;
+}
+
+/* 메뉴 탭들 */
+nav ul li {
+    display: flex;
+    position: relative; /* 서브 메뉴의 위치를 상대적으로 조정하기 위함 */
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+
+    font-size: 15px;
+
+    margin: 3px 0px 3px 0px;
+    padding: 10px;
+}
+
+/* 탭 호버 효과 */
+nav ul li:hover {
+    background-color: #022d65;
+}
+
+/* 메뉴 탭 글씨색 */
+nav ul li a {
+    color: white;
+}
+
+/* 팀 관리 탭 호버 안했을 때 2차 메뉴 숨기기 */
+li .hiddenTab {
+    display: none;
+}
+
+/* 팀 관리 탭 호버 했을 때 2차 메뉴 */
+li:hover .hiddenTab {
+    display: block;
+}
+
+/* 상위 메뉴 항목에 호버되었을 때의 2차 메뉴 항목들의 스타일 */
+nav ul li:hover > ul {
+    display: flex; /* 2차 메뉴 항목들을 표시 */
+}
+
+/* 2차 메뉴 */
+nav ul li > ul {
+    position: absolute; /* 상위 메뉴 항목에 대해 상대적인 위치로 배치 */
+    flex-direction: column; /* 탭 항목들을 수직 배치 */
+    cursor: pointer;
+
+    background-color: #022d65;
+    
+    font-size: 16px;
+
+    top: -170px;
+    left: 100%; /* 상위 메뉴 항목의 오른쪽 끝에서 시작 */
+    
+    height: 220px;
+    width: 130px; /* 2차 메뉴 너비 */
+
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 숨겨진 li 태그에 호버했을 때 */
+nav ul li > ul > li:hover {
+    cursor: pointer;
+
+    background-color: #022d65;
+    
+    font-size: 17px;
+    font-weight: bold; /* 글씨체를 굵게 */
+}
+
+/* 팀 나가기 호버 안했을 때 */
+nav>ul>li#exitTeam {
+    display: flex;  /* 요소를 화면에 보이게 함 */
+    position: absolute;
+
+    margin-top: 90px;
+    
+    bottom: 10px;
+    right: 10px;
+    
+    opacity: 0.2;
+    transition: opacity 0.3s;
+}
+
+/* 팀 나가기 호버했을 때 */
+nav>ul>li#exitTeam:hover {
+    font-weight: bold;
+    
+    opacity: 0.8; 
+}

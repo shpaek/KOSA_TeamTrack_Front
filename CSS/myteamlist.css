@@ -1,0 +1,272 @@
+*{
+    margin:0 auto;
+}
+
+section{
+    margin-left: 270px;
+    margin-bottom: 50px;
+    padding: 30px;
+    height: 1600px;
+}
+
+.myteam{
+    width:1000px;
+    height:500px;
+    padding:20px;
+    padding-top:50px;
+    padding-bottom:50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    border : none;
+    border-color: #CCCCCC;
+    border-radius: 20px;
+}
+
+.teamtab{
+    margin: 0 auto; 
+    position:relative; 
+    bottom:25px;
+}
+
+ul.myteamtab{
+    list-style: none;
+    position: relative;
+    float:left;  
+    text-align:center; 
+}
+
+ul.myteamtab>li{
+    list-style: none;
+    display:  inline-block;
+}
+
+ul.myteamtab>li>div{
+    width:100px;
+    height:25px;
+    border : solid 1px #cccccc;
+    border-radius: 5px 5px 0px 0px;
+}
+
+/* --------------------- 승인거절 목록 ----------------------- */
+
+.rejectlist{
+    border : solid 1px #CCCCCC;
+    border-radius: 10px;
+    padding:60px;
+    display:none
+}
+
+.rejectlist>ul>li{
+    list-style: none;
+}
+
+/* 거절목록 칸 */
+.rejectlist>ul>li>div.reject{
+    width:600px;
+    height:70px;
+    background-color: #f6f7f7;
+    border-bottom:solid 1px #CCCCCC;
+    border-left:solid 1px #CCCCCC;
+    border-right:solid 1px #CCCCCC;
+}
+
+/* 거절된 팀목록 칸 맨 위 */
+div.rejectlist>ul>li:nth-child(2)>div.reject{
+    border-top : solid 1px #CCCCCC;
+}
+
+/* 거절된 팀번호 */
+div.rejectlist>ul>li>div.reject>span[name="reject_teamno"]{
+    display : none;
+}
+
+/* 이미지들 */
+div.rejectlist>ul>li>div.reject>img{
+    width:50px;
+}
+
+img.reject_logo{
+    width:50px;
+    margin-left: 20px;
+    padding-top:10px;
+}
+
+a[name=reject_teamname]{
+    position: relative;
+    margin-left: 30px;
+    bottom:20px;
+}
+
+div.rejectlist>h1{
+    display:none;
+}
+
+/*거절된 팀리스트 페이징*/
+.pagegroup_reject{
+    width:900px; 
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 50px;
+} 
+
+.pagegroup_reject>span{
+    cursor: pointer;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 70px;
+}
+
+.pagegroup_reject>span:disabled {
+    pointer-events: none;
+  }
+  
+  .pagegroup_reject>span:hover {
+    background-color: #000000;
+    color : white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  .pagegroup_reject>span:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+
+/* ---------------------- 팀목록 ------------------------*/
+.teamlist{
+    border : solid 1px #CCCCCC;
+    border-radius: 10px;
+    padding:60px;
+}
+
+.teamlist>ul>li{
+    list-style: none;
+}
+
+
+.teamlist>ul>li>div.team{
+    width:600px;
+    height:70px;
+    background-color: #f6f7f7;
+    border-bottom:solid 1px #CCCCCC;
+    border-left:solid 1px #CCCCCC;
+    border-right:solid 1px #CCCCCC;
+}
+
+/* 팀목록 칸 맨 위 */
+div.teamlist>ul>li:nth-child(2)>div.team{
+    border-top : solid 1px #CCCCCC;
+}
+
+/* 팀번호 */
+div.teamlist>ul>li>div.team>span[name="teamno"]{
+    display : none;
+}
+
+
+/* 팀장 표시 */
+div.teamlist>ul>li>div.team>img.leader{
+    visibility: hidden;
+    margin-left : 20px;
+    width: 30px;
+    padding-bottom:10px;
+}
+
+img.logo{
+    width:50px;
+    margin-left: 20px;
+    padding-top:10px;
+}
+
+a[name=teamname]{
+    position: relative;
+    margin-left: 30px;
+    bottom:20px;
+}
+
+button[name=activity]{
+    position: relative;
+    float: right;
+    background-color: white;
+    top:20px;
+    margin-right: 40px;
+    border : solid 1px #cccccc;
+}
+button[name=withdrawl]{
+    position: relative;
+    float:right;
+    background-color: white;
+    top:20px;
+    margin-right: 20px;
+    border : solid 1px #cccccc;
+}
+button[name=cancel]{
+    position: relative;
+    float:right;
+    background-color: white;
+    top:20px;
+    margin-right: 40px;
+    border : solid 1px #cccccc;
+}
+button[name=ok]{
+    position: relative;
+    float:right;
+    background-color: white;
+    top:20px;
+    margin-right: 40px;
+    border : solid 1px #cccccc;
+}
+
+
+div.teamlist>h1{
+    display:none;
+}
+
+div.teamlist>ul>li>div>button[name=cancel]{
+    display : none;
+}
+
+/*팀리스트 페이징*/
+.pagegroup_team{
+    width:900px; 
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 50px;
+} 
+
+.pagegroup_team>span{
+    cursor: pointer;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 70px;
+}
+
+.pagegroup_team>span:disabled {
+    pointer-events: none;
+  }
+  
+  .pagegroup_team>span:hover {
+    background-color: #000000;
+    color : white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  .pagegroup_team>span:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+span.nothing{
+    position:relative;
+    padding-top: 150px;
+    top:150px;
+    text-align: center;
+    width : 400px;
+    height: 250px;
+    display: none;
+    font-size: 20px;
+    color: #515151;
+}

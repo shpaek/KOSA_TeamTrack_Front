@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/myteamlist.css">
+        <link rel="stylesheet" href="../css/myheader.css">
+        <link>
+        <link rel="stylesheet" href="../css/MainPage/footer.css">
+
+        <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+        <!-- SweetAlert2 JS 스크립트 불러오기 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../js/myteamlist.js"></script> 
+        <script src="../js/myheader.js"></script> 
+    </head>
+
+    <body>
+        <header>
+        </header>
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+            <!-- 메뉴 탭 -->
+            <ul>
+                <li><a href="#" name="myinfo">🙍‍♂️ 회원 정보</a></li>
+                <li><a href="#" name="myteam">🚩 마이 팀</a></li>
+                <li><a href="#" name="withdrawl">탈퇴하기</a></li>
+            </ul>
+        </nav>
+        <section>
+            <div class="myteam">
+                <div class="teamtab">
+                    <ul class="myteamtab">
+                        <li><div class="active">참여중</div></li>
+                        <li><div class="end">활동종료</div></li>
+                        <li><div class="waiting">승인대기</div></li>
+                    </ul>
+                </div>
+                <div class="tabcontent">
+                    <div class="rejectlist">
+                        <h1>승인거절 목록</h1><br>
+                        <ul>
+                            <li>
+                                <div class="reject">
+                                    <span name="reject_teamno">팀번호</span>
+                                    <img src="../images/logo.png" class="reject_logo">
+                                    <a href="#" name="reject_teamname">팀명</a>
+                                    <button name="ok">확인</button>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="pagegroup_reject">
+                        
+                        </div>
+                    </div>
+                    <div class="teamlist">
+                        <br><h1>승인대기 목록</h1><br>
+                        <ul>
+                            <li>
+                                <div class="team">
+                                    <span name="teamno">팀번호</span>
+                                    <img src="../images/crown.png" class="leader">
+                                    <img src="../images/logo.png" class="logo">
+                                    <a href="#" name="teamname">팀명</a>
+                                    <button name="activity">활동내역</button>
+                                    <button name="withdrawl">탈퇴</button>
+                                    <button name="cancel">대기취소</button>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="pagegroup_team">
+                            
+                        </div>
+                    </div>
+                    <span class="nothing">팀이 없습니다</span>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="copyright">
+                <p>©Copyright TeamTrack. All rights reserved</p>
+                </div>
+                <div class="agreement">
+                <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+                <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+                <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+                </div>
+        </footer>
+    </body>
+</html>

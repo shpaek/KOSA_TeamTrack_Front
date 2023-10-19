@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TeamTrack!!</title>
+
+    <link href="../images/favicon.ico" rel="icon">
+
+    <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 JS 스크립트 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
+    <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
+    <link rel="stylesheet" href="../CSS/taskboard.css">
+    <link rel="stylesheet" href="../CSS/taskcomplete.css">
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="../JS/TeamPage/teamMain.js"></script>
+    <script src="../JS/taskboard.js"></script>
+    <script src="../JS/taskcomplete.js"></script>
+
+    <!-- font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="mainContainer">
+
+        <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 프로필 -->
+            <div class="teamProfile">
+                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <p class="teamProfileEdit">편집</p>
+            </div>
+
+            <!-- 팀 이름 -->
+            <div class="teamNameDiv">
+                <p class="teamNameShow"></p>
+            </div>
+
+            <!-- 메뉴 탭 -->
+            <ul class="nonHiddenTab">
+                <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
+                <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
+                <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
+                <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
+                <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
+                <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
+                <li>
+                    <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
+                    <ul class="hiddenTab">
+                        <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
+                        <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
+                        <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
+                        <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
+                    </ul>
+                </li>
+                <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
+            </ul>
+        </nav>
+
+        <!-- 컨텐츠 영역 -->
+        <section class="section">
+
+          <!--과제 리스트 메뉴바-->
+          <div class="taskboardmenu">
+            <ul>
+                <li><a href="#" class="maintask">홈</a></li>|
+                <li><a href="#" class="alltask">전체 과제</a></li>|
+                <li><a href="#" class="completetask">완료한 과제</a></li>|
+                <li><a href="#" class="mytask">내 과제</a></li>
+            </ul>
+        </div>
+
+        <!--과제 리스트-->
+        <hr>
+        <section class="taskboard">
+            <div class="completeboard">
+                <div class="completecontent">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>출제자</th>
+                                <th>타이틀</th>
+                                <th>점수</th>
+                                <th>제출일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="taskpage"></div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+
+        <aside>
+            <!-- 팀 가입하기 버튼 -->
+            <button id="JoinTeamBtn">팀 가입</button>
+
+            <!-- 팝업 -->
+            <form id="teamJoin" action="/#" method="POST" style="display: none;">
+                <p>&#127881; 팀 가입 &#127881;</p>
+                <textarea name="teamJoinIntroduction" id="teamJoinIntroduction"
+                    placeholder="팀 가입을 위한 자기소개를 입력해주세요! (최대 200자)" required rows="5" cols="50"
+                    maxlength="200"></textarea>
+                <button type="submit" id="requestJoinTeamBtn">가입요청</button>
+            </form>
+        </aside>
+
+        <!-- 푸터 -->
+        <footer>
+            <div class="copyright">
+            <p>©Copyright TeamTrack. All rights reserved</p>
+            </div>
+            <div class="agreement">
+            <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+            <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+            <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

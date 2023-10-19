@@ -1,0 +1,27 @@
+div.taskreviewbox{
+    border: 0.5px solid;
+    width: 100%;
+    height: 600px;
+    line-height: 460px;
+    text-align: center;
+}
+
+div.bigtext{
+    font-size: larger;
+    text-align: center;
+    height: 30px;
+}
+
+div.smalltext{
+    font-size: medium;
+    color: rgb(111, 111, 111);
+    text-align: center;
+    height:50px;
+}
+
+div.numtext {
+    font-size: xx-large;
+    text-align: center;
+    height: 40px;
+    cursor: pointer;
+}

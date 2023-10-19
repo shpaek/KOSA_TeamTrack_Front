@@ -1,0 +1,59 @@
+
+div.completecontent>table{
+    width:100%;    
+    border-collapse: collapse;
+}
+div.completecontent>table, div.completecontent>table th{
+    /* border: 1px solid; */
+    /* background-color: rgb(231, 231, 231); */
+    height: 50px;
+    border: 5px solid white;
+}
+
+div.completecontent>table>tbody tr{
+    border: 5px solid white;
+    background-color: rgb(231, 231, 231);
+}
+div.completecontent>table>tbody tr:hover{
+    border: 0px ;
+    background-color: rgb(197, 197, 197);
+    color:black;
+    cursor: pointer;
+}
+div.completecontent>table td{
+    height: 50px;
+}
+div.completecontent>table td.title{
+    width: 40%;
+    text-align: center;
+}
+div.completecontent>table td.nickname{
+    width:20%;
+    text-align: center;
+}
+div.completecontent>table td.hwscore{
+    width:10%;
+    text-align: center;
+}
+div.completecontent>table td.submitdate{
+    width:20%;
+    text-align: center;
+}
+div.completeboard {
+    /* width: 1300px; */
+    /* height: 620px; */
+    clear: both;
+    /* margin-left:100px; */
+    padding-top:0px;
+}
+div.taskpage{
+    text-align: center;
+    font-size: larger;
+}
+span.pagebar{
+    color: rgb(184, 184, 184);
+    font-size: medium;
+}
+span:hover{
+    cursor: pointer;
+}

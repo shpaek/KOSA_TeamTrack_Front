@@ -1,0 +1,88 @@
+div.taskcreatewarning{
+    font-size: small;
+    color: rgb(52, 52, 52);
+}
+form.taskcreatebox{
+    /* background-color: rgb(231, 231, 231); */
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 8px;
+}
+form.taskcreatebox>div.tasktitle {
+    padding-left: 30px;
+}
+form.taskcreatebox>div.tasktitle>input{
+    width: 70%;
+    height: 30px;
+    border: none;
+    font-size: large;
+}
+form.taskcreatebox>hr{
+    width:95%;
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+form.taskcreatebox>div.taskinfo{
+    padding-left: 30px;
+}
+
+form.taskcreatebox>div.taskanswer{
+    padding-left: 30px;
+}
+
+/* div.taskcreatebox>div.taskanswer>div.addanswer{
+    /* border: 1px solid rgb(231, 231, 231); 
+    background-color: rgb(231, 231, 231);
+    width: 20%;
+    height:30px;
+    line-height: 30px;
+    color:rgb(103, 101, 101);
+}
+div.taskcreatebox>div.taskanswer>div.addanswer:hover{
+    background-color: rgb(209, 209, 209);
+} */
+button.exitbutton{
+    width: 100px;
+    height: 30px;
+    margin-left:900px;
+}
+
+button.createbutton{
+    width: 100px;
+    height: 30px;
+}
+
+div.taskanswer>div.answer>div>input{
+    display: inline;
+}
+/* div.taskanswer>div.answer>div>input[type=text]{
+    display: inline;
+    width:50px
+} */
+/* div.taskanswer>div.answer>div>button{
+    display: inline;
+    width: 40px;
+    height: 30px;
+    margin-left:10px;
+    background-color: white;
+    border: 0.5px solid;
+}
+div.taskanswer>div.answer>div>button:hover{
+    background-color: rgb(236, 236, 236);
+} */
+
+div.answercnt>button{
+    width: 45px;
+}
+div.answercnt>input{
+    width:30px;
+}
+
+div.answer{
+    /* border: 0.5px solid; */
+    /* width: 200px;
+    height: 300px; */
+    text-align: center;
+    overflow: auto;
+}

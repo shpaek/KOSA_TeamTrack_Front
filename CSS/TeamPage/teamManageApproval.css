@@ -1,0 +1,134 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 승인 대기 목록 영역 */
+.approvalDiv {
+    font-family: 'Noto Sans KR', sans-serif;
+
+    margin: 20px;
+    padding: 20px;
+
+    width: 90%;
+
+    border-radius: 5px;
+
+    background-color: #f9f9f9;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 승인 대기자 */
+.approvalP {
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* 알림문구 */
+.info {
+    font-size: 15px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+/* 멤버 원본 */
+.waitList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+
+    padding: 10px;
+
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+
+    margin-bottom: 16px;
+}
+
+/* 멤버 정보 출력 */
+.customerInfo {
+    display: flex;
+    align-items: center;
+    width: 93%;  /* 전체 너비를 사용하도록 설정 */
+
+    font-size: 16px;
+    font-weight: bold;
+
+    margin-left: 20px;
+}
+
+/* 자기소개 부분 너비 지정 -> 너무 길면 스크롤 생김 */
+.customerIntroduction {
+    overflow: auto;
+
+    width: 65%;
+}
+
+/* id랑 닉네임 위치 */
+.customerId, .customerNickname {
+    margin-right: 20px;
+}
+
+.customerInfo {
+    display: flex;
+    align-items: center;
+    width: 100%;  /* 전체 너비를 사용하도록 설정 */
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.customerId {
+    flex: 2; /* 20% */
+    margin-right: 20px;
+}
+
+.customerIntroduction {
+    flex: 6; /* 60% */
+    overflow: auto;
+    margin-right: 20px;
+}
+
+.btnLocation {
+    flex: 2; /* 20% */
+    justify-content: flex-end;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+/* 승인 버튼 */
+.approveBtn {
+    margin-right: 10px;
+}
+
+/* 버튼들 스타일 */
+.approveBtn, .rejectBtn {
+    margin-left: auto; 
+    background-color: #011837;
+    color: white;
+
+    padding: 5px 10px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border: 1px solid #011837;
+    border-radius: 50px;
+}
+
+/* 버튼 호버 */
+.approveBtn:hover, .rejectBtn:hover {
+    cursor: pointer;
+    font-weight: bold;
+
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+}

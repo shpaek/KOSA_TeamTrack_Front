@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/myinfo.css">
+        <link rel="stylesheet" href="../css/myheader.css">
+        <link rel="stylesheet" href="../css/MainPage/footer.css">
+
+        <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+        <!-- SweetAlert2 JS 스크립트 불러오기 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../js/myinfo.js"></script> 
+        <!-- <script src="../js/myheader.js"></script>  -->
+
+    </head>
+
+    <body>
+        <header>
+        </header>
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+            <!-- 메뉴 탭 -->
+            <ul>
+                <li><a href="#" name="myinfo">🙍‍♂️ 회원 정보</a></li>
+                <li><a href="#" name="myteam">🚩 마이 팀</a></li>
+                <li><a href="#" name="withdrawl">탈퇴하기</a></li>
+            </ul>
+        </nav>
+        <section>
+                <div class="myinfo">
+                    <div class="leftbox">
+                        <div class="imgbox">
+                            <form class="userprofile">
+                                <div class="imgshow">
+                                    <img src="../images/logo.png" class="userprofileimg">
+                                </div>
+                                <div class="filebuttons">
+                                    <label> 프로필 지정 <input type="file" name="f1" id="f1"></input></label>
+                                    <button name="profilesave">저장</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="nicknamebox">
+                            <form>
+                                <div class="nicknameeditline">
+                                    <label>닉네임 : <input type="text"
+                                        name="nickname" value="" required maxlength="10"></label>
+                                    <button name="check">중복확인</button>
+                                    <button type="submit">저장</button>
+                                </div>
+                                <div class="dupchkmsg">
+                                    <span name="requiremsg">중복확인이 필요합니다</span>
+                                    <span name="okmsg">사용 가능한 닉네임입니다</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="rightbox">
+                        <form class="info" method="post" accept-charset="UTF-8">
+                                <div>
+                                    <label>아이디 : <input type="text"
+                                    name="id" value="" readonly></label>
+                                </div>
+                                <div>
+                                    <label>이름 : <input type="text"
+                                    name="username" value="" required></label>
+                                </div>
+                                <div>
+                                    <label>생년월일 : <input type="text"
+                                    name="birthday" value="" required></label><!--&nbsp;&nbsp;&nbsp;<span style="font-size: 11px;">8자리 숫자</span>-->
+                                </div>
+                                <div>
+                                    <label>휴대폰 : <input type="text"
+                                    name="phone" value="" required></label><!--&nbsp;&nbsp;&nbsp;<span style="font-size: 11px;">11자리 숫자</span>-->
+                                </div>
+                                <div>
+                                    <label>이메일 : <input type="text"
+                                    name="email" value="" required></label>
+                                </div>
+                                <div class="savebutton">
+                                    <button type="submit">저장</button>
+                                </div>
+                        </form>
+
+                    </div>
+                </div>
+        </section>
+        <footer>
+            <div class="copyright">
+                <p>©Copyright TeamTrack. All rights reserved</p>
+                </div>
+                <div class="agreement">
+                <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+                <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+                <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+                </div>
+        </footer>
+    </body>
+</html>

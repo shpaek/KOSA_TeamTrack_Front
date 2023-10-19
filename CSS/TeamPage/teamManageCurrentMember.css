@@ -1,0 +1,97 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 현재 팀원 목록 영역 */
+.currentMemberDiv {
+    font-family: 'Noto Sans KR', sans-serif;
+
+    margin: 20px;
+    padding: 20px;
+
+    width: 90%;
+
+    border-radius: 5px;
+
+    background-color: #f9f9f9;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 현재 팀원 */
+.currentMemberP {
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* 알림문구 */
+.info {
+    font-size: 15px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+/* 멤버 원본 */
+.memberList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+
+    padding: 10px;
+    margin-bottom: 16px;
+}
+
+/* 멤버 정보 출력 */
+.memberInfo {
+    display: flex;
+    align-items: center;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    width: 93%;  /* 전체 너비를 사용하도록 설정 */
+
+    margin-left: 20px;
+}
+
+/* 아이디 닉네임! */
+.memberId {
+    margin-right: 20px;
+}
+
+/* 방출하기 버튼 */
+.dismissBtn {
+    margin-left: auto;  /* 방출 버튼을 오른쪽 끝으로 이동 */
+    background-color: #011837;
+    color: white;
+
+    padding: 5px 10px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border: 1px solid #011837;
+    border-radius: 50px;
+}
+
+/* 방출하기 버튼 호버 */
+.dismissBtn:hover {
+    cursor: pointer;
+    background-color: #011837;
+
+    font-weight: bold;
+
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+}

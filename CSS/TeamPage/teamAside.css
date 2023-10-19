@@ -1,0 +1,102 @@
+/* 팀 가입 버튼 */
+#JoinTeamBtn {
+    position: fixed;
+    cursor: pointer;
+    border: none;
+
+    background-color: #011837;
+    color: white;
+    
+    font-weight: bold;
+
+    bottom: 60px;
+    right: 60px;
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+    
+    font-size: 18px;
+}
+
+/* 팀 가입 버튼 클릭 시 */
+#JoinTeamBtn:hover {
+    cursor: pointer;
+    background-color: #011837;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+}
+
+/* 팀 가입 버튼 클릭 시 팝업 */
+aside>form#teamJoin {
+    position: fixed;
+    background-color: white;
+    text-align: center;  /* 중앙 정렬 */
+    border: 1px solid #ffffff;
+
+    height: 500px;
+    width: 500px;
+
+    /* 위치 조정 */
+    bottom: 60px;
+    right: 60px;
+
+    padding: 20px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 팝업창 내부의 <p>팀 가입 */
+aside>form>p {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/* textarea 크기 조절 */
+#teamJoinIntroduction {
+    display: block;  /* 블록 요소로 설정 */
+    margin: 0 auto;  /* 중앙 정렬 */
+    border: 2px solid black;
+
+    width: 450px;
+    height: 300px;
+}
+
+/* 가입 요청 버튼 */
+#requestJoinTeamBtn {
+    display: block;
+    cursor: pointer;
+    border: none;
+
+    background-color: #022d65;
+    color: white;
+    font-weight: bold;
+
+    font-size: 15px;
+
+    border-radius: 30px;
+
+    width: 90px;
+    height: 40px;
+
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* 가입 요청 버튼 호버 */
+#requestJoinTeamBtn:hover {
+    cursor: pointer;
+    background-color: #011837;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+}

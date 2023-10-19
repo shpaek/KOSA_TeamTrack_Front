@@ -1,0 +1,112 @@
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TeamTrack!!</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="../js/teamheader.js"></script> 
+        <script src="../js/writenotice.js"></script> 
+    <link href="../images/favicon.ico" rel="icon">
+
+    <!-- SweetAlert2 CSS 스타일 시트 불러오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 JS 스크립트 불러오기 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
+    <link rel="stylesheet" href="../CSS/MainPage/footer.css" />
+    <link rel="stylesheet" href="../css/writenotice.css">
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="../JS/TeamPage/teamMain.js"></script>
+
+
+    </head>
+    <body>
+        <header>
+        </header>
+        <nav>
+            <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 프로필 -->
+            <div class="teamProfile">
+                <img class="teamProfileImg" src='#' alt="teamProfile">
+                <p class="teamProfileEdit">편집</p>
+            </div>
+
+            <!-- 팀 이름 -->
+            <div class="teamNameDiv">
+                <p class="teamNameShow"></p>
+            </div>
+
+            <!-- 메뉴 탭 -->
+            <ul class="nonHiddenTab">
+                <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
+                <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
+                <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
+                <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
+                <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
+                <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
+                <li>
+                    <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
+                    <ul class="hiddenTab">
+                        <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
+                        <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
+                        <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
+                        <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
+                    </ul>
+                </li>
+                <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
+            </ul>
+        </nav>
+
+        <section class="section">
+            <div class="noticebox">
+                <form class="notice"> 
+                    <div class="mainnotice">
+                        <input type="checkbox" id="status" name="status" value="0">
+                        <label for="m">메인공지 등록</label>
+                    </div>
+                    <div class="titleline">
+                        <input type="text"
+                                required placeholder="제목을 입력하세요"
+                                name="title"
+                                maxlength="40">
+                        <input type="file" name="f1" id="f1"></input>
+                    </div>
+                    <div class="content">
+                        <textarea placeholder="본문" name="content" maxlength="500" required></textarea>
+                    </div>
+                    <div class="write">
+                        <button type="submit">완료</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <footer>
+            <div class="copyright">
+                <p>©Copyright TeamTrack. All rights reserved</p>
+                </div>
+                <div class="agreement">
+                <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+                <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+                <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+                </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,146 @@
+*{
+    margin:0 auto; 
+}
+
+section {
+    margin-left: 270px;
+    margin-bottom: 50px;
+    padding: 30px;
+}
+
+
+.noticebox{
+    width : 970px;
+    height : 570px;
+    padding:5px;
+    border: solid 1px;
+    border-color: #CCCCCC;
+    border-radius: 20px;
+}
+
+.mainnotice>label{
+    color : #919191;
+}
+
+.mainnotice{
+    margin:20px;
+}
+
+/*제목*/
+input[name=title]{
+    padding-left : 10px;
+    margin:20px;
+    width:500px;
+    height:30px;
+    background-color: #f6f7f7;
+    border: solid 1px;
+    border-color : #cccccc;
+    border-radius: 10px;
+}
+
+
+/* 첨부파일 버튼*/
+input[type=file]::file-selector-button{
+    cursor: pointer;
+    width : 100px;
+    height : 25px;
+    background-color: white;
+    border-radius: 15px;
+    border:solid 1px #cccccc;
+    font-size: 15px;
+    color : #979797;
+    appearance: none;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    text-align: center;
+}
+
+input[type=file]::file-selector-button:disabled {
+    pointer-events: none;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background-color: #343434;
+    color:white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  input[type=file]::file-selector-button:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+
+  /*본문*/
+textarea[name=content]{
+    padding : 15px;
+    margin:20px;
+    margin-bottom: 10px;
+    width:900px;
+    height:300px;
+    background-color: #f6f7f7;
+    border-color : #cccccc;
+    border-radius: 20px;
+    font-family : sans-serif;
+    resize: none;
+}
+
+.write{
+    margin:10px;
+}
+
+/*완료버튼*/
+button[type=submit]{
+    cursor: pointer;
+    float:right;
+    width : 100px;
+    height : 40px;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 15px;
+    border:solid 1px #cccccc;
+    font-size: 15px;
+    color : #979797;
+    appearance: none;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    text-align: center;
+
+}
+
+button[type=submit]:disabled {
+  pointer-events: none;
+}
+
+button[type=submit]:hover {
+  background-color: #343434;
+  color:white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+button[type=submit]:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+ul.nonHiddenTab>li>a{
+  margin-left: 0px;
+}
+
+/* #f1{
+  color:black;
+} */

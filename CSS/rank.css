@@ -1,0 +1,548 @@
+/* 남색 #011837
+형광블루 #00ffff
+레드 #ff0000 */
+
+/* Header */
+header {
+    font-family: 'Noto Sans KR', sans-serif;
+
+    /* border: solid 1px black; 영역 표시용 나중에 지우기!! */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 0px 50px 50px;
+
+    margin-left: 200px; /* nav의 너비만큼 마진 추가 */
+
+    background-color: #011837;
+    /* border: 1px solid white; */
+    color: white;
+}
+
+/* 검색창 영역 */
+header .searchBar {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+
+    padding: 10px;
+    margin-top: 30px;
+
+    width: 350px;
+    height: 20px;
+
+    background-color: lightgray;
+    border: 1.5px solid white;
+    border-radius: 50px;
+}
+
+/* 검색창 아이콘 */
+header>div>img {
+    position: absolute;
+
+    /* 아이콘 사이즈 */
+    width: 22px;
+    height: 22px;
+
+    /* 아이콘 위치 */
+    left: 10px;
+    top: 50%;
+    
+    /* 아이콘 수직 중앙 정렬 */
+    transform: translateY(-50%);
+
+    background-color: lightgray;
+}
+
+/* 검색창 인풋 영역 */
+header .searchBar input {
+    outline: none;
+    
+    width: 80%;
+    height: 100%;
+
+    left: 10px;
+
+    border: 0px;
+
+    font-size: 16px;
+
+    background-color: lightgray;
+
+}
+
+/* Section */
+/* section nav바 너비만큼 이동 */
+
+h1 {
+    font-size: 6.5vw;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 2px #eb6383;
+}
+.char, .word {
+    display: inline-block;
+}
+.splitting .char {
+    animation: slide-in 1s cubic-bezier(0.17, 0.84, 0.4, 1.49) both;
+    animation-delay: calc(30ms * var(--char-index));
+}
+[data-word="♬"] .char {
+    display: inline;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: scale(2) rotate(60deg);
+        opacity: 0;
+   }
+}
+@keyframes bump-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+   }
+}
+particule {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    /* width: 30px;
+    height: 30px; */
+    box-shadow: 1px 1px 4px #eb6383;
+}
+
+section {
+    width: 90%;
+    margin-left: 99px;
+    margin-bottom: 0px;
+    padding: 30px;
+    background-color: #011837;
+}
+
+section > div.memberRank {
+    margin-left: 150px;
+    margin-bottom: 50px;
+}
+
+p.intro1, p.intro2 {
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #011837;
+}
+
+/* section 내부 표 영역 */
+div.memberRank > h3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 65px;
+    text-align: center;
+    color: #29ffc6;
+}
+
+div.box { 
+    vertical-align:middle;
+    float: right;
+    clear: both;
+    line-height: 75px;
+    /* margin-left: 53rem; */
+    margin-bottom: 1rem; 
+    margin-right: 7rem;
+    white-space:nowrap;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    color: white;
+}
+
+#monthSelect {
+    width: 6rem;
+    height: 2.5rem;
+    margin: 10px;
+    text-align: center;
+
+    visibility: visible;
+    background-color: #011837;
+    color: white;
+    flex: 1 1 auto;
+    display: inline-grid;
+    grid-area: 1 / 1 / 2 / 3;
+    grid-template-columns: 0px min-content;
+
+    border-radius: 10px;
+    border-color: white;
+    box-sizing: border-box;
+    padding: 0.5rem 0.5rem 0.5rem 0px;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+}
+
+div.box > h4 {
+    display:inline; 
+    margin-top: 2rem;
+}
+
+table {
+    width: 80%;
+    height: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    clear:both;
+
+    /* border-top: 1px solid #0dffbf; */
+    border-collapse: collapse;
+    color: white;
+}
+
+thead > tr > th {
+    height : 80px;
+    /* border-bottom: 1px solid #0dffbf; */
+
+    font-size: 20px;
+    /* opacity: 0.88; */
+    color: #333;
+}
+
+thead {
+    background: #a8ff78;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+/* top-left border-radius */
+table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+/* top-right border-radius */
+table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+tbody > tr > td {
+    border-bottom: 1px solid #20e3b2;
+
+    font-size: 20px;
+    text-align: center;
+    /* color: #0dffbf; */
+}
+
+tbody>tr>td>.profile {
+    width: 80px;
+    height: 80px;
+
+    border: 1px solid black; /*영역 표시*/
+    border-radius: 50px;
+    
+    overflow: hidden; /*영역 벗어나는 이미지 숨김 처리*/
+
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* Aside */
+/* 팀 가입 버튼 */
+#JoinTeamBtn {
+    position: fixed;
+    cursor: pointer;
+    border: none;
+
+    background-color: #022d65;
+    color: white;
+    
+    font-weight: bold;
+
+    bottom: 60px;
+    right: 60px;
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+    
+    font-size: 18px;
+}
+
+/* 팀 가입 버튼 클릭 시 */
+#JoinTeamBtn:hover {
+    cursor: pointer;
+    background-color: #011837;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+}
+
+/* 팀 가입 버튼 클릭 시 팝업 */
+aside>form#teamJoin {
+    position: fixed;
+    background-color: white;
+    text-align: center;  /* 중앙 정렬 */
+    border: 1px solid #ffffff;
+
+    height: 500px;
+    width: 500px;
+
+    /* 위치 조정 */
+    bottom: 60px;
+    right: 60px;
+
+    padding: 20px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 팝업창 내부의 <p>팀 가입 */
+aside>form>p {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/* textarea 크기 조절 */
+#teamJoinIntroduction {
+    display: block;  /* 블록 요소로 설정 */
+    margin: 0 auto;  /* 중앙 정렬 */
+    border: 2px solid black;
+
+    width: 450px;
+    height: 300px;
+}
+
+/* 가입 요청 버튼 */
+#requestJoinTeamBtn {
+    display: block;
+    cursor: pointer;
+    border: none;
+
+    background-color: #022d65;
+    color: white;
+    font-weight: bold;
+
+    font-size: 15px;
+
+    border-radius: 30px;
+
+    width: 90px;
+    height: 40px;
+
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* 가입 요청 버튼 호버 */
+#requestJoinTeamBtn:hover {
+    cursor: pointer;
+    background-color: #011837;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+}
+
+
+/* Nav */
+/* 사이드 메뉴바 */
+nav {
+    background-color: rgb(131, 131, 131);
+    color: white;
+    position: fixed;
+
+    width: 240px;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+
+    z-index: 3; /* footer 위에 놓기 */
+}
+
+/* 사이트 로고 */
+nav>a>img.logo {
+    cursor: pointer;
+
+    width: 200px;
+    height: 30px;
+
+    padding: 10px 20px 0px 20px; 
+}
+
+/* 팀 이름 */
+.teamNameDiv {
+    text-align: left;
+    font-weight: bold;
+
+    font-size: 20px;
+
+    padding: 0px 0px 10px 20px; 
+
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* 프로필 전체 영역 */
+.teamProfile {
+    width: 180px;
+    height: 180px;
+
+    border: 2px solid #011837; /* 영역 표시 */
+    border-radius: 50%;
+    
+    overflow: hidden;   /* 영역 벗어나는 이미지 숨김 처리 */
+    
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.teamNameShow {
+    margin: auto;
+}
+
+/* 프로필 전체 영역 */
+.teamProfile {
+    width: 180px;
+    height: 180px;
+
+    border: 2px solid white; /* 영역 표시 */
+    border-radius: 50%;
+    
+    overflow: hidden;   /* 영역 벗어나는 이미지 숨김 처리 */
+    
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* 프로필 편집 버튼 */
+.teamProfileEdit{
+    text-align: center;
+    cursor: pointer;
+
+    width: 100%;
+    height: 50px;
+
+    margin-top: 70%;
+    padding: 5px 0px 0px 0px;
+
+    background-color: #011837;
+}
+
+/* 프로필 사이즈 조절 */
+.teamProfileImg {
+    object-fit: cover;  /* 영역 내에 이미지 꽉 채우기 */
+    
+    width: 100%;
+    height: 100%;
+}
+
+/* 메뉴 탭 영역 */
+nav ul.nonHiddenTab {
+    list-style-type: none;
+    padding: 0;
+
+    height: 250px;
+}
+
+/* 메뉴 탭들 */
+nav ul li {
+    display: flex;
+    position: relative; /* 서브 메뉴의 위치를 상대적으로 조정하기 위함 */
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+
+    font-size: 15px;
+
+    margin: 3px 0px 3px 0px;
+    padding: 10px;
+}
+
+/* 탭 호버 효과 */
+nav ul li:hover {
+    background-color: #022d65;
+}
+
+/* 메뉴 탭 글씨색 */
+nav ul li a {
+    color: white;
+}
+
+/* 팀 관리 탭 호버 안했을 때 2차 메뉴 숨기기 */
+li .hiddenTab {
+    display: none;
+}
+
+/* 팀 관리 탭 호버 했을 때 2차 메뉴 */
+li:hover .hiddenTab {
+    display: block;
+}
+
+/* 상위 메뉴 항목에 호버되었을 때의 2차 메뉴 항목들의 스타일 */
+nav ul li:hover > ul {
+    display: flex; /* 2차 메뉴 항목들을 표시 */
+}
+
+/* 2차 메뉴 */
+nav ul li > ul {
+    position: absolute; /* 상위 메뉴 항목에 대해 상대적인 위치로 배치 */
+    flex-direction: column; /* 탭 항목들을 수직 배치 */
+    cursor: pointer;
+
+    background-color: #022d65;
+    
+    font-size: 16px;
+
+    top: -170px;
+    left: 100%; /* 상위 메뉴 항목의 오른쪽 끝에서 시작 */
+    
+    width: 200px; /* 2차 메뉴 너비 */
+
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 숨겨진 li 태그에 호버했을 때 */
+nav ul li > ul > li:hover {
+    cursor: pointer;
+
+    background-color: #022d65;
+    
+    font-size: 17px;
+    font-weight: bold; /* 글씨체를 굵게 */
+}
+
+/* 팀 나가기 호버 안했을 때 */
+nav>ul>li#exitTeam {
+    display: flex;  /* 요소를 화면에 보이게 함 */
+    position: absolute;
+
+    margin-top: 90px;
+    
+    bottom: 10px;
+    right: 10px;
+    
+    opacity: 0.2;
+    transition: opacity 0.3s;
+}
+
+/* 팀 나가기 호버했을 때 */
+nav>ul>li#exitTeam:hover {
+    font-weight: bold;
+    
+    opacity: 0.8; 
+}

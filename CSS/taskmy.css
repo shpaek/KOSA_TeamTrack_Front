@@ -1,0 +1,56 @@
+
+div.mycontent>table{
+    width:100%;    
+    border-collapse: collapse;
+}
+div.mycontent>table, div.mycontent>table th{
+    /* border: 1px solid; */
+    /* background-color: white; */
+    height: 50px;
+    border: 5px solid white;
+}
+
+div.mycontent>table>tbody tr{
+    border: 5px solid white;
+    background-color: rgb(231, 231, 231);
+}
+div.mycontent>table>tbody tr:hover{
+    border: 0px ;
+    background-color: rgb(197, 197, 197);
+    color:black;
+    cursor: pointer;
+}
+div.mycontent>table td{
+    height: 50px;
+}
+
+div.mycontent>table td.title{
+    width: 60%;
+    text-align: center;
+}
+div.mycontent>table td.regdate{
+    width:20%;
+    text-align: center;
+}
+div.mycontent>table td.avg_reviewscore{
+    width:10%;
+    text-align: center;
+}
+div.myboard {
+    /* width: 1300px; */
+    /* height: 620px; */
+    clear: both;
+    /* margin-left:100px; */
+    padding-top:0px;
+}
+div.taskpage{
+    text-align: center;
+    font-size: larger;
+}
+span.pagebar{
+    color: rgb(184, 184, 184);
+    font-size: medium;
+}
+span:hover{
+    cursor: pointer;
+}

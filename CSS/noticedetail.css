@@ -1,0 +1,459 @@
+*{
+  margin:0 auto; 
+}
+
+section {
+  margin-left: 270px;
+  margin-bottom: 50px;
+  padding: 30px;
+}
+
+/*상세화면 영역*/
+
+.noticedetail{
+  width : 970px;
+  padding:5px;
+  border: solid 1px;
+  border-color: #CCCCCC;
+  border-radius: 20px;
+}
+
+/*메인공지 등록 버튼*/
+.setmainbutton{
+  margin:20px;
+}
+
+.setmainbutton>button{
+  cursor: pointer;
+  width : 130px;
+  height : 25px;
+  background-color: white;
+  border-radius: 15px;
+  border:solid 1px #cccccc;
+  font-size: 15px;
+  color : #979797;
+  appearance: none;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  text-align: center;
+
+}
+
+.setmainbutton>button:disabled {
+  pointer-events: none;
+}
+
+.setmainbutton>button:hover {
+  background-color: #343434;
+  color:white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.setmainbutton>button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/*제목*/
+.detailtitleline{
+  margin:20px;
+}
+
+.detailtitleline>h4{
+  font-size: 25px;
+  margin: 10px;
+}
+
+.detailtitleline>span{
+  margin: 10px;
+  color: #414040;
+}
+
+ /*-------------------------------------------------------------*/
+
+/* 첨부파일*/
+.filezone{
+    background-color: #f6f7f7;
+    border-top : solid 1px #cccccc;
+    border-bottom: solid 1px #cccccc;
+  }
+  
+.filezone>div{
+    font-size: 12px;
+  margin: 20px;
+  margin-left : 30px;
+}
+
+span.filename{
+  cursor: pointer;
+  margin-left:10px;
+}
+
+span.filename:disabled {
+  pointer-events: none;
+}
+
+span.filename:hover {
+  color:blue;
+  border-bottom: solid 1px blue;
+  transform: translateY(-2px);
+}
+span.filename:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/*-------------------------------------------------------------*/
+/*본문*/
+.detailcontent{
+  padding : 15px;
+  margin:20px;
+  margin-bottom: 10px;
+  width:900px;
+}
+
+.detailcontent>p{
+  line-height : 230%;
+  font-size:15px;
+  text-align: justify;
+}
+
+/*-----------------------------------------------------------*/
+
+/*버튼 영역*/
+.detailbuttons{
+  width: 970px;
+  padding:20px;
+}
+
+/*수정버튼*/
+button.edit{
+  float:right;
+  margin:10px;
+  float:right;
+  margin:10px;
+  cursor: pointer;
+  width : 80px;
+  height : 40px;
+  background-color: white;
+  border-radius: 15px;
+  border:solid 1px #cccccc;
+  font-size: 15px;
+  color : #979797;
+  appearance: none;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  text-align: center;
+}
+
+button.edit:disabled {
+  pointer-events: none;
+}
+
+button.edit:hover {
+  background-color: #343434;
+  color:white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+button.edit:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/*삭제버튼*/
+button.remove{
+  float:right;
+  margin:10px;
+  cursor: pointer;
+  width : 80px;
+  height : 40px;
+  background-color: white;
+  border-radius: 15px;
+  border:solid 1px #cccccc;
+  font-size: 15px;
+  color : #979797;
+  appearance: none;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  text-align: center;
+}
+
+button.remove:disabled {
+  pointer-events: none;
+}
+
+button.remove:hover {
+  background-color: #343434;
+  color:white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+button.remove:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/*---------------------------------------------------------*/
+
+/*수정영역*/
+
+div.editnotice{
+  display : none;
+}
+
+.editnotice{
+  width : 970px;
+  height : 570px;
+  padding:5px;
+  border: solid 1px;
+  border-color: #CCCCCC;
+  border-radius: 20px;
+}
+
+/*메인공지 버튼 구역*/
+.mainnotice>label{
+  color : #919191;
+}
+
+.mainnotice{
+  margin:20px;
+}
+
+/*----------------------------------------------------------------------*/
+
+/*제목*/
+input[name=title]{
+padding-left : 10px;
+margin:20px;
+width:500px;
+height:30px;
+background-color: #f6f7f7;
+border: solid 1px;
+border-color : #cccccc;
+border-radius: 10px;
+}
+
+/*제목*/
+input[name=title]{
+  padding-left : 10px;
+  margin:20px;
+  width:500px;
+  height:30px;
+  background-color: #f6f7f7;
+  border: solid 1px;
+  border-color : #cccccc;
+  border-radius: 10px;
+}
+
+/*----------------------------------------------------------------------*/
+
+/*첨부파일 버튼*/
+input[type=file]::file-selector-button{
+  cursor: pointer;
+  width : 100px;
+  height : 25px;
+  background-color: white;
+  border-radius: 15px;
+  border:solid 1px #cccccc;
+  font-size: 15px;
+  color : #979797;
+  appearance: none;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  text-align: center;
+}
+
+input[type=file]::file-selector-button:disabled {
+  pointer-events: none;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #343434;
+  color:white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+input[type=file]::file-selector-button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/*----------------------------------------------------------------------*/
+
+/*첨부된 파일*/
+.modifyfilezone{
+  display : none;
+  margin-left : 20px;
+  font-size: 12px;
+  color : #919191;
+}
+
+span.modifyfilename{
+  cursor: pointer;
+  margin-left:10px;
+  color:black;
+}
+
+span.modifyfilename:disabled {
+  pointer-events: none;
+}
+
+span.modifyfilename:hover {
+  color:blue;
+  border-bottom: solid 1px blue;
+  transform: translateY(-2px);
+}
+
+span.modifyfilename:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/*----------------------------------------------------------------------*/
+
+/*본문*/
+textarea[name=content]{
+  padding : 15px;
+  margin:20px;
+  margin-bottom: 10px;
+  width:900px;
+  height:300px;
+  background-color: #f6f7f7;
+  border-color : #cccccc;
+  border-radius: 20px;
+  font-family : sans-serif;
+  resize: none;
+}
+
+/*----------------------------------------------------------------------*/
+
+.writebutton{
+  margin:10px;
+}
+
+/*완료버튼*/
+button[type=submit]{
+  cursor: pointer;
+  float:right;
+  width : 100px;
+  height : 40px;
+  margin-right: 20px;
+  background-color: white;
+  border-radius: 15px;
+  border:solid 1px #cccccc;
+  font-size: 15px;
+  color : #979797;
+  appearance: none;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  text-align: center;
+}
+
+button[type=submit]:disabled {
+  pointer-events: none;
+}
+
+button[type=submit]:hover {
+  background-color: #343434;
+  color:white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+button[type=submit]:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/*-----------------------------------------------------*/
+
+/*취소버튼*/
+button[name="back"]{
+  cursor: pointer;
+  float:right;
+  width : 100px;
+  height : 40px;
+  margin-right: 20px;
+  background-color: white;
+  border-radius: 15px;
+  border:solid 1px #cccccc;
+  font-size: 15px;
+  color : #979797;
+  appearance: none;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  text-align: center;
+}
+
+button[name="back"]:disabled {
+  pointer-events: none;
+}
+
+button[name="back"]:hover {
+  background-color: #343434;
+  color:white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+button[name="back"]:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+ul.nonHiddenTab>li>a{
+  margin-left: 0px;
+}
+
+div.detailtitleline>h4, div.detailcontent>p{
+  color : black;
+}
+
+div.filezone{
+  color:black;
+}
+
+ul.nonHiddenTab>li>a{
+  margin-left: 0px;
+}

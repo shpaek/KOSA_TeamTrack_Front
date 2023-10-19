@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TeamTrack!!</title>
+
+    <link href="../images/favicon.ico" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/TeamPage/teamHeader.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamNav.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamSection.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamAside.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamFooter.css" />
+    <link rel="stylesheet" href="../CSS/TeamPage/teamManageExaminer.css" />
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="../JS/TeamPage/teamMain.js"></script>
+    <script src="../JS/TeamPage/teamManageExaminer.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="mainContainer">
+        <header>
+            <!-- 검색창 -->
+            <div class="searchBar">
+                <input type="text" placeholder="팀명 또는 #을 포함하여 해시태그를 검색" id="mainsearch" />
+                <img class="searchIcon" src="../images/search.png" alt="searchIcon" id="searchIcon" />
+            </div>
+        </header>
+
+        <!-- 사이드 메뉴바 -->
+        <nav>
+            <!-- 사이트 로고 -->
+            <a href="../HTML/main.html">
+                <img class="logo" src="../images/logoCut.png" alt="logo">
+            </a>
+
+            <!-- 팀 프로필 -->
+            <div class="teamProfile">
+                <img class="teamProfileImg" src='../images/rocket.png' alt="teamProfile">
+                <p class="teamProfileEdit">편집</p>
+            </div>
+
+            <!-- 팀 이름 -->
+            <div class="teamNameDiv">
+                <p class="teamNameShow"></p>
+            </div>
+
+            <!-- 메뉴 탭 -->
+            <ul class="nonHiddenTab">
+                <li><a href="#" class="teamMainPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127968; 팀 메인으로</a></li>
+                <li><a href="#" class="noticeBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128226; 공지사항게시판</a></li>
+                <li><a href="#" class="taskBoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128187; 과제게시판</a></li>
+                <li><a href="#" class="QnABoard">&nbsp;&nbsp;&nbsp;&nbsp;&#128173; Q&A게시판</a></li>
+                <li><a href="#" class="attendencePage">&nbsp;&nbsp;&nbsp;&nbsp;&#128198; 출석하러가기</a></li>
+                <li><a href="#" class="rankPage">&nbsp;&nbsp;&nbsp;&nbsp;&#127941; 랭킹</a></li>
+                <li>
+                    <a href="#" class="manageTeam">&nbsp;&nbsp;&nbsp;&nbsp;&#128295; 팀 관리</a>
+                    <ul class="hiddenTab">
+                        <li><a href="#" class="manageTeamProperties">&nbsp;팀 속성 관리</a></li>
+                        <li><a href="#" class="manageTeamCurrentMember">&nbsp;현재 팀원</a></li>
+                        <li><a href="#" class="manageTeamApproval">&nbsp;팀 가입 승인</a></li>
+                        <li><a href="#" class="manageTeamExaminer">&nbsp;출제자 선정</a></li>
+                    </ul>
+                </li>
+                <li id="exitTeam"><a href="#" class="exitTeam">팀 나가기</a></li>
+            </ul>
+        </nav>
+
+        <!-- 컨텐츠 영역 -->
+        <section class="section">
+
+            <!-- 출제자 선정 영역 -->
+            <div class="examinerDiv">
+                <p class="manageExaminerP">출제자 선정</p>
+
+                <p class="info">💡 &nbsp;[&nbsp;&nbsp;] 내부는 해당 회원의 닉네임입니다.</p>
+                <p class="info">💥 &nbsp;[&nbsp;&nbsp;] 출제자 선정은 취소할 수 없습니다.</p>
+
+                <!-- 멤버 내역 출력과 출제자 선정을 위한 폼 -->
+                <form id="examinerForm" method="POST">
+                    <div class="memberList">
+
+                        <!-- 멤버 원본 -->
+                        <div class="memberDiv">
+                            <div class="memberInfo">
+                                <input type="radio" name="checked" value="checked" id="checked">
+                                <span class="memberId">아이디</span>
+                                <span class="memberNickname">닉네임</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 출제일과 마감일 설정 영역 -->
+                    <div class="dateSetting">
+                        <div class="dateBlock">
+                            <label for="startDate">시작날짜: </label>
+                            <input type="date" id="startDate" name="startDate">
+                        </div>
+                        <div class="dateBlock">
+                            <label for="endDate">마감날짜: </label>
+                            <input type="date" id="endDate" name="endDate">
+                        </div>
+                    </div>
+
+                    <!-- 제출 버튼 -->
+                    <div>
+                        <button type="submit">출제자 선정</button>
+                    </div>
+
+                    <p class="manageExaminerP2">출제자 목록</p>
+
+                    <!-- 제출자 목록 -->
+                    <div class="examinerInfoDIv">
+                        <div class="examinerInfo">
+                            <span class="info1">task_no</span>
+                            <span class="info2">id</span>
+                            <span class="info3">duedate1</span>
+                            <span class="info4">duedate2</span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </section>
+
+        <!-- 푸터 -->
+        <footer>
+            <div class="copyright">
+            <p>©Copyright TeamTrack. All rights reserved</p>
+            </div>
+            <div class="agreement">
+            <a href="https://spotted-slug-8c0.notion.site/48b6b22768fb4f6f8a7d85ea4655c365?pvs=4">이용약관</a>
+            <a href="https://spotted-slug-8c0.notion.site/022d5ef7c55b4e84b777f3bd50aee07f?pvs=4">개인정보처리방침</a>
+            <a href="https://spotted-slug-8c0.notion.site/Contact-Us-f6de1b285af64777b99b755c4a24c64b?pvs=4">Contact Us</a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

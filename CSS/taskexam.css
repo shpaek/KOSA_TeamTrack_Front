@@ -1,0 +1,41 @@
+div.taskexamwarning{
+    font-size: small;
+    color: rgb(52, 52, 52);
+}
+form.taskexambox>div.tasktitle {
+    padding-left: 30px;
+}
+form.taskexambox{
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 8px;
+}
+form.taskexambox>div.teskquestion{
+    padding-left: 30px;
+}
+form.taskexambox>div.taskanswerbox{
+    padding-left: 30px;
+}
+form.taskexambox>hr{
+    width:95%;
+    border: 0.5px solid rgb(164, 162, 162);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+button{
+    width: 100px;
+    height: 30px;
+    margin-left:1000px;
+    cursor: pointer;
+}
+button.taskfiledown{
+    width:70px;
+    margin-left:10px;
+}
+form.taskexambox>div.tasknickname{
+    font-size: small;
+    margin-right: 50px;
+    text-align: right;
+}
+input[type=radio] {
+    cursor: pointer;
+}

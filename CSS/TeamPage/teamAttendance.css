@@ -1,0 +1,65 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 출석부 영역 */
+.attendanceDiv {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 20px;
+    padding: 20px;
+    width: 90%;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;  /* 수직 방향으로 자식 요소들을 나열 */
+}
+
+/* 출석부 */
+.attendanceP {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* 알림문구 */
+.info {
+    font-size: 15px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+/* 출석하기 버튼 */
+.attendanceBtn {
+    padding: 10px 15px; 
+    cursor: pointer;
+    margin-bottom: 20px;
+    background-color: #022d65;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* 출석하기 버튼 호버 */
+.attendanceBtn:hover {
+    font-weight: bold;
+}
+
+/* 출석 내역 */
+.attendanceList {
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* 출석 내역 출력 */
+.attendance2 {
+    border-radius: 5px;
+    margin-bottom: 2px;
+}
