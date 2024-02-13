@@ -1,4 +1,4 @@
-# KOSA_TeamTrack_Project_Team.팀명뭐하지의 Front Repository 입니다.
+# KOSA_TeamTrack_Project_Team.팀명뭐하지의 <br> Front Repository 입니다.
 ### [클릭 시,  KOSA_TeamTrack_Project의 Back Repository로 연결됩니다.](https://github.com/shpaek/KOSA_TeamTrack_Back)
 
 <br><br>
